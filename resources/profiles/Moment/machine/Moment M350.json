@@ -1,0 +1,12 @@
+{
+    "type": "machine_model",
+    "name": "Moment M350",
+    "model_id": "Moment-M350",
+    "nozzle_diameter": "0.4",
+    "machine_tech": "FFF",
+    "family": "Moment",
+    "bed_model": "M350_bed.stl",
+    "bed_texture": "",
+    "hotend_model": "Moment_hotend.stl",
+    "default_materials": "Moment Generic ABS_350;Moment Generic PLA;Moment Generic TPU;Moment Generic PC_350;Moment Generic PA;Moment Generic Wood;Moment Generic PA6-CF"
+}

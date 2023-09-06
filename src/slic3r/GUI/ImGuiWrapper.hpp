@@ -192,7 +192,7 @@ public:
 
     //BBS add more colors
     static const ImVec4 COL_BLUE_LIGHT;
-    static const ImVec4 COL_GREEN_LIGHT;
+    static const ImVec4 COL_RED_LIGHT;
     static const ImVec4 COL_HOVER;
     static const ImVec4 COL_ACTIVE;
     static const ImVec4 COL_TITLE_BG;

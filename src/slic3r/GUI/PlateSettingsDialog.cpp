@@ -89,7 +89,7 @@ PlateSettingsDialog::PlateSettingsDialog(wxWindow* parent, wxWindowID id, const 
 
     auto sizer_button = new wxBoxSizer(wxHORIZONTAL);
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 136, 68), StateColor::Pressed), std::pair<wxColour, int>(wxColour(61, 203, 115), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal));
 
     StateColor btn_bg_white(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Pressed), std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Hovered),
         std::pair<wxColour, int>(*wxWHITE, StateColor::Normal));

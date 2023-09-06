@@ -1,0 +1,306 @@
+{
+    "name": "Moment",
+    "version": "01.06.00.00",
+    "force_update": "0",
+    "description": "Moment configurations",
+    "machine_model_list": [
+        {
+            "name": "Moment M160",
+            "sub_path": "machine/Moment M160.json"
+        },
+        {
+            "name": "Moment M160P",
+            "sub_path": "machine/Moment M160P.json"
+        },
+        {
+            "name": "Moment M220",
+            "sub_path": "machine/Moment M220.json"
+        },
+        {
+            "name": "Moment M220P",
+            "sub_path": "machine/Moment M220P.json"
+        },
+        {
+            "name": "Moment M350",
+            "sub_path": "machine/Moment M350.json"
+        },
+        {
+            "name": "Moment M300",
+            "sub_path": "machine/Moment M300.json"
+        },
+        {
+            "name": "Moment M400",
+            "sub_path": "machine/Moment M400.json"
+        },
+        {
+            "name": "Moment K350",
+            "sub_path": "machine/Moment K350.json"
+        },
+        {
+            "name": "Moment S",
+            "sub_path": "machine/Moment S.json"
+        },
+        {
+            "name": "Moment 2",
+            "sub_path": "machine/Moment 2.json"
+        }
+    ],
+    "process_list": [
+        {
+            "name": "fdm_process_common",
+            "sub_path": "process/fdm_process_common.json"
+        },
+        {
+            "name": "0.10mm High @Moment M160",
+            "sub_path": "process/0.10mm High @Moment M160.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment M160",
+            "sub_path": "process/0.20mm Medium @Moment M160.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment M160",
+            "sub_path": "process/0.30mm Fast @Moment M160.json"
+        },
+        {
+            "name": "0.10mm High @Moment M160P",
+            "sub_path": "process/0.10mm High @Moment M160P.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment M160P",
+            "sub_path": "process/0.20mm Medium @Moment M160P.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment M160P",
+            "sub_path": "process/0.30mm Fast @Moment M160P.json"
+        },
+        {
+            "name": "0.10mm High @Moment M220",
+            "sub_path": "process/0.10mm High @Moment M220.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment M220",
+            "sub_path": "process/0.20mm Medium @Moment M220.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment M220",
+            "sub_path": "process/0.30mm Fast @Moment M220.json"
+        },
+        {
+            "name": "0.10mm High @Moment M220P",
+            "sub_path": "process/0.10mm High @Moment M220P.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment M220P",
+            "sub_path": "process/0.20mm Medium @Moment M220P.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment M220P",
+            "sub_path": "process/0.30mm Fast @Moment M220P.json"
+        },
+        {
+            "name": "0.10mm High @Moment M350",
+            "sub_path": "process/0.10mm High @Moment M350.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment M350",
+            "sub_path": "process/0.20mm Medium @Moment M350.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment M350",
+            "sub_path": "process/0.30mm Fast @Moment M350.json"
+        },
+        {
+            "name": "fdm_process_moment_common",
+            "sub_path": "process/fdm_process_moment_common.json"
+        },
+        {
+            "name": "0.10mm Ultra @Moment M300",
+            "sub_path": "process/0.10mm Ultra @Moment M300.json"
+        },
+        {
+            "name": "0.16mm High @Moment M300",
+            "sub_path": "process/0.16mm High @Moment M300.json"
+        },
+        {
+            "name": "0.20mm Standard @Moment M300",
+            "sub_path": "process/0.20mm Standard @Moment M300.json"
+        },
+        {
+            "name": "0.28mm Draft @Moment M300",
+            "sub_path": "process/0.28mm Draft @Moment M300.json"
+        },
+        {
+            "name": "0.10mm High @Moment S",
+            "sub_path": "process/0.10mm High @Moment S.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment S",
+            "sub_path": "process/0.20mm Medium @Moment S.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment S",
+            "sub_path": "process/0.30mm Fast @Moment S.json"
+        },
+        {
+            "name": "0.10mm High @Moment 2",
+            "sub_path": "process/0.10mm High @Moment 2.json"
+        },
+        {
+            "name": "0.20mm Medium @Moment 2",
+            "sub_path": "process/0.20mm Medium @Moment 2.json"
+        },
+        {
+            "name": "0.30mm Fast @Moment 2",
+            "sub_path": "process/0.30mm Fast @Moment 2.json"
+        }
+    ],
+    "filament_list": [
+        {
+            "name": "fdm_filament_common",
+            "sub_path": "filament/fdm_filament_common.json"
+        },
+        {
+            "name": "fdm_filament_pla",
+            "sub_path": "filament/fdm_filament_pla.json"
+        },
+        {
+            "name": "fdm_filament_tpu",
+            "sub_path": "filament/fdm_filament_tpu.json"
+        },
+        {
+            "name": "fdm_filament_pet",
+            "sub_path": "filament/fdm_filament_pet.json"
+        },
+        {
+            "name": "fdm_filament_abs",
+            "sub_path": "filament/fdm_filament_abs.json"
+        },
+        {
+            "name": "fdm_filament_pc",
+            "sub_path": "filament/fdm_filament_pc.json"
+        },
+        {
+            "name": "fdm_filament_asa",
+            "sub_path": "filament/fdm_filament_asa.json"
+        },
+        {
+            "name": "fdm_filament_pva",
+            "sub_path": "filament/fdm_filament_pva.json"
+        },
+        {
+            "name": "fdm_filament_pa",
+            "sub_path": "filament/fdm_filament_pa.json"
+        },
+        {
+            "name": "Moment Generic PLA",
+            "sub_path": "filament/Moment Generic PLA.json"
+        },
+        {
+            "name": "Moment Generic PLA_P",
+            "sub_path": "filament/Moment Generic PLA_P.json"
+        },
+        {
+            "name": "Moment Generic Wood",
+            "sub_path": "filament/Moment Generic Wood.json"
+        },
+        {
+            "name": "Moment Generic PLA-CF",
+            "sub_path": "filament/Moment Generic PLA-CF.json"
+        },
+        {
+            "name": "Moment Generic PETG",
+            "sub_path": "filament/Moment Generic PETG.json"
+        },
+        {
+            "name": "Moment Generic ABS",
+            "sub_path": "filament/Moment Generic ABS.json"
+        },
+        {
+            "name": "Moment Generic ABS_350",
+            "sub_path": "filament/Moment Generic ABS_350.json"
+        },
+        {
+            "name": "Moment Generic TPU",
+            "sub_path": "filament/Moment Generic TPU.json"
+        },
+        {
+            "name": "Moment Generic ASA",
+            "sub_path": "filament/Moment Generic ASA.json"
+        },
+        {
+            "name": "Moment Generic PC",
+            "sub_path": "filament/Moment Generic PC.json"
+        },
+        {
+            "name": "Moment Generic PC_350",
+            "sub_path": "filament/Moment Generic PC_350.json"
+        },
+        {
+            "name": "Moment Generic PVA",
+            "sub_path": "filament/Moment Generic PVA.json"
+        },
+        {
+            "name": "Moment Generic PA",
+            "sub_path": "filament/Moment Generic PA.json"
+        },
+        {
+            "name": "Moment Generic PA6-CF",
+            "sub_path": "filament/Moment Generic PA6-CF.json"
+        },
+        {
+            "name": "Moment Generic PLA_Hyper",
+            "sub_path": "filament/Moment Generic PLA_Hyper.json"
+        }
+    ],
+    "machine_list": [
+        {
+            "name": "fdm_machine_common",
+            "sub_path": "machine/fdm_machine_common.json"
+        },
+        {
+            "name": "Moment M160 0.4 nozzle",
+            "sub_path": "machine/Moment M160 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M160P 0.4 nozzle",
+            "sub_path": "machine/Moment M160P 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M220 0.4 nozzle",
+            "sub_path": "machine/Moment M220 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M220P 0.4 nozzle",
+            "sub_path": "machine/Moment M220P 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M350 0.4 nozzle",
+            "sub_path": "machine/Moment M350 0.4 nozzle.json"
+        },
+        {
+            "name": "fdm_moment_common",
+            "sub_path": "machine/fdm_moment_common.json"
+        },
+        {
+            "name": "Moment M300 0.4 nozzle",
+            "sub_path": "machine/Moment M300 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M400 0.4 nozzle",
+            "sub_path": "machine/Moment M400 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment K350 0.4 nozzle",
+            "sub_path": "machine/Moment K350 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment S 0.4 nozzle",
+            "sub_path": "machine/Moment S 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment 2 0.4 nozzle",
+            "sub_path": "machine/Moment 2 0.4 nozzle.json"
+        }
+    ]
+}

@@ -925,7 +925,7 @@ void NotificationManager::HintNotification::render_close_button(ImGuiWrapper& im
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(.0f, .0f, .0f, .0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(.0f, .0f, .0f, .0f));
 	push_style_color(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
-	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(0, .75f, .75f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
+	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(.75f, 0, 0, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(.0f, .0f, .0f, .0f));
 
 
@@ -971,7 +971,7 @@ void NotificationManager::HintNotification::render_preferences_button(ImGuiWrapp
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(.0f, .0f, .0f, .0f));
 	push_style_color(ImGuiCol_ButtonActive, ImGui::GetStyleColorVec4(ImGuiCol_WindowBg), m_state == EState::FadingOut, m_current_fade_opacity);
 	push_style_color(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
-	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(0, .75f, .75f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
+	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(.75f, 0, 0, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
 
 	std::wstring button_text;
 	button_text = m_is_dark ? ImGui::PreferencesDarkButton : ImGui::PreferencesButton;
@@ -1013,7 +1013,7 @@ void NotificationManager::HintNotification::render_right_arrow_button(ImGuiWrapp
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(.0f, .0f, .0f, .0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(.0f, .0f, .0f, .0f));
 	push_style_color(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
-	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(0, .75f, .75f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
+	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(.75f, 0, 0, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(.0f, .0f, .0f, .0f));
 
 	std::wstring button_text;
@@ -1064,7 +1064,7 @@ void NotificationManager::HintNotification::render_documentation_button(ImGuiWra
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(.0f, .0f, .0f, .0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(.0f, .0f, .0f, .0f));
 	push_style_color(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
-	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(0, .75f, .75f, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
+	push_style_color(ImGuiCol_TextSelectedBg, ImVec4(.75f, 0, 0, 1.f), m_state == EState::FadingOut, m_current_fade_opacity);
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(.0f, .0f, .0f, .0f));
 
 	std::wstring button_text;
