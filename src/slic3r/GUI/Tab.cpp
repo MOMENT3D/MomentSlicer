@@ -1993,17 +1993,17 @@ void TabPrint::build()
         optgroup = page->new_optgroup(L("Support"), L"param_support");
     optgroup->append_single_option_line("enable_support", "support");
         optgroup->append_single_option_line("support_type", "support#support-type");
-        optgroup->append_single_option_line("support_type", "support#support-type");
+        optgroup->append_single_option_line("support_style", "support#support-type");
         optgroup->append_single_option_line("support_threshold_angle", "support#threshold-angle");
         optgroup->append_single_option_line("support_on_build_plate_only");
         optgroup->append_single_option_line("support_critical_regions_only");
         //optgroup->append_single_option_line("enforce_support_layers");
 
         optgroup = page->new_optgroup(L("Raft"), L"param_raft");
-        optgroup->append_single_option_line("raft_layers");
-        optgroup->append_single_option_line("raft_contact_distance");
-        optgroup->append_single_option_line("raft_first_layer_density");
-        optgroup->append_single_option_line("raft_first_layer_expansion");
+        optgroup->append_single_option_line("raft_layers", "support#raft");
+        optgroup->append_single_option_line("raft_contact_distance", "support#raft");
+        optgroup->append_single_option_line("raft_first_layer_density", "support#raft");
+        optgroup->append_single_option_line("raft_first_layer_expansion", "support#raft");
 
         optgroup = page->new_optgroup(L("Support filament"), L"param_support_filament");
         optgroup->append_single_option_line("support_filament");
