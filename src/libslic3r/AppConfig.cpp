@@ -175,7 +175,7 @@ void AppConfig::set_defaults()
 
 //#ifdef SUPPORT_SHOW_HINTS
     if (get("show_hints").empty())
-        set_bool("show_hints", true);
+        set_bool("show_hints", false);
 //#endif
 
     if (get("show_gcode_window").empty())
@@ -246,7 +246,7 @@ void AppConfig::set_defaults()
     }
 
     if (get("show_daily_tips").empty()) {
-        set_bool("show_daily_tips", true);
+        set_bool("show_daily_tips", false);
     }
 
     if (get("show_home_page").empty()) {
