@@ -1239,11 +1239,11 @@ wxString OptionsGroup::get_url(const std::string& path_end)
     }
     // Softfever: point to sf wiki for seam parameters
     if (path_end == "Seam") {
-        return wxString::Format(L"https://github.com/SoftFever/OrcaSlicer/wiki/%s", from_u8(path_end));
+        return wxString::Format(L"https://moment.co.kr/slicer-%s", str);
     }
     else {
         //BBS
-        return wxString::Format(L"https://wiki.bambulab.com/%s/software/bambu-studio/%s", L"en", str);
+        return wxString::Format(L"https://moment.co.kr/slicer-%s", str);
     }
 }
 
