@@ -1,57 +1,54 @@
 {
     "type": "filament",
-    "filament_id": "GFL99_03",
+    "filament_id": "GFL99",
     "setting_id": "GFSA04",
-    "name": "Moment Generic PLA_Hyper",
+    "name": "Moment Generic PLA-Tough",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_pla",
+    "filament_cost": [
+        "38500"
+    ],
     "filament_flow_ratio": [
-      "1.0185"
+      "0.95"
     ],
     "filament_density": [
       "1.26"
     ],
     "hot_plate_temp": [
-      "60"
+      "55"
     ],
     "hot_plate_temp_initial_layer": [
-      "60"
+      "55"
     ],
     "nozzle_temperature": [
-      "200"
+      "245"
     ],
     "nozzle_temperature_initial_layer": [
-      "200"
+      "245"
     ],
     "nozzle_temperature_range_high": [
-      "250"
+      "245"
     ],
     "nozzle_temperature_range_low": [
-      "190"
+      "205"
     ],
     "overhang_fan_threshold": [
       "0%"
     ],
-    "enable_pressure_advance": [
-      "1"
-    ],
-    "pressure_advance": [
-      "0.03"
-    ],
     "slow_down_layer_time": [
-      "6"
+      "15"
     ],
     "slow_down_min_speed": [
-      "25"
+      "18"
     ],
     "filament_max_volumetric_speed": [
-      "30"
+      "12"
     ],
     "compatible_printers": [
-      "Moment M300 0.4 nozzle",
-      "Moment M400 0.4 nozzle",
-      "Moment K350 0.4 nozzle"
+      "Moment M160 0.4 nozzle",
+      "Moment M220 0.4 nozzle",
+      "Moment M350 0.4 nozzle"
     ],
     "version": "1.6.0.0"
 }

@@ -8,5 +8,5 @@
     "bed_model": "M400_bed.stl",
     "bed_texture": "",
     "hotend_model": "Moment_hotend.stl",
-    "default_materials": "Moment Generic PLA_Hyper"
+    "default_materials": "Moment Generic PLA Sonic;Moment Generic PLA Tough"
 }

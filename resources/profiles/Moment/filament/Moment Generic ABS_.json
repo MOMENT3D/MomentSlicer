@@ -1,49 +1,48 @@
 {
     "type": "filament",
-    "filament_id": "GFU99",
+    "filament_id": "GFB99",
     "setting_id": "GFSA04",
-    "name": "Moment Generic TPU",
+    "name": "Moment Generic ABS_",
     "from": "system",
     "instantiation": "true",
-    "inherits": "fdm_filament_tpu",
+    "inherits": "fdm_filament_abs",
+    "filament_cost": [
+        "38500"
+    ],
+    "filament_max_volumetric_speed": [
+        "12"
+    ],
     "compatible_printers": [
         "Moment M160 0.4 nozzle",
         "Moment M160P 0.4 nozzle",
         "Moment M220 0.4 nozzle",
         "Moment M220P 0.4 nozzle",
-        "Moment M350 0.4 nozzle",
         "Moment S 0.4 nozzle",
         "Moment 2 0.4 nozzle"
     ],
     "close_fan_the_first_x_layers": [
-        "4"
+        "6"
+    ],
+    "fan_max_speed": [
+        "100"
+    ],
+    "fan_min_speed": [
+        "100"
     ],
     "filament_flow_ratio": [
-        "1.2"
-    ],
-    "filament_max_volumetric_speed": [
-        "12"
+        "1"
     ],
     "hot_plate_temp": [
-        "65"
+        "95"
     ],
     "hot_plate_temp_initial_layer": [
-        "60"
+        "100"
     ],
-    "nozzle_temperature": [
-        "230"
-    ],
-    "nozzle_temperature_initial_layer": [
-        "230"
+    "overhang_fan_speed": [
+        "100"
     ],
     "overhang_fan_threshold": [
         "0%"
-    ],
-    "slow_down_layer_time": [
-        "15"
-    ],
-    "slow_down_min_speed": [
-        "18"
     ],
     "version": "1.6.0.0"
 }

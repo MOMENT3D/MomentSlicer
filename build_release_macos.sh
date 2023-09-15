@@ -88,7 +88,7 @@ cp -R $resources_path ./OrcaSlicer.app/Contents/Resources
 # delete .DS_Store file
 find ./OrcaSlicer.app/ -name '.DS_Store' -delete
 # extract version
-# export ver=$(grep '^#define SoftFever_VERSION' ../src/libslic3r/libslic3r_version.h | cut -d ' ' -f3)
+# export ver=$(grep '^#define MOMENT3D_VERSION' ../src/libslic3r/libslic3r_version.h | cut -d ' ' -f3)
 # ver="_V${ver//\"}"
 # echo $PWD
 # if [ "1." != "$NIGHTLY_BUILD". ];

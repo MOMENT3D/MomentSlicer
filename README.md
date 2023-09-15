@@ -26,7 +26,7 @@ Orca Slicer's logo is designed by community member Justin Levine(@freejstnalxndr
 
 # How to install
 **Windows**: 
-1.  Unzip the binaries to any folder you prefer, then execute orca-slicer.exe to start the application.  
+1.  Unzip the binaries to any folder you prefer, then execute Moment-slicer.exe to start the application.  
     - *If you have troubles to run the build, you might need to install following runtimes:*
       - [MicrosoftEdgeWebView2RuntimeInstallerX64](https://github.com/SoftFever/BambuStudio-SoftFever/releases/download/v1.0.10-sf2/MicrosoftEdgeWebView2RuntimeInstallerX64.exe)  
       - [vcredist2019_x64](https://github.com/SoftFever/BambuStudio-SoftFever/releases/download/v1.0.10-sf2/vcredist2019_x64.exe)  

@@ -193,16 +193,16 @@
             "sub_path": "filament/fdm_filament_pa.json"
         },
         {
-            "name": "Moment Generic PLA",
-            "sub_path": "filament/Moment Generic PLA.json"
+            "name": "Moment Generic PLA-Tough",
+            "sub_path": "filament/Moment Generic PLA-Tough.json"
         },
         {
-            "name": "Moment Generic PLA_P",
-            "sub_path": "filament/Moment Generic PLA_P.json"
+            "name": "Moment Generic PLA_Tough",
+            "sub_path": "filament/Moment Generic PLA_Tough.json"
         },
         {
-            "name": "Moment Generic Wood",
-            "sub_path": "filament/Moment Generic Wood.json"
+            "name": "Moment Generic Wood_",
+            "sub_path": "filament/Moment Generic Wood_.json"
         },
         {
             "name": "Moment Generic PLA-CF",
@@ -213,44 +213,48 @@
             "sub_path": "filament/Moment Generic PETG.json"
         },
         {
-            "name": "Moment Generic ABS",
-            "sub_path": "filament/Moment Generic ABS.json"
+            "name": "Moment Generic ABS_",
+            "sub_path": "filament/Moment Generic ABS_.json"
         },
         {
-            "name": "Moment Generic ABS_350",
-            "sub_path": "filament/Moment Generic ABS_350.json"
+            "name": "Moment Generic ABS-",
+            "sub_path": "filament/Moment Generic ABS-.json"
         },
         {
-            "name": "Moment Generic TPU",
-            "sub_path": "filament/Moment Generic TPU.json"
+            "name": "Moment Generic TPU_",
+            "sub_path": "filament/Moment Generic TPU_.json"
         },
         {
             "name": "Moment Generic ASA",
             "sub_path": "filament/Moment Generic ASA.json"
         },
         {
-            "name": "Moment Generic PC",
-            "sub_path": "filament/Moment Generic PC.json"
+            "name": "Moment Generic PC_",
+            "sub_path": "filament/Moment Generic PC_.json"
         },
         {
-            "name": "Moment Generic PC_350",
-            "sub_path": "filament/Moment Generic PC_350.json"
+            "name": "Moment Generic PC-",
+            "sub_path": "filament/Moment Generic PC-.json"
         },
         {
             "name": "Moment Generic PVA",
             "sub_path": "filament/Moment Generic PVA.json"
         },
         {
-            "name": "Moment Generic PA",
-            "sub_path": "filament/Moment Generic PA.json"
+            "name": "Moment Generic PA-",
+            "sub_path": "filament/Moment Generic PA-.json"
         },
         {
-            "name": "Moment Generic PA6-CF",
-            "sub_path": "filament/Moment Generic PA6-CF.json"
+            "name": "Moment Generic PA6-CF_",
+            "sub_path": "filament/Moment Generic PA6-CF_.json"
         },
         {
-            "name": "Moment Generic PLA_Hyper",
-            "sub_path": "filament/Moment Generic PLA_Hyper.json"
+            "name": "Moment Generic PLA Tough",
+            "sub_path": "filament/Moment Generic PLA Tough.json"
+        },
+        {
+            "name": "Moment Generic PLA Sonic",
+            "sub_path": "filament/Moment Generic PLA Sonic.json"
         }
     ],
     "machine_list": [

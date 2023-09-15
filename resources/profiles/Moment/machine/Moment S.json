@@ -8,5 +8,5 @@
     "bed_model": "",
     "bed_texture": "",
     "hotend_model": "Moment_hotend.stl",
-    "default_materials": "Moment Generic ABS;Moment Generic PLA_P;Moment Generic TPU;Moment Generic Wood"
+    "default_materials": "Moment Generic ABS_;Moment Generic PLA_Tough;Moment Generic TPU_;Moment Generic Wood_"
 }

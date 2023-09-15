@@ -1,27 +1,23 @@
 {
     "type": "filament",
-    "filament_id": "GFN98",
+    "filament_id": "GFN99",
     "setting_id": "GFSA04",
-    "name": "Moment Generic PA6-CF",
+    "name": "Moment Generic PA-",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_pa",
-    "filament_type": [
-        "PA-CF"
+    "filament_cost": [
+        "132000"
     ],
-    "nozzle_temperature_initial_layer": [
-        "280"
-    ],
-    "nozzle_temperature": [
-        "280"
+    "filament_max_volumetric_speed": [
+        "12"
     ],
     "compatible_printers": [
+        "Moment M160 0.4 nozzle",
+        "Moment M220 0.4 nozzle",
         "Moment M350 0.4 nozzle"
     ],
     "enable_overhang_bridge_fan": [
-        "0"
-    ],
-    "fan_cooling_layer_time": [
         "0"
     ],
     "fan_max_speed": [
@@ -30,22 +26,25 @@
     "filament_flow_ratio": [
         "0.9"
     ],
-    "filament_max_volumetric_speed": [
-        "12"
-    ],
-    "filament_retraction_length": [
-        "3"
-    ],
     "hot_plate_temp": [
         "45"
     ],
     "hot_plate_temp_initial_layer": [
         "45"
     ],
-    "slow_down_for_layer_cooling": [
-        "0"
+    "nozzle_temperature": [
+        "260"
     ],
-    "slow_down_layer_time": [
+    "nozzle_temperature_initial_layer": [
+        "260"
+    ],
+    "nozzle_temperature_range_high": [
+        "270"
+    ],
+    "nozzle_temperature_range_low": [
+        "255"
+    ],
+    "slow_down_for_layer_cooling": [
         "0"
     ],
     "version": "1.6.0.0"

@@ -8,7 +8,7 @@
   "printer_model": "Moment M220",
   "default_print_profile": "0.20mm Medium @Moment M220",
   "default_filament_profile": [
-    "Moment Generic PLA"
+    "Moment Generic PLA-Tough"
   ],
   "deretraction_speed": [
     "25"

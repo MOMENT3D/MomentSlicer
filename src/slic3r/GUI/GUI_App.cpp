@@ -290,7 +290,7 @@ public:
         memDc.SetTextForeground(StateColor::darkModeColorFor(wxColor(134, 134, 134)));
         memDc.DrawLabel(m_constant_text.version, version_rect, wxALIGN_LEFT | wxALIGN_BOTTOM);
 
-        auto bs_version = wxString::Format("Based on BambuStudio and PrusaSlicer").ToStdString();
+        auto bs_version = wxString::Format("Based on OrcaSlicer, BambuStudio and PrusaSlicer").ToStdString();
         memDc.SetFont(Label::Body_12);
         wxSize text_rect = memDc.GetTextExtent(bs_version);
         int start_x = (title_rect.GetLeft() + version_rect.GetRight()) / 2 - text_rect.GetWidth()/2;
@@ -567,7 +567,7 @@ private:
 // #if BBL_INTERNAL_TESTING
             // version = _L("Internal Version") + " " + std::string(SLIC3R_VERSION);
 // #else
-            // version = _L("") + " " + std::string(SoftFever_VERSION);
+            // version = _L("") + " " + std::string(MOMENT3D_VERSION);
 // #endif
 
             // credits infornation
@@ -4140,7 +4140,7 @@ void GUI_App::check_new_version_sf(bool show_tips, int by_user)
             // metadata
             std::regex matcher("[0-9]+\\.[0-9]+(\\.[0-9]+)*(-[A-Za-z0-9]+)?(\\+[A-Za-z0-9]+)?");
 
-            Semver current_version = get_version(SoftFever_VERSION, matcher);
+            Semver current_version = get_version(MOMENT3D_VERSION, matcher);
             Semver best_pre(1, 0, 0);
             Semver best_release(1, 0, 0);
             std::string best_pre_url;
@@ -4343,7 +4343,7 @@ std::string GUI_App::format_display_version()
     if (!version_display.empty())
         return version_display;
 
-    version_display = SoftFever_VERSION;
+    version_display = MOMENT3D_VERSION;
     return version_display;
 }
 
