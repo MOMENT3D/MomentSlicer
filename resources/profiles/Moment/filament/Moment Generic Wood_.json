@@ -41,9 +41,7 @@
         "Moment M160P 0.4 nozzle",
         "Moment M220 0.4 nozzle",
         "Moment M220P 0.4 nozzle",
-        "Moment M350 0.4 nozzle",
-        "Moment S 0.4 nozzle",
-        "Moment 2 0.4 nozzle"
+        "Moment M350 0.4 nozzle"
     ],
     "filament_flow_ratio": [
         "1.05"

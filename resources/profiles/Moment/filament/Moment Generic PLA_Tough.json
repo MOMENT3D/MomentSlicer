@@ -47,9 +47,7 @@
     ],
     "compatible_printers": [
       "Moment M160P 0.4 nozzle",
-      "Moment M220P 0.4 nozzle",
-      "Moment S 0.4 nozzle",
-      "Moment 2 0.4 nozzle"
+      "Moment M220P 0.4 nozzle"
     ],
     "version": "1.6.0.0"
 }
