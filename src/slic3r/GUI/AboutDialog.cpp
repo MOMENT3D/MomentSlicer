@@ -338,7 +338,7 @@ AboutDialog::AboutDialog()
               (boost::format(
               "<html>"
               "<body>"
-              "<p style=\"text-align:left\"><a  href=\"https://github.com/MOMENT3D/MMTOrcaSlicer\">https://github.com/MOMENT3D/MMTOrcaSlicer</ a></p>"
+              "<p style=\"text-align:left\"><a  href=\"https://github.com/MOMENT3D/MomentSlicer\">https://github.com/MOMENT3D/MomentSlicer</ a></p>"
               "</body>"
               "</html>")
             ).str());
