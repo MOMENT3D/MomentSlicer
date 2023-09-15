@@ -26,7 +26,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set(_patch_cmd ${PATCH_CMD} ${CMAKE_CURRENT_LIST_DIR}/0001-wxWidget-fix.patch)
 endif ()
 
-orcaslicer_add_cmake_project(
+momentslicer_add_cmake_project(
     wxWidgets
     GIT_REPOSITORY "https://github.com/wxWidgets/wxWidgets"
     GIT_TAG ${_wx_git_tag}
