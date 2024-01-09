@@ -2,9 +2,9 @@
     "type": "filament",
     "filament_id": "GFG99",
     "setting_id": "GFSA04",
-    "name": "Moment Generic PETG",
+    "name": "Moment PETG",
     "from": "system",
-    "instantiation": "false",
+    "instantiation": "true",
     "inherits": "fdm_filament_pet",
     "reduce_fan_stop_start_freq": [
         "1"
@@ -43,6 +43,9 @@
         "; filament start gcode\n"
     ],
     "compatible_printers": [
+      "Moment M300 0.4 nozzle",
+      "Moment M400 0.4 nozzle",
+      "Moment K350 0.4 nozzle"
     ],
     "version": "1.6.0.0"
 }

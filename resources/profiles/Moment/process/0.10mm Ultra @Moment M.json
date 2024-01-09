@@ -1,7 +1,7 @@
 {
     "type": "process",
     "setting_id": "GP004",
-    "name": "0.10mm Ultra @Moment M300",
+    "name": "0.10mm Ultra @Moment M",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_process_moment_common",

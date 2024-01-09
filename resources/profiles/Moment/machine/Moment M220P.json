@@ -8,5 +8,5 @@
     "bed_model": "M220_bed.stl",
     "bed_texture": "",
     "hotend_model": "Moment_hotend.stl",
-    "default_materials": "Moment Generic ABS_;Moment Generic PLA_Tough;Moment Generic TPU_;Moment Generic Wood_"
+    "default_materials": "Moment ..ABS;Moment ..PLA Tough;Moment .TPU;Moment .Wood"
 }
