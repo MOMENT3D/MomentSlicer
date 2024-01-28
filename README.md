@@ -2,6 +2,8 @@
 Moment Slicer is an open source slicer for FDM printers.   
 You can download Moment Slicer here: [github releases page](https://github.com/MOMENT3D/MomentSlicer/releases/).    
 
+![296909089-93320ba3-45d4-4af0-8ece-32df53877c27](https://github.com/MOMENT3D/MomentSlicer/assets/139463388/88aa3a57-0f2a-47e9-9912-a725d6caac9b)
+
 ### Some background
 MomentSlicer is an optimized version for Moment 3D printer users. It is fork of [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer).
 OrcaSlicer is fork of Bambu Studio  
