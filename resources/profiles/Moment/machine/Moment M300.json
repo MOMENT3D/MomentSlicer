@@ -6,7 +6,7 @@
   "machine_tech": "FFF",
   "family": "Moment",
   "bed_model": "M300_bed.stl",
-  "bed_texture": "",
+  "bed_texture": "M300_bed.png",
   "hotend_model": "Moment_hotend.stl",
   "default_materials": "Moment PLA Sonic;Moment PLA Tough;Moment ABS;Moment PA;Moment PA6-CF;Moment PC;Moment TPU;Moment Wood;Moment PETG;Moment PC;Moment TPU;Moment Wood;Moment PETG;Moment PA6-GF"
 }

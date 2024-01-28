@@ -9,16 +9,32 @@
     "filament_cost": [
         "38500"
     ],
+	
     "filament_max_volumetric_speed": [
-        "12"
+        "22"
     ],
-    "compatible_printers": [
-      "Moment M300 0.4 nozzle",
-      "Moment M400 0.4 nozzle",
-      "Moment K350 0.4 nozzle"
-    ],
+	
     "close_fan_the_first_x_layers": [
-        "6"
+        "3"
+    ],
+	"enable_pressure_advance": [
+        "1"
+    ],
+    "pressure_advance": [
+        "0.034"
+    ],
+	"filament_density": [
+        "1.12"
+    ],
+    "filament_flow_ratio": [
+        "0.91"
+    ],
+	
+    "fan_max_speed": [
+        "30"
+    ],
+    "fan_min_speed": [
+        "0"
     ],
     "fan_max_speed": [
         "100"
@@ -26,20 +42,46 @@
     "fan_min_speed": [
         "100"
     ],
-    "filament_flow_ratio": [
-        "1"
+	
+	"overhang_fan_speed": [
+        "30"
     ],
+    "overhang_fan_threshold": [
+        "25%"
+    ],
+    "nozzle_temperature": [
+        "270"
+    ],
+	"nozzle_temperature_initial_layer": [
+        "270"
+    ],
+    "nozzle_temperature_range_high": [
+        "290"
+    ],
+    "reduce_fan_stop_start_freq": [
+        "0"
+    ],
+    "slow_down_layer_time": [
+        "5"
+    ],
+    "slow_down_min_speed": [
+        "60"
+    ],
+    "temperature_vitrification": [
+        "101"
+    ],
+	
     "hot_plate_temp": [
-        "100"
+        "110"
     ],
     "hot_plate_temp_initial_layer": [
         "110"
     ],
-    "overhang_fan_speed": [
-        "100"
+	"compatible_printers": [
+      "Moment M300 0.4 nozzle",
+      "Moment M400 0.4 nozzle",
+      "Moment K350 0.4 nozzle"
     ],
-    "overhang_fan_threshold": [
-        "0%"
-    ],
-    "version": "1.6.0.0"
+	
+	"version": "1.6.0.0"
 }
