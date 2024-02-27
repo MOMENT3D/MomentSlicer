@@ -78,6 +78,7 @@
         "110"
     ],
 	"compatible_printers": [
+      "Moment M200 0.4 nozzle",
       "Moment M300 0.4 nozzle",
       "Moment M400 0.4 nozzle",
       "Moment K350 0.4 nozzle"

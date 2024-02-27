@@ -10,7 +10,7 @@
         "88000"
     ],
     "filament_max_volumetric_speed": [
-        "3.8"
+        "3"
     ],
 
 	"close_fan_the_first_x_layers": [
@@ -53,6 +53,7 @@
         "5"
     ],
     "compatible_printers": [
+      "Moment M200 0.4 nozzle",
       "Moment M300 0.4 nozzle",
       "Moment M400 0.4 nozzle",
       "Moment K350 0.4 nozzle"

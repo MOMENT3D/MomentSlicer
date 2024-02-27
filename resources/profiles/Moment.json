@@ -25,6 +25,10 @@
             "sub_path": "machine/Moment M350.json"
         },
         {
+            "name": "Moment M200",
+            "sub_path": "machine/Moment M200.json"
+        },		
+        {
             "name": "Moment M300",
             "sub_path": "machine/Moment M300.json"
         },
@@ -322,6 +326,10 @@
             "name": "fdm_moment_common",
             "sub_path": "machine/fdm_moment_common.json"
         },
+        {
+            "name": "Moment M200 0.4 nozzle",
+            "sub_path": "machine/Moment M200 0.4 nozzle.json"
+        },		
         {
             "name": "Moment M300 0.4 nozzle",
             "sub_path": "machine/Moment M300 0.4 nozzle.json"
