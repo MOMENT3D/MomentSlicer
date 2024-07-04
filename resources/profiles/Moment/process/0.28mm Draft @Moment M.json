@@ -1,0 +1,28 @@
+{
+    "type": "process",
+    "setting_id": "GP004",
+    "name": "0.28mm Draft @Moment M",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_process_moment_common",
+    "bottom_shell_layers": "4",
+    "gap_infill_speed": "200",
+    "infill_wall_overlap": "30%",
+    "inner_wall_speed": "260",
+    "internal_solid_infill_speed": "120",
+    "layer_height": "0.28",
+    "overhang_3_4_speed": "20",
+    "overhang_4_4_speed": "5",
+    "outer_wall_speed": "180",
+    "sparse_infill_speed": "260",
+    "top_shell_layers": "5",
+    "support_threshold_angle": "40",
+    "support_top_z_distance": "0.2",
+    "top_surface_speed": "200",
+	  "compatible_printers": [
+		    "Moment M200 0.4 nozzle",	  
+		    "Moment M300 0.4 nozzle",
+			"Moment M400 0.4 nozzle",
+        "Moment K350 0.4 nozzle"
+	  ]
+}

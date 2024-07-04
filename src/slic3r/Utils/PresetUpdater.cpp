@@ -664,7 +664,7 @@ void PresetUpdater::priv::sync_config()
     }
     AppConfig *app_config = GUI::wxGetApp().app_config;
 
-    auto profile_update_url = app_config->profile_update_url() + "/" + SoftFever_VERSION;
+    auto profile_update_url = app_config->profile_update_url() + "/" + MOMENT3D_VERSION;
     // parse the assets section and get the latest asset by comparing the name
 
     Http::get(profile_update_url)
@@ -706,7 +706,7 @@ void PresetUpdater::priv::sync_config()
                         for (auto asset : assets) {
                             std::string name          = asset["name"].get<std::string>();
                             int         versionNumber = -1;
-                            std::regex  regexPattern("orcaslicer-profiles_ota_.*\\.([0-9]+)\\.zip$");
+                            std::regex  regexPattern("momentslicer-profiles_ota_.*\\.([0-9]+)\\.zip$");
                             std::smatch matches;
                             if (std::regex_search(name, matches, regexPattern) && matches.size() > 1) {
                                 versionNumber = std::stoi(matches[1].str());

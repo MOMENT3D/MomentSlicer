@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.6.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny"
+	 id="svg2" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" inkscape:export-filename="OrcaSlicer_gradient1024.png" inkscape:export-xdpi="96.000008" inkscape:export-ydpi="96.000008"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1024px" height="1024px"
+	 viewBox="0 0 1024 1024" overflow="visible" xml:space="preserve">
+<sodipodi:namedview  bordercolor="#000000" borderopacity="0.25" id="namedview4" inkscape:current-layer="layer1" inkscape:cx="1105" inkscape:cy="188" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1369" inkscape:window-maximized="1" inkscape:window-width="3440" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="0.5" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g id="layer1" transform="matrix(0.99895749,0,0,0.99799215,-0.93372196,0.06231743)" inkscape:groupmode="layer" inkscape:label="background">
+	
+		<ellipse id="path713" fill-rule="evenodd" fill="#D9DADA" stroke="#D7D4C3" stroke-width="1.3216" stroke-miterlimit="3.1901" stroke-opacity="0.7175" cx="513.4" cy="517.2" rx="499.4" ry="499.9"/>
+</g>
+<sodipodi:namedview  bordercolor="#000000" borderopacity="0.25" id="namedview4" inkscape:current-layer="g8" inkscape:cx="443.35595" inkscape:cy="564.27121" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="true" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1369" inkscape:window-maximized="1" inkscape:window-width="3440" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="0.70710678" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g>
+	<path fill="#252523" d="M320.1,219.6C192,347.7,192,555.4,320.1,683.5L784,219.6C655.9,91.5,448.2,91.5,320.1,219.6z"/>
+	<path fill="#FF0000" d="M703.9,804.4c128.1-128.1,128.1-335.8,0-463.9L240,804.4C368.1,932.5,575.8,932.5,703.9,804.4z"/>
+</g>
+<path fill="#FFFFFF" d="M359.9,436.4l25-25h229l50.3,50.3v125.6l-25.3,25.3h-25V487l-25-25.6h-50v125.9l-25.3,25.3h-25V461.4H410
+	v151.2h-25l-25-25.3V436.4H359.9z"/>
+</svg>

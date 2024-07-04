@@ -1558,7 +1558,7 @@ void GCode::do_export(Print* print, const char* path, GCodeProcessorResult* resu
 
     check_placeholder_parser_failed();
 
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     if (!m_placeholder_error_messages.empty()){
         std::ostringstream message;
         message << "Some EditGcodeDialog defs were not specified properly. Do so in PrintConfig under SlicingStatesConfigDef:" << std::endl;
@@ -3001,7 +3001,7 @@ std::string GCode::placeholder_parser_process(const std::string &name, const std
     // Orca: Added CMake config option since debug is rarely used in current workflow.
     // Also changed from throwing error immediately to storing messages till slicing is completed
     // to raise all errors at the same time.
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     if (config_override) {
         const auto& custom_gcode_placeholders = custom_gcode_specific_placeholders();
 
@@ -3441,7 +3441,7 @@ namespace Skirt {
         size_t lines_per_extruder = (n_loops + n_tools - 1) / n_tools;
 
         // BBS. Extrude skirt with first extruder if min_skirt_length is zero
-        //ORCA: Always extrude skirt with first extruder, independantly of if the minimum skirt length is zero or not. The code below
+        //MOMENT: Always extrude skirt with first extruder, independantly of if the minimum skirt length is zero or not. The code below
         // is left as a placeholder for when a multiextruder support is implemented. Then we will need to extrude the skirt loops for each extruder.
         //const PrintConfig &config = print.config();
         //if (config.min_skirt_length.value < EPSILON) {
@@ -4388,7 +4388,7 @@ void GCode::apply_print_config(const PrintConfig &print_config)
     m_config.apply(print_config);
     m_scaled_resolution = scaled<double>(print_config.resolution.value);
 
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     // If the gcode value is empty, set a value so that the check code within the parser is run
     for (auto opt : std::initializer_list<ConfigOptionString*>{
              &m_config.machine_start_gcode,

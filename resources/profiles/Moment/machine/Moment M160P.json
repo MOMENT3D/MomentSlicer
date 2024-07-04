@@ -1,0 +1,12 @@
+{
+    "type": "machine_model",
+    "name": "Moment M160P",
+    "model_id": "Moment-M160P",
+    "nozzle_diameter": "0.4",
+    "machine_tech": "FFF",
+    "family": "Moment",
+    "bed_model": "M160_bed.stl",
+    "bed_texture": "",
+    "hotend_model": "Moment_hotend.stl",
+    "default_materials": "Moment ..ABS;Moment ..PLA Tough;Moment .TPU;Moment .Wood"
+}

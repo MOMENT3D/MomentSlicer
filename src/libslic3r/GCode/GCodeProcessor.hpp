@@ -729,7 +729,7 @@ namespace Slic3r {
         enum class EProducer
         {
             Unknown,
-            OrcaSlicer,
+            MomentSlicer,
             Slic3rPE,
             Slic3r,
             SuperSlicer,

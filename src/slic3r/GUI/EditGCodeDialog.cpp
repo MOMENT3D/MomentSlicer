@@ -271,7 +271,7 @@ wxDataViewItem EditGCodeDialog::add_presets_placeholders()
     auto init_from_tab = [this, full_config](wxDataViewItem parent, Tab* tab, const set<string>& preset_keys){
         set extra_keys(preset_keys);
         for (const auto& page : tab->m_pages) {
-            // ORCA: Pull icons from tabs for subgroups, icons are hidden on tabs
+            // MOMENT: Pull icons from tabs for subgroups, icons are hidden on tabs
             std::string icon_name = "empty"; // use empty icon if not defined
             for (const auto& icons_list : tab->m_icon_index) {
                 if (icons_list.second == page->iconID()) {

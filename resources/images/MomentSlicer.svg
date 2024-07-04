@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.6.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny"
+	 id="svg2" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1024px" height="1024px"
+	 viewBox="0 0 1024 1024" overflow="visible" xml:space="preserve">
+<sodipodi:namedview  bordercolor="#000000" borderopacity="0.25" id="namedview4" inkscape:current-layer="layer1" inkscape:cx="292" inkscape:cy="568" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1237" inkscape:window-maximized="0" inkscape:window-width="1350" inkscape:window-x="486" inkscape:window-y="91" inkscape:zoom="0.25" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g id="layer1" transform="matrix(0.99895749,0,0,0.99799215,-0.93372195,0.0585938)" inkscape:groupmode="layer" inkscape:label="background">
+	
+		<image width="1025" height="1025" id="rect457" xlink:href="70B41F9B.png"  transform="matrix(1.001 0 0 1.002 -6.634714e-02 -1.0607)">
+	</image>
+</g>
+<g>
+	<g>
+		<path fill="#252523" d="M275.6,151.8c-157.8,157.8-157.8,413.7,0,571.5l571.5-571.5C689.3-6,433.4-6,275.6,151.8z"/>
+		<path fill="#FF0000" d="M748.4,872.2c157.8-157.8,157.8-413.7,0-571.5L176.9,872.2C334.7,1030,590.6,1030,748.4,872.2z"/>
+	</g>
+	<path fill="#FFFFFF" d="M324.5,418.8l30.8-30.8h282.1l62,62v154.8L668.3,636h-30.8V481.2l-30.8-31.5H545v155.2L513.8,636H483V449.6
+		h-96.9V636h-30.8l-30.8-31.2L324.5,418.8L324.5,418.8z"/>
+</g>
+</svg>

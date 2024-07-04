@@ -54,7 +54,7 @@ PrintRegion::PrintRegion(const PrintRegionConfig &config) : PrintRegion(config, 
 PrintRegion::PrintRegion(PrintRegionConfig &&config) : PrintRegion(std::move(config), config.hash()) {}
 
 //BBS
-// ORCA: Now this is a parameter
+// MOMENT: Now this is a parameter
 //float Print::min_skirt_length = 0;
 
 void Print::clear()

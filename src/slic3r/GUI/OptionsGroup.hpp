@@ -324,7 +324,7 @@ protected:
 // It is designed for single extruder multiple material machine.
 class ExtruderOptionsGroup : public ConfigOptionsGroup {
 public:
-	ExtruderOptionsGroup(wxWindow* parent, const wxString& title, const wxString& icon, DynamicPrintConfig* config = nullptr, // ORCA: add support for icons
+	ExtruderOptionsGroup(wxWindow* parent, const wxString& title, const wxString& icon, DynamicPrintConfig* config = nullptr, // MOMENT: add support for icons
 		bool is_tab_opt = false, column_t extra_clmn = nullptr) :
 		ConfigOptionsGroup(parent, title, icon, config, is_tab_opt, extra_clmn) {}
 

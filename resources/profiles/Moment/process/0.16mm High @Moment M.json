@@ -1,0 +1,30 @@
+{
+    "type": "process",
+    "setting_id": "GP004",
+    "name": "0.16mm High @Moment M",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_process_moment_common",
+    "gap_infill_speed": "350",
+    "infill_wall_overlap": "15%",
+    "inner_wall_speed": "420",
+    "internal_solid_infill_speed": "210",
+    "layer_height": "0.16",
+    "overhang_1_4_speed": "60",
+    "overhang_2_4_speed": "30",
+    "overhang_3_4_speed": "10",
+    "outer_wall_speed": "310",
+    "sparse_infill_speed": "420",
+    "support_threshold_angle": "25",
+    "support_interface_bottom_layers": "3",
+    "support_interface_top_layers": "3",
+    "support_top_z_distance": "0.16",
+    "support_bottom_z_distance": "0.16",
+    "top_surface_speed": "300",
+	  "compatible_printers": [
+		    "Moment M200 0.4 nozzle",	  
+		    "Moment M300 0.4 nozzle",
+			"Moment M400 0.4 nozzle",
+        "Moment K350 0.4 nozzle"
+	  ]
+}

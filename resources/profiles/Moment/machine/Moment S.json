@@ -1,0 +1,12 @@
+{
+    "type": "machine_model",
+    "name": "Moment S",
+    "model_id": "Moment-S",
+    "nozzle_diameter": "0.4",
+    "machine_tech": "FFF",
+    "family": "Moment",
+    "bed_model": "",
+    "bed_texture": "",
+    "hotend_model": "Moment_hotend.stl",
+    "default_materials": "Moment ...ABS;Moment ...PLA Tough;Moment .TPU;Moment .Wood"
+}

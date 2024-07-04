@@ -291,12 +291,12 @@ void GLGizmoFdmSupports::on_render_input_window(float x, float y, float bottom_l
         if (i != 0) ImGui::SameLine((empty_button_width + m_imgui->scaled(1.75f)) * i + m_imgui->scaled(1.3f));
 
         ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0);
-		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f));						// ORCA: Fixes icon rendered without colors while using Light theme
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f));						// MOMENT: Fixes icon rendered without colors while using Light theme
         if (m_current_tool == tool_ids[i]) {
-            ImGui::PushStyleColor(ImGuiCol_Button,			ImVec4(0.f, 0.59f, 0.53f, 0.25f));	// ORCA use orca color for selected tool / brush
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered,	ImVec4(0.f, 0.59f, 0.53f, 0.25f));	// ORCA use orca color for selected tool / brush
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive,	ImVec4(0.f, 0.59f, 0.53f, 0.30f));	// ORCA use orca color for selected tool / brush
-            ImGui::PushStyleColor(ImGuiCol_Border,			ImGuiWrapper::COL_ORCA);			// ORCA use orca color for border on selected tool / brush
+            ImGui::PushStyleColor(ImGuiCol_Button,			ImVec4(0.f, 0.59f, 0.53f, 0.25f));	// MOMENT use orca color for selected tool / brush
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered,	ImVec4(0.f, 0.59f, 0.53f, 0.25f));	// MOMENT use orca color for selected tool / brush
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive,	ImVec4(0.f, 0.59f, 0.53f, 0.30f));	// MOMENT use orca color for selected tool / brush
+            ImGui::PushStyleColor(ImGuiCol_Border,			ImGuiWrapper::COL_MOMENT);			// MOMENT use orca color for border on selected tool / brush
             ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0);
             ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 1.0);
         }
@@ -520,9 +520,9 @@ void GLGizmoFdmSupports::show_tooltip_information(float caption_max, float x, fl
     caption_max += m_imgui->calc_text_size(std::string_view{": "}).x + 15.f;
 
     float  scale       = m_parent.get_scale();
-    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // ORCA: Use exact resolution will prevent blur on icon
+    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // MOMENT: Use exact resolution will prevent blur on icon
     ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0f);
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // ORCA: Dont add padding
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // MOMENT: Dont add padding
     ImGui::ImageButton3(normal_id, hover_id, button_size);
 
     if (ImGui::IsItemHovered()) {

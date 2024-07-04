@@ -1030,7 +1030,7 @@ private:
 
 public:
     //BBS: this was a print config and now seems to be useless so we move it to here
-    // ORCA: parameter below is now back to being a user option (min_skirt_length)
+    // MOMENT: parameter below is now back to being a user option (min_skirt_length)
     //static float min_skirt_length;
 };
 

@@ -1646,7 +1646,7 @@ void GLGizmoEmboss::draw_font_list_line()
     bool exist_change_in_font = m_style_manager.is_font_changed();
     const std::string& font_text = m_gui_cfg->translations.font;
     if (exist_change_in_font || !exist_stored_style)
-        ImGuiWrapper::text_colored(ImGuiWrapper::COL_ORCA, font_text);
+        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MOMENT, font_text);
     else
         ImGuiWrapper::text(font_text);
 
@@ -2175,7 +2175,7 @@ void GLGizmoEmboss::draw_style_list() {
     if (m_style_manager.exist_stored_style())
         ImGui::Text("%s", title.c_str());
     else
-        ImGui::TextColored(ImGuiWrapper::COL_ORCA, "%s", title.c_str());
+        ImGui::TextColored(ImGuiWrapper::COL_MOMENT, "%s", title.c_str());
         
     ImGui::SetNextItemWidth(m_gui_cfg->input_width);
     auto add_text_modify = [&is_modified](const std::string& name) {
@@ -2405,7 +2405,7 @@ bool GLGizmoEmboss::revertible(const std::string &name,
     ImGui::AlignTextToFramePadding();
     bool changed = exist_change(value, default_value);
     if (changed || default_value == nullptr)
-        ImGuiWrapper::text_colored(ImGuiWrapper::COL_ORCA, name);
+        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MOMENT, name);
     else
         ImGuiWrapper::text(name);
 
@@ -3159,7 +3159,7 @@ void GLGizmoEmboss::init_icons()
         "make_unbold.svg",   
         "search.svg",
         "open.svg", 
-        "obj_warning.svg",  // ORCA: use obj_warning instead exclamation. exclamation is not compatible with low res
+        "obj_warning.svg",  // MOMENT: use obj_warning instead exclamation. exclamation is not compatible with low res
         "lock_closed.svg",  // lock,
         "lock_closed_f.svg",// lock_bold,
         "lock_open.svg",    // unlock,

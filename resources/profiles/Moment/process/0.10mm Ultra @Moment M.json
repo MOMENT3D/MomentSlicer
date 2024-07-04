@@ -1,0 +1,32 @@
+{
+    "type": "process",
+    "setting_id": "GP004",
+    "name": "0.10mm Ultra @Moment M",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_process_moment_common",
+    "bottom_shell_layers": "6",
+    "gap_infill_speed": "550",
+    "infill_wall_overlap": "10%",
+    "inner_wall_speed": "650",
+    "internal_solid_infill_speed": "330",
+    "layer_height": "0.1",
+    "overhang_1_4_speed": "60",
+    "overhang_2_4_speed": "30",
+    "overhang_3_4_speed": "10",
+    "outer_wall_speed": "500",
+    "sparse_infill_speed": "650",
+    "support_threshold_angle": "20",
+    "support_interface_bottom_layers": "5",
+    "support_interface_top_layers": "5",
+    "support_top_z_distance": "0.1",
+    "support_bottom_z_distance": "0.1",
+    "top_surface_speed": "470",
+    "top_shell_layers": "7",
+	  "compatible_printers": [
+		    "Moment M200 0.4 nozzle",	  
+		    "Moment M300 0.4 nozzle",
+			"Moment M400 0.4 nozzle",
+        "Moment K350 0.4 nozzle"
+	  ]
+}

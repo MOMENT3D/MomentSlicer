@@ -1,0 +1,131 @@
+{
+  "type": "machine",
+  "setting_id": "GM001",
+  "name": "Moment M350 0.4 nozzle",
+  "from": "system",
+  "instantiation": "true",
+  "inherits": "fdm_machine_common",
+  "printer_model": "Moment M350",
+  "default_print_profile": "0.20mm Medium @Moment M350",
+  "default_filament_profile": [
+    "Moment .PLA Tough"
+  ],
+  "deretraction_speed": [
+    "17"
+  ],
+  "extruder_colour": [
+    "#FCE94F"
+  ],
+  "extruder_offset": [
+    "0x0"
+  ],
+  "gcode_flavor": "marlin",
+  "silent_mode": "0",
+  "machine_max_acceleration_e": [
+    "10000"
+  ],
+  "machine_max_acceleration_extruding": [
+    "800"
+  ],
+  "machine_max_acceleration_retracting": [
+    "3000"
+  ],
+  "machine_max_acceleration_x": [
+    "9000"
+  ],
+  "machine_max_acceleration_y": [
+    "9000"
+  ],
+  "machine_max_acceleration_z": [
+    "100"
+  ],
+  "machine_max_speed_e": [
+    "25"
+  ],
+  "machine_max_speed_x": [
+    "300"
+  ],
+  "machine_max_speed_y": [
+    "300"
+  ],
+  "machine_max_speed_z": [
+    "5"
+  ],
+  "machine_max_jerk_e": [
+    "5"
+  ],
+  "machine_max_jerk_x": [
+    "20"
+  ],
+  "machine_max_jerk_y": [
+    "20"
+  ],
+  "machine_max_jerk_z": [
+    "0.4"
+  ],
+  "machine_min_extruding_rate": [
+    "0"
+  ],
+  "machine_min_travel_rate": [
+    "0"
+  ],
+  "max_layer_height": [
+    "0.3"
+  ],
+  "min_layer_height": [
+    "0.05"
+  ],
+  "printable_height": "350",
+  "extruder_clearance_radius": "65",
+  "extruder_clearance_height_to_rod": "36",
+  "extruder_clearance_height_to_lid": "140",
+  "nozzle_diameter": [
+    "0.4"
+  ],
+  "printer_variant": "0.4",
+  "retraction_minimum_travel": [
+    "0"
+  ],
+  "retract_before_wipe": [
+    "70%"
+  ],
+  "retract_when_changing_layer": [
+    "0"
+  ],
+  "retraction_length": [
+    "1"
+  ],
+  "retract_length_toolchange": [
+    "1"
+  ],
+  "z_hop": [
+    "0"
+  ],
+  "retract_restart_extra": [
+    "0"
+  ],
+  "retract_restart_extra_toolchange": [
+    "0"
+  ],
+  "retraction_speed": [
+    "17"
+  ],
+  "use_relative_e_distances": "0",
+  "single_extruder_multi_material": "0",
+  "change_filament_gcode": "",
+  "wipe": [
+    "1"
+  ],
+  "printable_area": [
+    "0x0",
+    "350x0",
+    "350x350",
+    "0x350"
+  ],
+  "thumbnails": [],
+  "machine_start_gcode": "M140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM104 S[first_layer_temperature] ; set extruder temp\nM109 S[first_layer_temperature] ; wait for hotend temp\nG28 ; home all axes\nG92 E0\nG1 X0 Y300 F4800\nG1 Z0.2 F1000\nG92 E0\nG1 E5.0 F1800\nG92 E0\nG0 X0 Y20 E25.0 F1800\nG0 X0 Y30 F4800",
+  "machine_end_gcode": "M104 S0 ; turn off extruder\nM140 S0 ; turn off bed\nG1 Z350\nG28 X0 Y0\nM84 ; disable motors",
+  "layer_change_gcode": ";AFTER_LAYER_CHANGE\n;[layer_z]\n;FORCE Z MOVEMENT SPEED\nG1 Z{layer_z} F100",
+  "before_layer_change_gcode": ";BEFORE_LAYER_CHANGE\n;[layer_z]\n",
+  "machine_pause_gcode": "M601"
+}

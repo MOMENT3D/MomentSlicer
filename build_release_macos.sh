@@ -110,7 +110,7 @@ PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_BUILD_DIR="$PROJECT_DIR/build_$ARCH"
 DEPS_DIR="$PROJECT_DIR/deps"
 DEPS_BUILD_DIR="$DEPS_DIR/build_$ARCH"
-DEPS="$DEPS_BUILD_DIR/OrcaSlicer_dep_$ARCH"
+DEPS="$DEPS_BUILD_DIR/MomentSlicer_dep_$ARCH"
 
 # Fix for Multi-config generators
 if [ "$SLICER_CMAKE_GENERATOR" == "Xcode" ]; then
@@ -144,7 +144,7 @@ function pack_deps() {
         set -x
         mkdir -p "$DEPS"
         cd "$DEPS_BUILD_DIR"
-        tar -zcvf "OrcaSlicer_dep_mac_${ARCH}_$(date +"%Y%m%d").tar.gz" "OrcaSlicer_dep_$ARCH"
+        tar -zcvf "MomentSlicer_dep_mac_${ARCH}_$(date +"%Y%m%d").tar.gz" "MomentSlicer_dep_$ARCH"
     )
 }
 
@@ -159,7 +159,7 @@ function build_slicer() {
                 -G "${SLICER_CMAKE_GENERATOR}" \
                 -DBBL_RELEASE_TO_PUBLIC=1 \
                 -DCMAKE_PREFIX_PATH="$DEPS/usr/local" \
-                -DCMAKE_INSTALL_PREFIX="$PWD/OrcaSlicer" \
+                -DCMAKE_INSTALL_PREFIX="$PWD/MomentSlicer" \
                 -DCMAKE_BUILD_TYPE="$BUILD_CONFIG" \
                 -DCMAKE_MACOSX_RPATH=ON \
                 -DCMAKE_INSTALL_RPATH="${DEPS}/usr/local" \
@@ -179,22 +179,22 @@ function build_slicer() {
     echo "Fix macOS app package..."
     (
         cd "$PROJECT_BUILD_DIR"
-        mkdir -p OrcaSlicer
-        cd OrcaSlicer
+        mkdir -p MomentSlicer
+        cd MomentSlicer
         # remove previously built app
-        rm -rf ./OrcaSlicer.app
+        rm -rf ./MomentSlicer.app
         # fully copy newly built app
-        cp -pR "../src$BUILD_DIR_CONFIG_SUBDIR/OrcaSlicer.app" ./OrcaSlicer.app
+        cp -pR "../src$BUILD_DIR_CONFIG_SUBDIR/MomentSlicer.app" ./MomentSlicer.app
         # fix resources
-        resources_path=$(readlink ./OrcaSlicer.app/Contents/Resources)
-        rm ./OrcaSlicer.app/Contents/Resources
-        cp -R "$resources_path" ./OrcaSlicer.app/Contents/Resources
+        resources_path=$(readlink ./MomentSlicer.app/Contents/Resources)
+        rm ./MomentSlicer.app/Contents/Resources
+        cp -R "$resources_path" ./MomentSlicer.app/Contents/Resources
         # delete .DS_Store file
-        find ./OrcaSlicer.app/ -name '.DS_Store' -delete
+        find ./MomentSlicer.app/ -name '.DS_Store' -delete
     )
 
     # extract version
-    # export ver=$(grep '^#define SoftFever_VERSION' ../src/libslic3r/libslic3r_version.h | cut -d ' ' -f3)
+    # export ver=$(grep '^#define MOMENT3D_VERSION' ../src/libslic3r/libslic3r_version.h | cut -d ' ' -f3)
     # ver="_V${ver//\"}"
     # echo $PWD
     # if [ "1." != "$NIGHTLY_BUILD". ];
@@ -202,7 +202,7 @@ function build_slicer() {
     #     ver=${ver}_dev
     # fi
 
-    # zip -FSr OrcaSlicer${ver}_Mac_${ARCH}.zip OrcaSlicer.app
+    # zip -FSr MomentSlicer${ver}_Mac_${ARCH}.zip MomentSlicer.app
 }
 
 case "${BUILD_TARGET}" in

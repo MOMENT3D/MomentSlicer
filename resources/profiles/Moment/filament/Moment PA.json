@@ -1,0 +1,93 @@
+{
+    "type": "filament",
+    "filament_id": "GFN96",
+    "setting_id": "GFSA04",
+    "name": "Moment PA",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_filament_pa",
+    "filament_cost": [
+        "198000"
+    ],
+    "filament_max_volumetric_speed": [
+        "12"
+    ],
+    "nozzle_temperature": [
+        "260"
+    ],
+	"enable_overhang_bridge_fan": [
+        "1"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "fan_cooling_layer_time": [
+        "10"
+    ],
+    "fan_max_speed": [
+        "100"
+    ],
+    "fan_min_speed": [
+        "100"
+    ],
+    "filament_density": [
+        "1.12"
+    ],
+    "filament_flow_ratio": [
+        "1"
+    ],
+	"hot_plate_temp": [
+        "55"
+    ],
+    "hot_plate_temp_initial_layer": [
+        "55"
+	],	
+    "nozzle_temperature_range_high": [
+        "290"
+    ],
+    "nozzle_temperature_range_low": [
+        "250"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "260"
+    ],
+    "overhang_fan_speed": [
+        "100"
+    ],
+    "overhang_fan_threshold": [
+        "50%"
+    ],
+    "pressure_advance": [
+        "0.04"
+    ],
+    "reduce_fan_stop_start_freq": [
+        "1"
+    ],
+    "slow_down_for_layer_cooling": [
+        "1"
+    ],
+    "slow_down_layer_time": [
+        "5"
+    ],
+    "temperature_vitrification": [
+        "65"
+    ],
+    "activate_air_filtration": [
+        "1"
+    ],
+    "complete_print_exhaust_fan_speed": [
+       "20"
+    ],
+    "during_print_exhaust_fan_speed": [
+       "40"
+    ],  
+	"compatible_printers": [
+      "Moment M200 0.4 nozzle",
+      "Moment M300 0.4 nozzle",
+      "Moment M400 0.4 nozzle"
+    ],
+    "dont_slow_down_outer_wall": [
+        "1"
+    ],
+    "version": "1.6.0.0"
+}

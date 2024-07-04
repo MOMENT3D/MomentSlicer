@@ -1,8 +1,8 @@
-# Single Extruder Multimaterial Printing in OrcaSlicer
+# Single Extruder Multimaterial Printing in MomentSlicer
 
 ## Introduction
-In this guide, we will explain the parameters for single extruder multimaterial printing in OrcaSlicer. The whole process and parameters are same as PrusaSlicer as OrcaSlicer is based on PrusaSlicer.
-OrcaSlicer has some additional features and minor differences though. We will explain them in this guide.
+In this guide, we will explain the parameters for single extruder multimaterial printing in MomentSlicer. The whole process and parameters are same as PrusaSlicer as MomentSlicer is based on PrusaSlicer.
+MomentSlicer has some additional features and minor differences though. We will explain them in this guide.
 ## Prime tower
 WIP...
 ## Ramming

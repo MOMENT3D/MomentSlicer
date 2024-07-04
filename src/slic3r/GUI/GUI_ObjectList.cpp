@@ -97,7 +97,7 @@ ObjectList::ObjectList(wxWindow* parent) :
 
 #ifdef __linux__
     // Temporary fix for incorrect dark mode application regarding list item's text color.
-    // See: https://github.com/SoftFever/OrcaSlicer/issues/2086
+    // See: https://github.com/SoftFever/MomentSlicer/issues/2086
     this->SetForegroundColour(*wxBLACK);
 #endif
 
@@ -1341,7 +1341,7 @@ void ObjectList::show_context_menu(const bool evt_context_menu)
                 const ModelVolume *volume = object(obj_idx)->volumes[vol_idx];
 
                 menu = volume->is_text() ? plater->text_part_menu() :
-			volume->is_svg() ? plater->svg_part_menu() : // ORCA fixes missing "Edit SVG" item for Add/Negative/Modifier SVG objects in object list
+			volume->is_svg() ? plater->svg_part_menu() : // MOMENT fixes missing "Edit SVG" item for Add/Negative/Modifier SVG objects in object list
                     plater->part_menu();
             }
             else
@@ -5019,7 +5019,7 @@ void ObjectList::change_part_type()
         }
     }
 
-    // ORCA: Fix crash when changing type of svg / text modifier
+    // MOMENT: Fix crash when changing type of svg / text modifier
     wxArrayString names;
     names.Add(_L("Part"));
     names.Add(_L("Negative Part"));

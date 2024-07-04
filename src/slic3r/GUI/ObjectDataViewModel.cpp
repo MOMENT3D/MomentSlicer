@@ -554,12 +554,12 @@ void ObjectDataViewModel::UpdateBitmapForNode(ObjectDataViewModelNode *node)
         if (node->has_warning_icon())
             bmps.emplace_back(node->warning_icon_name() == WarningIcon ? m_warning_bmp : m_warning_manifold_bmp);
         if (node->has_lock()) {
-            if (!bmps.empty()) // ORCA: Add spacing between icons if there are multiple
+            if (!bmps.empty()) // MOMENT: Add spacing between icons if there are multiple
                 bmps.emplace_back(create_scaled_bitmap("dot", nullptr, int(wxGetApp().em_unit() / 10) * 4));
             bmps.emplace_back(m_lock_bmp);
         }
         if (is_volume_node) {
-            if (!bmps.empty()) // ORCA: Add spacing between icons if there are multiple
+            if (!bmps.empty()) // MOMENT: Add spacing between icons if there are multiple
                 bmps.emplace_back(create_scaled_bitmap("dot", nullptr, int(wxGetApp().em_unit() / 10) * 4));
             bmps.emplace_back(
                 node->is_text_volume() ? m_text_volume_bmps[vol_type] :

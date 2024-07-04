@@ -5,7 +5,6 @@
 	margin: 0px;
     font-family: "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
 	border-color: #D7D7D7;
-	user-select: none;
 }
 
 html, body {
@@ -47,13 +46,14 @@ html, body {
 .LinkBtn
 {
 	font-size:12px;
-	color: #00ffea;	
+	color: #FF0000;	
 	cursor: pointer;
 }
 
 .LinkBtn:hover
 {
 	text-decoration:underline;
+	color: #960000;
 }
 
 /*------------------*/
@@ -169,8 +169,8 @@ body
 	font-size: 14px;
 	height: 24px;
 	line-height: 24px;
-	color: #4db6ac;
-	border: 1px solid  #009688;
+	color: #B64C4C;
+	border: 1px solid  #960000;
 	border-radius: 4px;
 	cursor: pointer;
 	margin-top: 5px;
@@ -179,15 +179,14 @@ body
 
 #LogoutBtn:hover
 {
-	background: #00f0d8;
+	background: #FF0000;
 	color: #fff;
 }
 
 
 /*------------------*/
-#BtnArea
-{
-	
+#BtnArea {
+	color: #FFFFFF;
 }
 
 
@@ -203,12 +202,12 @@ body
 
 .BtnItem:hover
 {
-	background-color: #E0FCEB;
+	background-color: #670000;
 }
 
 .BtnItemSelected
 {
-	background-color: #e0fcf3;
+	background-color: #670000;
 }
 
 .BtnIcon
@@ -245,13 +244,6 @@ body
 	height: 100%;
 }
 
-.TitleSmallIcon
-{
-	width:30px;
-	height: 30px;
-	margin-right: 10px;
-}
-
 #MenuArea
 {
 	height: 140px;
@@ -277,8 +269,8 @@ body
 
 .MenuItem:hover
 {
-	border-color: #4db6ac;
-	background-color: #E0FCEB;
+	border-color: #B64C4C;
+	background-color: #FAECEC;
 }
 
 .MenuIcon
@@ -310,35 +302,6 @@ body
 	height: 420px;
 }
 
-#HotModelBlock
-{
-	display:flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0px;
-}
-
-#HotModel_LEFT_Title
-{
-	display:flex;
-	align-items: center;
-	padding: 6px 0px;	
-}
-
-#HotModel_RIGHT_Title
-{
-	font-size:16px;
-}
-
-
-.HotModel_PrevImg
-{
-	width: 200px;
-	height: 148px;
-	object-fit: cover;
-}
-
-
 #RecentFileArea
 {
 	margin-top: 10px;
@@ -351,7 +314,9 @@ body
 {
 	display:flex;
 	align-items: center;
-	padding: 6px 0px;
+	padding: 6px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 }
 
 #RecentClearAllBtn
@@ -422,7 +387,6 @@ body
 	height: 184px;
 	border-radius: 8px;
 	display: inline-block;
-	object-fit: cover;
 }
 
 .FileName
@@ -465,7 +429,7 @@ body
 .CT_Item:hover
 {
 	cursor: pointer;
-	background-color: #0078D4;
+	background-color: #D40000;
 	border-radius: 4px;
 	color: #fff;
 }
@@ -581,7 +545,7 @@ body
 {
 	width: calc(50% - 20px);
 	margin: 0px 10px 40px 10px;
-	cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 }
 }
 
@@ -591,7 +555,7 @@ body
 	{
 		width: calc(33% - 20px);
 	    margin: 0px 10px 40px 10px;
-		cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 	}
 }
 
@@ -600,7 +564,7 @@ body
 {
     width: calc(25% - 20px);	
 	margin: 0px 10px 40px 10px;
-	cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 }
 }
 
@@ -609,7 +573,7 @@ body
 {
     width: calc(20% - 20px);
 	margin: 0px 10px 40px 10px;
-	cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 }
 }
 
@@ -618,7 +582,7 @@ body
 {
     width: calc(16.6% - 20px);
 	margin: 0px 10px 40px 10px;
-	cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 }
 }
 
@@ -627,7 +591,7 @@ body
 {
     width: calc(14.2% - 20px);
 	margin: 0px 10px 40px 10px;
-	cursor: pointer;
+/*	cursor: pointer; Change mouse hover section*/
 }
 }
 
@@ -640,7 +604,7 @@ body
 }
 
 .UG_IMG img
-{
+{	cursor: pointer; /*mouse hover only on img*/
 	width: 100%;
 	border-radius: 5px 5px 0px 0px;
 }
@@ -663,112 +627,28 @@ body
 	font-size: 14px;
 }
 
-/*--Staff Pick--*/
-#HotModelArea
+/*------Christmas cabin---*/
+#ChristmasArea
 {
-	display: none;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
 }
 
-#HotModel_Swiper
-{
-	padding: 0px;
-}
-
-.HotModel_Designer_Info
+#ChristmasTitleBlock
 {
 	display:flex;
 	align-items: center;
-	height: 28px;
-	padding: 0px 8px;	
+	padding: 6px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 }
 
-.HotModel_Designer_Info img
+#CabinList
 {
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
-}
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	overflow-y: auto;
 
-.HotModel_Designer_Info span
-{
-	margin-left: 6px;
-	font-size: 12px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-#HotModel_RIGHT_Title:hover
-{
-	cursor: pointer;	
-	color:#009688;	
-}
-
-.HotModelPiece
-{
-	width: 200px!important;
-	display:flex;
-	flex-direction: column;
-	cursor: pointer;
-	border: 1px solid #EEEEEE;
-	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
-    border-radius: 8px;
-}
-
-.HotModel_PrevBlock
-{
-	height: 150px;
-}
-
-.HotModel_PrevImg
-{
-	width: 200px;
-	height: 150px;
-}
-
-.HotModel_NameText
-{
-	height: 32px;
-	line-height: 32px;
-	padding: 0px 8px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	font-size: 14px;
-}
-
-
-.swiper-scrollbar
-{
-	height: 10px!important;
-}
-
-.swiper-button-prev
-{
-	width: 40px!important;
-	height: 40px!important;
-	border-radius: 20px!important;
-	background: rgba(244, 244, 244, 0.88);
-}
-
-.swiper-button-next
-{
-	width: 40px!important;
-	height: 40px!important;
-	border-radius: 20px!important;
-	background: rgba(244, 244, 244, 0.88);
-}
-
-.swiper
-{
-    --swiper-theme-color: #ff6600;/* 设置Swiper风格 */
-    --swiper-navigation-color: #676767;/* 单独设置按钮颜色 */
-    --swiper-navigation-size: 12px;/* 设置按钮大小 */
-}
-
-.swiper-button-disabled
-{
-	opacity: 1!important;
-	cursor: pointer!important;
-	pointer-events: auto!important;
 }
