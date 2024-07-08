@@ -447,13 +447,13 @@ wxBoxSizer* EditGCodeDialog::create_btn_sizer(long flags)
     btn_sizer->AddStretchSpacer();
 
     StateColor ok_btn_bg(
-        std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(103, 0, 0), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(182, 76, 76), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal)
     );
 
     StateColor ok_btn_bd(
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal)
     );
 
     StateColor ok_btn_text(
@@ -476,13 +476,13 @@ wxBoxSizer* EditGCodeDialog::create_btn_sizer(long flags)
 
 
     StateColor calc_btn_bg(
-        std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(103, 0, 0), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(182, 76, 76), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal)
     );
 
     StateColor calc_btn_bd(
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal)
     );
 
     StateColor calc_btn_text(
@@ -534,7 +534,7 @@ static void make_bold(wxString& str)
 static void highlight(wxString& str)
 {
 #if defined(SUPPORTS_MARKUP) && !defined(__APPLE__)
-    str = format_wxstr("<span bgcolor=\"#009688\">%1%</span>", str);
+    str = format_wxstr("<span bgcolor=\"#960000\">%1%</span>", str);
 #endif
 }
 
