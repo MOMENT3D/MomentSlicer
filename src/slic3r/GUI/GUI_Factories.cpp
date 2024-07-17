@@ -529,61 +529,28 @@ wxMenu* MenuFactory::append_submenu_add_generic(wxMenu* menu, ModelVolumeType ty
 wxMenu* MenuFactory::append_submenu_add_handy_model(wxMenu* menu, ModelVolumeType type) {
     auto sub_menu = new wxMenu;
 
-    for (auto &item : {L("Orca Cube"), L("3DBenchy"), L("Autodesk FDM Test"),
-                       L("Voron Cube"), L("Stanford Bunny"), L("Orca String Hell") }) {
+    for (auto& item : {L("Moment Cube"), L("3DBenchy"), L("Stack Box"), L("Table stand")}) {
         append_menu_item(
             sub_menu, wxID_ANY, _(item), "",
             [type, item](wxCommandEvent&) {
                 std::vector<boost::filesystem::path> input_files;
-                bool                                 is_stringhell = false;
-                std::string                          file_name     = item;
-                if (file_name == L("Orca Cube"))
-                    file_name = "OrcaCube_v2.3mf";
+                std::string                          file_name = item;
+                if (file_name == L("Moment Cube"))
+                    file_name = "Moment_cube.stl";
                 else if (file_name == L("3DBenchy"))
                     file_name = "3DBenchy.3mf";
-                else if (file_name == L("Autodesk FDM Test"))
-                    file_name = "ksr_fdmtest_v4.3mf";
-                else if (file_name == L("Voron Cube"))
-                    file_name = "Voron_Design_Cube_v7.3mf";
-                else if (file_name == L("Stanford Bunny"))
-                    file_name = "Stanford_Bunny.3mf";
-                else if (file_name == L("Orca String Hell")) {
-                    file_name     = "Orca_stringhell.3mf";
-                    is_stringhell = true;
-                } else
+                else if (file_name == L("Stack Box"))
+                    file_name = "Stack_Box.3mf";
+                else if (file_name == L("Table stand"))
+                    file_name = "Table_stand.stl";
+                else
                     return;
+
                 input_files.push_back((boost::filesystem::path(Slic3r::resources_dir()) / "handy_models" / file_name));
                 plater()->load_files(input_files, LoadStrategy::LoadModel);
-
-                // Suggest to change settings for stringhell
-                // This serves as mini tutorial for new users
-                if (is_stringhell) {
-                    wxGetApp().CallAfter([=] {
-                        DynamicPrintConfig* m_config = &wxGetApp().preset_bundle->prints.get_edited_preset().config;
-
-                        bool is_only_one_wall_top  = m_config->opt_bool("only_one_wall_top");
-                        auto min_width_top_surface = m_config->option<ConfigOptionFloatOrPercent>("min_width_top_surface")->value;
-                        if (is_only_one_wall_top && min_width_top_surface > 0) {
-                            wxString msg_text = _L("This model features text embossment on the top surface. For optimal results, it is "
-                                                   "advisable to set the 'One Wall Threshold(min_width_top_surface)' "
-                                                   "to 0 for the 'Only One Wall on Top Surfaces' to work best.\n"
-                                                   "Yes - Change these settings automatically\n"
-                                                   "No  - Do not change these settings for me");
-
-                            MessageDialog dialog(wxGetApp().plater(), msg_text, "Suggestion", wxICON_WARNING | wxYES | wxNO);
-                            if (dialog.ShowModal() == wxID_YES) {
-                                m_config->set_key_value("min_width_top_surface", new ConfigOptionFloatOrPercent(0, false));
-                                wxGetApp().get_tab(Preset::TYPE_PRINT)->update_dirty();
-                                wxGetApp().get_tab(Preset::TYPE_PRINT)->reload_config();
-                            }
-                            wxGetApp().plater()->update();
-                        }
-                    });
-                }
             },
             "", menu);
     }
-
 
     return sub_menu;
 }

@@ -1732,17 +1732,17 @@ msgstr "Disc"
 msgid "Torus"
 msgstr "Tor"
 
-msgid "Orca Cube"
-msgstr "Cub d'Orca"
+msgid "Moment Cube"
+msgstr "Cub d'Moment"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Prova FDM d'Autodesk"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Cub de Voron"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Conill de Stanford"

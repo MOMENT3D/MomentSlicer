@@ -1734,17 +1734,17 @@ msgstr "Disco"
 msgid "Torus"
 msgstr "Toroide"
 
-msgid "Orca Cube"
-msgstr "Orca Cube"
+msgid "Moment Cube"
+msgstr "Moment Cube"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Autodesk FDM Test"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Voron Cube"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Coniglietto di Stanford"

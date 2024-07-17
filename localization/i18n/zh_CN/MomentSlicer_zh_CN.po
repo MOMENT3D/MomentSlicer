@@ -1670,17 +1670,17 @@ msgstr "圆盘"
 msgid "Torus"
 msgstr "环面"
 
-msgid "Orca Cube"
-msgstr "Orca逆方块"
+msgid "Moment Cube"
+msgstr "Moment逆方块"
 
 msgid "3DBenchy"
 msgstr "小船"
 
-msgid "Autodesk FDM Test"
-msgstr "欧特克FDM测试"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Voron方块"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "斯坦福兔子"

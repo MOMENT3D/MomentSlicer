@@ -1731,17 +1731,17 @@ msgstr "Scheibe"
 msgid "Torus"
 msgstr "Torus"
 
-msgid "Orca Cube"
-msgstr "Orca Würfel"
+msgid "Moment Cube"
+msgstr "Moment Würfel"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Autodesk FDM Test"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Voron Würfel"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Stanford Hase"

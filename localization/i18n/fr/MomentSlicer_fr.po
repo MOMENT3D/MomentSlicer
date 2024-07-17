@@ -1746,17 +1746,17 @@ msgstr "Disque"
 msgid "Torus"
 msgstr "Tore"
 
-msgid "Orca Cube"
-msgstr "Cube Orca"
+msgid "Moment Cube"
+msgstr "Cube Moment"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Test Autodesk FDM"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Cube Voron"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Lapin de Stanford"

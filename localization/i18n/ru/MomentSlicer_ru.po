@@ -1726,17 +1726,17 @@ msgstr "Диск"
 msgid "Torus"
 msgstr "Тороид"
 
-msgid "Orca Cube"
-msgstr "Куб Orca Design"
+msgid "Moment Cube"
+msgstr "Куб Moment Design"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "FDM тест от Autodesk"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Куб Voron Design"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Стенфордский кролик"

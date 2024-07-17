@@ -1710,17 +1710,17 @@ msgstr ""
 msgid "Torus"
 msgstr ""
 
-msgid "Orca Cube"
-msgstr "Orca Kostka"
+msgid "Moment Cube"
+msgstr "Moment Kostka"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Autodesk FDM Test"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Voron Kostka"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr ""

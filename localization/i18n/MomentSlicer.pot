@@ -1659,16 +1659,16 @@ msgstr ""
 msgid "Torus"
 msgstr ""
 
-msgid "Orca Cube"
+msgid "Moment Cube"
 msgstr ""
 
 msgid "3DBenchy"
 msgstr ""
 
-msgid "Autodesk FDM Test"
+msgid "Stack Box"
 msgstr ""
 
-msgid "Voron Cube"
+msgid "Table stand"
 msgstr ""
 
 msgid "Stanford Bunny"

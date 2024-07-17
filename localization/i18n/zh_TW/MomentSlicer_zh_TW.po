@@ -1709,17 +1709,17 @@ msgstr ""
 msgid "Torus"
 msgstr ""
 
-msgid "Orca Cube"
-msgstr "Orca 立方體"
+msgid "Moment Cube"
+msgstr "Moment 立方體"
 
 msgid "3DBenchy"
 msgstr "測試小船"
 
-msgid "Autodesk FDM Test"
-msgstr "Autodesk FDM 測試"
+msgid "Stack Box"
+msgstr "Stack Box"
 
-msgid "Voron Cube"
-msgstr "Voron 立方體"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr ""

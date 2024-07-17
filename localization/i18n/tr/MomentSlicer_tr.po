@@ -1713,17 +1713,17 @@ msgstr "Disk"
 msgid "Torus"
 msgstr "Simit"
 
-msgid "Orca Cube"
-msgstr "Orca Küpü"
+msgid "Moment Cube"
+msgstr "Moment Küpü"
 
 msgid "3DBenchy"
 msgstr "3DBenchy"
 
-msgid "Autodesk FDM Test"
-msgstr "Autodesk FDM Testi"
+msgid "Stack Box"
+msgstr "Stack Boxi"
 
-msgid "Voron Cube"
-msgstr "Voron Küpü"
+msgid "Table stand"
+msgstr "Table stand"
 
 msgid "Stanford Bunny"
 msgstr "Stanford Tavşanı"
