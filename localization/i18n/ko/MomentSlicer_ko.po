@@ -1199,7 +1199,7 @@ msgstr "각인 방향의 크기입니다."
 #. TRN: The placeholder contains a number.
 #, boost-format
 msgid "Scale also changes amount of curve samples (%1%)"
-msgstr "규모도 곡선 샘플의 양을 변경합니다(%1%)."
+msgstr "배율이 곡선 샘플의 정도 또한 변경합니다(%1%)."
 
 msgid "Width of SVG."
 msgstr "SVG의 너비."
@@ -1211,7 +1211,7 @@ msgid "Lock/unlock the aspect ratio of the SVG."
 msgstr "SVG의 종횡비를 잠금/잠금 해제합니다."
 
 msgid "Reset scale"
-msgstr "규모 재설정"
+msgstr "배율 재설정"
 
 msgid "Distance of the center of the SVG to the model surface."
 msgstr "SVG 중심에서 모델 표면까지의 거리입니다."
@@ -1307,11 +1307,11 @@ msgid "Measure"
 msgstr "측정"
 
 msgid "Edit to scale"
-msgstr "규모에 맞게 편집"
+msgstr "배율에 맞게 편집"
 
 msgctxt "Verb"
 msgid "Scale"
-msgstr "규모"
+msgstr "배율"
 
 msgid "None"
 msgstr "없음"
