@@ -1283,16 +1283,16 @@ msgid "Center of circle"
 msgstr "원의 중심"
 
 msgid "ShiftLeft mouse button"
-msgstr "Shift + 왼쪽 마우스 버튼"
+msgstr "마우스 왼쪽 버튼"
 
 msgid "Select feature"
-msgstr "기능 선택"
+msgstr "선,면 선택"
 
 msgid "Select point"
-msgstr "위치 선택"
+msgstr "점 선택"
 
 msgid "Delete"
-msgstr "삭제"
+msgstr "Delete"
 
 msgid "Restart selection"
 msgstr "다시 선택"
@@ -1335,7 +1335,7 @@ msgid "Distance"
 msgstr "거리"
 
 msgid "Direct distance"
-msgstr "직접적인 거리"
+msgstr "직선 거리"
 
 msgid "Distance XYZ"
 msgstr "XYZ 거리"
