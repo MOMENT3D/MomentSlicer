@@ -2768,7 +2768,7 @@ msgstr "Moment Slicer "
 #, fuzzy
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr ""
-"Moment Slicer 是基於 Bambulab 的 BambuStudio, PrusaSlicer, and SuperSlicer 開發"
+"Orca Slicer 是基於 Bambulab 的 BambuStudio, PrusaSlicer, and SuperSlicer 開發"
 
 #, fuzzy
 msgid "BambuStudio is originally based on PrusaSlicer by PrusaResearch."

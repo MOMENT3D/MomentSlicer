@@ -2772,7 +2772,7 @@ msgid "GNU Affero General Public License, version 3"
 msgstr "Licença Pública Geral Affero GNU, versão 3"
 
 msgid "Moment Slicer is based on Orca Slicer, PrusaSlicer and BambuStudio"
-msgstr "Moment Slicer é baseado no PrusaSlicer e BambuStudio"
+msgstr "Moment Slicer é baseado no Orca Slicer, PrusaSlicer e BambuStudio"
 
 msgid "Libraries"
 msgstr "Bibliotecas"
@@ -2792,7 +2792,7 @@ msgid "Moment Slicer "
 msgstr "Moment Slicer "
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
-msgstr "MomentSlicer é baseado no BambuStudio, PrusaSlicer e SuperSlicer."
+msgstr "OrcaSlicer é baseado no BambuStudio, PrusaSlicer e SuperSlicer."
 
 msgid "BambuStudio is originally based on PrusaSlicer by PrusaResearch."
 msgstr "BambuStudio é originalmente baseado no PrusaSlicer pela PrusaResearch."

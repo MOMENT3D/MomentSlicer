@@ -2718,7 +2718,7 @@ msgid "GNU Affero General Public License, version 3"
 msgstr "GNU Affero General Public License, version 3"
 
 msgid "Moment Slicer is based on Orca Slicer, PrusaSlicer and BambuStudio"
-msgstr "Moment Slicer는 PrusaSlicer와 BambuStudio를 기반으로 합니다"
+msgstr "Moment Slicer is based on Orca Slicer, PrusaSlicer and BambuStudio"
 
 msgid "Libraries"
 msgstr "라이브러리"
@@ -2739,20 +2739,20 @@ msgstr "Moment Slicer "
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr ""
-"Moment Slicer는 BambuStudio, PrusaSlicer 및 SuperSlicer를 기반으로 합니다."
+"OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 
 msgid "BambuStudio is originally based on PrusaSlicer by PrusaResearch."
-msgstr "BambuStudio는 PrusaResearch의 PrusaSlicer를 기반으로 합니다."
+msgstr "BambuStudio is originally based on PrusaSlicer by PrusaResearch."
 
 msgid "PrusaSlicer is originally based on Slic3r by Alessandro Ranellucci."
-msgstr "PrusaSlicer는 Alessandro Ranellucci의 Slic3r을 기반으로 합니다."
+msgstr "PrusaSlicer is originally based on Slic3r by Alessandro Ranellucci."
 
 msgid ""
 "Slic3r was created by Alessandro Ranellucci with the help of many other "
 "contributors."
 msgstr ""
-"Slic3r은 Alessandro Ranellucci가 다른 많은 기여자들의 도움을 받아 만들었습니"
-"다."
+"Slic3r was created by Alessandro Ranellucci with the help of many other "
+"contributors."
 
 msgid "Version"
 msgstr "버전"
@@ -4641,7 +4641,7 @@ msgid "Export current plate as G-code"
 msgstr "현재 플레이트를 G코드로 내보내기"
 
 msgid "Export Preset Bundle"
-msgstr "프리셋 번들 내보내기"
+msgstr "사전 설정 묶음 내보내기"
 
 msgid "Export current configuration to files"
 msgstr "현재 설정을 파일로 내보내기"
@@ -5955,7 +5955,7 @@ msgstr ""
 "요!"
 
 msgid "Customized Preset"
-msgstr "사용자 정의 프리셋"
+msgstr "사용자 정의 사전 설정"
 
 msgid "Name of components inside step file is not UTF8 format!"
 msgstr "단계 파일 내의 구성 요소 이름이 UTF8 형식이 아닙니다!"
@@ -7849,7 +7849,7 @@ msgstr ""
 "있습니다.프린터를 삭제하면 사전 설정도 삭제됩니다."
 
 msgid "Presets inherited by other presets can not be deleted!"
-msgstr "다른 프리셋에 상속된 프리셋은 삭제할 수 없습니다!"
+msgstr "다른 사전 설정에 상속된 사전 설정은 삭제할 수 없습니다!"
 
 msgid "The following presets inherit this preset."
 msgid_plural "The following preset inherits this preset."
@@ -7870,7 +7870,7 @@ msgid ""
 "please reset the filament information for that slot."
 msgstr ""
 "선택한 사전 설정을 삭제하시겠습니까? \n"
-"프리셋이 현재 프린터에서 사용 중인 필라멘트와 일치하는 경우,해당 슬롯의 필라"
+"사전 설정이 현재 프린터에서 사용 중인 필라멘트와 일치하는 경우,해당 슬롯의 필라"
 "멘트 정보를 재설정해 주세요."
 
 #, boost-format
@@ -8027,8 +8027,8 @@ msgid ""
 "Note: New modified presets will be selected in settings tabs after close "
 "this dialog."
 msgstr ""
-"선택한 옵션을 왼쪽 프리셋에서 오른쪽으로 옮깁니다.\n"
-"참고: 이 대화 상자를 닫은 후 설정 탭에서 새로 수정된 프리셋이 선택됩니다."
+"선택한 옵션을 왼쪽 사전 설정에서 오른쪽으로 옮깁니다.\n"
+"참고: 이 대화 상자를 닫은 후 설정 탭에서 새로 수정된 사전 설정이 선택됩니다."
 
 msgid "Transfer values from left to right"
 msgstr "왼쪽에서 오른쪽으로 값 전송"
@@ -15105,10 +15105,10 @@ msgid "Printer Setting"
 msgstr "프린터 설정"
 
 msgid "Printer config bundle(.orca_printer)"
-msgstr "프린터 구성 번들(.orca_printer)"
+msgstr "프린터 구성 묶음(.orca_printer)"
 
 msgid "Filament bundle(.orca_filament)"
-msgstr "필라멘트 번들(.orca_filament)"
+msgstr "필라멘트 묶음(.orca_filament)"
 
 msgid "Printer presets(.zip)"
 msgstr "프린터 사전 설정(.zip)"
@@ -15126,7 +15126,7 @@ msgid "add file fail"
 msgstr "파일 추가 실패"
 
 msgid "add bundle structure file fail"
-msgstr "번들 구조 파일 추가 실패"
+msgstr "묶음 구조 파일 추가 실패"
 
 msgid "finalize fail"
 msgstr "마무리 실패"
@@ -15268,7 +15268,7 @@ msgid "[Delete Required]"
 msgstr "[삭제 필수]"
 
 msgid "Edit Preset"
-msgstr "프리셋 편집"
+msgstr "사전 설정 편집"
 
 msgid "For more information, please check out Wiki"
 msgstr "더 자세한 내용은 위키를 확인해주세요"

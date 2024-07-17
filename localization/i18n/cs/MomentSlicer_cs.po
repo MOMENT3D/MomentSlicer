@@ -2762,7 +2762,7 @@ msgid "Moment Slicer "
 msgstr "Moment Slicer "
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
-msgstr "MomentSlicer je založen na BambuStudio, PrusaSlicer a SuperSlicer."
+msgstr "OrcaSlicer je založen na BambuStudio, PrusaSlicer a SuperSlicer."
 
 msgid "BambuStudio is originally based on PrusaSlicer by PrusaResearch."
 msgstr "BambuStudio je původně založeno na PrusaSlicer od PrusaResearch."
