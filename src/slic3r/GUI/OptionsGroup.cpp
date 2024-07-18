@@ -1284,7 +1284,7 @@ wxString OptionsGroup::get_url(const std::string& path_end)
         str = str.Left(pos) + anchor;
     }
     // Orca: point to sf wiki for seam parameters
-    return wxString::Format(L"https://github.com/SoftFever/MomentSlicer/wiki/%s", from_u8(path_end));
+    return wxString::Format(L"https://moment.co.kr/slicer-%s", str);
 
 }
 

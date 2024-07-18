@@ -7,7 +7,7 @@ Moment Slicer is an open source slicer for FDM printers.
 # Main features
 - Auto calibrations for all printers
 - Sandwich(inner-outer-inner) mode - an improved version of the `External perimeters first` mode
-- [Precise wall](https://github.com/SoftFever/MomentSlicer/wiki/Precise-wall)
+- [Precise wall](https://github.com/SoftFever/OrcaSlicer/wiki/Precise-wall)
 - Polyholes conversion support [SuperSlicer Wiki: Polyholes](https://github.com/supermerill/SuperSlicer/wiki/Polyholes)
 - Klipper support
 - More granular controls
@@ -30,10 +30,10 @@ Explore the latest developments in Moment Slicer with our nightly builds. Feedba
 1.  Download the installer for your preferred version from the [releases page](https://github.com/MOMENT3D/MomentSlicer/releases/).
     - *For convenience there is also a portable build available.*
     - *If you have troubles to run the build, you might need to install following runtimes:*
-      - [MicrosoftEdgeWebView2RuntimeInstallerX64](https://github.com/MOMENT3D/MomentSlicer/releases//download/v1.0.10-sf2/MicrosoftEdgeWebView2RuntimeInstallerX64.exe)
+      - [MicrosoftEdgeWebView2RuntimeInstallerX64](https://github.com/Softfever/OrcaSlicer/releases/download/v1.0.10-sf2/MicrosoftEdgeWebView2RuntimeInstallerX64.exe)
           - [Details of this runtime](https://aka.ms/webview2)
           - [Alternative Download Link Hosted by Microsoft](https://go.microsoft.com/fwlink/p/?LinkId=2124703)
-      - [vcredist2019_x64](https://github.com/MOMENT3D/MomentSlicer/releases//download/v1.0.10-sf2/vcredist2019_x64.exe)
+      - [vcredist2019_x64](https://github.com/Softfever/OrcaSlicer/releases/download/v1.0.10-sf2/vcredist2019_x64.exe)
           -  [Alternative Download Link Hosted by Microsoft](https://aka.ms/vs/17/release/vc_redist.x64.exe)
           -  This file may already be available on your computer if you've installed visual studio.  Check the following location: `%VCINSTALLDIR%Redist\MSVC\v142`
 
@@ -127,7 +127,7 @@ Thank you! :)
 </table>
 
 ### Backers:  
-Ko-fi supporters: [Backers list](https://github.com/SoftFever/MomentSlicer/files/14855600/sponsors.csv)
+Ko-fi supporters: [Backers list](https://github.com/SoftFever/OrcaSlicer/files/14855600/sponsors.csv)
 
 Support me  
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G5IP3CP)
