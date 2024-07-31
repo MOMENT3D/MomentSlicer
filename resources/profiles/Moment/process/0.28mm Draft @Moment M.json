@@ -19,10 +19,9 @@
     "support_threshold_angle": "40",
     "support_top_z_distance": "0.2",
     "top_surface_speed": "200",
-	  "compatible_printers": [
+	"compatible_printers": [
 		    "Moment M200 0.4 nozzle",	  
 		    "Moment M300 0.4 nozzle",
-			"Moment M400 0.4 nozzle",
-        "Moment K350 0.4 nozzle"
+			"Moment M400 0.4 nozzle"
 	  ]
 }

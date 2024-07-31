@@ -78,7 +78,7 @@
     "internal_solid_infill_line_width": "0.42",
     "spiral_mode": "0",
     "standby_temperature_delta": "-5",
-    "enable_support": "0",
+    "enable_support": "1",
     "resolution": "0.012",
     "support_type": "normal(auto)",
     "supprot_style": "organic",

@@ -7763,13 +7763,13 @@ msgid "Machine gcode"
 msgstr "장치 G코드"
 
 msgid "Machine start G-code"
-msgstr "장치 시작 G코드"
+msgstr "출력 시작 G코드"
 
 msgid "Machine end G-code"
-msgstr "장치 종료 G코드"
+msgstr "출력 종료 G코드"
 
 msgid "Printing by object G-code"
-msgstr "개체 G코드로 출력"
+msgstr "개체별 출력 G코드"
 
 msgid "Before layer change G-code"
 msgstr "레이어 변경 전 G코드"
@@ -7784,7 +7784,7 @@ msgid "Change filament G-code"
 msgstr "필라멘트 교체 G코드"
 
 msgid "Change extrusion role G-code"
-msgstr "압출 역할 G코드 변경"
+msgstr "압출 역할 변경 G코드"
 
 msgid "Pause G-code"
 msgstr "일시 정지 G코드"
@@ -12364,7 +12364,7 @@ msgstr ""
 "에 안쪽으로의 작은 이동이 실행됩니다."
 
 msgid "Wipe before external loop"
-msgstr "외부 루프 전 닦아내기"
+msgstr "외부 루프 전 닦기"
 
 msgid ""
 "To minimise visibility of potential overextrusion at the start of an "
