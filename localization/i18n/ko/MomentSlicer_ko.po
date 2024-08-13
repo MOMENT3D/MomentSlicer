@@ -15818,7 +15818,7 @@ msgid ""
 "Did you know that MomentSlicer supports Auxiliary part cooling fan?"
 msgstr ""
 "보조 팬\n"
-"오르카슬라이서가 보조 부품 냉각 팬을 지원한다는 사실을 알고 계셨나요?"
+"MomentSlicer가 보조 부품 냉각 팬을 지원한다는 사실을 알고 계셨나요?"
 
 #: resources/data/hints.ini: [hint:Air filtration]
 msgid ""
@@ -15826,7 +15826,7 @@ msgid ""
 "Did you know that MomentSlicer can support Air filtration/Exhaust Fan?"
 msgstr ""
 "공기 여과/배기 팬\n"
-"오르카 슬라이서가 공기 여과/배기 팬을 지원한다는 사실을 알고 계셨나요?"
+"MomentSlicer가 공기 여과/배기 팬을 지원한다는 사실을 알고 계셨나요?"
 
 #: resources/data/hints.ini: [hint:G-code window]
 msgid ""
