@@ -1,11 +1,11 @@
 {
   "type": "machine",
   "setting_id": "GM001",
-  "name": "Moment M300 0.4 nozzle",
+  "name": "Moment M200(Mtd) 0.4 nozzle",
   "from": "system",
   "instantiation": "true",
   "inherits": "fdm_moment_common",
-  "printer_model": "Moment M300",
+  "printer_model": "Moment M200(Mtd)",
   "default_print_profile": "0.20mm Standard @Moment M",
   "default_filament_profile": [
     "Moment PLA Tough."
@@ -17,18 +17,18 @@
     "0.4"
   ],
   "thumbnails": [
-    "300x300"
+    "200x200"
   ],
   "nozzle_volume": "0",
   "use_relative_e_distances": "0",
   "extruder_offset": [
     "0x0"
   ],
-  "printable_height": "300.08",
+  "printable_height": "200.08",
   "printable_area": [
     "0x0",
-    "303.68x0",
-    "303.68x303.68",
-    "0x303.68"
+    "203.68x0",
+    "203.68x203.68",
+    "0x203.68"
   ]
 }

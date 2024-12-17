@@ -20,8 +20,11 @@
     "support_top_z_distance": "0.2",
     "top_surface_speed": "200",
 	"compatible_printers": [
-		    "Moment M200 0.4 nozzle",	  
-		    "Moment M300 0.4 nozzle",
-			"Moment M400 0.4 nozzle"
-	  ]
+        "Moment M200 0.4 nozzle",	  
+        "Moment M300 0.4 nozzle",
+        "Moment M400 0.4 nozzle",
+        "Moment M200(Mtd) 0.4 nozzle",	  
+        "Moment M300(Mtd) 0.4 nozzle",
+        "Moment M400(Mtd) 0.4 nozzle"
+	]
 }

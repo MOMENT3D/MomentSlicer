@@ -1,48 +1,60 @@
 {
-    "name": "Moment",
-    "version": "01.06.00.00",
-    "force_update": "0",
-    "description": "Moment configurations",
-    "machine_model_list": [
+      "name": "Moment",
+      "version": "01.06.00.00",
+      "force_update": "0",
+      "description": "Moment configurations",
+      "machine_model_list": [
         {
-            "name": "Moment M160",
-            "sub_path": "machine/Moment M160.json"
+          "name": "Moment M160",
+          "sub_path": "machine/Moment M160.json"
         },
         {
-            "name": "Moment M160P",
-            "sub_path": "machine/Moment M160P.json"
+          "name": "Moment M160P",
+          "sub_path": "machine/Moment M160P.json"
         },
         {
-            "name": "Moment M220",
-            "sub_path": "machine/Moment M220.json"
+          "name": "Moment M220",
+          "sub_path": "machine/Moment M220.json"
         },
         {
-            "name": "Moment M220P",
-            "sub_path": "machine/Moment M220P.json"
+          "name": "Moment M220P",
+          "sub_path": "machine/Moment M220P.json"
         },
         {
-            "name": "Moment M350",
-            "sub_path": "machine/Moment M350.json"
+          "name": "Moment M350",
+          "sub_path": "machine/Moment M350.json"
         },
         {
-            "name": "Moment M200",
-            "sub_path": "machine/Moment M200.json"
-        },		
-        {
-            "name": "Moment M300",
-            "sub_path": "machine/Moment M300.json"
+          "name": "Moment M200",
+          "sub_path": "machine/Moment M200.json"
         },
         {
-            "name": "Moment M400",
-            "sub_path": "machine/Moment M400.json"
+          "name": "Moment M300",
+          "sub_path": "machine/Moment M300.json"
         },
         {
-            "name": "Moment S",
-            "sub_path": "machine/Moment S.json"
+          "name": "Moment M400",
+          "sub_path": "machine/Moment M400.json"
         },
         {
-            "name": "Moment 2",
-            "sub_path": "machine/Moment 2.json"
+          "name": "Moment M200(Mtd)",
+          "sub_path": "machine/Moment M200(Mtd).json"
+        },
+        {
+          "name": "Moment M300(Mtd)",
+          "sub_path": "machine/Moment M300(Mtd).json"
+        },
+        {
+          "name": "Moment M400(Mtd)",
+          "sub_path": "machine/Moment M400(Mtd).json"
+        },
+        {
+          "name": "Moment S",
+          "sub_path": "machine/Moment S.json"
+        },
+        {
+          "name": "Moment 2",
+          "sub_path": "machine/Moment 2.json"
         }
     ],
     "process_list": [
@@ -213,12 +225,24 @@
             "sub_path": "filament/Moment Wood.json"
         },
         {
+            "name": "Moment Wood.",
+            "sub_path": "filament/Moment Wood..json"
+        },
+        {
             "name": "Moment PLA-CF",
             "sub_path": "filament/Moment PLA-CF.json"
         },
         {
+            "name": "Moment PLA-CF.",
+            "sub_path": "filament/Moment PLA-CF..json"
+        },
+        {
             "name": "Moment PETG",
             "sub_path": "filament/Moment PETG.json"
+        },
+        {
+            "name": "Moment PETG.",
+            "sub_path": "filament/Moment PETG..json"
         },
         {
             "name": "Moment ..ABS",
@@ -233,6 +257,10 @@
             "sub_path": "filament/Moment ABS.json"
         },
         {
+            "name": "Moment ABS.",
+            "sub_path": "filament/Moment ABS..json"
+        },
+        {
             "name": "Moment .ABS",
             "sub_path": "filament/Moment .ABS.json"
         },
@@ -245,8 +273,16 @@
             "sub_path": "filament/Moment TPU95A.json"
         },
         {
+            "name": "Moment TPU95A.",
+            "sub_path": "filament/Moment TPU95A..json"
+        },
+        {
             "name": "Moment ASA",
             "sub_path": "filament/Moment ASA.json"
+        },
+        {
+            "name": "Moment ASA.",
+            "sub_path": "filament/Moment ASA..json"
         },
         {
             "name": "Moment ..PC",
@@ -261,8 +297,16 @@
             "sub_path": "filament/Moment PC.json"
         },
         {
+            "name": "Moment PC.",
+            "sub_path": "filament/Moment PC..json"
+        },
+        {
             "name": "Moment PVA",
             "sub_path": "filament/Moment PVA.json"
+        },
+        {
+            "name": "Moment PVA.",
+            "sub_path": "filament/Moment PVA..json"
         },
         {
             "name": "Moment .PA",
@@ -273,6 +317,10 @@
             "sub_path": "filament/Moment PA.json"
         },
         {
+            "name": "Moment PA.",
+            "sub_path": "filament/Moment PA..json"
+        },
+        {
             "name": "Moment .PA6-CF",
             "sub_path": "filament/Moment .PA6-CF.json"
         },
@@ -281,16 +329,32 @@
             "sub_path": "filament/Moment PA6-CF.json"
         },
         {
+            "name": "Moment PA6-CF.",
+            "sub_path": "filament/Moment PA6-CF..json"
+        },
+        {
             "name": "Moment PA6-GF",
             "sub_path": "filament/Moment PA6-GF.json"
+        },
+        {
+            "name": "Moment PA6-GF.",
+            "sub_path": "filament/Moment PA6-GF..json"
         },
         {
             "name": "Moment PLA Tough",
             "sub_path": "filament/Moment PLA Tough.json"
         },
         {
+            "name": "Moment PLA Tough.",
+            "sub_path": "filament/Moment PLA Tough..json"
+        },
+        {
             "name": "Moment PLA Sonic",
             "sub_path": "filament/Moment PLA Sonic.json"
+        },
+        {
+            "name": "Moment PLA Sonic.",
+            "sub_path": "filament/Moment PLA Sonic..json"
         }
     ],
     "machine_list": [
@@ -333,6 +397,18 @@
         {
             "name": "Moment M400 0.4 nozzle",
             "sub_path": "machine/Moment M400 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M200(Mtd) 0.4 nozzle",
+            "sub_path": "machine/Moment M200(Mtd) 0.4 nozzle.json"
+        },		
+        {
+            "name": "Moment M300(Mtd) 0.4 nozzle",
+            "sub_path": "machine/Moment M300(Mtd) 0.4 nozzle.json"
+        },
+        {
+            "name": "Moment M400(Mtd) 0.4 nozzle",
+            "sub_path": "machine/Moment M400(Mtd) 0.4 nozzle.json"
         },
         {
             "name": "Moment S 0.4 nozzle",

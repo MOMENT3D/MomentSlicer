@@ -1,61 +1,82 @@
 {
     "type": "filament",
-    "filament_id": "GFU97",
+    "filament_id": "GFN92",
     "setting_id": "GFSA04",
-    "name": "Moment TPU95A-HF",
+    "name": "Moment PA6-GF.",
     "from": "system",
     "instantiation": "true",
-    "inherits": "fdm_filament_tpu",
+    "inherits": "fdm_filament_pa",
     "filament_type": [
-        "TPU95A-HF"
+        "PA6-GF"
     ],
     "filament_cost": [
-        "88000"
+        "220000"
     ],
     "filament_max_volumetric_speed": [
-        "8"
+        "22"
     ],
-	"close_fan_the_first_x_layers": [
+	"enable_overhang_bridge_fan": [
         "1"
     ],
     "enable_pressure_advance": [
         "1"
     ],
+    "fan_cooling_layer_time": [
+        "10"
+    ],
+    "fan_max_speed": [
+        "20"
+    ],
+    "fan_min_speed": [
+        "10"
+    ],
     "filament_density": [
-        "1.15"
+        "1.2"
     ],
     "filament_flow_ratio": [
-        "1.05"
+        "1"
+    ],
+    "filament_retraction_length": [
+        "2"
     ],
 	"hot_plate_temp": [
-        "35"
+        "50"
     ],
     "hot_plate_temp_initial_layer": [
-        "40"
+        "50"
     ],
 	"nozzle_temperature": [
-        "235"
+        "310"
     ],
     "nozzle_temperature_initial_layer": [
-        "235"
+        "310"
     ],
     "nozzle_temperature_range_high": [
-        "240"
+        "320"
     ],
     "nozzle_temperature_range_low": [
-        "205"
+        "280"
+    ],
+    "overhang_fan_speed": [
+        "20"
     ],
     "overhang_fan_threshold": [
-        "75%"
+        "25%"
     ],
     "pressure_advance": [
-        "0.1"
+        "0.03"
+    ],
+    "slow_down_for_layer_cooling": [
+        "1"
     ],
     "slow_down_layer_time": [
-        "8"
+        "5"
     ],
     "slow_down_min_speed": [
         "5"
+    ],
+    "temperature_vitrification": [
+        "70"
     ],
     "activate_air_filtration": [
         "1"
@@ -64,16 +85,13 @@
         "20"
     ],
     "during_print_exhaust_fan_speed": [
-        "75"
-    ],
-    "temperature_vitrification": [
-        "100"
+        "40"
     ],
     "compatible_printers": [
-        "Moment M200 0.4 nozzle",
-        "Moment M300 0.4 nozzle",
-        "Moment M400 0.4 nozzle"
-      ],
+      "Moment M200(Mtd) 0.4 nozzle",
+      "Moment M300(Mtd) 0.4 nozzle",
+      "Moment M400(Mtd) 0.4 nozzle"
+    ],
     "dont_slow_down_outer_wall": [
         "1"
     ],
