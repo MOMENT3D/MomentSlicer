@@ -8,5 +8,5 @@
   "bed_model": "M200_bed.stl",
   "bed_texture": "M200_bed.png",
   "hotend_model": "Moment_hotend.stl",
-  "default_materials": "Moment PLA Sonic.;Moment PLA Tough.;Moment ABS.;Moment PA.;Moment PA6-CF.;Moment PC.;Moment TPU.;Moment Wood.;Moment PETG.;Moment PC.;Moment TPU95A.;Moment TPU95A-HF.;Moment Wood.;Moment PETG.;Moment PA6-GF."
+  "default_materials": "Moment PLA Sonic.;Moment PLA Tough.;Moment ABS.;Moment PA.;Moment PA6-CF.;Moment PC.;Moment TPU.;Moment Wood.;Moment PETG.;Moment PC.;Moment TPU95A.;Moment TPU95A-HF.;Moment Wood.;Moment PETG.;Moment PA6-GF.;Moment PET-CF.;Moment ABS-GF.;Moment PETG-ESD."
 }

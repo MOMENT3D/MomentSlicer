@@ -17,6 +17,7 @@
     "sparse_infill_speed": "260",
     "top_shell_layers": "5",
     "support_threshold_angle": "40",
+    "support_interface_top_layers": "3",
     "support_top_z_distance": "0.2",
     "top_surface_speed": "200",
 	"compatible_printers": [

@@ -17,7 +17,7 @@
     "sparse_infill_speed": "420",
     "support_threshold_angle": "25",
     "support_interface_bottom_layers": "3",
-    "support_interface_top_layers": "3",
+    "support_interface_top_layers": "4",
     "support_top_z_distance": "0.16",
     "support_bottom_z_distance": "0.16",
     "top_surface_speed": "300",

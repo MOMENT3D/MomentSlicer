@@ -355,6 +355,38 @@
         {
             "name": "Moment PLA Sonic.",
             "sub_path": "filament/Moment PLA Sonic..json"
+        },
+        {
+            "name": "Moment PET-CF",
+            "sub_path": "filament/Moment PET-CF.json"
+        },
+        {
+            "name": "Moment PET-CF.",
+            "sub_path": "filament/Moment PET-CF..json"
+        },
+        {
+            "name": "Moment ABS-GF",
+            "sub_path": "filament/Moment ABS-GF.json"
+        },
+        {
+            "name": "Moment ABS-GF.",
+            "sub_path": "filament/Moment ABS-GF..json"
+        },
+        {
+            "name": "Moment PETG-ESD",
+            "sub_path": "filament/Moment PETG-ESD.json"
+        },
+        {
+            "name": "Moment PETG-ESD.",
+            "sub_path": "filament/Moment PETG-ESD..json"
+        },
+        {
+            "name": "Moment TPU95A-HF",
+            "sub_path": "filament/Moment TPU95A-HF.json"
+        },
+        {
+            "name": "Moment TPU95A-HF.",
+            "sub_path": "filament/Moment TPU95A-HF..json"
         }
     ],
     "machine_list": [

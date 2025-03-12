@@ -13,7 +13,7 @@
         "88000"
     ],
     "filament_max_volumetric_speed": [
-        "16"
+        "14"
     ],
 	"close_fan_the_first_x_layers": [
         "1"
@@ -49,7 +49,7 @@
         "75%"
     ],
     "pressure_advance": [
-        "0.1"
+        "0.2"
     ],
     "slow_down_layer_time": [
         "8"

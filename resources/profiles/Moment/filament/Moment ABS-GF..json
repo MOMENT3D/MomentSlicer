@@ -1,0 +1,90 @@
+{
+  "type": "filament",
+  "filament_id": "GFB91",
+  "setting_id": "GFSA04",
+  "name": "Moment ABS-GF.",
+  "from": "system",
+  "instantiation": "true",
+  "inherits": "fdm_filament_abs",
+  "filament_type": [
+    "ABS-GF"
+  ],
+  "filament_cost": [
+    "66000"
+  ],
+  "filament_max_volumetric_speed": [
+    "26"
+  ],
+  "close_fan_the_first_x_layers": [
+    "3"
+  ],
+  "enable_pressure_advance": [
+    "1"
+  ],
+  "pressure_advance": [
+    "0.032"
+  ],
+  "filament_density": [
+    "1.12"
+  ],
+  "filament_flow_ratio": [
+    "0.9"
+  ],
+  "fan_max_speed": [
+    "30"
+  ],
+  "fan_min_speed": [
+    "0"
+  ],
+  "overhang_fan_speed": [
+    "30"
+  ],
+  "overhang_fan_threshold": [
+    "25%"
+  ],
+  "nozzle_temperature": [
+    "270"
+  ],
+  "nozzle_temperature_initial_layer": [
+    "270"
+  ],
+  "nozzle_temperature_range_high": [
+    "290"
+  ],
+  "reduce_fan_stop_start_freq": [
+    "0"
+  ],
+  "slow_down_layer_time": [
+    "5"
+  ],
+  "slow_down_min_speed": [
+    "60"
+  ],
+  "temperature_vitrification": [
+    "101"
+  ],
+  "hot_plate_temp": [
+    "110"
+  ],
+  "hot_plate_temp_initial_layer": [
+    "110"
+  ],
+  "activate_air_filtration": [
+    "1"
+  ],
+  "complete_print_exhaust_fan_speed": [
+    "20"
+  ],
+  "during_print_exhaust_fan_speed": [
+    "40"
+  ],
+  "dont_slow_down_outer_wall": [
+    "1"
+  ],
+  "compatible_printers": [
+    "Moment M200(Mtd) 0.4 nozzle",
+    "Moment M300(Mtd) 0.4 nozzle",
+    "Moment M400(Mtd) 0.4 nozzle"
+  ],
+  "version": "1.6.0.0"
+}

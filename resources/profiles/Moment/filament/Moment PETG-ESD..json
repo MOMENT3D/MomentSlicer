@@ -1,0 +1,99 @@
+{
+  "type": "filament",
+  "filament_id": "GFG94",
+  "setting_id": "GFSA04",
+  "name": "Moment PETG-ESD.",
+  "from": "system",
+  "instantiation": "true",
+  "inherits": "fdm_filament_pet",
+  "filament_type": [
+    "PETG-ESD"
+  ],
+  "filament_cost": [
+    "88000"
+  ],
+  "filament_max_volumetric_speed": [
+    "16"
+  ],
+  "slow_down_for_layer_cooling": [
+    "1"
+  ],
+  "fan_cooling_layer_time": [
+    "30"
+  ],
+  "overhang_fan_threshold": [
+    "25%"
+  ],
+  "enable_pressure_advance": [
+    "1"
+  ],
+  "fan_max_speed": [
+    "40"
+  ],
+  "fan_min_speed": [
+    "10"
+  ],
+  "filament_density": [
+    "1.24"
+  ],
+  "filament_flow_ratio": [
+    "0.95"
+  ],
+  "hot_plate_temp": [
+    "75"
+  ],
+  "hot_plate_temp_initial_layer": [
+    "75"
+  ],
+  "nozzle_temperature": [
+    "265"
+  ],
+  "nozzle_temperature_initial_layer": [
+    "265"
+  ],
+  "nozzle_temperature_range_high": [
+    "300"
+  ],
+  "nozzle_temperature_range_low": [
+    "250"
+  ],
+  "overhang_fan_speed": [
+    "80"
+  ],
+  "pressure_advance": [
+    "0.052"
+  ],
+  "reduce_fan_stop_start_freq": [
+    "0"
+  ],
+  "slow_down_layer_time": [
+    "10"
+  ],
+  "slow_down_min_speed": [
+    "5"
+  ],
+  "temperature_vitrification": [
+    "86"
+  ],
+  "activate_air_filtration": [
+    "1"
+  ],
+  "close_fan_the_first_x_layers": [
+    "1"
+  ],
+  "complete_print_exhaust_fan_speed": [
+    "20"
+  ],
+  "during_print_exhaust_fan_speed": [
+    "40"
+  ],
+  "compatible_printers": [
+    "Moment M200(Mtd) 0.4 nozzle",
+    "Moment M300(Mtd) 0.4 nozzle",
+    "Moment M400(Mtd) 0.4 nozzle"
+  ],
+  "dont_slow_down_outer_wall": [
+    "1"
+  ],
+  "version": "1.6.0.0"
+}
