@@ -49,7 +49,7 @@ void GCodeWriter::set_extruders(std::vector<unsigned int> extruder_ids)
 {
     std::sort(extruder_ids.begin(), extruder_ids.end());
     m_filament_extruders.clear();
-    //ORCA: Reset current extruder ID and clear pointers to prevent dangling pointers when extruders are recreated.
+    //MOMENT: Reset current extruder ID and clear pointers to prevent dangling pointers when extruders are recreated.
     m_curr_extruder_id = -1;
     std::fill(m_curr_filament_extruder.begin(), m_curr_filament_extruder.end(), nullptr);
     m_filament_extruders.reserve(extruder_ids.size());
@@ -59,7 +59,7 @@ void GCodeWriter::set_extruders(std::vector<unsigned int> extruder_ids)
     /*  we enable support for multiple extruder if any extruder greater than 0 is used
         (even if prints only uses that one) since we need to output Tx commands
         first extruder has index 0 */
-    //ORCA: Fix undefined behavior by checking if the vector is empty before taking max_element.
+    //MOMENT: Fix undefined behavior by checking if the vector is empty before taking max_element.
     this->multiple_extruders = !extruder_ids.empty() && (*std::max_element(extruder_ids.begin(), extruder_ids.end())) > 0;
 }
 
@@ -1104,7 +1104,7 @@ void GCodeWriter::add_object_end_labels(std::string& gcode)
         m_gcode_label_objects_end = "";
 
         // Orca: reset E so that e value remain correct after skipping the object
-        // ref to: https://github.com/OrcaSlicer/OrcaSlicer/pull/205/commits/7f1fe0bd544077626080aa1a9a0576aa735da1a4#r1083470162
+        // ref to: https://github.com/MomentSlicer/MomentSlicer/pull/205/commits/7f1fe0bd544077626080aa1a9a0576aa735da1a4#r1083470162
         if (!this->config.use_relative_e_distances)
             gcode += reset_e(true);
     }

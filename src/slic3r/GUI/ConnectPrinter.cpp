@@ -176,7 +176,7 @@ void ConnectPrinterDialog::on_dpi_changed(const wxRect &suggested_rect)
     m_textCtrl_code->GetTextCtrl()->SetSize(wxSize(-1, FromDIP(22)));
     m_textCtrl_code->GetTextCtrl()->SetMinSize(wxSize(-1, FromDIP(22)));
 
-    m_button_confirm->Rescale(); // ORCA No need to set style again
+    m_button_confirm->Rescale(); // MOMENT No need to set style again
     
     Layout();
     this->Refresh();

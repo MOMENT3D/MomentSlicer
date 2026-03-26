@@ -4,7 +4,7 @@
 
 namespace Slic3r { namespace GUI {
 
-// ORCA standardize dialog buttons
+// MOMENT standardize dialog buttons
 DialogButtons::DialogButtons(wxWindow* parent, std::vector<wxString> non_translated_labels, const wxString& primary_btn_translated_label, const int left_aligned_buttons_count)
     : wxPanel(parent, wxID_ANY)
 {

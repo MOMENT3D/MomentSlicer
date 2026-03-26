@@ -2072,7 +2072,7 @@ void GCode::do_export(Print* print, const char* path, GCodeProcessorResult* resu
 
     check_placeholder_parser_failed();
 
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     if (!m_placeholder_error_messages.empty()){
         std::ostringstream message;
         message << "Some EditGcodeDialog defs were not specified properly. Do so in PrintConfig under SlicingStatesConfigDef:" << std::endl;
@@ -3731,7 +3731,7 @@ std::string GCode::placeholder_parser_process(const std::string &name, const std
     // Orca: Added CMake config option since debug is rarely used in current workflow.
     // Also changed from throwing error immediately to storing messages till slicing is completed
     // to raise all errors at the same time.
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     if (config_override) {
         const auto& custom_gcode_placeholders = custom_gcode_specific_placeholders();
 
@@ -4129,7 +4129,7 @@ namespace Skirt {
         size_t lines_per_extruder = (n_loops + n_tools - 1) / n_tools;
 
         // BBS. Extrude skirt with first extruder if min_skirt_length is zero
-        //ORCA: Always extrude skirt with first extruder, independantly of if the minimum skirt length is zero or not. The code below
+        //MOMENT: Always extrude skirt with first extruder, independantly of if the minimum skirt length is zero or not. The code below
         // is left as a placeholder for when a multiextruder support is implemented. Then we will need to extrude the skirt loops for each extruder.
         //const PrintConfig &config = print.config();
         //if (config.min_skirt_length.value < EPSILON) {
@@ -5358,7 +5358,7 @@ void GCode::apply_print_config(const PrintConfig &print_config)
     m_scaled_resolution = scaled<double>(print_config.resolution.value);
     m_enable_exclude_object = m_config.exclude_object;
 
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     // If the gcode value is empty, set a value so that the check code within the parser is run
     for (auto opt : std::initializer_list<ConfigOptionString*>{
              &m_config.machine_start_gcode,
@@ -6348,7 +6348,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
         // cap speed with max_volumetric_speed anyway (even if user is not using autospeed)
         speed = std::min(speed, FILAMENT_CONFIG(filament_max_volumetric_speed) / _mm3_per_mm);
     }
-    // ORCA: resonance‑avoidance on short external perimeters
+    // MOMENT: resonance‑avoidance on short external perimeters
 {
     double ref_speed = speed;  // stash the pre‑cap speed
     if (path.role() == erExternalPerimeter
@@ -6571,7 +6571,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
     //    { "75%", Overhang_threshold_4_4 },
     //    { "95%", Overhang_threshold_bridge }
     auto check_overhang_fan = [&overhang_fan_threshold](float overlap, ExtrusionRole role) {
-      if (role == erBridgeInfill || role == erOverhangPerimeter) { // ORCA: Split out bridge infill to internal and external to apply separate fan settings
+      if (role == erBridgeInfill || role == erOverhangPerimeter) { // MOMENT: Split out bridge infill to internal and external to apply separate fan settings
         return true;
       }
       switch (overhang_fan_threshold) {
@@ -6639,7 +6639,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
     if (!variable_speed) {
         // F is mm per minute.
         if( (std::abs(writer().get_current_speed() - F) > EPSILON) || (std::abs(_mm3_per_mm - m_last_mm3_mm) > EPSILON) ){
-            // ORCA: Adaptive PA code segment when adjusting PA within the same feature
+            // MOMENT: Adaptive PA code segment when adjusting PA within the same feature
             // There is a speed change coming out of an overhang region
             // or a flow change, so emit the flag to evaluate PA for the upcomming extrusion
             // Emit tag before new speed is set so the post processor reads the next speed immediately and uses it.
@@ -6683,7 +6683,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
                 gcode += buf;
                 m_last_mm3_mm = _mm3_per_mm;
             }
-            // ORCA: End of adaptive PA code segment
+            // MOMENT: End of adaptive PA code segment
         }
         
         gcode += m_writer.set_speed(F, "", comment);
@@ -6694,9 +6694,9 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
                     // perimeter
                     append_role_based_fan_marker(erOverhangPerimeter, "_OVERHANG"sv,
                                                  (overhang_fan_threshold == Overhang_threshold_none && is_external_perimeter(path.role())) ||
-                                                 (path.role() == erBridgeInfill || path.role() == erOverhangPerimeter)); // ORCA: Add support for separate internal bridge fan speed control
+                                                 (path.role() == erBridgeInfill || path.role() == erOverhangPerimeter)); // MOMENT: Add support for separate internal bridge fan speed control
 
-                    // ORCA: Add support for separate internal bridge fan speed control
+                    // MOMENT: Add support for separate internal bridge fan speed control
                     append_role_based_fan_marker(erInternalBridgeInfill, "_INTERNAL_BRIDGE"sv, path.role() == erInternalBridgeInfill);
                 }
 
@@ -6821,7 +6821,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
         if( m_enable_cooling_markers && enable_overhang_bridge_fan)
             pre_fan_enabled = check_overhang_fan(new_points[0].overlap, path.role());
         
-        if(path.role() == erInternalBridgeInfill) // ORCA: Add support for separate internal bridge fan speed control
+        if(path.role() == erInternalBridgeInfill) // MOMENT: Add support for separate internal bridge fan speed control
             pre_fan_enabled = true;
 
         double path_length = 0.;
@@ -6836,7 +6836,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
                     append_role_based_fan_marker(erOverhangPerimeter, "_OVERHANG"sv, pre_fan_enabled && cur_fan_enabled);
                     pre_fan_enabled = cur_fan_enabled;
 
-                    // ORCA: Add support for separate internal bridge fan speed control
+                    // MOMENT: Add support for separate internal bridge fan speed control
                     append_role_based_fan_marker(erInternalBridgeInfill, "_INTERNAL_BRIDGE"sv, path.role() == erInternalBridgeInfill);
                 }
 
@@ -6850,7 +6850,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
             double new_speed = pre_processed_point.speed * 60.0;
             
             if ((std::abs(last_set_speed - new_speed) > EPSILON) || (std::abs(_mm3_per_mm - m_last_mm3_mm) > EPSILON)) {
-                // ORCA: Adaptive PA code segment when adjusting PA within the same feature
+                // MOMENT: Adaptive PA code segment when adjusting PA within the same feature
                 // There is a speed change or flow change so emit the flag to evaluate PA for the upcomming extrusion
                 // Emit tag before new speed is set so the post processor reads the next speed immediately and uses it.
                 if(_mm3_per_mm >0   &&
@@ -6891,7 +6891,7 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
                     gcode += buf;
                     m_last_mm3_mm = _mm3_per_mm;
                 }
-            }// ORCA: End of adaptive PA code segment
+            }// MOMENT: End of adaptive PA code segment
             
             // Ignore small speed variations - emit speed change if the delta between current and new is greater than 60mm/min / 1mm/sec
             // Reset speed to F if delta to F is less than 1mm/sec
@@ -7084,7 +7084,7 @@ std::string GCode::travel_to(const Point& point, ExtrusionRole role, std::string
 
     // generate G-code for the travel move
     if (needs_retraction) {
-        // ORCA: Fix scenario where wipe is disabled when avoid crossing perimeters was enabled even though a retraction move was performed.
+        // MOMENT: Fix scenario where wipe is disabled when avoid crossing perimeters was enabled even though a retraction move was performed.
         // This replicates the existing behaviour of always wiping when retracting
         /*if (m_config.reduce_crossing_wall && could_be_wipe_disabled)
             m_wipe.reset_path();*/

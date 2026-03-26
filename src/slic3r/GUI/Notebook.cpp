@@ -142,7 +142,7 @@ void ButtonsListCtrl::SetSelection(int sel)
     if (m_selection == sel)
         return;
     // BBS: change button color
-    wxColour selected_btn_bg("#009688");    // Gradient #009688
+    wxColour selected_btn_bg("#960000");    // Gradient #960000
     if (m_selection >= 0) {
         StateColor bg_color = StateColor(
         std::pair{wxColour(107, 107, 107), (int) StateColor::Hovered},
@@ -157,8 +157,8 @@ void ButtonsListCtrl::SetSelection(int sel)
     m_selection = sel;
 
     StateColor bg_color = StateColor(
-        std::pair{wxColour(0, 150, 136), (int) StateColor::Hovered},
-        std::pair{wxColour(0,150, 136), (int) StateColor::Normal});
+        std::pair{wxColour(150, 0, 0), (int) StateColor::Hovered},
+        std::pair{wxColour(150, 0, 0), (int) StateColor::Normal});
     m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
 
     StateColor text_color = StateColor(
@@ -202,7 +202,7 @@ bool ButtonsListCtrl::InsertPage(size_t n, const wxString &text, bool bSelect /*
     });
     Slic3r::GUI::wxGetApp().UpdateDarkUI(btn);
     m_pageButtons.insert(m_pageButtons.begin() + n, btn);
-    m_pageLabels.insert(m_pageLabels.begin() + n, text); // ORCA
+    m_pageLabels.insert(m_pageLabels.begin() + n, text); // MOMENT
     m_buttons_sizer->Insert(n, new wxSizerItem(btn));
     m_buttons_sizer->SetCols(m_buttons_sizer->GetCols() + 1);
     m_sizer->Layout();
@@ -213,7 +213,7 @@ void ButtonsListCtrl::RemovePage(size_t n)
 {
     Button* btn = m_pageButtons[n];
     m_pageButtons.erase(m_pageButtons.begin() + n);
-    m_pageLabels.erase(m_pageLabels.begin() + n); // ORCA
+    m_pageLabels.erase(m_pageLabels.begin() + n); // MOMENT
     m_buttons_sizer->Remove(n);
 #if __WXOSX__
     RemoveChild(btn);
@@ -240,11 +240,11 @@ void ButtonsListCtrl::SetPageText(size_t n, const wxString& strText)
 {
     Button* btn = m_pageButtons[n];
     btn->SetLabel(strText);
-    if(!strText.empty())  // ORCA
+    if(!strText.empty())  // MOMENT
         m_pageLabels[n] = strText;
 }
 
-// ORCA
+// MOMENT
 void ButtonsListCtrl::SetCompact(size_t n, bool compact)
 {
     int em = em_unit(this);

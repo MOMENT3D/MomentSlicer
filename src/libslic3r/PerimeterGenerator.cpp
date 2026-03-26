@@ -159,7 +159,7 @@ static ExtrusionEntityCollection traverse_loops(const PerimeterGenerator &perime
             BoundingBox bbox(polygon.points);
             bbox.offset(SCALED_EPSILON);
 
-            // Always reverse extrusion if use fuzzy skin: https://github.com/OrcaSlicer/OrcaSlicer/pull/2413#issuecomment-1769735357
+            // Always reverse extrusion if use fuzzy skin: https://github.com/MomentSlicer/MomentSlicer/pull/2413#issuecomment-1769735357
             if (overhangs_reverse && perimeter_generator.has_fuzzy_skin) {
                 if (loop.is_contour) {
                     steep_overhang_contour = true;
@@ -406,7 +406,7 @@ static ExtrusionEntityCollection traverse_extrusions(const PerimeterGenerator& p
             extrusion_paths_append(paths, clip_extrusion(extrusion_path, lower_slices_paths, ClipperLib_Z::ctIntersection), role,
                                    is_external ? perimeter_generator.ext_perimeter_flow : perimeter_generator.perimeter_flow);
 
-            // Always reverse extrusion if use fuzzy skin: https://github.com/OrcaSlicer/OrcaSlicer/pull/2413#issuecomment-1769735357
+            // Always reverse extrusion if use fuzzy skin: https://github.com/MomentSlicer/MomentSlicer/pull/2413#issuecomment-1769735357
             if (overhangs_reverse && perimeter_generator.has_fuzzy_skin) {
                 if (pg_extrusion.is_contour) {
                     steep_overhang_contour = true;
@@ -1909,7 +1909,7 @@ void PerimeterGenerator::process_no_bridge(Surfaces& all_surfaces, coord_t perim
     }
 }
 
-// ORCA:
+// MOMENT:
 // Inner Outer Inner wall ordering mode perimeter order optimisation functions
 /**
  * @brief Finds all perimeters touching a given set of reference lines, given as indexes.
@@ -2065,7 +2065,7 @@ void bringContoursToFront(std::vector<PerimeterGeneratorArachneExtrusion>& order
         return (extrusion.extrusion->is_contour() && extrusion.extrusion->inset_idx==0);
     });
 }
-// ORCA:
+// MOMENT:
 // Inner Outer Inner wall ordering mode perimeter order optimisation functions ended
 
 
@@ -2187,10 +2187,10 @@ void PerimeterGenerator::process_arachne()
                 }
 
                 // Filter out areas that are too thin and expand top surface polygons a bit to hide the wall line.
-                // ORCA: skip if the top surface area is smaller than "min_width_top_surface"
+                // MOMENT: skip if the top surface area is smaller than "min_width_top_surface"
                 const float top_surface_min_width = std::max<float>(float(ext_perimeter_spacing) / 4.f + scaled<float>(0.00001), float(scale_(config->min_width_top_surface.get_abs_value(unscale_(perimeter_width)))) / 4.f);
                 // Shrink the polygon to remove the small areas, then expand it back out plus a maragin to hide the wall line a little.
-                // ORCA: Expand the polygon with half the perimeter width in addition to the contracted amount,
+                // MOMENT: Expand the polygon with half the perimeter width in addition to the contracted amount,
                 // not the full perimeter width as PS does, to enable thin lettering to print on the top surface without nozzle collisions
                 // due to thin lines being generated
                 top_expolygons = offset2_ex(top_expolygons, -top_surface_min_width, top_surface_min_width + float(perimeter_width * 0.85));

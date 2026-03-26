@@ -92,7 +92,7 @@ static const char* Segments_Vertex_Shader =
 "  vec3 endpoint_pos = vertex_id < 4 ? pos_a : pos_b;\n"
 "  vec4 hwa = texelFetch(height_width_angle_tex, id);\n"
 "  vec3 height_width_angle = hwa.xyz;\n"
-"  // ORCA: Extract bias from w component\n"
+"  // MOMENT: Extract bias from w component\n"
 "  float bias = hwa.w;\n"
 "#ifdef FIX_TWISTING\n"
 "  int closer_id = (dot(camera_position - pos_a, camera_position - pos_a) < dot(camera_position - pos_b, camera_position - pos_b)) ? id_a : id_b;\n"
@@ -134,7 +134,7 @@ static const char* Segments_Vertex_Shader =
 "    }\n"
 "  }\n"
 "  vec3 eye_position = (view_matrix * vec4(pos, 1.0)).xyz;\n"
-"  // ORCA: Apply bias to z-position to avoid z-fighting\n"
+"  // MOMENT: Apply bias to z-position to avoid z-fighting\n"
 "  eye_position.z += bias;\n"
 "  vec3 eye_normal = (view_matrix * vec4(normalize(pos - endpoint_pos), 0.0)).xyz;\n"
 "  vec3 color_base = decode_color(texelFetch(color_tex, id).r);\n"
@@ -161,10 +161,10 @@ static const char* Options_Vertex_Shader =
 "const float ambient = 0.3;\n"
 "const float emission = 0.25;\n"
 #ifdef __APPLE__
-// ORCA: Use smaller scaling factor for macOS
+// MOMENT: Use smaller scaling factor for macOS
 "const float scaling_factor = 0.75;\n"
 #else
-// ORCA: Increase seam marker size to 1.5 for Windows and Linux
+// MOMENT: Increase seam marker size to 1.5 for Windows and Linux
 "const float scaling_factor = 1.5;\n"
 #endif
 "uniform mat4 view_matrix;\n"
@@ -194,7 +194,7 @@ static const char* Options_Vertex_Shader =
 "  int id = int(texelFetch(segment_index_tex, gl_InstanceID).r);\n"
 "  vec4 hwa = texelFetch(height_width_angle_tex, id);\n"
 "  vec2 height_width = hwa.xy;\n"
-"  // ORCA: Extract bias from w component\n"
+"  // MOMENT: Extract bias from w component\n"
 "  float bias = hwa.w;\n"
 "  vec3 offset = texelFetch(position_tex, id).xyz - vec3(0.0, 0.0, 0.5 * height_width.x);\n"
 "  height_width *= scaling_factor;\n"
@@ -203,7 +203,7 @@ static const char* Options_Vertex_Shader =
 "    0.0, height_width.y, 0.0,\n"
 "    0.0, 0.0, height_width.x);\n"
 "  vec3 eye_position = (view_matrix * vec4(scale_matrix * in_position + offset, 1.0)).xyz;\n"
-"  // ORCA: Apply bias to z-position to avoid z-fighting\n"
+"  // MOMENT: Apply bias to z-position to avoid z-fighting\n"
 "  eye_position.z += bias;\n"
 "  vec3 eye_normal = (view_matrix * vec4(in_normal, 0.0)).xyz;\n"
 "  vec3 color_base = decode_color(texelFetch(color_tex, id).r);\n"

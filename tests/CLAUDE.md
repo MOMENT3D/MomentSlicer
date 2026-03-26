@@ -1,6 +1,6 @@
-# CLAUDE.md - Testing Guide for OrcaSlicer
+# CLAUDE.md - Testing Guide for MomentSlicer
 
-This guide provides comprehensive instructions for Claude Code when writing, maintaining, and understanding tests in the OrcaSlicer codebase.
+This guide provides comprehensive instructions for Claude Code when writing, maintaining, and understanding tests in the MomentSlicer codebase.
 
 ## ⚠️ CRITICAL RULES - MUST FOLLOW
 
@@ -96,11 +96,11 @@ REQUIRE_THAT(calculated_value, WithinULP(expected, 4));     // 4 ULPs apart
 ./tests --order rand --shard-index 2 --shard-count 3 --rng-seed 0xBEEF
 ```
 
-## Overview of OrcaSlicer's Testing Framework
+## Overview of MomentSlicer's Testing Framework
 
-OrcaSlicer uses **Catch2 v2** as its primary testing framework. The test suite is organized into several modules that mirror the project's architectural components:
+MomentSlicer uses **Catch2 v2** as its primary testing framework. The test suite is organized into several modules that mirror the project's architectural components:
 
-> **Note**: OrcaSlicer currently uses Catch2 v2 (based on `#include <catch2/catch.hpp>` includes). Some features mentioned in this guide are only available in v3 and marked accordingly.
+> **Note**: MomentSlicer currently uses Catch2 v2 (based on `#include <catch2/catch.hpp>` includes). Some features mentioned in this guide are only available in v3 and marked accordingly.
 
 ### Test Structure
 ```
@@ -443,7 +443,7 @@ TEST_CASE("Performance testing", "[Benchmark]") {
 }
 ```
 
-## OrcaSlicer-Specific Testing Patterns
+## MomentSlicer-Specific Testing Patterns
 
 ### Geometry Testing
 ```cpp
@@ -746,7 +746,7 @@ REQUIRE_THROWS_AS(risky_function(), SpecificException);
 
 ⚠️ **CRITICAL**: Catch2 assertions are **NOT thread-safe** by default!
 
-> **Note**: Catch2 v3.9.0+ has opt-in thread-safe assertions via `CATCH_CONFIG_EXPERIMENTAL_THREAD_SAFE_ASSERTIONS`, but OrcaSlicer uses v2
+> **Note**: Catch2 v3.9.0+ has opt-in thread-safe assertions via `CATCH_CONFIG_EXPERIMENTAL_THREAD_SAFE_ASSERTIONS`, but MomentSlicer uses v2
 
 ❌ **Incorrect**: Will cause undefined behavior or crashes
 ```cpp
@@ -923,7 +923,7 @@ std::foo_function();     // Always call qualified
 
 ### Catch2 Version-Specific Limitations
 ```cpp
-// OrcaSlicer uses Catch2 v2 - these features are NOT available:
+// MomentSlicer uses Catch2 v2 - these features are NOT available:
 // SKIP() macro                          - Available in v3.3.0+
 // Thread-safe assertions                - Available in v3.9.0+  
 // BENCHMARK improvements                 - Many in v3.x
@@ -958,4 +958,4 @@ std::foo_function();     // Always call qualified
 ./tests --order rand --warn NoAssertions --durations yes
 ```
 
-This comprehensive guide ensures robust, maintainable, and efficient testing practices for OrcaSlicer development with Claude Code, incorporating all critical knowledge from the official Catch2 documentation.
+This comprehensive guide ensures robust, maintainable, and efficient testing practices for MomentSlicer development with Claude Code, incorporating all critical knowledge from the official Catch2 documentation.

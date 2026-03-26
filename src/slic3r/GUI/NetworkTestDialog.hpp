@@ -35,7 +35,7 @@ namespace GUI {
 
 enum TestJob {
 	TEST_BING_JOB = 0,
-	TEST_ORCA_JOB = 1,
+	TEST_MOMENT_JOB = 1,
 	TEST_PING_JOB,
 	TEST_JOB_MAX
 };

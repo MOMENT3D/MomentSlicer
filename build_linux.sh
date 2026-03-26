@@ -18,10 +18,10 @@ function usage() {
     echo "   -D: dry run"
     echo "   -e: build in RelWithDebInfo mode"
     echo "   -h: prints this help text"
-    echo "   -i: build the Orca Slicer AppImage (optional)"
+    echo "   -i: build the Moment Slicer AppImage (optional)"
     echo "   -p: boost ccache hit rate by disabling precompiled headers (default: ON)"
     echo "   -r: skip RAM and disk checks (low RAM compiling)"
-    echo "   -s: build the Orca Slicer (optional)"
+    echo "   -s: build the Moment Slicer (optional)"
     echo "   -t: build tests (optional), requires -s flag"
     echo "   -u: install system dependencies (asks for sudo password; build prerequisite)"
     echo "   -l: use Clang instead of GCC (default: GCC)"
@@ -76,7 +76,7 @@ while getopts ":1j:bcCdDehiprstulL" opt ; do
         SKIP_RAM_CHECK="1"
         ;;
     s )
-        BUILD_ORCA="1"
+        BUILD_MOMENT="1"
         ;;
     t )
         BUILD_TESTS="1"
@@ -110,14 +110,14 @@ function check_available_memory_and_disk() {
     MIN_DISK_KB=$((10 * 1024 * 1024))
 
     if [[ ${FREE_MEM_GB} -le ${MIN_MEM_GB} ]] ; then
-        echo -e "\nERROR: Orca Slicer Builder requires at least ${MIN_MEM_GB}G of 'available' mem (system has only ${FREE_MEM_GB}G available)"
+        echo -e "\nERROR: Moment Slicer Builder requires at least ${MIN_MEM_GB}G of 'available' mem (system has only ${FREE_MEM_GB}G available)"
         echo && free --human && echo
         echo "Invoke with -r to skip RAM and disk checks."
         exit 2
     fi
 
     if [[ ${FREE_DISK_KB} -le ${MIN_DISK_KB} ]] ; then
-        echo -e "\nERROR: Orca Slicer Builder requires at least $(echo "${MIN_DISK_KB}" |awk '{ printf "%.1fG\n", $1/1024/1024; }') (system has only $(echo "${FREE_DISK_KB}" | awk '{ printf "%.1fG\n", $1/1024/1024; }') disk free)"
+        echo -e "\nERROR: Moment Slicer Builder requires at least $(echo "${MIN_DISK_KB}" |awk '{ printf "%.1fG\n", $1/1024/1024; }') (system has only $(echo "${FREE_DISK_KB}" | awk '{ printf "%.1fG\n", $1/1024/1024; }') disk free)"
         echo && df --human-readable . && echo
         echo "Invoke with -r to skip ram and disk checks."
         exit 1
@@ -216,33 +216,33 @@ if [[ -n "${BUILD_DEPS}" ]] ; then
     print_and_run cmake --build deps/$BUILD_DIR
 fi
 
-if [[ -n "${BUILD_ORCA}" ]] || [[ -n "${BUILD_TESTS}" ]] ; then
-    echo "Configuring OrcaSlicer..."
+if [[ -n "${BUILD_MOMENT}" ]] || [[ -n "${BUILD_TESTS}" ]] ; then
+    echo "Configuring MomentSlicer..."
     if [[ -n "${CLEAN_BUILD}" ]] ; then
         print_and_run rm -fr $BUILD_DIR
     fi
-    read -r -a BUILD_ARGS <<< "${ORCA_EXTRA_BUILD_ARGS}"
+    read -r -a BUILD_ARGS <<< "${MOMENT_EXTRA_BUILD_ARGS}"
     if [[ $BUILD_CONFIG != Release ]] ; then
         BUILD_ARGS+=(-DCMAKE_BUILD_TYPE="${BUILD_CONFIG}")
     fi
     if [[ -n "${BUILD_TESTS}" ]] ; then
         BUILD_ARGS+=(-DBUILD_TESTS=ON)
     fi
-    if [[ -n "${ORCA_UPDATER_SIG_KEY}" ]] ; then
-        BUILD_ARGS+=(-DORCA_UPDATER_SIG_KEY="${ORCA_UPDATER_SIG_KEY}")
+    if [[ -n "${MOMENT_UPDATER_SIG_KEY}" ]] ; then
+        BUILD_ARGS+=(-DMOMENT_UPDATER_SIG_KEY="${MOMENT_UPDATER_SIG_KEY}")
     fi
 
     print_and_run cmake -S . -B $BUILD_DIR "${CMAKE_C_CXX_COMPILER_CLANG[@]}" "${CMAKE_LLD_LINKER_ARGS[@]}" -G "Ninja Multi-Config" \
 -DSLIC3R_PCH=${SLIC3R_PRECOMPILED_HEADERS} \
--DORCA_TOOLS=ON \
+-DMOMENT_TOOLS=ON \
 "${COLORED_OUTPUT}" \
 "${BUILD_ARGS[@]}"
     echo "done"
-    if [[ -n "${BUILD_ORCA}" ]]; then
-	echo "Building OrcaSlicer ..."
-	print_and_run cmake --build $BUILD_DIR --config "${BUILD_CONFIG}" --target OrcaSlicer
-	echo "Building OrcaSlicer_profile_validator .."
-	print_and_run cmake --build $BUILD_DIR --config "${BUILD_CONFIG}" --target OrcaSlicer_profile_validator
+    if [[ -n "${BUILD_MOMENT}" ]]; then
+	echo "Building MomentSlicer ..."
+	print_and_run cmake --build $BUILD_DIR --config "${BUILD_CONFIG}" --target MomentSlicer
+	echo "Building MomentSlicer_profile_validator .."
+	print_and_run cmake --build $BUILD_DIR --config "${BUILD_CONFIG}" --target MomentSlicer_profile_validator
 	./scripts/run_gettext.sh
     fi
     if [[ -n "${BUILD_TESTS}" ]] ; then
@@ -252,7 +252,7 @@ if [[ -n "${BUILD_ORCA}" ]] || [[ -n "${BUILD_TESTS}" ]] ; then
     echo "done"
 fi
 
-if [[ -n "${BUILD_IMAGE}" || -n "${BUILD_ORCA}" ]] ; then
+if [[ -n "${BUILD_IMAGE}" || -n "${BUILD_MOMENT}" ]] ; then
     pushd $BUILD_DIR > /dev/null
     build_linux_image="./src/build_linux_image.sh"
     if [[ -e ${build_linux_image} ]] ; then

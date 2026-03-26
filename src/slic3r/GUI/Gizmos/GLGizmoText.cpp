@@ -685,9 +685,9 @@ void GLGizmoText::on_dragging(const UpdateData &data)
 void GLGizmoText::push_button_style(bool pressed) {
     if (m_is_dark_mode) {
         if (pressed) {
-            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
             ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 174 / 255.f, 66 / 255.f, 1.f));
         }
         else {
@@ -699,9 +699,9 @@ void GLGizmoText::push_button_style(bool pressed) {
     }
     else {
         if (pressed) {
-            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
             ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 174 / 255.f, 66 / 255.f, 1.f));
         }
         else {

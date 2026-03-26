@@ -200,14 +200,14 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
     m_rename_text->SetFont(::Label::Head_14);
     m_rename_text->SetBackgroundColour(*wxWHITE);
     m_rename_text->SetMaxSize(wxSize(FromDIP(340), -1));
-    rename_editable       = new ScalableBitmap(m_scroll_area, "rename_edit", FromDIP(13)); // ORCA Match edit icon and its size
-    rename_editable_light = new ScalableBitmap(m_scroll_area, "rename_edit", FromDIP(13)); // ORCA Match edit icon and its size
+    rename_editable       = new ScalableBitmap(m_scroll_area, "rename_edit", FromDIP(13)); // MOMENT Match edit icon and its size
+    rename_editable_light = new ScalableBitmap(m_scroll_area, "rename_edit", FromDIP(13)); // MOMENT Match edit icon and its size
     m_rename_button = new wxStaticBitmap(m_rename_normal_panel, wxID_ANY, rename_editable->bmp(), wxDefaultPosition, wxSize(FromDIP(20), FromDIP(20)), 0);
     m_rename_button->Bind(wxEVT_ENTER_WINDOW, [this](auto& e) {SetCursor(wxCURSOR_HAND); });
     m_rename_button->Bind(wxEVT_LEAVE_WINDOW, [this](auto& e) {SetCursor(wxCURSOR_ARROW); });
 
-    rename_sizer_h->Add(m_rename_text, 0, wxALIGN_CENTER, 0); // ORCA align text with icon
-    rename_sizer_h->Add(m_rename_button, 0, wxALIGN_CENTER| wxLEFT, FromDIP(3)); // ORCA add gap between text and icon
+    rename_sizer_h->Add(m_rename_text, 0, wxALIGN_CENTER, 0); // MOMENT align text with icon
+    rename_sizer_h->Add(m_rename_button, 0, wxALIGN_CENTER| wxLEFT, FromDIP(3)); // MOMENT add gap between text and icon
     rename_sizer_v->Add(rename_sizer_h, 1, wxTOP, 0);
 
     m_rename_normal_panel->SetSizer(rename_sizer_v);
@@ -344,7 +344,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
     m_sizer_autorefill = new wxBoxSizer(wxHORIZONTAL);
     m_ams_backup_tip = new Label(m_scroll_area, _L("Auto Refill"));
     m_ams_backup_tip->SetFont(::Label::Head_13);
-    m_ams_backup_tip->SetForegroundColour(wxColour("#009688"));
+    m_ams_backup_tip->SetForegroundColour(wxColour("#960000"));
     m_ams_backup_tip->SetBackgroundColour(*wxWHITE);
     img_ams_backup = new wxStaticBitmap(m_scroll_area, wxID_ANY, create_scaled_bitmap("automatic_material_renewal", this, 16), wxDefaultPosition, wxSize(FromDIP(16), FromDIP(16)), 0);
     img_ams_backup->SetBackgroundColour(*wxWHITE);
@@ -443,7 +443,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
 
     m_link_edit_nozzle = new Label(m_scroll_area, wxEmptyString);
     m_link_edit_nozzle->SetFont(::Label::Body_13);
-    m_link_edit_nozzle->SetForegroundColour("#009688");
+    m_link_edit_nozzle->SetForegroundColour("#960000");
     m_link_edit_nozzle->SetBackgroundColour(*wxWHITE);
     m_link_edit_nozzle->Bind(wxEVT_ENTER_WINDOW, [this](auto &e) { SetCursor(wxCURSOR_HAND); });
     m_link_edit_nozzle->Bind(wxEVT_LEAVE_WINDOW, [this](auto &e) { SetCursor(wxCURSOR_ARROW); });
@@ -609,7 +609,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
 
     m_statictext_finish = new wxStaticText(m_panel_finish, wxID_ANY, L("Send complete"), wxDefaultPosition, wxDefaultSize, 0);
     m_statictext_finish->Wrap(-1);
-    m_statictext_finish->SetForegroundColour(wxColour(0, 150, 136));
+    m_statictext_finish->SetForegroundColour(wxColour(150, 0, 0));
     m_sizer_finish_h->Add(m_statictext_finish, 0, wxALIGN_CENTER | wxALL, FromDIP(5));
 
     m_sizer_finish_v->Add(m_sizer_finish_h, 1, wxALIGN_CENTER, 0);
@@ -688,7 +688,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
     sizer_extra_info->Add(st_title_extra_info_doc, 0, wxALL, 0);
     sizer_extra_info->Add(m_st_txt_extra_info, 0, wxALL, 0);
 
-    // ORCA standardized HyperLink
+    // MOMENT standardized HyperLink
     m_link_network_state = new HyperLink(m_sw_print_failed_info, _L("Check the status of current system services"), wxGetApp().link_to_network_check());
     m_link_network_state->SetFont(::Label::Body_12);
 
@@ -2360,7 +2360,7 @@ void SelectMachineDialog::save_option_vals(MachineObject *obj) {
 void SelectMachineDialog::Enable_Auto_Refill(bool enable)
 {
     if (enable) {
-        m_ams_backup_tip->SetForegroundColour(wxColour("#009688"));
+        m_ams_backup_tip->SetForegroundColour(wxColour("#960000"));
     }
     else {
         m_ams_backup_tip->SetForegroundColour(wxColour(0x90, 0x90, 0x90));
@@ -3651,12 +3651,12 @@ void SelectMachineDialog::Enable_Send_Button(bool en)
     if (!en) {
         if (m_button_ensure->IsEnabled()) {
             m_button_ensure->Disable();
-            // ORCA no need to set colors again
+            // MOMENT no need to set colors again
         }
     } else {
         if (!m_button_ensure->IsEnabled()) {
             m_button_ensure->Enable();
-            // ORCA no need to set colors again
+            // MOMENT no need to set colors again
         }
     }
 }
@@ -3673,7 +3673,7 @@ void SelectMachineDialog::on_dpi_changed(const wxRect &suggested_rect)
         ams_mapping_help_icon->msw_rescale();
         if (img_amsmapping_tip)img_amsmapping_tip->SetBitmap(ams_mapping_help_icon->bmp());
     }
-    m_button_ensure->Rescale(); // ORCA
+    m_button_ensure->Rescale(); // MOMENT
     m_status_bar->msw_rescale();
 
     for (auto material1 : m_materialList) {
@@ -4278,9 +4278,9 @@ void SelectMachineDialog::set_default_normal(const ThumbnailData &data)
 
     char weight[64];
     if (wxGetApp().app_config->get("use_inches") == "1") {
-        ::sprintf(weight, "%.2f oz", aprint_stats.total_weight * 0.035274); // ORCA remove spacing before text
+        ::sprintf(weight, "%.2f oz", aprint_stats.total_weight * 0.035274); // MOMENT remove spacing before text
     } else {
-        ::sprintf(weight, "%.2f g", aprint_stats.total_weight); // ORCA remove spacing before text
+        ::sprintf(weight, "%.2f g", aprint_stats.total_weight); // MOMENT remove spacing before text
     }
 
     m_stext_time->SetLabel(time);
@@ -4481,7 +4481,7 @@ void SelectMachineDialog::set_default_from_sdcard()
         wxString   time;
         time = wxString::Format("%s", short_time(get_time_dhms(float_time)));
         char weight[64];
-        ::sprintf(weight, "%.2f g", float_weight); // ORCA remove spacing before text
+        ::sprintf(weight, "%.2f g", float_weight); // MOMENT remove spacing before text
         m_stext_time->SetLabel(time);
         m_stext_weight->SetLabel(weight);
     }
@@ -4963,7 +4963,7 @@ void PrintOptionItem::doRender(wxDC& dc)
 
         if (text_key == selected_key)
         {
-            const wxColour& clr = m_enable ? StateColor::darkModeColorFor("#009688") : StateColor::darkModeColorFor(wxColour(144, 144, 144));
+            const wxColour& clr = m_enable ? StateColor::darkModeColorFor("#960000") : StateColor::darkModeColorFor(wxColour(144, 144, 144));
             dc.SetPen(wxPen(clr));
             dc.SetTextForeground(clr);
 
@@ -5066,7 +5066,7 @@ void SendModeSwitchButton::doRender(wxDC &dc)
     if (is_selected) {
         dc.DrawBitmap(m_img_selected.bmp(), wxPoint(0, 0));
         dc.DrawBitmap(m_img_selected_tag.bmp(), wxPoint(left, (size.y - m_img_selected_tag.GetBmpSize().y) / 2));
-        dc.SetTextForeground("#009688");
+        dc.SetTextForeground("#960000");
     }else {
         dc.DrawBitmap(m_img_unselected.bmp(), wxPoint(0, 0));
         dc.DrawBitmap(m_img_unselected_tag.bmp(), wxPoint(left, (size.y - m_img_selected_tag.GetBmpSize().y) / 2));

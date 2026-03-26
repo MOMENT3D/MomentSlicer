@@ -1,0 +1,84 @@
+{
+    "type": "filament",
+    "filament_id": "GFU97",
+    "setting_id": "GFSA04",
+    "name": "Moment TPU95A-HF",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_filament_tpu",
+    "filament_type": [
+        "TPU95A-HF"
+    ],
+    "filament_cost": [
+        "88000"
+    ],
+    "filament_max_volumetric_speed": [
+        "6.5"
+    ],
+    "filament_z_hop": [
+        "0"
+    ],
+    "filament_retraction_length": [
+        "2"
+    ],
+    "close_fan_the_first_x_layers": [
+        "1"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "filament_density": [
+        "1.15"
+    ],
+    "filament_flow_ratio": [
+        "1.2"
+    ],
+	"hot_plate_temp": [
+        "35"
+    ],
+    "hot_plate_temp_initial_layer": [
+        "40"
+    ],
+	"nozzle_temperature": [
+        "235"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "235"
+    ],
+    "nozzle_temperature_range_high": [
+        "240"
+    ],
+    "nozzle_temperature_range_low": [
+        "205"
+    ],
+    "overhang_fan_threshold": [
+        "75%"
+    ],
+    "pressure_advance": [
+        "0.1"
+    ],
+    "slow_down_layer_time": [
+        "8"
+    ],
+    "slow_down_min_speed": [
+        "5"
+    ],
+    "activate_air_filtration": [
+        "1"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "20"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "75"
+    ],
+    "temperature_vitrification": [
+        "100"
+    ],
+    "compatible_printers": [
+        "Moment M200 0.4 nozzle",
+        "Moment M300 0.4 nozzle",
+        "Moment M400 0.4 nozzle"
+      ],
+    "version": "1.6.0.0"
+}

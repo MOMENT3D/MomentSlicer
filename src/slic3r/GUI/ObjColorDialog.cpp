@@ -47,7 +47,7 @@ wxBoxSizer* ObjColorDialog::create_btn_sizer(long flags,bool exist_error)
     auto btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     if (!exist_error) {
         btn_sizer->AddSpacer(FromDIP(25));
-        auto *tips = new HyperLink(this, _L("Wiki Guide")); // ORCA
+        auto *tips = new HyperLink(this, _L("Wiki Guide")); // MOMENT
         tips->SetURL("https://www.orcaslicer.com/wiki/general-settings/import_export.html#obj");
         btn_sizer->Add(tips, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     }
@@ -134,12 +134,12 @@ ObjColorDialog::ObjColorDialog(wxWindow *parent, Slic3r::ObjDialogInOut &in_out,
     if (!ok) {
         m_button_list[wxCANCEL]->Hide();
         m_button_list[wxOK]->Enable(true);
-        // ORCA no need to set colors again
+        // MOMENT no need to set colors again
     } else {
         m_button_list[wxOK]->Bind(wxEVT_UPDATE_UI, ([this](wxUpdateUIEvent &e) {
            if (m_panel_ObjColor->is_ok() == m_button_list[wxOK]->IsEnabled()) { return; }
            m_button_list[wxOK]->Enable(m_panel_ObjColor->is_ok());
-           // ORCA no need to set colors again
+           // MOMENT no need to set colors again
          }));
     }
     m_main_sizer->Add(m_buttons_sizer, 0, wxBOTTOM | wxTOP | wxRIGHT | wxEXPAND, BTN_GAP);

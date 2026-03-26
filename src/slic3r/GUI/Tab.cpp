@@ -279,7 +279,7 @@ void Tab::create_preset_tab()
     //search input
     m_search_item = new StaticBox(m_top_panel);
     StateColor box_colour(std::pair<wxColour, int>(*wxWHITE, StateColor::Normal));
-    StateColor box_border_colour(std::pair<wxColour, int>(wxColour("#009688"), StateColor::Normal)); // ORCA match border color with other input/combo boxes
+    StateColor box_border_colour(std::pair<wxColour, int>(wxColour("#960000"), StateColor::Normal)); // MOMENT match border color with other input/combo boxes
 
     m_search_item->SetBackgroundColor(box_colour);
     m_search_item->SetBorderColor(box_border_colour);
@@ -309,8 +309,8 @@ void Tab::create_preset_tab()
         if (m_presets_choice) m_presets_choice->Show();
 
         m_btn_save_preset->Show();
-        m_btn_delete_preset->Show(); // ORCA: fixes delete preset button visible while search box focused
-        m_undo_btn->Show();          // ORCA: fixes revert preset button visible while search box focused
+        m_btn_delete_preset->Show(); // MOMENT: fixes delete preset button visible while search box focused
+        m_undo_btn->Show();          // MOMENT: fixes revert preset button visible while search box focused
         m_btn_search->Show();
         m_search_item->Hide();
 
@@ -339,8 +339,8 @@ void Tab::create_preset_tab()
              m_presets_choice->Hide();
 
          m_btn_save_preset->Hide();
-         m_btn_delete_preset->Hide(); // ORCA: fixes delete preset button visible while search box focused
-         m_undo_btn->Hide();          // ORCA: fixes revert preset button visible while search box focused
+         m_btn_delete_preset->Hide(); // MOMENT: fixes delete preset button visible while search box focused
+         m_undo_btn->Hide();          // MOMENT: fixes revert preset button visible while search box focused
          m_btn_search->Hide();
          m_search_item->Show();
 
@@ -386,7 +386,7 @@ void Tab::create_preset_tab()
     m_top_sizer->Add(m_search_item      , 1, wxALIGN_CENTER_VERTICAL | wxLEFT, FromDIP(SidebarProps::ContentMargin()));
 
     if (dynamic_cast<TabPrint*>(this) == nullptr) {
-        m_mode_icon = new ScalableButton(m_top_panel, wxID_ANY, "advanced"); // ORCA
+        m_mode_icon = new ScalableButton(m_top_panel, wxID_ANY, "advanced"); // MOMENT
         m_mode_icon->SetToolTip(_L("Show/Hide advanced parameters"));
         m_mode_icon->Bind(wxEVT_BUTTON, [this](wxCommandEvent e) {
             if(wxGetApp().get_mode() == comDevelop) return; // prevent change on dev mode
@@ -2281,100 +2281,100 @@ void TabPrint::build()
         m_presets = &m_preset_bundle->prints;
     load_initial_data();
 
-    auto page = add_options_page(L("Quality"), "custom-gcode_quality"); // ORCA: icon only visible on placeholders
+    auto page = add_options_page(L("Quality"), "custom-gcode_quality"); // Softfever: icon only visible on placeholders
         auto optgroup = page->new_optgroup(L("Layer height"), L"param_layer_height");
-        optgroup->append_single_option_line("layer_height","quality_settings_layer_height");
-        optgroup->append_single_option_line("initial_layer_print_height","quality_settings_layer_height");
+        optgroup->append_single_option_line("layer_height");
+        optgroup->append_single_option_line("initial_layer_print_height");
 
         optgroup = page->new_optgroup(L("Line width"), L"param_line_width");
-        optgroup->append_single_option_line("line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("initial_layer_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("outer_wall_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("inner_wall_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("top_surface_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("sparse_infill_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("internal_solid_infill_line_width","quality_settings_line_width");
-        optgroup->append_single_option_line("support_line_width","quality_settings_line_width");
+        optgroup->append_single_option_line("line_width");
+        optgroup->append_single_option_line("initial_layer_line_width");
+        optgroup->append_single_option_line("outer_wall_line_width");
+        optgroup->append_single_option_line("inner_wall_line_width");
+        optgroup->append_single_option_line("top_surface_line_width");
+        optgroup->append_single_option_line("sparse_infill_line_width");
+        optgroup->append_single_option_line("internal_solid_infill_line_width");
+        optgroup->append_single_option_line("support_line_width");
 
         optgroup = page->new_optgroup(L("Seam"), L"param_seam");
-        optgroup->append_single_option_line("seam_position", "quality_settings_seam#seam-position");
-        optgroup->append_single_option_line("staggered_inner_seams", "quality_settings_seam#staggered-inner-seams");
-        optgroup->append_single_option_line("seam_gap","quality_settings_seam#seam-gap");
-        optgroup->append_single_option_line("seam_slope_type", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_conditional", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("scarf_angle_threshold", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("scarf_overhang_threshold", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("scarf_joint_speed", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_start_height", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_entire_loop", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_min_length", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_steps", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("scarf_joint_flow_ratio", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("seam_slope_inner_walls", "quality_settings_seam#scarf-joint-seam");
-        optgroup->append_single_option_line("role_based_wipe_speed","quality_settings_seam#role-based-wipe-speed");
-        optgroup->append_single_option_line("wipe_speed", "quality_settings_seam#wipe-speed");
-        optgroup->append_single_option_line("wipe_on_loops","quality_settings_seam#wipe-on-loop-inward-movement");
-        optgroup->append_single_option_line("wipe_before_external_loop","quality_settings_seam#wipe-before-external");
+        optgroup->append_single_option_line("seam_position", "shell#seam-position");
+        optgroup->append_single_option_line("staggered_inner_seams");
+        optgroup->append_single_option_line("seam_gap");
+        optgroup->append_single_option_line("seam_slope_type");
+        optgroup->append_single_option_line("seam_slope_conditional");
+        optgroup->append_single_option_line("scarf_angle_threshold");
+        optgroup->append_single_option_line("scarf_overhang_threshold");
+        optgroup->append_single_option_line("scarf_joint_speed");
+        optgroup->append_single_option_line("seam_slope_start_height");
+        optgroup->append_single_option_line("seam_slope_entire_loop");
+        optgroup->append_single_option_line("seam_slope_min_length");
+        optgroup->append_single_option_line("seam_slope_steps");
+        optgroup->append_single_option_line("scarf_joint_flow_ratio");
+        optgroup->append_single_option_line("seam_slope_inner_walls");
+        optgroup->append_single_option_line("role_based_wipe_speed");
+        optgroup->append_single_option_line("wipe_speed");
+        optgroup->append_single_option_line("wipe_on_loops");
+        optgroup->append_single_option_line("wipe_before_external_loop");
 
 
         optgroup = page->new_optgroup(L("Precision"), L"param_precision");
-        optgroup->append_single_option_line("slice_closing_radius", "quality_settings_precision#slice-gap-closing-radius");
-        optgroup->append_single_option_line("resolution", "quality_settings_precision#resolution");
-        optgroup->append_single_option_line("enable_arc_fitting", "quality_settings_precision#arc-fitting");
-        optgroup->append_single_option_line("xy_hole_compensation", "quality_settings_precision#x-y-compensation");
-        optgroup->append_single_option_line("xy_contour_compensation", "quality_settings_precision#x-y-compensation");
-        optgroup->append_single_option_line("elefant_foot_compensation", "quality_settings_precision#elephant-foot-compensation");
-        optgroup->append_single_option_line("elefant_foot_compensation_layers", "quality_settings_precision#elephant-foot-compensation");
-        optgroup->append_single_option_line("precise_outer_wall", "quality_settings_precision#precise-wall");
-        optgroup->append_single_option_line("precise_z_height", "quality_settings_precision#precise-z-height");
-        optgroup->append_single_option_line("hole_to_polyhole", "quality_settings_precision#polyholes");
-        optgroup->append_single_option_line("hole_to_polyhole_threshold", "quality_settings_precision#polyholes");
-        optgroup->append_single_option_line("hole_to_polyhole_twisted", "quality_settings_precision#polyholes");
+        optgroup->append_single_option_line("slice_closing_radius");
+        optgroup->append_single_option_line("resolution");
+        optgroup->append_single_option_line("enable_arc_fitting");
+        optgroup->append_single_option_line("xy_hole_compensation");
+        optgroup->append_single_option_line("xy_contour_compensation");
+        optgroup->append_single_option_line("elefant_foot_compensation");
+        optgroup->append_single_option_line("elefant_foot_compensation_layers");
+        optgroup->append_single_option_line("precise_outer_wall");
+        optgroup->append_single_option_line("precise_z_height");
+        optgroup->append_single_option_line("hole_to_polyhole");
+        optgroup->append_single_option_line("hole_to_polyhole_threshold");
+        optgroup->append_single_option_line("hole_to_polyhole_twisted");
 
         optgroup = page->new_optgroup(L("Ironing"), L"param_ironing");
-        optgroup->append_single_option_line("ironing_type", "quality_settings_ironing#type");
-        optgroup->append_single_option_line("ironing_pattern", "quality_settings_ironing#pattern");
-        optgroup->append_single_option_line("ironing_flow", "quality_settings_ironing#flow");
-        optgroup->append_single_option_line("ironing_spacing", "quality_settings_ironing#line-spacing");
-        optgroup->append_single_option_line("ironing_inset", "quality_settings_ironing#inset");
-        optgroup->append_single_option_line("ironing_angle", "quality_settings_ironing#angle-offset");
-        optgroup->append_single_option_line("ironing_angle_fixed", "quality_settings_ironing#fixed-angle");
+        optgroup->append_single_option_line("ironing_type");
+        optgroup->append_single_option_line("ironing_pattern");
+        optgroup->append_single_option_line("ironing_flow");
+        optgroup->append_single_option_line("ironing_spacing");
+        optgroup->append_single_option_line("ironing_inset");
+        optgroup->append_single_option_line("ironing_angle");
+        optgroup->append_single_option_line("ironing_angle_fixed");
 
         optgroup = page->new_optgroup(L("Wall generator"), L"param_wall_generator");
-        optgroup->append_single_option_line("wall_generator", "quality_settings_wall_generator");
-        optgroup->append_single_option_line("wall_transition_angle", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("wall_transition_filter_deviation", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("wall_transition_length", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("wall_distribution_count", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("initial_layer_min_bead_width", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("min_bead_width", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("min_feature_size", "quality_settings_wall_generator#arachne");
-        optgroup->append_single_option_line("min_length_factor", "quality_settings_wall_generator#arachne");
+        optgroup->append_single_option_line("wall_generator");
+        optgroup->append_single_option_line("wall_transition_angle");
+        optgroup->append_single_option_line("wall_transition_filter_deviation");
+        optgroup->append_single_option_line("wall_transition_length");
+        optgroup->append_single_option_line("wall_distribution_count");
+        optgroup->append_single_option_line("initial_layer_min_bead_width");
+        optgroup->append_single_option_line("min_bead_width");
+        optgroup->append_single_option_line("min_feature_size");
+        optgroup->append_single_option_line("min_length_factor");
 
         optgroup = page->new_optgroup(L("Walls and surfaces"), L"param_wall_surface");
-        optgroup->append_single_option_line("wall_sequence", "quality_settings_wall_and_surfaces#walls-printing-order");
-        optgroup->append_single_option_line("is_infill_first", "quality_settings_wall_and_surfaces#print-infill-first");
-        optgroup->append_single_option_line("wall_direction", "quality_settings_wall_and_surfaces#wall-loop-direction");
-        optgroup->append_single_option_line("print_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("top_solid_infill_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("bottom_solid_infill_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("set_other_flow_ratios", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("first_layer_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("outer_wall_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("inner_wall_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("overhang_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("sparse_infill_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("internal_solid_infill_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("gap_fill_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("support_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("support_interface_flow_ratio", "quality_settings_wall_and_surfaces#surface-flow-ratio");
-        optgroup->append_single_option_line("only_one_wall_top", "quality_settings_wall_and_surfaces#only-one-wall");
-        optgroup->append_single_option_line("min_width_top_surface", "quality_settings_wall_and_surfaces#threshold");
-        optgroup->append_single_option_line("only_one_wall_first_layer", "quality_settings_wall_and_surfaces#only-one-wall");
-        optgroup->append_single_option_line("reduce_crossing_wall", "quality_settings_wall_and_surfaces#avoid-crossing-walls");
-        optgroup->append_single_option_line("max_travel_detour_distance", "quality_settings_wall_and_surfaces#max-detour-length");
+        optgroup->append_single_option_line("wall_sequence");
+        optgroup->append_single_option_line("is_infill_first");
+        optgroup->append_single_option_line("wall_direction");
+        optgroup->append_single_option_line("print_flow_ratio");
+        optgroup->append_single_option_line("top_solid_infill_flow_ratio");
+        optgroup->append_single_option_line("bottom_solid_infill_flow_ratio");
+        optgroup->append_single_option_line("set_other_flow_ratios");
+        optgroup->append_single_option_line("first_layer_flow_ratio");
+        optgroup->append_single_option_line("outer_wall_flow_ratio");
+        optgroup->append_single_option_line("inner_wall_flow_ratio");
+        optgroup->append_single_option_line("overhang_flow_ratio");
+        optgroup->append_single_option_line("sparse_infill_flow_ratio");
+        optgroup->append_single_option_line("internal_solid_infill_flow_ratio");
+        optgroup->append_single_option_line("gap_fill_flow_ratio");
+        optgroup->append_single_option_line("support_flow_ratio");
+        optgroup->append_single_option_line("support_interface_flow_ratio");
+        optgroup->append_single_option_line("only_one_wall_top");
+        optgroup->append_single_option_line("min_width_top_surface");
+        optgroup->append_single_option_line("only_one_wall_first_layer");
+        optgroup->append_single_option_line("reduce_crossing_wall");
+        optgroup->append_single_option_line("max_travel_detour_distance");
 
-        optgroup->append_single_option_line("small_area_infill_flow_compensation", "quality_settings_wall_and_surfaces#small-area-flow-compensation");
+        optgroup->append_single_option_line("small_area_infill_flow_compensation");
         Option option = optgroup->get_option("small_area_infill_flow_compensation_model");
         option.opt.full_width = true;
         option.opt.is_code = true;
@@ -2382,103 +2382,103 @@ void TabPrint::build()
         optgroup->append_single_option_line(option, "quality_settings_wall_and_surfaces#small-area-flow-compensation");
 
         optgroup = page->new_optgroup(L("Bridging"), L"param_bridge");
-        optgroup->append_single_option_line("bridge_flow", "quality_settings_bridging#flow-ratio");
-	    optgroup->append_single_option_line("internal_bridge_flow", "quality_settings_bridging#flow-ratio");
-        optgroup->append_single_option_line("bridge_density", "quality_settings_bridging#bridge-density");
-        optgroup->append_single_option_line("internal_bridge_density", "quality_settings_bridging#bridge-density");
-        optgroup->append_single_option_line("thick_bridges", "quality_settings_bridging#thick-bridges");
-        optgroup->append_single_option_line("thick_internal_bridges", "quality_settings_bridging#thick-bridges");
-        optgroup->append_single_option_line("enable_extra_bridge_layer", "quality_settings_bridging#extra-bridge-layers");
-        optgroup->append_single_option_line("dont_filter_internal_bridges", "quality_settings_bridging#filter-out-small-internal-bridges");
-        optgroup->append_single_option_line("counterbore_hole_bridging", "quality_settings_bridging#bridge-counterbore-hole");
+        optgroup->append_single_option_line("bridge_flow");
+	    optgroup->append_single_option_line("internal_bridge_flow");
+        optgroup->append_single_option_line("bridge_density");
+        optgroup->append_single_option_line("internal_bridge_density");
+        optgroup->append_single_option_line("thick_bridges");
+        optgroup->append_single_option_line("thick_internal_bridges");
+        optgroup->append_single_option_line("enable_extra_bridge_layer");
+        optgroup->append_single_option_line("dont_filter_internal_bridges");
+        optgroup->append_single_option_line("counterbore_hole_bridging");
 
         optgroup = page->new_optgroup(L("Overhangs"), L"param_overhang");
-        optgroup->append_single_option_line("detect_overhang_wall", "quality_settings_overhangs#detect-overhang-wall");
-        optgroup->append_single_option_line("make_overhang_printable", "quality_settings_overhangs#make-overhang-printable");
-        optgroup->append_single_option_line("make_overhang_printable_angle", "quality_settings_overhangs#maximum-angle");
-        optgroup->append_single_option_line("make_overhang_printable_hole_size", "quality_settings_overhangs#hole-area");
-        optgroup->append_single_option_line("extra_perimeters_on_overhangs", "quality_settings_overhangs#extra-perimeters-on-overhangs");
-        optgroup->append_single_option_line("overhang_reverse", "quality_settings_overhangs#reverse-on-even");
-        optgroup->append_single_option_line("overhang_reverse_internal_only", "quality_settings_overhangs#reverse-internal-only");
-        optgroup->append_single_option_line("overhang_reverse_threshold", "quality_settings_overhangs#reverse-threshold");
+        optgroup->append_single_option_line("detect_overhang_wall");
+        optgroup->append_single_option_line("make_overhang_printable");
+        optgroup->append_single_option_line("make_overhang_printable_angle");
+        optgroup->append_single_option_line("make_overhang_printable_hole_size");
+        optgroup->append_single_option_line("extra_perimeters_on_overhangs");
+        optgroup->append_single_option_line("overhang_reverse");
+        optgroup->append_single_option_line("overhang_reverse_internal_only");
+        optgroup->append_single_option_line("overhang_reverse_threshold");
 
-    page = add_options_page(L("Strength"), "custom-gcode_strength"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Strength"), "custom-gcode_strength"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Walls"), L"param_wall");
-        optgroup->append_single_option_line("wall_loops", "strength_settings_walls#wall-loops");
-        optgroup->append_single_option_line("alternate_extra_wall", "strength_settings_walls#alternate-extra-wall");
-        optgroup->append_single_option_line("detect_thin_wall", "strength_settings_walls#detect-thin-wall");
+        optgroup->append_single_option_line("wall_loops");
+        optgroup->append_single_option_line("alternate_extra_wall");
+        optgroup->append_single_option_line("detect_thin_wall");
 
         optgroup = page->new_optgroup(L("Top/bottom shells"), L"param_shell");
 
-        optgroup->append_single_option_line("top_shell_layers", "strength_settings_top_bottom_shells#shell-layers");
-        optgroup->append_single_option_line("top_shell_thickness", "strength_settings_top_bottom_shells#shell-thickness");
-        optgroup->append_single_option_line("top_surface_density", "strength_settings_top_bottom_shells#surface-density");
-        optgroup->append_single_option_line("top_surface_pattern", "strength_settings_top_bottom_shells#surface-pattern");
-        optgroup->append_single_option_line("bottom_shell_layers", "strength_settings_top_bottom_shells#shell-layers");
-        optgroup->append_single_option_line("bottom_shell_thickness", "strength_settings_top_bottom_shells#shell-thickness");
-        optgroup->append_single_option_line("bottom_surface_density", "strength_settings_top_bottom_shells#surface-density");
-        optgroup->append_single_option_line("bottom_surface_pattern", "strength_settings_top_bottom_shells#surface-pattern");
-        optgroup->append_single_option_line("top_bottom_infill_wall_overlap", "strength_settings_top_bottom_shells#infillwall-overlap");
+        optgroup->append_single_option_line("top_shell_layers");
+        optgroup->append_single_option_line("top_shell_thickness");
+        optgroup->append_single_option_line("top_surface_density");
+        optgroup->append_single_option_line("top_surface_pattern", "shell#topbottomsurface");
+        optgroup->append_single_option_line("bottom_shell_layers");
+        optgroup->append_single_option_line("bottom_shell_thickness");
+        optgroup->append_single_option_line("bottom_surface_density");
+        optgroup->append_single_option_line("bottom_surface_pattern", "shell#topbottomsurface");
+        optgroup->append_single_option_line("top_bottom_infill_wall_overlap");
 
         optgroup = page->new_optgroup(L("Infill"), L"param_infill");
-        optgroup->append_single_option_line("sparse_infill_density", "strength_settings_infill#sparse-infill-density");
-        optgroup->append_single_option_line("fill_multiline", "strength_settings_infill#fill-multiline");
-        optgroup->append_single_option_line("sparse_infill_pattern", "strength_settings_infill#sparse-infill-pattern");
-        optgroup->append_single_option_line("infill_direction", "strength_settings_infill#direction");
-        optgroup->append_single_option_line("sparse_infill_rotate_template", "strength_settings_infill_rotation_template_metalanguage");
-        optgroup->append_single_option_line("skin_infill_density", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("skeleton_infill_density", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("infill_lock_depth", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("skin_infill_depth", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("skin_infill_line_width", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("skeleton_infill_line_width", "strength_settings_patterns#locked-zag");
-        optgroup->append_single_option_line("symmetric_infill_y_axis", "strength_settings_infill#symmetric-infill-y-axis");
-        optgroup->append_single_option_line("infill_shift_step", "strength_settings_patterns#cross-hatch");
-        optgroup->append_single_option_line("lateral_lattice_angle_1", "strength_settings_patterns#lateral-lattice");
-        optgroup->append_single_option_line("lateral_lattice_angle_2", "strength_settings_patterns#lateral-lattice");
-        optgroup->append_single_option_line("infill_overhang_angle", "strength_settings_patterns#lateral-honeycomb");
-        optgroup->append_single_option_line("infill_anchor_max", "strength_settings_infill#anchor");
-        optgroup->append_single_option_line("infill_anchor", "strength_settings_infill#anchor");
-        optgroup->append_single_option_line("internal_solid_infill_pattern", "strength_settings_infill#internal-solid-infill");
-        optgroup->append_single_option_line("solid_infill_direction", "strength_settings_infill#direction");
-        optgroup->append_single_option_line("solid_infill_rotate_template", "strength_settings_infill_rotation_template_metalanguage");
-        optgroup->append_single_option_line("gap_fill_target", "strength_settings_infill#apply-gap-fill");
-        optgroup->append_single_option_line("filter_out_gap_fill", "strength_settings_infill#filter-out-tiny-gaps");
-        optgroup->append_single_option_line("infill_wall_overlap", "strength_settings_infill#infill-wall-overlap");
+        optgroup->append_single_option_line("sparse_infill_density");
+        optgroup->append_single_option_line("fill_multiline");
+        optgroup->append_single_option_line("sparse_infill_pattern", "infill#infill-pattern");
+        optgroup->append_single_option_line("infill_direction");
+        optgroup->append_single_option_line("sparse_infill_rotate_template");
+        optgroup->append_single_option_line("skin_infill_density");
+        optgroup->append_single_option_line("skeleton_infill_density");
+        optgroup->append_single_option_line("infill_lock_depth");
+        optgroup->append_single_option_line("skin_infill_depth");
+        optgroup->append_single_option_line("skin_infill_line_width");
+        optgroup->append_single_option_line("skeleton_infill_line_width");
+        optgroup->append_single_option_line("symmetric_infill_y_axis");
+        optgroup->append_single_option_line("infill_shift_step");
+        optgroup->append_single_option_line("lateral_lattice_angle_1");
+        optgroup->append_single_option_line("lateral_lattice_angle_2");
+        optgroup->append_single_option_line("infill_overhang_angle");
+        optgroup->append_single_option_line("infill_anchor_max");
+        optgroup->append_single_option_line("infill_anchor");
+        optgroup->append_single_option_line("internal_solid_infill_pattern");
+        optgroup->append_single_option_line("solid_infill_direction");
+        optgroup->append_single_option_line("solid_infill_rotate_template");
+        optgroup->append_single_option_line("gap_fill_target");
+        optgroup->append_single_option_line("filter_out_gap_fill");
+        optgroup->append_single_option_line("infill_wall_overlap");
 
         optgroup = page->new_optgroup(L("Advanced"), L"param_advanced");
-        optgroup->append_single_option_line("align_infill_direction_to_model", "strength_settings_advanced#align-infill-direction-to-model");
-        optgroup->append_single_option_line("extra_solid_infills", "strength_settings_infill#extra-solid-infill");
-        optgroup->append_single_option_line("bridge_angle", "strength_settings_advanced#bridge-infill-direction");
-        optgroup->append_single_option_line("internal_bridge_angle", "strength_settings_advanced#bridge-infill-direction"); // ORCA: Internal bridge angle override
-        optgroup->append_single_option_line("minimum_sparse_infill_area", "strength_settings_advanced#minimum-sparse-infill-threshold");
-        optgroup->append_single_option_line("infill_combination", "strength_settings_advanced#infill-combination");
-        optgroup->append_single_option_line("infill_combination_max_layer_height", "strength_settings_advanced#max-layer-height");
-        optgroup->append_single_option_line("detect_narrow_internal_solid_infill", "strength_settings_advanced#detect-narrow-internal-solid-infill");
-        optgroup->append_single_option_line("ensure_vertical_shell_thickness", "strength_settings_advanced#ensure-vertical-shell-thickness");
+        optgroup->append_single_option_line("align_infill_direction_to_model");
+        optgroup->append_single_option_line("extra_solid_infills");
+        optgroup->append_single_option_line("bridge_angle");
+        optgroup->append_single_option_line("internal_bridge_angle"); // Softfever: Internal bridge angle override
+        optgroup->append_single_option_line("minimum_sparse_infill_area");
+        optgroup->append_single_option_line("infill_combination");
+        optgroup->append_single_option_line("infill_combination_max_layer_height");
+        optgroup->append_single_option_line("detect_narrow_internal_solid_infill");
+        optgroup->append_single_option_line("ensure_vertical_shell_thickness");
 
-    page = add_options_page(L("Speed"), "custom-gcode_speed"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Speed"), "custom-gcode_speed"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("First layer speed"), L"param_speed_first", 15);
-        optgroup->append_single_option_line("initial_layer_speed", "speed_settings_initial_layer_speed#initial-layer");
-        optgroup->append_single_option_line("initial_layer_infill_speed", "speed_settings_initial_layer_speed#initial-layer-infill");
-        optgroup->append_single_option_line("initial_layer_travel_speed", "speed_settings_initial_layer_speed#initial-layer-travel-speed");
-        optgroup->append_single_option_line("slow_down_layers", "speed_settings_initial_layer_speed#number-of-slow-layers");
+        optgroup->append_single_option_line("initial_layer_speed");
+        optgroup->append_single_option_line("initial_layer_infill_speed");
+        optgroup->append_single_option_line("initial_layer_travel_speed");
+        optgroup->append_single_option_line("slow_down_layers");
         optgroup = page->new_optgroup(L("Other layers speed"), L"param_speed", 15);
-        optgroup->append_single_option_line("outer_wall_speed", "speed_settings_other_layers_speed#outer-wall");
-        optgroup->append_single_option_line("inner_wall_speed", "speed_settings_other_layers_speed#inner-wall");
-        optgroup->append_single_option_line("small_perimeter_speed", "speed_settings_other_layers_speed#small-perimeters");
-        optgroup->append_single_option_line("small_perimeter_threshold", "speed_settings_other_layers_speed#small-perimeters-threshold");
-        optgroup->append_single_option_line("sparse_infill_speed", "speed_settings_other_layers_speed#sparse-infill");
-        optgroup->append_single_option_line("internal_solid_infill_speed", "speed_settings_other_layers_speed#internal-solid-infill");
-        optgroup->append_single_option_line("top_surface_speed", "speed_settings_other_layers_speed#top-surface");
-        optgroup->append_single_option_line("gap_infill_speed", "speed_settings_other_layers_speed#gap-infill");
-        optgroup->append_single_option_line("ironing_speed", "speed_settings_other_layers_speed#ironing-speed");
-        optgroup->append_single_option_line("support_speed", "speed_settings_other_layers_speed#support");
-        optgroup->append_single_option_line("support_interface_speed", "speed_settings_other_layers_speed#support-interface");
+        optgroup->append_single_option_line("outer_wall_speed");
+        optgroup->append_single_option_line("inner_wall_speed");
+        optgroup->append_single_option_line("small_perimeter_speed");
+        optgroup->append_single_option_line("small_perimeter_threshold");
+        optgroup->append_single_option_line("sparse_infill_speed");
+        optgroup->append_single_option_line("internal_solid_infill_speed");
+        optgroup->append_single_option_line("top_surface_speed");
+        optgroup->append_single_option_line("gap_infill_speed");
+        optgroup->append_single_option_line("ironing_speed");
+        optgroup->append_single_option_line("support_speed");
+        optgroup->append_single_option_line("support_interface_speed");
         optgroup = page->new_optgroup(L("Overhang speed"), L"param_overhang_speed", 15);
-        optgroup->append_single_option_line("enable_overhang_speed", "speed_settings_overhang_speed#slow-down-for-overhang");
+        optgroup->append_single_option_line("enable_overhang_speed");
 
-        optgroup->append_single_option_line("slowdown_for_curled_perimeters", "speed_settings_overhang_speed#slow-down-for-curled-perimeters");
+        optgroup->append_single_option_line("slowdown_for_curled_perimeters");
         Line line = { L("Overhang speed"), L("This is the speed for various overhang degrees. Overhang degrees are expressed as a percentage of line width. 0 speed means no slowing down for the overhang degree range and wall speed is used") };
         line.label_path = "speed_settings_overhang_speed#speed";
         line.append_option(optgroup->get_option("overhang_1_4_speed"));
@@ -2496,207 +2496,207 @@ void TabPrint::build()
         optgroup->append_single_option_line("travel_speed", "speed_settings_travel");
 
         optgroup = page->new_optgroup(L("Acceleration"), L"param_acceleration", 15);
-        optgroup->append_single_option_line("default_acceleration", "speed_settings_acceleration#normal-printing");
-        optgroup->append_single_option_line("outer_wall_acceleration", "speed_settings_acceleration#outer-wall");
-        optgroup->append_single_option_line("inner_wall_acceleration", "speed_settings_acceleration#inner-wall");
-        optgroup->append_single_option_line("bridge_acceleration", "speed_settings_acceleration#bridge");
-        optgroup->append_single_option_line("sparse_infill_acceleration", "speed_settings_acceleration#sparse-infill");
-        optgroup->append_single_option_line("internal_solid_infill_acceleration", "speed_settings_acceleration#internal-solid-infill");
-        optgroup->append_single_option_line("initial_layer_acceleration", "speed_settings_acceleration#initial-layer");
-        optgroup->append_single_option_line("top_surface_acceleration", "speed_settings_acceleration#top-surface");
-        optgroup->append_single_option_line("travel_acceleration", "speed_settings_acceleration#travel");
-        optgroup->append_single_option_line("accel_to_decel_enable", "speed_settings_acceleration");
-        optgroup->append_single_option_line("accel_to_decel_factor", "speed_settings_acceleration");
+        optgroup->append_single_option_line("default_acceleration");
+        optgroup->append_single_option_line("outer_wall_acceleration");
+        optgroup->append_single_option_line("inner_wall_acceleration");
+        optgroup->append_single_option_line("bridge_acceleration");
+        optgroup->append_single_option_line("sparse_infill_acceleration");
+        optgroup->append_single_option_line("internal_solid_infill_acceleration");
+        optgroup->append_single_option_line("initial_layer_acceleration");
+        optgroup->append_single_option_line("top_surface_acceleration");
+        optgroup->append_single_option_line("travel_acceleration");
+        optgroup->append_single_option_line("accel_to_decel_enable");
+        optgroup->append_single_option_line("accel_to_decel_factor");
 
         optgroup = page->new_optgroup(L("Jerk(XY)"), L"param_jerk", 15);
-        optgroup->append_single_option_line("default_junction_deviation", "speed_settings_jerk_xy#junction-deviation");
-        optgroup->append_single_option_line("default_jerk", "speed_settings_jerk_xy#default");
-        optgroup->append_single_option_line("outer_wall_jerk", "speed_settings_jerk_xy#outer-wall");
-        optgroup->append_single_option_line("inner_wall_jerk", "speed_settings_jerk_xy#inner-wall");
-        optgroup->append_single_option_line("infill_jerk", "speed_settings_jerk_xy#infill");
-        optgroup->append_single_option_line("top_surface_jerk", "speed_settings_jerk_xy#top-surface");
-        optgroup->append_single_option_line("initial_layer_jerk", "speed_settings_jerk_xy#initial-layer");
-        optgroup->append_single_option_line("travel_jerk", "speed_settings_jerk_xy#travel");
+        optgroup->append_single_option_line("default_junction_deviation");
+        optgroup->append_single_option_line("default_jerk");
+        optgroup->append_single_option_line("outer_wall_jerk");
+        optgroup->append_single_option_line("inner_wall_jerk");
+        optgroup->append_single_option_line("infill_jerk");
+        optgroup->append_single_option_line("top_surface_jerk");
+        optgroup->append_single_option_line("initial_layer_jerk");
+        optgroup->append_single_option_line("travel_jerk");
 
         optgroup = page->new_optgroup(L("Advanced"), L"param_advanced", 15);
-        optgroup->append_single_option_line("max_volumetric_extrusion_rate_slope", "speed_settings_advanced");
-        optgroup->append_single_option_line("max_volumetric_extrusion_rate_slope_segment_length", "speed_settings_advanced");
-        optgroup->append_single_option_line("extrusion_rate_smoothing_external_perimeter_only", "speed_settings_advanced");
+        optgroup->append_single_option_line("max_volumetric_extrusion_rate_slope");
+        optgroup->append_single_option_line("max_volumetric_extrusion_rate_slope_segment_length");
+        optgroup->append_single_option_line("extrusion_rate_smoothing_external_perimeter_only");
 
-    page = add_options_page(L("Support"), "custom-gcode_support"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Support"), "custom-gcode_support"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Support"), L"param_support");
-        optgroup->append_single_option_line("enable_support", "support_settings_support");
-        optgroup->append_single_option_line("support_type", "support_settings_support#type");
-        optgroup->append_single_option_line("support_style", "support_settings_support#style");
-        optgroup->append_single_option_line("support_threshold_angle", "support_settings_support#threshold-angle");
-        optgroup->append_single_option_line("support_threshold_overlap", "support_settings_support#threshold-overlap");
-        optgroup->append_single_option_line("raft_first_layer_density", "support_settings_support#initial-layer-density");
-        optgroup->append_single_option_line("raft_first_layer_expansion", "support_settings_support#initial-layer-expansion");
-        optgroup->append_single_option_line("support_on_build_plate_only", "support_settings_support#on-build-plate-only");
-        optgroup->append_single_option_line("support_critical_regions_only", "support_settings_support#support-critical-regions-only");
-        optgroup->append_single_option_line("support_remove_small_overhang", "support_settings_support#ignore-small-overhangs");
+        optgroup->append_single_option_line("enable_support", "support#support-composition");
+        optgroup->append_single_option_line("support_type", "support#support-type");
+        optgroup->append_single_option_line("support_style", "support#support-type");
+        optgroup->append_single_option_line("support_threshold_angle", "support#threshold-angle");
+        optgroup->append_single_option_line("support_threshold_overlap");
+        optgroup->append_single_option_line("raft_first_layer_density");
+        optgroup->append_single_option_line("raft_first_layer_expansion");
+        optgroup->append_single_option_line("support_on_build_plate_only");
+        optgroup->append_single_option_line("support_critical_regions_only");
+        optgroup->append_single_option_line("support_remove_small_overhang");
         //optgroup->append_single_option_line("enforce_support_layers", "support_settings_support");
 
         optgroup = page->new_optgroup(L("Raft"), L"param_raft");
-        optgroup->append_single_option_line("raft_layers", "support_settings_raft");
-        optgroup->append_single_option_line("raft_contact_distance", "support_settings_raft");
+        optgroup->append_single_option_line("raft_layers", "support#raft");
+        optgroup->append_single_option_line("raft_contact_distance", "support#raft");
 
         optgroup = page->new_optgroup(L("Support filament"), L"param_support_filament");
-        optgroup->append_single_option_line("support_filament", "support_settings_filament#base");
-        optgroup->append_single_option_line("support_interface_filament", "support_settings_filament#interface");
-        optgroup->append_single_option_line("support_interface_not_for_body", "support_settings_filament#avoid-interface-filament-for-base");
+        optgroup->append_single_option_line("support_filament");
+        optgroup->append_single_option_line("support_interface_filament");
+        optgroup->append_single_option_line("support_interface_not_for_body");
 
         optgroup = page->new_optgroup(L("Support ironing"), L"param_ironing");
-        optgroup->append_single_option_line("support_ironing", "support_settings_ironing");
-        optgroup->append_single_option_line("support_ironing_pattern", "support_settings_ironing#pattern");
-        optgroup->append_single_option_line("support_ironing_flow", "support_settings_ironing#flow");
-        optgroup->append_single_option_line("support_ironing_spacing", "support_settings_ironing#line-spacing");
+        optgroup->append_single_option_line("support_ironing");
+        optgroup->append_single_option_line("support_ironing_pattern");
+        optgroup->append_single_option_line("support_ironing_flow");
+        optgroup->append_single_option_line("support_ironing_spacing");
 
         //optgroup = page->new_optgroup(L("Options for support material and raft"));
 
         // Support
-        optgroup = page->new_optgroup(L("Advanced"), L"param_advanced");
-        optgroup->append_single_option_line("support_top_z_distance", "support_settings_advanced#z-distance");
-        optgroup->append_single_option_line("support_bottom_z_distance", "support_settings_advanced#z-distance");
-        optgroup->append_single_option_line("tree_support_wall_count", "support_settings_advanced#support-wall-loops");
-        optgroup->append_single_option_line("support_base_pattern", "support_settings_advanced#base-pattern");
-        optgroup->append_single_option_line("support_base_pattern_spacing", "support_settings_advanced#base-pattern-spacing");
-        optgroup->append_single_option_line("support_angle", "support_settings_advanced#pattern-angle");
-        optgroup->append_single_option_line("support_interface_top_layers", "support_settings_advanced#interface-layers");
-        optgroup->append_single_option_line("support_interface_bottom_layers", "support_settings_advanced#interface-layers");
-        optgroup->append_single_option_line("support_interface_pattern", "support_settings_advanced#interface-pattern");
-        optgroup->append_single_option_line("support_interface_spacing", "support_settings_advanced#interface-spacing");
-        optgroup->append_single_option_line("support_bottom_interface_spacing", "support_settings_advanced#interface-spacing");
-        optgroup->append_single_option_line("support_expansion", "support_settings_advanced#normal-support-expansion");
+        optgroup = page->new_optgroup(L("Advancedz"), L"param_advanced");
+        optgroup->append_single_option_line("support_top_z_distance", "support#support-composition");
+        optgroup->append_single_option_line("support_bottom_z_distance", "support#support-composition");
+        optgroup->append_single_option_line("tree_support_wall_count");
+        optgroup->append_single_option_line("support_base_pattern", "support#base-pattern");
+        optgroup->append_single_option_line("support_base_pattern_spacing");
+        optgroup->append_single_option_line("support_angle");
+        optgroup->append_single_option_line("support_interface_top_layers");
+        optgroup->append_single_option_line("support_interface_bottom_layers");
+        optgroup->append_single_option_line("support_interface_pattern", "support#interface-pattern");
+        optgroup->append_single_option_line("support_interface_spacing");
+        optgroup->append_single_option_line("support_bottom_interface_spacing");
+        optgroup->append_single_option_line("support_expansion");
         //optgroup->append_single_option_line("support_interface_loop_pattern", "support_settings_advanced");
 
-        optgroup->append_single_option_line("support_object_xy_distance", "support_settings_advanced#supportobject-xy-distance");
-        optgroup->append_single_option_line("support_object_first_layer_gap", "support_settings_advanced#supportobject-first-layer-gap");
-        optgroup->append_single_option_line("bridge_no_support", "support_settings_advanced#dont-support-bridges");
-        optgroup->append_single_option_line("max_bridge_length", "support_settings_advanced");
-        optgroup->append_single_option_line("independent_support_layer_height", "support_settings_advanced#independent-support-layer-height");
+        optgroup->append_single_option_line("support_object_xy_distance", "support#support-composition");
+        optgroup->append_single_option_line("support_object_first_layer_gap");
+        optgroup->append_single_option_line("bridge_no_support");
+        optgroup->append_single_option_line("max_bridge_length", "support#max-bridge");
+        optgroup->append_single_option_line("independent_support_layer_height", "support#independent-support-layer-height");
 
         optgroup = page->new_optgroup(L("Tree supports"), L"param_support_tree");
-        optgroup->append_single_option_line("tree_support_tip_diameter", "support_settings_tree#tip-diameter");
-        optgroup->append_single_option_line("tree_support_branch_distance", "support_settings_tree#branch-distance");
-        optgroup->append_single_option_line("tree_support_branch_distance_organic", "support_settings_tree#branch-distance");
-        optgroup->append_single_option_line("tree_support_top_rate", "support_settings_tree#branch-density");
-        optgroup->append_single_option_line("tree_support_branch_diameter", "support_settings_tree#branch-diameter");
-        optgroup->append_single_option_line("tree_support_branch_diameter_organic", "support_settings_tree#branch-diameter");
-        optgroup->append_single_option_line("tree_support_branch_diameter_angle", "support_settings_tree#branch-diameter-angle");
-        optgroup->append_single_option_line("tree_support_branch_angle", "support_settings_tree#branch-angle");
-        optgroup->append_single_option_line("tree_support_branch_angle_organic", "support_settings_tree#branch-angle");
-        optgroup->append_single_option_line("tree_support_angle_slow", "support_settings_tree#preferred-branch-angle");
-        optgroup->append_single_option_line("tree_support_auto_brim", "support_settings_tree");
-        optgroup->append_single_option_line("tree_support_brim_width", "support_settings_tree");
+        optgroup->append_single_option_line("tree_support_tip_diameter");
+        optgroup->append_single_option_line("tree_support_branch_distance", "support#tree-distance");
+        optgroup->append_single_option_line("tree_support_branch_distance_organic");
+        optgroup->append_single_option_line("tree_support_top_rate");
+        optgroup->append_single_option_line("tree_support_branch_diameter", "support#tree-diameter");
+        optgroup->append_single_option_line("tree_support_branch_diameter_organic", "support#tree-diameter");
+        optgroup->append_single_option_line("tree_support_branch_diameter_angle");
+        optgroup->append_single_option_line("tree_support_branch_angle", "support#tree-angle");
+        optgroup->append_single_option_line("tree_support_branch_angle_organic", "support#tree-angle");
+        optgroup->append_single_option_line("tree_support_angle_slow");
+        optgroup->append_single_option_line("tree_support_auto_brim");
+        optgroup->append_single_option_line("tree_support_brim_width");
 
-    page = add_options_page(L("Multimaterial"), "custom-gcode_multi_material"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Multimaterial"), "custom-gcode_multi_material"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Prime tower"), L"param_tower");
-        optgroup->append_single_option_line("enable_prime_tower", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("prime_tower_skip_points", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("enable_tower_interface_features", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("enable_tower_interface_cooldown_during_tower", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("prime_tower_enable_framework", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("prime_tower_width", "multimaterial_settings_prime_tower#width");
-        optgroup->append_single_option_line("prime_volume", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("prime_tower_brim_width", "multimaterial_settings_prime_tower#brim-width");
-        optgroup->append_single_option_line("prime_tower_infill_gap", "multimaterial_settings_prime_tower");
-        optgroup->append_single_option_line("wipe_tower_rotation_angle", "multimaterial_settings_prime_tower#wipe-tower-rotation-angle");
-        optgroup->append_single_option_line("wipe_tower_bridging", "multimaterial_settings_prime_tower#maximal-bridging-distance");
-        optgroup->append_single_option_line("wipe_tower_extra_spacing", "multimaterial_settings_prime_tower#wipe-tower-purge-lines-spacing");
-        optgroup->append_single_option_line("wipe_tower_extra_flow", "multimaterial_settings_prime_tower#extra-flow-for-purge");
-        optgroup->append_single_option_line("wipe_tower_max_purge_speed", "multimaterial_settings_prime_tower#maximum-wipe-tower-print-speed");
-        optgroup->append_single_option_line("wipe_tower_wall_type", "multimaterial_settings_prime_tower#wall-type");
-        optgroup->append_single_option_line("wipe_tower_cone_angle", "multimaterial_settings_prime_tower#stabilization-cone-apex-angle");
-        optgroup->append_single_option_line("wipe_tower_extra_rib_length", "multimaterial_settings_prime_tower#extra-rib-length");
-        optgroup->append_single_option_line("wipe_tower_rib_width", "multimaterial_settings_prime_tower#rib-width");
-        optgroup->append_single_option_line("wipe_tower_fillet_wall", "multimaterial_settings_prime_tower#fillet-wall");
-        optgroup->append_single_option_line("wipe_tower_no_sparse_layers", "multimaterial_settings_prime_tower#no-sparse-layers");
-        optgroup->append_single_option_line("single_extruder_multi_material_priming", "multimaterial_settings_prime_tower");
+        optgroup->append_single_option_line("enable_prime_tower");
+        optgroup->append_single_option_line("prime_tower_skip_points");
+        optgroup->append_single_option_line("enable_tower_interface_features");
+        optgroup->append_single_option_line("enable_tower_interface_cooldown_during_tower");
+        optgroup->append_single_option_line("prime_tower_enable_framework");
+        optgroup->append_single_option_line("prime_tower_width");
+        optgroup->append_single_option_line("prime_volume");
+        optgroup->append_single_option_line("prime_tower_brim_width");
+        optgroup->append_single_option_line("prime_tower_infill_gap");
+        optgroup->append_single_option_line("wipe_tower_rotation_angle");
+        optgroup->append_single_option_line("wipe_tower_bridging");
+        optgroup->append_single_option_line("wipe_tower_extra_spacing");
+        optgroup->append_single_option_line("wipe_tower_extra_flow");
+        optgroup->append_single_option_line("wipe_tower_max_purge_speed");
+        optgroup->append_single_option_line("wipe_tower_wall_type");
+        optgroup->append_single_option_line("wipe_tower_cone_angle");
+        optgroup->append_single_option_line("wipe_tower_extra_rib_length");
+        optgroup->append_single_option_line("wipe_tower_rib_width");
+        optgroup->append_single_option_line("wipe_tower_fillet_wall");
+        optgroup->append_single_option_line("wipe_tower_no_sparse_layers");
+        optgroup->append_single_option_line("single_extruder_multi_material_priming");
 
         optgroup = page->new_optgroup(L("Filament for Features"), L"param_filament_for_features");
-        optgroup->append_single_option_line("wall_filament", "multimaterial_settings_filament_for_features#walls");
-        optgroup->append_single_option_line("sparse_infill_filament", "multimaterial_settings_filament_for_features#infill");
-        optgroup->append_single_option_line("solid_infill_filament", "multimaterial_settings_filament_for_features#solid-infill");
-        optgroup->append_single_option_line("wipe_tower_filament", "multimaterial_settings_filament_for_features#wipe-tower");
+        optgroup->append_single_option_line("wall_filament");
+        optgroup->append_single_option_line("sparse_infill_filament");
+        optgroup->append_single_option_line("solid_infill_filament");
+        optgroup->append_single_option_line("wipe_tower_filament");
 
         optgroup = page->new_optgroup(L("Ooze prevention"), L"param_ooze_prevention");
-        optgroup->append_single_option_line("ooze_prevention", "multimaterial_settings_ooze_prevention");
-        optgroup->append_single_option_line("standby_temperature_delta", "multimaterial_settings_ooze_prevention#temperature-variation");
-        optgroup->append_single_option_line("preheat_time", "multimaterial_settings_ooze_prevention#preheat-time");
-        optgroup->append_single_option_line("preheat_steps", "multimaterial_settings_ooze_prevention#preheat-steps");
+        optgroup->append_single_option_line("ooze_prevention");
+        optgroup->append_single_option_line("standby_temperature_delta");
+        optgroup->append_single_option_line("preheat_time");
+        optgroup->append_single_option_line("preheat_steps");
 
         optgroup = page->new_optgroup(L("Flush options"), L"param_flush");
-        optgroup->append_single_option_line("flush_into_infill", "multimaterial_settings_flush_options#flush-into-objects-infill");
-        optgroup->append_single_option_line("flush_into_objects", "multimaterial_settings_flush_options");
-        optgroup->append_single_option_line("flush_into_support", "multimaterial_settings_flush_options#flush-into-objects-support");
+        optgroup->append_single_option_line("flush_into_infill");
+        optgroup->append_single_option_line("flush_into_objects");
+        optgroup->append_single_option_line("flush_into_support");
         optgroup = page->new_optgroup(L("Advanced"), L"advanced");
-        optgroup->append_single_option_line("interlocking_beam", "multimaterial_settings_advanced#interlocking-beam");
-        optgroup->append_single_option_line("interface_shells", "multimaterial_settings_advanced#interface-shells");
-        optgroup->append_single_option_line("mmu_segmented_region_max_width", "multimaterial_settings_advanced#maximum-width-of-segmented-region");
-        optgroup->append_single_option_line("mmu_segmented_region_interlocking_depth", "multimaterial_settings_advanced#interlocking-depth-of-segmented-region");
-        optgroup->append_single_option_line("interlocking_beam_width", "multimaterial_settings_advanced#interlocking-beam-width");
-        optgroup->append_single_option_line("interlocking_orientation", "multimaterial_settings_advanced#interlocking-direction");
-        optgroup->append_single_option_line("interlocking_beam_layer_count", "multimaterial_settings_advanced#interlocking-beam-layers");
-        optgroup->append_single_option_line("interlocking_depth", "multimaterial_settings_advanced#interlocking-depth");
-        optgroup->append_single_option_line("interlocking_boundary_avoidance", "multimaterial_settings_advanced#interlocking-boundary-avoidance");
+        optgroup->append_single_option_line("interlocking_beam");
+        optgroup->append_single_option_line("interface_shells");
+        optgroup->append_single_option_line("mmu_segmented_region_max_width");
+        optgroup->append_single_option_line("mmu_segmented_region_interlocking_depth");
+        optgroup->append_single_option_line("interlocking_beam_width");
+        optgroup->append_single_option_line("interlocking_orientation");
+        optgroup->append_single_option_line("interlocking_beam_layer_count");
+        optgroup->append_single_option_line("interlocking_depth");
+        optgroup->append_single_option_line("interlocking_boundary_avoidance");
 
-    page = add_options_page(L("Others"), "custom-gcode_other"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Others"), "custom-gcode_other"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Skirt"), L"param_skirt");
-        optgroup->append_single_option_line("skirt_loops", "others_settings_skirt#loops");
-        optgroup->append_single_option_line("skirt_type", "others_settings_skirt#type");
-        optgroup->append_single_option_line("min_skirt_length", "others_settings_skirt#minimum-extrusion-length");
-        optgroup->append_single_option_line("skirt_distance", "others_settings_skirt#distance");
-        optgroup->append_single_option_line("skirt_start_angle", "others_settings_skirt#start-point");
-        optgroup->append_single_option_line("skirt_speed", "others_settings_skirt#speed");
-        optgroup->append_single_option_line("skirt_height", "others_settings_skirt#height");
-        optgroup->append_single_option_line("draft_shield", "others_settings_skirt#shield");
-        optgroup->append_single_option_line("single_loop_draft_shield", "others_settings_skirt#single-loop-after-first-layer");
+        optgroup->append_single_option_line("skirt_loops", "brim#skirt");
+        optgroup->append_single_option_line("skirt_type");
+        optgroup->append_single_option_line("min_skirt_length");
+        optgroup->append_single_option_line("skirt_distance");
+        optgroup->append_single_option_line("skirt_start_angle");
+        optgroup->append_single_option_line("skirt_speed");
+        optgroup->append_single_option_line("skirt_height");
+        optgroup->append_single_option_line("draft_shield");
+        optgroup->append_single_option_line("single_loop_draft_shield");
 
         optgroup = page->new_optgroup(L("Brim"), L"param_adhension");
-        optgroup->append_single_option_line("brim_type", "others_settings_brim#type");
-        optgroup->append_single_option_line("brim_width", "others_settings_brim#width");
-        optgroup->append_single_option_line("brim_object_gap", "others_settings_brim#brim-object-gap");
-        optgroup->append_single_option_line("brim_use_efc_outline", "others_settings_brim#brim-use-efc-outline");
-        optgroup->append_single_option_line("brim_ears_max_angle", "others_settings_brim#ear-max-angle");
-        optgroup->append_single_option_line("brim_ears_detection_length", "others_settings_brim#ear-detection-radius");
+        optgroup->append_single_option_line("brim_type", "brim#brim");
+        optgroup->append_single_option_line("brim_width");
+        optgroup->append_single_option_line("brim_object_gap");
+        optgroup->append_single_option_line("brim_use_efc_outline");
+        optgroup->append_single_option_line("brim_ears_max_angle");
+        optgroup->append_single_option_line("brim_ears_detection_length");
 
         optgroup = page->new_optgroup(L("Special mode"), L"param_special");
-        optgroup->append_single_option_line("slicing_mode", "others_settings_special_mode#slicing-mode");
-        optgroup->append_single_option_line("print_sequence", "others_settings_special_mode#print-sequence");
-        optgroup->append_single_option_line("print_order", "others_settings_special_mode#intra-layer-order");
-        optgroup->append_single_option_line("spiral_mode", "others_settings_special_mode#spiral-vase");
-        optgroup->append_single_option_line("spiral_mode_smooth", "others_settings_special_mode#smooth-spiral");
-        optgroup->append_single_option_line("spiral_mode_max_xy_smoothing", "others_settings_special_mode#max-xy-smoothing");
-        optgroup->append_single_option_line("spiral_starting_flow_ratio", "others_settings_special_mode#spiral-starting-flow-ratio");
-        optgroup->append_single_option_line("spiral_finishing_flow_ratio", "others_settings_special_mode#spiral-finishing-flow-ratio");
+        optgroup->append_single_option_line("slicing_mode");
+        optgroup->append_single_option_line("print_sequence");
+        optgroup->append_single_option_line("print_order");
+        optgroup->append_single_option_line("spiral_mode");
+        optgroup->append_single_option_line("spiral_mode_smooth");
+        optgroup->append_single_option_line("spiral_mode_max_xy_smoothing");
+        optgroup->append_single_option_line("spiral_starting_flow_ratio");
+        optgroup->append_single_option_line("spiral_finishing_flow_ratio");
 
-        optgroup->append_single_option_line("timelapse_type", "others_settings_special_mode#timelapse");
+        optgroup->append_single_option_line("timelapse_type");
         optgroup->append_single_option_line("enable_wrapping_detection");
 
         optgroup = page->new_optgroup(L("Fuzzy Skin"), L"fuzzy_skin");
-        optgroup->append_single_option_line("fuzzy_skin", "others_settings_fuzzy_skin");
-        optgroup->append_single_option_line("fuzzy_skin_mode", "others_settings_fuzzy_skin#fuzzy-skin-mode");
-        optgroup->append_single_option_line("fuzzy_skin_noise_type", "others_settings_fuzzy_skin#noise-type");
-        optgroup->append_single_option_line("fuzzy_skin_point_distance", "others_settings_fuzzy_skin#point-distance");
-        optgroup->append_single_option_line("fuzzy_skin_thickness", "others_settings_fuzzy_skin#skin-thickness");
-        optgroup->append_single_option_line("fuzzy_skin_scale", "others_settings_fuzzy_skin#skin-feature-size");
-        optgroup->append_single_option_line("fuzzy_skin_octaves", "others_settings_fuzzy_skin#skin-noise-octaves");
-        optgroup->append_single_option_line("fuzzy_skin_persistence", "others_settings_fuzzy_skin#skin-noise-persistence");
-        optgroup->append_single_option_line("fuzzy_skin_first_layer", "others_settings_fuzzy_skin#apply-fuzzy-skin-to-first-layer");
+        optgroup->append_single_option_line("fuzzy_skin");
+        optgroup->append_single_option_line("fuzzy_skin_mode");
+        optgroup->append_single_option_line("fuzzy_skin_noise_type");
+        optgroup->append_single_option_line("fuzzy_skin_point_distance");
+        optgroup->append_single_option_line("fuzzy_skin_thickness");
+        optgroup->append_single_option_line("fuzzy_skin_scale");
+        optgroup->append_single_option_line("fuzzy_skin_octaves");
+        optgroup->append_single_option_line("fuzzy_skin_persistence");
+        optgroup->append_single_option_line("fuzzy_skin_first_layer");
 
         optgroup = page->new_optgroup(L("G-code output"), L"param_gcode");
-        optgroup->append_single_option_line("reduce_infill_retraction", "others_settings_g_code_output#reduce-infill-retraction");
-        optgroup->append_single_option_line("gcode_add_line_number", "others_settings_g_code_output#add-line-number");
-        optgroup->append_single_option_line("gcode_comments", "others_settings_g_code_output#verbose-g-code");
-        optgroup->append_single_option_line("gcode_label_objects", "others_settings_g_code_output#label-objects");
-        optgroup->append_single_option_line("exclude_object", "others_settings_g_code_output#exclude-objects");
+        optgroup->append_single_option_line("reduce_infill_retraction");
+        optgroup->append_single_option_line("gcode_add_line_number");
+        optgroup->append_single_option_line("gcode_comments");
+        optgroup->append_single_option_line("gcode_label_objects");
+        optgroup->append_single_option_line("exclude_object");
         option = optgroup->get_option("filename_format");
         // option.opt.full_width = true;
         option.opt.is_code = true;
         option.opt.multiline = true;
         // option.opt.height = 5;
-        optgroup->append_single_option_line(option, "others_settings_g_code_output#filename-format");
+        optgroup->append_single_option_line(option, "");
 
         optgroup = page->new_optgroup(L("Post-processing Scripts"), L"param_gcode", 0);
         option = optgroup->get_option("post_process");
@@ -3547,7 +3547,7 @@ void TabFilament::set_custom_gcode(const t_config_option_key& opt_key, const std
 void TabFilament::add_filament_overrides_page()
 {
     //BBS
-    PageShp page = add_options_page(L("Setting Overrides"), "custom-gcode_setting_override"); // ORCA: icon only visible on placeholders
+    PageShp page = add_options_page(L("Setting Overrides"), "custom-gcode_setting_override"); // Softfever: icon only visible on placeholders
 
     const int extruder_idx = 0; // #ys_FIXME
 
@@ -3558,7 +3558,7 @@ void TabFilament::add_filament_overrides_page()
         line = retraction_optgroup->create_single_option_line(retraction_optgroup->get_option(opt_key, opt_index));
 
         line.near_label_widget = [this, optgroup_wk = ConfigOptionsGroupWkp(retraction_optgroup), opt_key, opt_index](wxWindow* parent) {
-            auto check_box = new ::CheckBox(parent); // ORCA modernize checkboxes
+            auto check_box = new ::CheckBox(parent); // MOMENT modernize checkboxes
             check_box->Bind(wxEVT_TOGGLEBUTTON, [this, optgroup_wk, opt_key, opt_index](wxCommandEvent& evt) {
                 const bool is_checked = evt.IsChecked();
                 if (auto optgroup_sh = optgroup_wk.lock(); optgroup_sh) {
@@ -3616,7 +3616,7 @@ void TabFilament::add_filament_overrides_page()
         line = ironing_optgroup->create_single_option_line(ironing_optgroup->get_option(opt_key, opt_index));
 
         line.near_label_widget = [this, optgroup_wk = ConfigOptionsGroupWkp(ironing_optgroup), opt_key, opt_index](wxWindow* parent) {
-            auto check_box = new ::CheckBox(parent); // ORCA modernize checkboxes
+            auto check_box = new ::CheckBox(parent); // MOMENT modernize checkboxes
             check_box->Bind(wxEVT_TOGGLEBUTTON, [this, optgroup_wk, opt_key, opt_index](wxCommandEvent& evt) {
                 const bool is_checked = evt.IsChecked();
                 if (auto optgroup_sh = optgroup_wk.lock(); optgroup_sh) {
@@ -3821,10 +3821,10 @@ void TabFilament::build()
     m_presets = &m_preset_bundle->filaments;
     load_initial_data();
 
-    auto page = add_options_page(L("Filament"), "custom-gcode_filament"); // ORCA: icon only visible on placeholders
+    auto page = add_options_page(L("Filament"), "custom-gcode_filament"); // Softfever: icon only visible on placeholders
         //BBS
         auto optgroup = page->new_optgroup(L("Basic information"), L"param_information");
-        optgroup->append_single_option_line("filament_type", "material_basic_information#type"); // ORCA use same width with other elements
+        optgroup->append_single_option_line("filament_type", "material_basic_information#type"); // MOMENT use same width with other elements
         optgroup->append_single_option_line("filament_vendor", "material_basic_information#vendor");
         optgroup->append_single_option_line("filament_soluble", "material_basic_information#soluble-material");
         // BBS
@@ -3975,7 +3975,7 @@ void TabFilament::build()
         //};
         //optgroup->append_line(line);
 
-    page = add_options_page(L("Cooling"), "custom-gcode_cooling_fan"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Cooling"), "custom-gcode_cooling_fan"); // Softfever: icon only visible on placeholders
 
         //line = { "", "" };
         //line.full_width = 1;
@@ -4006,9 +4006,9 @@ void TabFilament::build()
         optgroup->append_single_option_line("enable_overhang_bridge_fan", "material_cooling#force-cooling-for-overhangs-and-bridges");
         optgroup->append_single_option_line("overhang_fan_threshold", "material_cooling#overhang-cooling-activation-threshold");
         optgroup->append_single_option_line("overhang_fan_speed", "material_cooling#overhangs-and-external-bridges-fan-speed");
-        optgroup->append_single_option_line("internal_bridge_fan_speed", "material_cooling#internal-bridges-fan-speed"); // ORCA: Add support for separate internal bridge fan speed control
+        optgroup->append_single_option_line("internal_bridge_fan_speed", "material_cooling#internal-bridges-fan-speed"); // MOMENT: Add support for separate internal bridge fan speed control
         optgroup->append_single_option_line("support_material_interface_fan_speed", "material_cooling#support-interface-fan-speed");
-        optgroup->append_single_option_line("ironing_fan_speed", "material_cooling#ironing-fan-speed"); // ORCA: Add support for ironing fan speed control
+        optgroup->append_single_option_line("ironing_fan_speed", "material_cooling#ironing-fan-speed"); // MOMENT: Add support for ironing fan speed control
 
         optgroup = page->new_optgroup(L("Auxiliary part cooling fan"), L"param_cooling_aux_fan");
         optgroup->append_single_option_line("additional_cooling_fan_speed", "material_cooling#auxiliary-part-cooling-fan");
@@ -4034,7 +4034,7 @@ void TabFilament::build()
 
         auto edit_custom_gcode_fn = [this](const t_config_option_key& opt_key) { edit_custom_gcode(opt_key); };
 
-    page = add_options_page(L("Advanced"), "custom-gcode_advanced"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Advanced"), "custom-gcode_advanced"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Filament start G-code"), L"param_gcode", 0);
         optgroup->m_on_change = [this, &optgroup_title = optgroup->title](const t_config_option_key& opt_key, const boost::any& value) {
             validate_custom_gcode_cb(this, optgroup_title, opt_key, value);
@@ -4057,7 +4057,7 @@ void TabFilament::build()
         option.opt.height = gcode_field_height;// 150;
         optgroup->append_single_option_line(option);
 
-    page = add_options_page(L("Multimaterial"), "custom-gcode_multi_material"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Multimaterial"), "custom-gcode_multi_material"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Wipe tower parameters"), "param_tower");
         optgroup->append_single_option_line("filament_minimal_purge_on_wipe_tower", "material_multimaterial#multimaterial-wipe-tower-parameters");
         optgroup->append_single_option_line("filament_tower_interface_pre_extrusion_dist", "material_multimaterial#multimaterial-wipe-tower-parameters");
@@ -4085,7 +4085,7 @@ void TabFilament::build()
         optgroup->append_single_option_line("filament_stamping_distance", "material_multimaterial#stamping-distance");
         create_line_with_widget(optgroup.get(), "filament_ramming_parameters", "material_multimaterial#ramming-parameters", [this](wxWindow* parent) {
 
-            // ORCA modernize button style
+            // MOMENT modernize button style
             Button* btn = new Button(parent, _(L("Set")) + " " + dots);
             btn->SetStyle(ButtonStyle::Regular, ButtonType::Parameter);
 
@@ -4126,7 +4126,7 @@ void TabFilament::build()
         option.opt.full_width = true;
         optgroup->append_single_option_line(option, "material_dependencies#compatible-process-profiles");
 
-    page = add_options_page(L("Notes"), "custom-gcode_note"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Notes"), "custom-gcode_note"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Notes"),"note", 0);
         optgroup->label_width = 0;
         option = optgroup->get_option("filament_notes");
@@ -4187,7 +4187,7 @@ void TabFilament::toggle_options()
     auto cfg = m_preset_bundle->printers.get_edited_preset().config;
     if (m_active_page->title() == L("Cooling")) {
       bool has_enable_overhang_bridge_fan = m_config->opt_bool("enable_overhang_bridge_fan", 0);
-      for (auto el : {"overhang_fan_speed", "overhang_fan_threshold", "internal_bridge_fan_speed"}) // ORCA: Add support for separate internal bridge fan speed control
+      for (auto el : {"overhang_fan_speed", "overhang_fan_threshold", "internal_bridge_fan_speed"}) // MOMENT: Add support for separate internal bridge fan speed control
             toggle_option(el, has_enable_overhang_bridge_fan);
 
       toggle_option("additional_cooling_fan_speed", cfg.opt_bool("auxiliary_fan"));
@@ -4353,7 +4353,7 @@ void TabPrinter::build_fff()
     m_sys_extruders_count = parent_preset == nullptr ? 0 :
             static_cast<const ConfigOptionFloats*>(parent_preset->config.option("nozzle_diameter"))->values.size();
 
-    auto page = add_options_page(L("Basic information"), "custom-gcode_object-info"); // ORCA: icon only visible on placeholders
+    auto page = add_options_page(L("Basic information"), "custom-gcode_object-info"); // Softfever: icon only visible on placeholders
     auto optgroup = page->new_optgroup(L("Printable space"), "param_printable_space");
 
         create_line_with_widget(optgroup.get(), "printable_area", "custom-svg-and-png-bed-textures_124612", [this](wxWindow* parent) {
@@ -4457,7 +4457,7 @@ void TabPrinter::build_fff()
 
     const int gcode_field_height = 15; // 150
     const int notes_field_height = 25; // 250
-    page = add_options_page(L("Machine G-code"), "custom-gcode_gcode"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Machine G-code"), "custom-gcode_gcode"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("File header G-code"), L"param_gcode", 0);
         optgroup->m_on_change = [this, &optgroup_title = optgroup->title](const t_config_option_key& opt_key, const boost::any& value) {
             validate_custom_gcode_cb(this, optgroup_title, opt_key, value);
@@ -4589,7 +4589,7 @@ void TabPrinter::build_fff()
         option.opt.height = gcode_field_height;//150;
         optgroup->append_single_option_line(option, "printer_machine_gcode#template-custom-g-code");
 
-    page = add_options_page(L("Notes"), "custom-gcode_note"); // ORCA: icon only visible on placeholders
+    page = add_options_page(L("Notes"), "custom-gcode_note"); // Softfever: icon only visible on placeholders
         optgroup = page->new_optgroup(L("Notes"), "note", 0);
         option = optgroup->get_option("printer_notes");
         option.opt.full_width = true;
@@ -4705,7 +4705,7 @@ void TabPrinter::append_option_line(ConfigOptionsGroupShp optgroup, const std::s
 
 PageShp TabPrinter::build_kinematics_page()
 {
-    auto page = add_options_page(L("Motion ability"), "custom-gcode_motion", true); // ORCA: icon only visible on placeholders
+    auto page = add_options_page(L("Motion ability"), "custom-gcode_motion", true); // Softfever: icon only visible on placeholders
 
     if (m_use_silent_mode) {
         // Legend for OptionsGroups
@@ -4822,7 +4822,7 @@ if (is_marlin_flavor)
 
     if (from_initial_build) {
         // create a page, but pretend it's an extruder page, so we can add it to m_pages ourselves
-        auto page     = add_options_page(L("Multimaterial"), "custom-gcode_multi_material", true); // ORCA: icon only visible on placeholders
+        auto page     = add_options_page(L("Multimaterial"), "custom-gcode_multi_material", true); // Softfever: icon only visible on placeholders
         auto optgroup = page->new_optgroup(L("Single extruder multi-material setup"), "param_multi_material");
         optgroup->append_single_option_line("single_extruder_multi_material", "printer_multimaterial_setup#single-extruder-multi-material");
         ConfigOptionDef def;
@@ -4936,7 +4936,7 @@ if (is_marlin_flavor)
 
         //# build page
         //const wxString& page_name = wxString::Format("Extruder %d", int(extruder_idx + 1));
-        auto page = add_options_page(page_name, "custom-gcode_extruder", true); // ORCA: icon only visible on placeholders
+        auto page = add_options_page(page_name, "custom-gcode_extruder", true); // Softfever: icon only visible on placeholders
         m_pages.insert(m_pages.begin() + n_before_extruders + extruder_idx, page);
 
         auto optgroup = page->new_optgroup(L("Basic information"), L"param_information", -1, true);
@@ -6700,7 +6700,7 @@ wxSizer* Tab::compatible_widget_create(wxWindow* parent, PresetDependencies &dep
     deps.checkbox_title->SetForegroundColour(wxColour("#363636"));
     wxGetApp().UpdateDarkUI(deps.checkbox_title, false, true);
 
-    // ORCA modernize button style
+    // MOMENT modernize button style
     Button* btn = new Button(parent, _(L("Set")) + " " + dots);
     btn->SetStyle(ButtonStyle::Regular, ButtonType::Parameter);
     deps.btn = btn;
@@ -6832,7 +6832,7 @@ void TabPrinter::set_extruder_volume_type(int extruder_id, NozzleVolumeType type
 // Return a callback to create a TabPrinter widget to edit bed shape
 wxSizer* TabPrinter::create_bed_shape_widget(wxWindow* parent)
 {
-    // ORCA modernize button style
+    // MOMENT modernize button style
     Button* btn = new Button(parent, _(L("Set")) + " " + dots);
     btn->SetStyle(ButtonStyle::Regular, ButtonType::Parameter);
 
@@ -7149,7 +7149,7 @@ void Page::activate(ConfigOptionMode mode, std::function<void()> throw_if_cancel
     for (auto group : m_optgroups) {
         if (!group->activate(throw_if_canceled))
             continue;
-        m_vsizer->Add(group->sizer, 0, wxEXPAND | (group->is_legend_line() ? (wxLEFT|wxTOP) : wxALL), m_parent->FromDIP(5)); // ORCA use less margin on parameters section
+        m_vsizer->Add(group->sizer, 0, wxEXPAND | (group->is_legend_line() ? (wxLEFT|wxTOP) : wxALL), m_parent->FromDIP(5)); // MOMENT use less margin on parameters section
         group->update_visibility(mode);
 #if HIDE_FIRST_SPLIT_LINE
         if (first) group->stb->Hide();
@@ -7244,7 +7244,7 @@ bool Page::set_value(const t_config_option_key &opt_key, const boost::any &value
 ConfigOptionsGroupShp Page::new_optgroup(const wxString &title, const wxString &icon, int noncommon_label_width /*= -1*/, bool is_extruder_og /* false */)
 {
     //! config_ have to be "right"
-    ConfigOptionsGroupShp optgroup  = is_extruder_og ? std::make_shared<ExtruderOptionsGroup>(m_parent, title, icon, m_config, true) // ORCA: add support for icons
+    ConfigOptionsGroupShp optgroup  = is_extruder_og ? std::make_shared<ExtruderOptionsGroup>(m_parent, title, icon, m_config, true) // MOMENT: add support for icons
         : std::make_shared<ConfigOptionsGroup>(m_parent, title, icon, m_config, true);
     optgroup->split_multi_line     = this->m_split_multi_line;
     optgroup->option_label_at_right = this->m_option_label_at_right;

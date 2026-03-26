@@ -1,0 +1,12 @@
+{
+  "type": "machine_model",
+  "name": "Moment M200(HVMS)",
+  "model_id": "Moment-M200(HVMS)",
+  "nozzle_diameter": "0.4",
+  "machine_tech": "FFF",
+  "family": "Moment",
+  "bed_model": "M200_bed.stl",
+  "bed_texture": "M200_bed.png",
+  "hotend_model": "Moment_hotend.stl",
+  "default_materials": "Moment PLA Sonic-HVMS;Moment PLA Tough-HVMS;Moment ABS-HVMS;Moment PA-HVMS;Moment PA6-CF-HVMS;Moment PC-HVMS;Moment PETG-HVMS;Moment PC-HVMS;Moment TPU95A-HVMS;Moment TPU95A-HF-HVMS;Moment Wood-HVMS;Moment PETG-HVMS;Moment PA6-GF-HVMS;Moment PET-CF-HVMS;Moment ABS-GF-HVMS;Moment PETG-ESD-HVMS"
+}

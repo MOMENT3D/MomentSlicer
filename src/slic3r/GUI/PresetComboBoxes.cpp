@@ -1140,7 +1140,7 @@ void PlaterPresetComboBox::update()
     std::map<wxString, wxString>   preset_descriptions;
     std::map<wxString, std::string> preset_filament_vendors;
     std::map<wxString, std::string> preset_filament_types;
-    std::map<wxString, std::string> preset_filament_names; // ORCA
+    std::map<wxString, std::string> preset_filament_names; // MOMENT
     //BBS:  move system to the end
     wxString selected_system_preset;
     wxString selected_user_preset;
@@ -1183,7 +1183,7 @@ void PlaterPresetComboBox::update()
 
             bitmap_key += single_bar ? filament_rgb : filament_rgb + extruder_rgb;
 #endif
-            // ORCA allow caching vendor and type values for all presets instead just system ones
+            // MOMENT allow caching vendor and type values for all presets instead just system ones
             // if (preset.is_system) { 
                 if (!preset.is_compatible && preset_filament_vendors.count(name) > 0)
                     continue;
@@ -1193,7 +1193,7 @@ void PlaterPresetComboBox::update()
                 if (preset_filament_vendors[name] == "Bambu Lab")
                     preset_filament_vendors[name] = "Bambu";
                 preset_filament_types[name] = preset.config.option<ConfigOptionStrings>("filament_type")->values.at(0);
-                preset_filament_names[name] = name.ToStdString(); // ORCA
+                preset_filament_names[name] = name.ToStdString(); // MOMENT
             //}
         }
         wxBitmap* bmp = get_bmp(preset);
@@ -1296,7 +1296,7 @@ void PlaterPresetComboBox::update()
                         }
                         return l->first < r->first;
                     });
-                // ORCA add sorting support for vendor / type for user presets. also non grouped items
+                // MOMENT add sorting support for vendor / type for user presets. also non grouped items
                 if (groupName == "by_vendor" || groupName == "by_type" || groupName == ""){
                     auto by = groupName == "by_vendor" ? preset_filament_vendors
                             : groupName == "by_type"   ? preset_filament_types
@@ -1316,7 +1316,7 @@ void PlaterPresetComboBox::update()
                 }
                 bool unsupported = group == "Unsupported presets";
                 for (auto it : list) {
-                    // ORCA add sorting support for vendor / type for user presets
+                    // MOMENT add sorting support for vendor / type for user presets
                     auto groupName2 = groupName == "by_type"   ? (preset_filament_types[it->first].empty()   ? _L("Unspecified") : preset_filament_types[it->first])
                                     : groupName == "by_vendor" ? (preset_filament_vendors[it->first].empty() ? _L("Unspecified") : preset_filament_vendors[it->first])
                                     : groupByGroup             ? groupName
@@ -1344,7 +1344,7 @@ void PlaterPresetComboBox::update()
 
     //BBS: add project embedded preset logic
     add_presets(project_embedded_presets, selected_user_preset, L("Project-inside presets"), _L("Project") + " ");
-    // ORCA add sorting support for vendor / type for user presets
+    // MOMENT add sorting support for vendor / type for user presets
     auto group_filament_presets    = wxGetApp().app_config->get("group_filament_presets");
     auto group_filament_presets_by = group_filament_presets  == "0" ? (_L("Custom") + " ") // Append all to "Custom" sub menu
                                    : group_filament_presets  == "2" ? "by_type"            // Create sub menus with filament type

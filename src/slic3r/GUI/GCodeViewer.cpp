@@ -91,7 +91,7 @@ static std::string get_view_type_string(libvgcode::EViewType view_type)
         return _u8L("Layer Time");
 else if (view_type == libvgcode::EViewType::LayerTimeLogarithmic)
         return _u8L("Layer Time (log)");
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
     else if (view_type == libvgcode::EViewType::PressureAdvance)
         return _u8L("Pressure Advance");
     return "";
@@ -160,7 +160,7 @@ int GCodeViewer::SequentialView::ActualSpeedImguiWidget::plot(const char* label,
         const float y0 = y_range.first;
 
         const ImU32 grid_main_color = ImGui::GetColorU32(ImVec4(0.5f, 0.5f, 0.5f, 0.5f));
-        const ImU32 grid_secondary_color = ImGui::GetColorU32(ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 0.5f)); // ORCA color with opacity
+        const ImU32 grid_secondary_color = ImGui::GetColorU32(ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 0.5f)); // MOMENT color with opacity
 
         // horizontal levels
         for (const auto& [level, color] : levels) {
@@ -180,7 +180,7 @@ int GCodeViewer::SequentialView::ActualSpeedImguiWidget::plot(const char* label,
 
         // profiile
         const ImU32 col_base = ImGui::GetColorU32(ImVec4(0.8f, 0.8f, 0.8f, 1.0f));
-        const ImU32 col_hovered = ImGui::GetColorU32(ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 1.0f)); // ORCA color
+        const ImU32 col_hovered = ImGui::GetColorU32(ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 1.0f)); // MOMENT color
         for (int n = 0; n < values_count - 1; ++n) {
             const ImVec2 tp1(ImSaturate((data[n].pos - x0) * inv_scale_x), 1.0f - ImSaturate((data[n].speed - y0) * inv_scale_y));
             const ImVec2 tp2(ImSaturate((data[n + 1].pos - x0) * inv_scale_x), 1.0f - ImSaturate((data[n + 1].speed - y0) * inv_scale_y));
@@ -267,7 +267,7 @@ static std::string to_string(libvgcode::EMoveType type)
 static std::string to_string(libvgcode::EGCodeExtrusionRole role)
 {
     switch (role)
-    {                                                              // ORCA matched terms
+    {                                                              // MOMENT matched terms
     case libvgcode::EGCodeExtrusionRole::None:                     { return _u8L("Unknown"); }
     case libvgcode::EGCodeExtrusionRole::Perimeter:                { return _u8L("Inner wall"); }
     case libvgcode::EGCodeExtrusionRole::ExternalPerimeter:        { return _u8L("Outer wall"); }
@@ -283,9 +283,9 @@ static std::string to_string(libvgcode::EGCodeExtrusionRole role)
     case libvgcode::EGCodeExtrusionRole::SupportMaterialInterface: { return _u8L("Support interface"); }
     case libvgcode::EGCodeExtrusionRole::WipeTower:                { return _u8L("Prime tower"); }
     case libvgcode::EGCodeExtrusionRole::Custom:                   { return _u8L("Custom"); }
-    // ORCA
+    // MOMENT
     case libvgcode::EGCodeExtrusionRole::BottomSurface:            { return _u8L("Bottom surface"); }
-    case libvgcode::EGCodeExtrusionRole::InternalBridgeInfill:     { return _u8L("Internal bridge"); } // ORCA
+    case libvgcode::EGCodeExtrusionRole::InternalBridgeInfill:     { return _u8L("Internal bridge"); } // MOMENT
     case libvgcode::EGCodeExtrusionRole::Brim:                     { return _u8L("Brim"); }
     case libvgcode::EGCodeExtrusionRole::SupportTransition:        { return _u8L("Support transition"); }
     case libvgcode::EGCodeExtrusionRole::Mixed:                    { return _u8L("Mixed"); }
@@ -316,7 +316,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
         ImGui::SetNextWindowBgAlpha(0.8f);
         imgui.begin(std::string("ToolPosition"), ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
         ImGui::AlignTextToFramePadding();
-        // ImGuiWrapper::text_colored(ImGuiWrapper::COL_ORCA, _u8L("Position") + ":");
+        // ImGuiWrapper::text_colored(ImGuiWrapper::COL_MOMENT, _u8L("Position") + ":");
         // ImGui::SameLine();
         libvgcode::PathVertex vertex = viewer->get_current_vertex();
         size_t vertex_id = viewer->get_current_vertex_id();
@@ -325,13 +325,13 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
             vertex = viewer->get_vertex_at(vertex_id);
         }
 
-        // ORCA Moved position and information to bottom
+        // MOMENT Moved position and information to bottom
 
         if (properties_shown) {
             auto append_table_row = [](const std::string& label, std::function<void(void)> value_callback) {
                 ImGui::TableNextRow();
                 ImGui::TableSetColumnIndex(0);
-                ImGuiWrapper::text_colored(ImGuiWrapper::COL_ORCA, label);
+                ImGuiWrapper::text_colored(ImGuiWrapper::COL_MOMENT, label);
                 ImGui::TableSetColumnIndex(1);
                 value_callback();
             };
@@ -381,7 +381,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                     const std::string text = std::string(buff);
                     ImGuiWrapper::text(text);
                 });
-                  append_table_row(_u8L("Flow rate"), [&vertex, &buff, NA_TXT]() { // ORCA use "Flow rate" instead "Volumetric flow Rate" to make window more compact
+                  append_table_row(_u8L("Flow rate"), [&vertex, &buff, NA_TXT]() { // MOMENT use "Flow rate" instead "Volumetric flow Rate" to make window more compact
                     std::string text;
                     if (vertex.is_extrusion()) {
                         sprintf(buff, ("%.3f " + _u8L("mm³/s")).c_str(), vertex.volumetric_rate());
@@ -400,7 +400,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                     sprintf(buff, ("%.0f " + _u8L("°C")).c_str(), vertex.temperature);
                     ImGuiWrapper::text(std::string(buff));
                 });
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
                 append_table_row(_u8L("Pressure Advance"), [&vertex, &buff]() {
                     sprintf(buff, "%.4f", vertex.pressure_advance);
                     ImGuiWrapper::text(std::string(buff));
@@ -417,7 +417,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
 
 #if ENABLE_ACTUAL_SPEED_DEBUG
             bool actual_speed_exist = vertex.is_extrusion() || vertex.is_travel() || vertex.is_wipe();
-            //if (vertex.is_extrusion() || vertex.is_travel() || vertex.is_wipe()) { // ORCA always show button to keep properties on same place
+            //if (vertex.is_extrusion() || vertex.is_travel() || vertex.is_wipe()) { // MOMENT always show button to keep properties on same place
                 ImGui::Spacing();
                 //ImGuiWrapper::text(_u8L("Actual speed profile"));
                 //ImGui::SameLine();
@@ -434,7 +434,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                 ImGui::PopStyleVar(3);
                 imgui.pop_confirm_button_style();
                 ImGui::SameLine();
-                ImGuiWrapper::text(_u8L("Actual speed profile").c_str()); // ORCA show label and plot on external window to make main window more compact
+                ImGuiWrapper::text(_u8L("Actual speed profile").c_str()); // MOMENT show label and plot on external window to make main window more compact
 
                 //ImGui::Separator();
                 //const int hover_id = m_actual_speed_imgui_widget.plot("##ActualSpeedProfile", { -1.0f, 150.0f });
@@ -449,7 +449,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.f, 0.f));
                     ImGui::PushStyleColor(ImGuiCol_HeaderHovered , ImGui::GetStyle().Colors[ImGuiCol_TableHeaderBg]);
                     const int hover_id = m_actual_speed_imgui_widget.plot("##ActualSpeedProfile", { -1.f, 135.f * m_scale});
-                    if (ImGui::BeginTable("ToolPositionTable", 2, ImGuiTableFlags_Borders /*| ImGuiTableFlags_ScrollY*/)) { // ORCA showing scrollbar causes expanding window
+                    if (ImGui::BeginTable("ToolPositionTable", 2, ImGuiTableFlags_Borders /*| ImGuiTableFlags_ScrollY*/)) { // MOMENT showing scrollbar causes expanding window
                         char buff[1024];
                         //ImGui::TableSetupScrollFreeze(0, 1); // Make top row always visible
                         ImGui::TableSetupColumn((_u8L("Position") + " (" + _u8L("mm")   + ")").c_str());
@@ -461,18 +461,18 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                             //if (highlight && counter == hover_id)
                             //    ImGui::SetScrollHereY();
                             ImGui::TableNextRow();
-                            const ImU32 row_bg_color = ImGui::GetColorU32(item.internal ? ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 0.15f) : ImVec4(0.2f, 0.2f, 0.2f, 0.25f)); // ORCA
+                            const ImU32 row_bg_color = ImGui::GetColorU32(item.internal ? ImVec4(0.0f, 150.f / 255.0f, 136.0f / 255.f, 0.15f) : ImVec4(0.2f, 0.2f, 0.2f, 0.25f)); // MOMENT
                             ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, row_bg_color);
                             ImGui::TableSetColumnIndex(0);
                             sprintf(buff, "%.3f", item.pos);
-                            imgui.text_colored(highlight ? ImGuiWrapper::COL_ORCA : ImGuiWrapper::to_ImVec4(ColorRGBA::WHITE()), buff);
+                            imgui.text_colored(highlight ? ImGuiWrapper::COL_MOMENT : ImGuiWrapper::to_ImVec4(ColorRGBA::WHITE()), buff);
                             ImGui::TableSetColumnIndex(1);
                             sprintf(buff, "%.1f", item.speed);
-                            imgui.text_colored(highlight ? ImGuiWrapper::COL_ORCA : ImGuiWrapper::to_ImVec4(ColorRGBA::WHITE()), buff);
+                            imgui.text_colored(highlight ? ImGuiWrapper::COL_MOMENT : ImGuiWrapper::to_ImVec4(ColorRGBA::WHITE()), buff);
                             ++counter;
                         }
 
-                        // ORCA add blank rows to keep plot in same place. row count can be 9 but mostly it shows between 3 to 5 
+                        // MOMENT add blank rows to keep plot in same place. row count can be 9 but mostly it shows between 3 to 5 
                         for (int id = 7 - counter; id > 0; --id) {
                             ImGui::TableNextRow();
                             ImGui::TableSetColumnIndex(0);
@@ -525,7 +525,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
 
         ImGui::BeginGroup(); // group contents to make information area more compact
 
-        // ORCA Use colorized axes labels & reduce precision on big scaled prints
+        // MOMENT Use colorized axes labels & reduce precision on big scaled prints
         auto pos       =vertex.position;
         int  max_value = std::round(std::max(std::max(pos[0], pos[1]),pos[2]));
         auto precision = max_value > 9999 ? "%.1f" : max_value > 999 ? "%.2f" : "%.3f";
@@ -615,7 +615,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                     sprintf(buf, "%s %s%.1f", buf, _u8L("Actual Speed: ").c_str(), vertex.actual_feedrate);
                     break;
                 }
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
                 case libvgcode::EViewType::PressureAdvance: {
                     sprintf(buf, "%s %s%.4f", buf, _u8L("PA: ").c_str(), vertex.pressure_advance);
                     break;
@@ -826,9 +826,9 @@ void GCodeViewer::SequentialView::GCodeWindow::render(float top, float bottom, f
     ImGuiWrapper& imgui = *wxGetApp().imgui();
 
     //BBS: GUI refactor: move to right
-    imgui.set_next_window_pos(right, top + 6 * m_scale, ImGuiCond_Always, 1.0f, 0.0f); // ORCA add a small gap between legend and code viewer
+    imgui.set_next_window_pos(right, top + 6 * m_scale, ImGuiCond_Always, 1.0f, 0.0f); // MOMENT add a small gap between legend and code viewer
     ImGui::SetNextWindowSize(ImVec2(required_width, wnd_height), ImGuiCond_Always);
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // ORCA add window rounding to modernize / match style
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // MOMENT add window rounding to modernize / match style
     ImGui::SetNextWindowBgAlpha(0.8f);
     imgui.begin(std::string("G-code"), ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
 
@@ -959,7 +959,7 @@ void GCodeViewer::init(ConfigOptionMode mode, PresetBundle* preset_bundle)
             }
 
             if (filename.empty()) {
-                filename = preset_bundle->get_hotend_model_for_printer_model(PresetBundle::ORCA_DEFAULT_PRINTER_MODEL);
+                filename = preset_bundle->get_hotend_model_for_printer_model(PresetBundle::MOMENT_DEFAULT_PRINTER_MODEL);
             }
         }
     }
@@ -1013,7 +1013,7 @@ void GCodeViewer::set_scale(float scale)
     if (m_sequential_view.m_scale != scale) {
         m_sequential_view.m_scale = scale;
         m_sequential_view.marker.m_scale = scale;
-        m_sequential_view.gcode_window.m_scale = scale; // ORCA
+        m_sequential_view.gcode_window.m_scale = scale; // MOMENT
     }
 }
 
@@ -1037,7 +1037,7 @@ void GCodeViewer::update_by_mode(ConfigOptionMode mode)
     view_type_items.push_back(libvgcode::EViewType::LayerTimeLogarithmic);
     view_type_items.push_back(libvgcode::EViewType::FanSpeed);
     view_type_items.push_back(libvgcode::EViewType::Temperature);
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
     view_type_items.push_back(libvgcode::EViewType::PressureAdvance);
     //if (mode == ConfigOptionMode::comDevelop) {
     //    view_type_items.push_back(EViewType::Tool);
@@ -1245,7 +1245,7 @@ void GCodeViewer::load_as_gcode(const GCodeProcessorResult& gcode_result, const 
             libvgcode::EGCodeExtrusionRole::Ironing, libvgcode::EGCodeExtrusionRole::BridgeInfill, libvgcode::EGCodeExtrusionRole::GapFill,
             libvgcode::EGCodeExtrusionRole::Skirt, libvgcode::EGCodeExtrusionRole::SupportMaterial, libvgcode::EGCodeExtrusionRole::SupportMaterialInterface,
             libvgcode::EGCodeExtrusionRole::WipeTower,
-            // ORCA
+            // MOMENT
             libvgcode::EGCodeExtrusionRole::BottomSurface, libvgcode::EGCodeExtrusionRole::InternalBridgeInfill, libvgcode::EGCodeExtrusionRole::Brim,
             libvgcode::EGCodeExtrusionRole::SupportTransition, libvgcode::EGCodeExtrusionRole::Mixed
             });
@@ -1273,7 +1273,7 @@ void GCodeViewer::load_as_gcode(const GCodeProcessorResult& gcode_result, const 
 
     // load_toolpaths(gcode_result, build_volume, exclude_bounding_box);
     
-    // ORCA: Only show filament/color print preview if more than one tool/extruder is actually used in the toolpaths.
+    // MOMENT: Only show filament/color print preview if more than one tool/extruder is actually used in the toolpaths.
     // Only reset back to Toolpaths (FeatureType) if we are currently in ColorPrint and this load is single-tool.
     if (m_viewer.get_used_extruders_count() > 1) {
         auto it = std::find(view_type_items.begin(), view_type_items.end(), libvgcode::EViewType::ColorPrint);
@@ -1630,7 +1630,7 @@ void GCodeViewer::update_sequential_view_current(unsigned int first, unsigned in
                 levels.back().second.a(0.5f);
             }
 
-            // ORCA Compress consecutive duplicate speeds with 0.1 precision
+            // MOMENT Compress consecutive duplicate speeds with 0.1 precision
             auto sameSpeed = [](float a, float b) {
                 return static_cast<int>(std::roundf(a * 10.0f)) == static_cast<int>(std::roundf(b * 10.0f));
             };
@@ -1795,7 +1795,7 @@ public:
 
         // write header to geometry file
         fprintf(f_geo.f, "# G-Code Toolpaths\n");
-        fprintf(f_geo.f, "# Generated by %s-%s based on Slic3r\n", SLIC3R_APP_NAME, SoftFever_VERSION);
+        fprintf(f_geo.f, "# Generated by %s-%s based on Slic3r\n", SLIC3R_APP_NAME, MOMENT3D_VERSION);
         fprintf(f_geo.f, "\nmtllib ./%s\n", materials_filename.filename().string().c_str());
 
         // open material file
@@ -1807,7 +1807,7 @@ public:
 
         // write header to material file
         fprintf(f_mat.f, "# G-Code Toolpaths Materials\n");
-        fprintf(f_mat.f, "# Generated by %s-%s based on Slic3r\n", SLIC3R_APP_NAME, SoftFever_VERSION);
+        fprintf(f_mat.f, "# Generated by %s-%s based on Slic3r\n", SLIC3R_APP_NAME, MOMENT3D_VERSION);
 
         libvgcode::Interval visible_range = m_viewer.get_view_visible_range();
         if (m_viewer.is_top_layer_only_view_range())
@@ -2287,7 +2287,7 @@ void GCodeViewer::render_toolpaths()
             add_range_property_row("speed range", m_viewer.get_color_range(libvgcode::EViewType::Speed).get_range());
             add_range_property_row("fan speed range", m_viewer.get_color_range(libvgcode::EViewType::FanSpeed).get_range());
             add_range_property_row("temperature range", m_viewer.get_color_range(libvgcode::EViewType::Temperature).get_range());
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
             add_range_property_row("pressure advance range", m_viewer.get_color_range(libvgcode::EViewType::PressureAdvance).get_range());
             add_range_property_row("volumetric rate range", m_viewer.get_color_range(libvgcode::EViewType::VolumetricFlowRate).get_range());
             add_range_property_row("layer time linear range", m_viewer.get_color_range(libvgcode::EViewType::LayerTimeLinear).get_range());
@@ -2412,7 +2412,7 @@ void GCodeViewer::render_all_plates_stats(const std::vector<const GCodeProcessor
     }
     ImGuiWrapper& imgui = *wxGetApp().imgui();
 
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // ORCA add window rounding to modernize / match style
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // MOMENT add window rounding to modernize / match style
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0, 10.0 * m_scale));
     ImGui::PushStyleColor(ImGuiCol_Separator, ImVec4(1.0f, 1.0f, 1.0f, 0.6f));
     ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.00f, 0.68f, 0.26f, 1.0f));
@@ -2797,7 +2797,7 @@ void GCodeViewer::render_legend_color_arr_recommen(float window_padding)
         ImVec2 p1 = ImGui::GetCursorScreenPos();
         ImVec2 p2 = ImVec2(p1.x + ImGui::GetContentRegionAvail().x, p1.y);
         for (float i = p1.x; i < p2.x; i += (dash_length + gap_length)) {
-            draw_list->AddLine(ImVec2(i, p1.y), ImVec2(i + dash_length, p1.y), ImGui::GetColorU32(ImVec4(1.0f,1.0f,1.0f,0.6f))); // ORCA match color
+            draw_list->AddLine(ImVec2(i, p1.y), ImVec2(i + dash_length, p1.y), ImGui::GetColorU32(ImVec4(1.0f,1.0f,1.0f,0.6f))); // MOMENT match color
         }
     };
 
@@ -3014,12 +3014,12 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     ImGuiWrapper& imgui = *wxGetApp().imgui();
 
     //BBS: GUI refactor: move to the right
-    imgui.set_next_window_pos(float(canvas_width - right_margin * m_scale), 4.0f * m_scale, ImGuiCond_Always, 1.0f, 0.0f); // ORCA add a small gap to top to create seperation with main toolbar
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // ORCA add window rounding to modernize / match style
+    imgui.set_next_window_pos(float(canvas_width - right_margin * m_scale), 4.0f * m_scale, ImGuiCond_Always, 1.0f, 0.0f); // MOMENT add a small gap to top to create seperation with main toolbar
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 8.0f * m_scale); // MOMENT add window rounding to modernize / match style
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0,0.0));
     ImGui::PushStyleColor(ImGuiCol_Separator, ImVec4(1.0f,1.0f,1.0f,0.6f));
-    ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.00f, 0.59f, 0.53f, 1.0f));
-    ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.00f, 0.59f, 0.53f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.59f, 0.00f, 0.00f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.59f, 0.00f, 0.00f, 1.0f));
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrab, ImVec4(0.42f, 0.42f, 0.42f, 1.00f));
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrabHovered, ImVec4(0.93f, 0.93f, 0.93f, 1.00f));
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrabActive, ImVec4(0.93f, 0.93f, 0.93f, 1.00f));
@@ -3057,7 +3057,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     ImVec2 pos_rect = ImGui::GetCursorScreenPos();
     float window_padding = 4.0f * m_scale;
 
-    // ORCA dont use background on top bar to give modern look
+    // MOMENT dont use background on top bar to give modern look
     //draw_list->AddRectFilled(ImVec2(pos_rect.x,pos_rect.y - ImGui::GetStyle().WindowPadding.y),
     //ImVec2(pos_rect.x + ImGui::GetWindowWidth() + ImGui::GetFrameHeight(),pos_rect.y + ImGui::GetFrameHeight() + window_padding * 2.5),
     //ImGui::GetColorU32(ImVec4(0,0,0,0.3)));
@@ -3067,7 +3067,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         const ColorRGBA& color,
         const std::vector<std::pair<std::string, float>>& columns_offsets,
         bool checkbox = true,
-        float checkbox_pos = 0.f, // ORCA use calculated value for eye icon. Aligned to "Display" header or end of combo box
+        float checkbox_pos = 0.f, // MOMENT use calculated value for eye icon. Aligned to "Display" header or end of combo box
         bool visible = true,
         std::function<void()> callback = nullptr)
     {
@@ -3108,7 +3108,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
             ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(20.0 * m_scale, 0.0));
             ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(1.00f, 0.68f, 0.26f, 0.0f));
             ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(1.00f, 0.68f, 0.26f, 0.0f));
-            ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.00f, 0.59f, 0.53f, 1.00f));
+            ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.59f, 0.00f, 0.00f, 1.00f));
             float max_height = 0.f;
             for (auto column_offset : columns_offsets) {
                 if (ImGui::CalcTextSize(column_offset.first.c_str()).y > max_height)
@@ -3120,7 +3120,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
             if (b_menu_item)
                 callback();
             if (checkbox) {
-                // ORCA replace checkboxes with eye icon
+                // MOMENT replace checkboxes with eye icon
                 // Use calculated position from argument. this method has predictable result compared to alingning button using window width
                 // fixes slowly resizing window and endlessly expanding window when there is a miscalculation on position
                 ImGui::SameLine(checkbox_pos);
@@ -3175,7 +3175,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
 
     auto append_headers = [&imgui, window_padding, this](const std::vector<std::pair<std::string, float>>& title_offsets) {
         for (size_t i = 0; i < title_offsets.size(); i++) {
-            if (title_offsets[i].first == _u8L("Display")) { // ORCA Hide Display header
+            if (title_offsets[i].first == _u8L("Display")) { // MOMENT Hide Display header
                 ImGui::SameLine(title_offsets[i].second);
                 ImGui::Dummy({16.f * m_scale, 1}); // 16(icon_size)
                 continue;
@@ -3200,12 +3200,12 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     auto calculate_offsets = [&imgui, max_width, window_padding, this](const std::vector<std::pair<std::string, std::vector<::string>>>& title_columns, float extra_size = 0.0f) {
             const ImGuiStyle& style = ImGui::GetStyle();
             std::vector<float> offsets;
-            // ORCA increase spacing for more readable format. Using direct number requires much less code change in here. GetTextLineHeight for additional spacing for icon_size
+            // MOMENT increase spacing for more readable format. Using direct number requires much less code change in here. GetTextLineHeight for additional spacing for icon_size
             offsets.push_back(max_width(title_columns[0].second, title_columns[0].first, extra_size) + 12.f * m_scale + ImGui::GetTextLineHeight());
-            for (size_t i = 1; i < title_columns.size() - 1; i++) // ORCA dont add extra spacing after icon / "Display" header
+            for (size_t i = 1; i < title_columns.size() - 1; i++) // MOMENT dont add extra spacing after icon / "Display" header
                 offsets.push_back(offsets.back() + max_width(title_columns[i].second, title_columns[i].first) + ((title_columns[i].first == _u8L("Display") ? 0 : 12.f) * m_scale));
             if (title_columns.back().first == _u8L("Display") && title_columns.size() > 2)
-                offsets[title_columns.size() - 2] -= 3.f; // ORCA reduce spacing after previous header
+                offsets[title_columns.size() - 2] -= 3.f; // MOMENT reduce spacing after previous header
 
             float average_col_width = ImGui::GetWindowWidth() / static_cast<float>(title_columns.size());
             std::vector<float> ret;
@@ -3299,7 +3299,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     //BBS display Color Scheme
     ImGui::Dummy({ window_padding, window_padding });
     ImGui::Dummy({ window_padding, window_padding });
-    ImGui::SameLine(window_padding * 2); // ORCA Ignores item spacing to get perfect window margins since since this part uses dummies for window padding
+    ImGui::SameLine(window_padding * 2); // MOMENT Ignores item spacing to get perfect window margins since since this part uses dummies for window padding
     std::wstring btn_name;
     if (m_fold)
         btn_name = ImGui::UnfoldButtonIcon;
@@ -3308,11 +3308,11 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
     ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(84 / 255.f, 84 / 255.f, 90 / 255.f, 1.f));
     ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(84 / 255.f, 84 / 255.f, 90 / 255.f, 1.f));
-    float calc_padding = (ImGui::GetFrameHeight() - 16 * m_scale) / 2;                      // ORCA calculated padding for 16x16 icon
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(calc_padding, calc_padding));    // ORCA Center icon with frame padding
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f * m_scale);                       // ORCA Match button style with combo box
+    float calc_padding = (ImGui::GetFrameHeight() - 16 * m_scale) / 2;                      // MOMENT calculated padding for 16x16 icon
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(calc_padding, calc_padding));    // MOMENT Center icon with frame padding
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f * m_scale);                       // MOMENT Match button style with combo box
 
-    float button_width = 16 * m_scale + calc_padding * 2;                                   // ORCA match buttons height with combo box
+    float button_width = 16 * m_scale + calc_padding * 2;                                   // MOMENT match buttons height with combo box
     if (ImGui::Button(into_u8(btn_name).c_str(), ImVec2(button_width, button_width))) {
         m_fold = !m_fold;
     }
@@ -3331,7 +3331,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
 
     ImGui::SameLine();
     const char* view_type_value = view_type_items_str[m_view_type_sel].c_str();
-    ImGuiComboFlags flags = ImGuiComboFlags_HeightLargest; // ORCA allow to fit all items to prevent scrolling on reaching last elements
+    ImGuiComboFlags flags = ImGuiComboFlags_HeightLargest; // MOMENT allow to fit all items to prevent scrolling on reaching last elements
     if (ImGui::BBLBeginCombo("", view_type_value, flags)) {
         ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 0.0f);
         for (int i = 0; i < view_type_items_str.size(); i++) {
@@ -3357,16 +3357,16 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         ImGui::EndCombo();
     }
     pop_combo_style();
-    ImGui::SameLine(0, window_padding);               // ORCA Without (0,window_padding) it adds unnecessary item spacing after combo box
-                                                      // ORCA predictable_icon_pos helpful when window size determined by combo box.
+    ImGui::SameLine(0, window_padding);               // MOMENT Without (0,window_padding) it adds unnecessary item spacing after combo box
+                                                      // MOMENT predictable_icon_pos helpful when window size determined by combo box.
     float predictable_icon_pos = ImGui::GetCursorPosX() - icon_size - window_padding - ImGui::GetStyle().ItemSpacing.x - 1.f * m_scale; // 1 for border
     ImGui::Dummy({ window_padding, window_padding });
-    ImGui::Dummy({ window_padding, window_padding }); // ORCA Matches top-bottom window paddings
-    float window_width = ImGui::GetWindowWidth();     // ORCA Store window width
+    ImGui::Dummy({ window_padding, window_padding }); // MOMENT Matches top-bottom window paddings
+    float window_width = ImGui::GetWindowWidth();     // MOMENT Store window width
 
     if (m_fold) {
-        legend_height = ImGui::GetFrameHeight() + window_padding * 4; // ORCA using 4 instead 2 gives correct toolbar margins while its folded
-        ImGui::SameLine(window_width);                // ORCA use stored window width while folded. This prevents annoying position change on fold/expand button
+        legend_height = ImGui::GetFrameHeight() + window_padding * 4; // MOMENT using 4 instead 2 gives correct toolbar margins while its folded
+        ImGui::SameLine(window_width);                // MOMENT use stored window width while folded. This prevents annoying position change on fold/expand button
         ImGui::Dummy({ 0, 0 });
         imgui.end();
         ImGui::PopStyleColor(7);
@@ -3493,16 +3493,16 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
                 labels.push_back(_u8L(ExtrusionEntity::role_to_string(convert(role))));
                 auto [time, percent] = role_time_and_percent(role);
                 times.push_back((time > 0.0f) ? short_time(get_time_dhms(time)) : "");
-                if (percent == 0) // ORCA remove % symbol from rows
+                if (percent == 0) // MOMENT remove % symbol from rows
                     ::sprintf(buffer, "0");
                 else
                     percent > 0.001 ? ::sprintf(buffer, "%.1f", percent * 100) : ::sprintf(buffer, "<0.1");
                 percents.push_back(buffer);
 
                 auto [model_used_filament_m, model_used_filament_g] = used_filament_per_role(convert(role));
-                ::sprintf(buffer, imperial_units ? "%.2fin" : "%.2fm", model_used_filament_m); // ORCA dont use spacing between value and unit
+                ::sprintf(buffer, imperial_units ? "%.2fin" : "%.2fm", model_used_filament_m); // MOMENT dont use spacing between value and unit
                 used_filaments_length.push_back(buffer);
-                ::sprintf(buffer, imperial_units ? "%.2foz" : "%.2fg", model_used_filament_g); // ORCA dont use spacing between value and unit
+                ::sprintf(buffer, imperial_units ? "%.2foz" : "%.2fg", model_used_filament_g); // MOMENT dont use spacing between value and unit
                 used_filaments_weight.push_back(buffer);
             }
         }
@@ -3511,14 +3511,14 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         {
             auto [time, percent] = travel_time_and_percent();
             travel_time = (time > 0.0f) ? short_time(get_time_dhms(time)) : "";
-            if (percent == 0) // ORCA remove % symbol from rows
+            if (percent == 0) // MOMENT remove % symbol from rows
                 ::sprintf(buffer, "0");
             else
                 percent > 0.001 ? ::sprintf(buffer, "%.1f", percent * 100) : ::sprintf(buffer, "<0.1");
             travel_percent = buffer;
         }
 
-        // ORCA use % symbol for percentage and use "Usage" for "Used filaments"
+        // MOMENT use % symbol for percentage and use "Usage" for "Used filaments"
         offsets = calculate_offsets({ {_u8L("Line Type"), labels}, {_u8L("Time"), times}, {"%", percents}, {"", used_filaments_length}, {"", used_filaments_weight}, {_u8L("Display"), {""}}}, icon_size);
         append_headers({{_u8L("Line Type"), offsets[0]}, {_u8L("Time"), offsets[1]}, {"%", offsets[2]}, {_u8L("Usage"), offsets[3]}, {_u8L("Display"), offsets[5]}});
         break;
@@ -3537,7 +3537,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     }
     case libvgcode::EViewType::FanSpeed:       { imgui.title(_u8L("Fan Speed (%)")); break; }
     case libvgcode::EViewType::Temperature:    { imgui.title(_u8L("Temperature (°C)")); break; }
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
     case libvgcode::EViewType::PressureAdvance:{ imgui.title(_u8L("Pressure Advance")); break; }
     case libvgcode::EViewType::VolumetricFlowRate:
         { imgui.title(_u8L("Volumetric flow rate (mm³/s)")); break; }
@@ -3594,7 +3594,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         if ((displayed_columns & ~ColumnData::Model) > 0) {
             title_columns.push_back({ _u8L("Total"), total_filaments });
         }
-        title_columns.push_back({ _u8L("Display"), {""}}); // ORCA Add spacing for eye icon. used as color_print_offsets[_u8L("Display")]
+        title_columns.push_back({ _u8L("Display"), {""}}); // MOMENT Add spacing for eye icon. used as color_print_offsets[_u8L("Display")]
         auto offsets_ = calculate_offsets(title_columns, icon_size);
         std::vector<std::pair<std::string, float>> title_offsets;
         for (int i = 0; i < offsets_.size(); i++) {
@@ -3610,7 +3610,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
 
     auto append_option_item = [this, append_item](libvgcode::EOptionType type, std::vector<float> offsets) {
         auto append_option_item_with_type = [this, offsets, append_item](libvgcode::EOptionType type, const ColorRGBA& color, const std::string& label, bool visible) {
-            append_item(EItemType::Rect, color, {{ label , offsets[0] }}, true, offsets.back()/*ORCA checkbox_pos*/, visible, [this, type, visible]() {
+            append_item(EItemType::Rect, color, {{ label , offsets[0] }}, true, offsets.back()/*MOMENT checkbox_pos*/, visible, [this, type, visible]() {
                 m_viewer.toggle_option_visibility(type);
                 update_moves_slider();
                 });
@@ -3669,7 +3669,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
                 columns_offsets.push_back({ _u8L("Travel"), offsets[0] });
                 columns_offsets.push_back({ travel_time, offsets[1] });
                 columns_offsets.push_back({ travel_percent, offsets[2] });
-                append_item(EItemType::Rect, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), columns_offsets, true, offsets.back()/*ORCA checkbox_pos*/, visible, [this, item, visible]() {
+                append_item(EItemType::Rect, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), columns_offsets, true, offsets.back()/*MOMENT checkbox_pos*/, visible, [this, item, visible]() {
                         m_viewer.toggle_option_visibility(item);
                         update_moves_slider();
                     });
@@ -3688,7 +3688,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         append_headers({ {_u8L("Options"), offsets[0] }, { _u8L("Display"), offsets[1]} });
         const bool travel_visible = m_viewer.is_option_visible(libvgcode::EOptionType::Travels);
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 3.0f));
-        append_item(EItemType::None, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), { {_u8L("Travel"), offsets[0] }}, true, predictable_icon_pos/*ORCA checkbox_pos*/, travel_visible, [this, travel_visible]() {
+        append_item(EItemType::None, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), { {_u8L("Travel"), offsets[0] }}, true, predictable_icon_pos/*MOMENT checkbox_pos*/, travel_visible, [this, travel_visible]() {
             m_viewer.toggle_option_visibility(libvgcode::EOptionType::Travels);
             // refresh(*m_gcode_result, wxGetApp().plater()->get_extruder_colors_from_plater_config(m_gcode_result));
             update_moves_slider();
@@ -3705,7 +3705,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         append_headers({ {_u8L("Options"), offsets[0] }, { _u8L("Display"), offsets[1]} });
         const bool travel_visible = m_viewer.is_option_visible(libvgcode::EOptionType::Travels);
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 3.0f));
-        append_item(EItemType::None, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), { {_u8L("Travel"), offsets[0] }}, true, predictable_icon_pos/*ORCA checkbox_pos*/, travel_visible, [this, travel_visible]() {
+        append_item(EItemType::None, libvgcode::convert(m_viewer.get_option_color(libvgcode::EOptionType::Travels)), { {_u8L("Travel"), offsets[0] }}, true, predictable_icon_pos/*MOMENT checkbox_pos*/, travel_visible, [this, travel_visible]() {
             m_viewer.toggle_option_visibility(libvgcode::EOptionType::Travels);
             // refresh(*m_gcode_result, wxGetApp().plater()->get_extruder_colors_from_plater_config(m_gcode_result));
             update_moves_slider();
@@ -3715,7 +3715,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
     }
     case libvgcode::EViewType::FanSpeed:                 { append_range(m_viewer.get_color_range(libvgcode::EViewType::FanSpeed), 0); break; }
     case libvgcode::EViewType::Temperature:              { append_range(m_viewer.get_color_range(libvgcode::EViewType::Temperature), 0); break; }
-// ORCA: Add Pressure Advance visualization support
+// MOMENT: Add Pressure Advance visualization support
     case libvgcode::EViewType::PressureAdvance:          { append_range(m_viewer.get_color_range(libvgcode::EViewType::PressureAdvance), 3); break; }
     case libvgcode::EViewType::LayerTimeLinear:          { append_range(m_viewer.get_color_range(libvgcode::EViewType::LayerTimeLinear), true); break; }
     case libvgcode::EViewType::LayerTimeLogarithmic:     { append_range(m_viewer.get_color_range(libvgcode::EViewType::LayerTimeLogarithmic), true); break; }
@@ -3818,8 +3818,8 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
                     columns_offsets.push_back({ buf, color_print_offsets[_u8L("Total")] });
                 }
 
-                float checkbox_pos = std::max(predictable_icon_pos, color_print_offsets[_u8L("Display")]); // ORCA prefer predictable_icon_pos when header not reacing end
-                append_item(EItemType::Rect, libvgcode::convert(tool_colors[extruder_idx]), columns_offsets, false, checkbox_pos/*ORCA*/, true, [this, extruder_idx]() {});
+                float checkbox_pos = std::max(predictable_icon_pos, color_print_offsets[_u8L("Display")]); // MOMENT prefer predictable_icon_pos when header not reacing end
+                append_item(EItemType::Rect, libvgcode::convert(tool_colors[extruder_idx]), columns_offsets, false, checkbox_pos/*MOMENT*/, true, [this, extruder_idx]() {});
             }
             i++;
         }
@@ -4229,7 +4229,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         ImGui::SameLine(max_len*1.5);
         imgui.title(cgcode_time_str, false);
 
-        // ORCA: Get layer Zs as doubles
+        // MOMENT: Get layer Zs as doubles
         std::vector<double> layer_zs = get_layers_zs();
 
         for (Slic3r::CustomGCode::Item custom_gcode : custom_gcode_per_print_z) {
@@ -4245,7 +4245,7 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
             }
             ImGui::SameLine(max_len);
             char buf[64];
-            int layer = find_close_layer_idx(layer_zs, custom_gcode.print_z, epsilon()); // ORCA: find layer index by Z
+            int layer = find_close_layer_idx(layer_zs, custom_gcode.print_z, epsilon()); // MOMENT: find layer index by Z
             ::sprintf(buf, "%d", layer + 1); // +1 because layer 0 is the first layer
             imgui.text(buf);
             ImGui::SameLine(max_len * 1.5);
@@ -4394,13 +4394,13 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
         ImGui::Dummy({ window_padding, window_padding });
         ImGui::SameLine();
         offsets = calculate_offsets({ { _u8L("Options"), { ""}}, { _u8L("Display"), {""}} }, icon_size);
-        offsets[1] = std::max(predictable_icon_pos, color_print_offsets[_u8L("Display")]); // ORCA prefer predictable_icon_pos when header not reacing end
+        offsets[1] = std::max(predictable_icon_pos, color_print_offsets[_u8L("Display")]); // MOMENT prefer predictable_icon_pos when header not reacing end
         append_headers({ {_u8L("Options"), offsets[0] }, { _u8L("Display"), offsets[1]} });
         for (auto item : m_viewer.get_options())
             append_option_item(item, offsets);
     }
     ImGui::Dummy({ window_padding, window_padding });
-    if (m_nozzle_nums > 1 && (m_viewer.get_view_type() == libvgcode::EViewType::Summary || m_viewer.get_view_type() == libvgcode::EViewType::ColorPrint)) // ORCA show only on summary and filament tab
+    if (m_nozzle_nums > 1 && (m_viewer.get_view_type() == libvgcode::EViewType::Summary || m_viewer.get_view_type() == libvgcode::EViewType::ColorPrint)) // MOMENT show only on summary and filament tab
         render_legend_color_arr_recommen(window_padding);
 
     legend_height = ImGui::GetCurrentWindow()->Size.y;
@@ -4411,17 +4411,17 @@ void GCodeViewer::render_legend(float &legend_height, int canvas_width, int canv
 
 void GCodeViewer::push_combo_style()
 {
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f * m_scale); // ORCA scale rounding
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f * m_scale); // ORCA scale frame size
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f * m_scale); // MOMENT scale rounding
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f * m_scale); // MOMENT scale frame size
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8.0,8.0));
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
     ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
     ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
     ImGui::PushStyleColor(ImGuiCol_PopupBg, ImVec4(0.0f, 0.0f, 0.0f, 0.8f));
-    ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.00f, 0.59f, 0.53f, 1.00f));
-    ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.00f, 0.59f, 0.53f, 0.0f));
-    ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(0.00f, 0.59f, 0.53f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.59f, 0.00f, 0.00f, 1.00f));
+    ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.59f, 0.00f, 0.00f, 0.0f));
+    ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(0.59f, 0.00f, 0.00f, 1.0f));
 }
 void GCodeViewer::pop_combo_style()
 {

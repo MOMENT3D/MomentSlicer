@@ -73,7 +73,7 @@ class SavePresetDialog : public DPIDialog
 
         //BBS: add project embedded preset relate logic
         bool                m_save_to_project {false};
-        RadioGroup*         m_radio_group; // ORCA
+        RadioGroup*         m_radio_group; // MOMENT
         bool                m_detach{false};
         wxCheckBox*         m_detach_checkbox{nullptr};
 

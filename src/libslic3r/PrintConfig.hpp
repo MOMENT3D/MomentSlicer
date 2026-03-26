@@ -1034,7 +1034,7 @@ PRINT_CONFIG_CLASS_DEFINE(
     ((ConfigOptionInt,  interlocking_boundary_avoidance))
 
     // Orca: internal use only
-    ((ConfigOptionBool,  calib_flowrate_topinfill_special_order)) // ORCA: special flag for flow rate calibration
+    ((ConfigOptionBool,  calib_flowrate_topinfill_special_order)) // MOMENT: special flag for flow rate calibration
 )
 
 // This object is mapped to Perl as Slic3r::Config::PrintRegion.
@@ -1046,7 +1046,7 @@ PRINT_CONFIG_CLASS_DEFINE(
     ((ConfigOptionInt,                  bottom_shell_layers))
     ((ConfigOptionFloat,                bottom_shell_thickness))
     ((ConfigOptionFloat,                bridge_angle))
-    ((ConfigOptionFloat,                internal_bridge_angle)) // ORCA: Internal bridge angle override
+    ((ConfigOptionFloat,                internal_bridge_angle)) // MOMENT: Internal bridge angle override
     ((ConfigOptionFloat,                bridge_flow))
     ((ConfigOptionFloat,                internal_bridge_flow))
     ((ConfigOptionFloat,                bridge_speed))
@@ -1559,7 +1559,7 @@ PRINT_CONFIG_CLASS_DERIVED_DEFINE(
     ((ConfigOptionBool,                gcode_comments))
     ((ConfigOptionInt,                 slow_down_layers))
     ((ConfigOptionInts,                support_material_interface_fan_speed))
-    ((ConfigOptionInts,                internal_bridge_fan_speed)) // ORCA: Add support for separate internal bridge fan speed control
+    ((ConfigOptionInts,                internal_bridge_fan_speed)) // MOMENT: Add support for separate internal bridge fan speed control
     ((ConfigOptionInts,                ironing_fan_speed))
     // Orca: notes for profiles from PrusaSlicer
     ((ConfigOptionStrings,             filament_notes))

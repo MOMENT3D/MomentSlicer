@@ -92,7 +92,7 @@ wxBoxSizer* NetworkTestDialog::create_info_sizer(wxWindow* parent)
 	sizer->Add(text_basic_info, 0, wxALL, 5);
 
 	wxBoxSizer* version_sizer = new wxBoxSizer(wxHORIZONTAL);
-	text_version_title = new wxStaticText(this, wxID_ANY, _L("OrcaSlicer Version:"), wxDefaultPosition, wxDefaultSize, 0);
+	text_version_title = new wxStaticText(this, wxID_ANY, _L("MomentSlicer Version:"), wxDefaultPosition, wxDefaultSize, 0);
 	text_version_title->Wrap(-1);
 	version_sizer->Add(text_version_title, 0, wxALL, 5);
 
@@ -137,11 +137,11 @@ wxBoxSizer* NetworkTestDialog::create_content_sizer(wxWindow* parent)
 	grid_sizer->SetFlexibleDirection(wxBOTH);
 	grid_sizer->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_SPECIFIED);
 
-	btn_link = new Button(this, _L("Test OrcaSlicer (GitHub)"));
+	btn_link = new Button(this, _L("Test MomentSlicer (GitHub)"));
     btn_link->SetStyle(ButtonStyle::Regular, ButtonType::Window);
 	grid_sizer->Add(btn_link, 0, wxEXPAND | wxALL, 5);
 
-	text_link_title = new wxStaticText(this, wxID_ANY, _L("Test OrcaSlicer (GitHub):"), wxDefaultPosition, wxDefaultSize, 0);
+	text_link_title = new wxStaticText(this, wxID_ANY, _L("Test MomentSlicer (GitHub):"), wxDefaultPosition, wxDefaultSize, 0);
 	text_link_title->Wrap(-1);
 	grid_sizer->Add(text_link_title, 0, wxALIGN_RIGHT | wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
@@ -193,7 +193,7 @@ NetworkTestDialog::~NetworkTestDialog()
 void NetworkTestDialog::init_bind()
 {
 	Bind(EVT_UPDATE_RESULT, [this](wxCommandEvent& evt) {
-		if (evt.GetInt() == TEST_ORCA_JOB) {
+		if (evt.GetInt() == TEST_MOMENT_JOB) {
 			text_link_val->SetLabelText(evt.GetString());
 		} else if (evt.GetInt() == TEST_BING_JOB) {
 			text_bing_val->SetLabelText(evt.GetString());
@@ -248,7 +248,7 @@ void NetworkTestDialog::start_all_job_sequence()
 		update_status(-1, "start_test_sequence");
         start_test_url(TEST_BING_JOB, "Bing", "http://www.bing.com");
         if (m_closing) return;
-		start_test_url(TEST_ORCA_JOB, "OrcaSlicer(GitHub)", "https://github.com/OrcaSlicer/OrcaSlicer");
+		start_test_url(TEST_MOMENT_JOB, "MomentSlicer(GitHub)", "https://github.com/MomentSlicer/MomentSlicer");
 		if (m_closing) return;
 		update_status(-1, "end_test_sequence");
 	});
@@ -303,10 +303,10 @@ void NetworkTestDialog::start_test_ping_thread()
 }
 void NetworkTestDialog::start_test_github_thread()
 {
-    if (m_in_testing[TEST_ORCA_JOB])
+    if (m_in_testing[TEST_MOMENT_JOB])
         return;
-    test_job[TEST_ORCA_JOB] = new boost::thread([this] {
-        start_test_url(TEST_ORCA_JOB, "OrcaSlicer(GitHub)", "https://github.com/OrcaSlicer/OrcaSlicer");
+    test_job[TEST_MOMENT_JOB] = new boost::thread([this] {
+        start_test_url(TEST_MOMENT_JOB, "MomentSlicer(GitHub)", "https://github.com/MomentSlicer/MomentSlicer");
     });
 }
 void NetworkTestDialog::start_test_bing_thread()
@@ -333,7 +333,7 @@ void NetworkTestDialog::on_close(wxCloseEvent& event)
 
 wxString NetworkTestDialog::get_studio_version()
 {
-	return wxString(SoftFever_VERSION);
+	return wxString(MOMENT3D_VERSION);
 }
 
 void NetworkTestDialog::set_default()

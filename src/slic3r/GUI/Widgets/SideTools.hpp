@@ -6,7 +6,7 @@
 #include <wx/dcclient.h>
 #include "Button.hpp"
 #include "Label.hpp"
-#include "HyperLink.hpp" // ORCA
+#include "HyperLink.hpp" // MOMENT
 #include "../GUI/Tabbook.hpp"
 #include "../DeviceManager.hpp"
 #include "../wxExtensions.hpp"
@@ -14,7 +14,7 @@
 #define SIDE_TOOLS_GREY900 wxColour(38, 46, 48)
 #define SIDE_TOOLS_GREY600 wxColour(144, 144, 144)
 #define SIDE_TOOLS_GREY400 wxColour(206, 206, 206)
-#define SIDE_TOOLS_BRAND wxColour(0, 150, 136)
+#define SIDE_TOOLS_BRAND wxColour(150, 0, 0)
 #define SIDE_TOOLS_LIGHT_GREEN wxColour(219, 253, 231)
 
 enum WifiSignal {
@@ -99,13 +99,13 @@ public:
 private:
     SideToolsPanel* m_side_tools{ nullptr };
     Tabbook*        m_tabpanel{ nullptr };
-    HyperLink* m_link_network_state{ nullptr }; // ORCA
+    HyperLink* m_link_network_state{ nullptr }; // MOMENT
     Label* m_st_txt_error_code{ nullptr };
     Label* m_st_txt_error_desc{ nullptr };
     Label* m_st_txt_extra_info{ nullptr };
     wxWindow* m_side_error_panel{ nullptr };
     Button* m_connection_info{ nullptr };
-    HyperLink* m_hyperlink{ nullptr }; // ORCA
+    HyperLink* m_hyperlink{ nullptr }; // MOMENT
     ScalableButton* m_more_button{ nullptr };
     ScalableBitmap      m_more_err_open;
     ScalableBitmap      m_more_err_close;

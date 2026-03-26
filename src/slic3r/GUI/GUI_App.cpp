@@ -304,7 +304,7 @@ public:
         // init constant texts and scale fonts
         m_constant_text.init(Label::Body_16);
 
-		// ORCA scale all fonts with monitor scale
+		// MOMENT scale all fonts with monitor scale
         scale_font(m_constant_text.version_font,	m_scale * 2);
         scale_font(m_constant_text.based_on_font,	m_scale * 1.5f);
         scale_font(m_constant_text.credits_font,	m_scale * 2);
@@ -488,7 +488,7 @@ static void migrate_flatpak_legacy_datadir(const boost::filesystem::path &data_d
     std::cerr << "Migrating Flatpak data dir: " << data_dir_path << std::endl;
 
     std::string legacy_data_dir_str = data_dir_path.string();
-    boost::replace_first(legacy_data_dir_str, "com.orcaslicer.OrcaSlicer", "io.github.orcaslicer.OrcaSlicer");
+    boost::replace_first(legacy_data_dir_str, "com.momentslicer.MomentSlicer", "io.github.momentslicer.MomentSlicer");
     const fs::path legacy_data_dir(legacy_data_dir_str);
 
     std::cerr << "Legacy Flatpak data dir: " << legacy_data_dir << std::endl;
@@ -788,7 +788,7 @@ static void generic_exception_handle()
         // and terminate the app so it is at least certain to happen now.
         BOOST_LOG_TRIVIAL(error) << boost::format("std::bad_alloc exception: %1%") % ex.what();
         flush_logs();
-        wxString errmsg = wxString::Format(_L("OrcaSlicer will terminate because of running out of memory. "
+        wxString errmsg = wxString::Format(_L("MomentSlicer will terminate because of running out of memory. "
                                               "It may be a bug. It will be appreciated if you report the issue to our team."));
         wxMessageBox(errmsg + "\n\n" + wxString(ex.what()), _L("Fatal error"), wxOK | wxICON_ERROR);
 
@@ -797,7 +797,7 @@ static void generic_exception_handle()
      } catch (const boost::io::bad_format_string& ex) {
      	BOOST_LOG_TRIVIAL(error) << boost::format("Uncaught exception: %1%") % ex.what();
         	flush_logs();
-        wxString errmsg = _L("OrcaSlicer will terminate because of a localization error. "
+        wxString errmsg = _L("MomentSlicer will terminate because of a localization error. "
                              "It will be appreciated if you report the specific scenario this issue happened.");
         wxMessageBox(errmsg + "\n\n" + wxString(ex.what()), _L("Critical error"), wxOK | wxICON_ERROR);
         std::terminate();
@@ -805,7 +805,7 @@ static void generic_exception_handle()
     } catch (const std::exception& ex) {
         BOOST_LOG_TRIVIAL(error) << boost::format("Uncaught exception: %1%") % ex.what();
         flush_logs();
-        wxLogError(format_wxstr(_L("OrcaSlicer got an unhandled exception: %1%"), ex.what()));
+        wxLogError(format_wxstr(_L("MomentSlicer got an unhandled exception: %1%"), ex.what()));
         throw;
     }
 //#endif
@@ -1115,7 +1115,7 @@ GUI_App::GUI_App()
     , m_downloader(std::make_unique<Downloader>())
 	, m_other_instance_message_handler(std::make_unique<OtherInstanceMessageHandler>())
 {
-	//app config initializes early becasuse it is used in instance checking in OrcaSlicer.cpp
+	//app config initializes early becasuse it is used in instance checking in MomentSlicer.cpp
     this->init_app_config();
     this->init_download_path();
 #if wxUSE_WEBVIEW_EDGE
@@ -2335,9 +2335,9 @@ static boost::optional<Semver> parse_semver_from_ini(std::string path)
     std::stringstream buffer;
     buffer << stream.rdbuf();
     std::string body = buffer.str();
-    size_t start = body.find("OrcaSlicer ");
+    size_t start = body.find("MomentSlicer ");
     if (start == std::string::npos) {
-        start = body.find("OrcaSlicer ");
+        start = body.find("MomentSlicer ");
         if (start == std::string::npos)
             return boost::none;
     }
@@ -2371,7 +2371,7 @@ void GUI_App::init_webview_runtime()
 {
     // Check WebView Runtime
     if (!WebView::CheckWebViewRuntime()) {
-        int nRet = wxMessageBox(_L("Orca Slicer requires the Microsoft WebView2 Runtime to operate certain features.\nClick Yes to install it now."),
+        int nRet = wxMessageBox(_L("Moment Slicer requires the Microsoft WebView2 Runtime to operate certain features.\nClick Yes to install it now."),
                                 _L("WebView2 Runtime"), wxYES_NO);
         if (nRet == wxYES) {
             WebView::DownloadAndInstallWebViewRuntime();
@@ -2456,7 +2456,7 @@ void GUI_App::init_app_config()
     set_log_path_and_level(log_filename, 3);
 #endif
 
-    BOOST_LOG_TRIVIAL(info) << boost::format("gui mode, Current OrcaSlicer Version %1% build %2%") % SoftFever_VERSION % GIT_COMMIT_HASH;
+    BOOST_LOG_TRIVIAL(info) << boost::format("gui mode, Current MomentSlicer Version %1% build %2%") % MOMENT3D_VERSION % GIT_COMMIT_HASH;
 
     //BBS: remove GCodeViewer as seperate APP logic
 	if (!app_config)
@@ -2817,7 +2817,7 @@ bool GUI_App::on_init_inner()
             RichMessageDialog
                 dlg(nullptr,
                     wxString::Format(_L("%s\nDo you want to continue?"), msg),
-                    "OrcaSlicer", wxICON_QUESTION | wxYES_NO);
+                    "MomentSlicer", wxICON_QUESTION | wxYES_NO);
             dlg.ShowCheckBox(_L("Remember my choice"));
             if (dlg.ShowModal() != wxID_YES) return false;
 
@@ -2933,7 +2933,7 @@ bool GUI_App::on_init_inner()
             associate_files(L"step");
             associate_files(L"stp");
         }
-        associate_url(L"orcaslicer");
+        associate_url(L"momentslicer");
 
         if (app_config->get("associate_gcode") == "true")
             associate_files(L"gcode");
@@ -2947,7 +2947,7 @@ bool GUI_App::on_init_inner()
                /* wxString tips = wxString::Format(_L("Click to download new version in default browser: %s"), version_info.version_str);
                 DownloadDialog dialog(this->mainframe,
                     tips,
-                    _L("New version of Orca Slicer"),
+                    _L("New version of Moment Slicer"),
                     false,
                     wxCENTER | wxICON_INFORMATION);
 
@@ -2994,7 +2994,7 @@ bool GUI_App::on_init_inner()
                 wxString tips = wxString::Format(_L("Click to download new version in default browser: %s"), version_str);
                 DownloadDialog dialog(this->mainframe,
                     tips,
-                    _L("The Orca Slicer needs an upgrade"),
+                    _L("The Moment Slicer needs an upgrade"),
                     false,
                     wxCENTER | wxICON_INFORMATION);
                 dialog.SetExtendedMessage(description_text);
@@ -3234,7 +3234,7 @@ bool GUI_App::on_init_inner()
         m_config_corrupted = false;
         show_error(nullptr,
                    _u8L(
-                       "The OrcaSlicer configuration file may be corrupted and cannot be parsed.\nOrcaSlicer has attempted to recreate the "
+                       "The MomentSlicer configuration file may be corrupted and cannot be parsed.\nMomentSlicer has attempted to recreate the "
                        "configuration file.\nPlease note, application settings will be lost, but printer profiles will not be affected."));
     }
     return true;
@@ -3522,7 +3522,7 @@ void GUI_App::switch_printer_agent()
     }
 
     // Read printer_agent from config, falling back to default
-    std::string effective_agent_id = ORCA_PRINTER_AGENT_ID;
+    std::string effective_agent_id = MOMENT_PRINTER_AGENT_ID;
     if (preset_bundle->is_bbl_vendor()) {
         effective_agent_id = BBL_PRINTER_AGENT_ID;
     } else {
@@ -3686,7 +3686,7 @@ void GUI_App::init_label_colours()
 #if defined(_WIN32) || defined(__linux__) || defined(__APPLE__)
     m_color_label_default           = is_dark_mode ? wxColour(250, 250, 250) : m_color_label_sys; // wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT);
     m_color_highlight_label_default = is_dark_mode ? wxColour(230, 230, 230): wxSystemSettings::GetColour(/*wxSYS_COLOUR_HIGHLIGHTTEXT*/wxSYS_COLOUR_WINDOWTEXT);
-    m_color_highlight_default       = is_dark_mode ? wxColour("#36363B") : wxColour("#F1F1F1"); // ORCA row highlighting
+    m_color_highlight_default       = is_dark_mode ? wxColour("#36363B") : wxColour("#F1F1F1"); // MOMENT row highlighting
     m_color_hovered_btn_label       = is_dark_mode ? wxColour(255, 255, 254) : wxColour(0,0,0);
     m_color_default_btn_label       = is_dark_mode ? wxColour(255, 255, 254): wxColour(0,0,0);
     m_color_selected_btn_bg         = is_dark_mode ? wxColour(84, 84, 91)   : wxColour(206, 206, 206);
@@ -3802,7 +3802,7 @@ void GUI_App::UpdateDarkUI(wxWindow* window, bool highlited/* = false*/, bool ju
         auto orig_col = window->GetBackgroundColour();
         auto bg_col = StateColor::darkModeColorFor(orig_col);
         // there are cases where the background color of an item is bright, specifically:
-        // * the background color of a button: #009688  -- 73
+        // * the background color of a button: #960000  -- 73
         if (bg_col != orig_col) {
             window->SetBackgroundColour(bg_col);
         }
@@ -4020,7 +4020,7 @@ std::string GUI_App::link_to_network_check()
         url = "https://status.bambulab.com";
     }
     //wxLaunchDefaultBrowser(url);
-    return url; // ORCA
+    return url; // MOMENT
 }
 
 std::string GUI_App::link_to_lan_only_wiki()
@@ -4038,7 +4038,7 @@ std::string GUI_App::link_to_lan_only_wiki()
         url = "https://wiki.bambulab.com/en/knowledge-sharing/enable-lan-mode";
     }
     //wxLaunchDefaultBrowser(url);
-    return url; // ORCA
+    return url; // MOMENT
 }
 
 bool GUI_App::tabs_as_menu() const
@@ -4857,7 +4857,7 @@ void GUI_App::on_http_error(wxCommandEvent &evt)
 
     // Version limit
     if (code == HttpErrorVersionLimited) {
-        MessageDialog msg_dlg(nullptr, _L("The version of Orca Slicer is too low and needs to be updated to the latest version before it can be used normally."), "", wxAPPLY | wxOK);
+        MessageDialog msg_dlg(nullptr, _L("The version of Moment Slicer is too low and needs to be updated to the latest version before it can be used normally."), "", wxAPPLY | wxOK);
         if (msg_dlg.ShowModal() == wxOK) {
         }
 
@@ -5152,7 +5152,7 @@ std::string detect_updater_os_info()
 
 std::string detect_updater_version()
 {
-    return SoftFever_VERSION;
+    return MOMENT3D_VERSION;
 }
 
 std::string detect_updater_iid(AppConfig* config)
@@ -5230,8 +5230,8 @@ std::string base64url_encode(const unsigned char* data, std::size_t length)
 
 std::optional<std::vector<unsigned char>> load_signature_key()
 {
-#if ORCA_UPDATER_SIG_KEY_AVAILABLE
-    std::string key = ORCA_UPDATER_SIG_KEY_B64;
+#if MOMENT_UPDATER_SIG_KEY_AVAILABLE
+    std::string key = MOMENT_UPDATER_SIG_KEY_B64;
     boost::algorithm::trim(key);
     if (key.empty())
         return std::nullopt;
@@ -5381,7 +5381,7 @@ void GUI_App::check_new_version_sf(bool show_tips, int by_user)
             boost::property_tree::read_json(json_stream, root);
 
             std::regex matcher("[0-9]+\\.[0-9]+(\\.[0-9]+)*(-[A-Za-z0-9]+)?(\\+[A-Za-z0-9]+)?");
-            Semver    current_version = get_version(SoftFever_VERSION, matcher);
+            Semver    current_version = get_version(MOMENT3D_VERSION, matcher);
             Semver    best_pre(0, 0, 0);
             Semver    best_release(0, 0, 0);
             bool      best_pre_valid = false;
@@ -5498,7 +5498,7 @@ bool GUI_App::process_network_msg(std::string dev_id, std::string msg)
         else if (msg == "update_studio") {
             BOOST_LOG_TRIVIAL(info) << "process_network_msg, update_studio";
             if (!m_show_error_msgdlg) {
-                MessageDialog msg_dlg(nullptr, _L("Please try updating OrcaSlicer and then try again."), "", wxAPPLY | wxOK);
+                MessageDialog msg_dlg(nullptr, _L("Please try updating MomentSlicer and then try again."), "", wxAPPLY | wxOK);
                 m_show_error_msgdlg = true;
                 msg_dlg.ShowModal();
                 m_show_error_msgdlg = false;
@@ -5508,7 +5508,7 @@ bool GUI_App::process_network_msg(std::string dev_id, std::string msg)
         else if (msg == "update_fixed_studio") {
             BOOST_LOG_TRIVIAL(info) << "process_network_msg, update_fixed_studio";
             if (!m_show_error_msgdlg) {
-                MessageDialog msg_dlg(nullptr, _L("Please try updating OrcaSlicer and then try again."), "", wxAPPLY | wxOK);
+                MessageDialog msg_dlg(nullptr, _L("Please try updating MomentSlicer and then try again."), "", wxAPPLY | wxOK);
                 m_show_error_msgdlg = true;
                 msg_dlg.ShowModal();
                 m_show_error_msgdlg = false;
@@ -5518,7 +5518,7 @@ bool GUI_App::process_network_msg(std::string dev_id, std::string msg)
         else if (msg == "cert_expired") {
             BOOST_LOG_TRIVIAL(info) << "process_network_msg, cert_expired";
             if (!m_show_error_msgdlg) {
-                MessageDialog msg_dlg(nullptr, _L("The certificate has expired. Please check the time settings or update OrcaSlicer and try again."), "", wxAPPLY | wxOK);
+                MessageDialog msg_dlg(nullptr, _L("The certificate has expired. Please check the time settings or update MomentSlicer and try again."), "", wxAPPLY | wxOK);
                 m_show_error_msgdlg = true;
                 msg_dlg.ShowModal();
                 m_show_error_msgdlg = false;
@@ -5538,7 +5538,7 @@ bool GUI_App::process_network_msg(std::string dev_id, std::string msg)
         else if (msg == "update_firmware_studio") {
             BOOST_LOG_TRIVIAL(info) << "process_network_msg, firmware internal error";
             if (!m_show_error_msgdlg) {
-                MessageDialog msg_dlg(nullptr, _L("Internal error. Please try upgrading the firmware and OrcaSlicer version. If the issue persists, contact support."), "", wxAPPLY | wxOK);
+                MessageDialog msg_dlg(nullptr, _L("Internal error. Please try upgrading the firmware and MomentSlicer version. If the issue persists, contact support."), "", wxAPPLY | wxOK);
                 m_show_error_msgdlg = true;
                 msg_dlg.ShowModal();
                 m_show_error_msgdlg = false;
@@ -5549,12 +5549,12 @@ bool GUI_App::process_network_msg(std::string dev_id, std::string msg)
             BOOST_LOG_TRIVIAL(info) << "process_network_msg, unsigned_studio";
             MessageDialog
                 msg_dlg(nullptr,
-                        _L("To use OrcaSlicer with Bambu Lab printers, you need to enable LAN mode and Developer mode on your printer.\n\n"
+                        _L("To use MomentSlicer with Bambu Lab printers, you need to enable LAN mode and Developer mode on your printer.\n\n"
                            "Please go to your printer's settings and:\n"
                            "1. Turn on LAN mode\n"
                            "2. Enable Developer mode\n\n"
                            "Developer mode allows the printer to work exclusively through local network access, "
-                           "enabling full functionality with OrcaSlicer."),
+                           "enabling full functionality with MomentSlicer."),
                         _L("Network Plug-in Restriction"), wxAPPLY | wxOK);
             m_show_error_msgdlg = true;
             msg_dlg.ShowModal();
@@ -5725,7 +5725,7 @@ std::string GUI_App::format_display_version()
 {
     if (!version_display.empty()) return version_display;
 
-    version_display = SoftFever_VERSION;
+    version_display = MOMENT3D_VERSION;
     return version_display;
 }
 
@@ -5834,7 +5834,7 @@ void GUI_App::sync_preset(Preset* preset)
             if (!new_setting_id.empty()) {
                 setting_id = new_setting_id;
                 result = 0;
-                auto update_time_str = values_map[ORCA_JSON_KEY_UPDATE_TIME];
+                auto update_time_str = values_map[MOMENT_JSON_KEY_UPDATE_TIME];
                 if (!update_time_str.empty())
                     update_time = std::atoll(update_time_str.c_str());
             }
@@ -5863,7 +5863,7 @@ void GUI_App::sync_preset(Preset* preset)
             if (!new_setting_id.empty()) {
                 setting_id = new_setting_id;
                 result = 0;
-                auto update_time_str = values_map[ORCA_JSON_KEY_UPDATE_TIME];
+                auto update_time_str = values_map[MOMENT_JSON_KEY_UPDATE_TIME];
                 if (!update_time_str.empty())
                     update_time = std::atoll(update_time_str.c_str());
             } else {
@@ -5895,7 +5895,7 @@ void GUI_App::sync_preset(Preset* preset)
                     updated_info = "hold";
                     BOOST_LOG_TRIVIAL(error) << "[sync_preset] put setting_id = " << setting_id << " failed, http_code = " << http_code;
                 } else {
-                        auto update_time_str = values_map[ORCA_JSON_KEY_UPDATE_TIME];
+                        auto update_time_str = values_map[MOMENT_JSON_KEY_UPDATE_TIME];
                         if (!update_time_str.empty())
                             update_time = std::atoll(update_time_str.c_str());
                 }
@@ -5996,13 +5996,13 @@ void GUI_App::start_sync_user_preset(bool with_progress_dlg)
     m_sync_update_thread = Slic3r::create_thread(
         [this, progressFn, cancelFn, finishFn, t = std::weak_ptr<int>(m_user_sync_token)] {
             // get setting list, update setting list
-            std::string version = preset_bundle->get_vendor_profile_version(PresetBundle::ORCA_DEFAULT_BUNDLE).to_string();
+            std::string version = preset_bundle->get_vendor_profile_version(PresetBundle::MOMENT_DEFAULT_BUNDLE).to_string();
             if(!m_agent) return;
             int ret = m_agent->get_setting_list2(version, [this](auto info) {
                 auto type = info[BBL_JSON_KEY_TYPE];
                 auto name = info[BBL_JSON_KEY_NAME];
                 auto setting_id = info[BBL_JSON_KEY_SETTING_ID];
-                auto update_time_str = info[ORCA_JSON_KEY_UPDATE_TIME];
+                auto update_time_str = info[MOMENT_JSON_KEY_UPDATE_TIME];
                 long long update_time = 0;
                 if (!update_time_str.empty())
                     update_time = std::atoll(update_time_str.c_str());
@@ -6323,7 +6323,7 @@ bool GUI_App::load_language(wxString language, bool initial)
     	// Get the active language from PrusaSlicer.ini, or empty string if the key does not exist.
         language = app_config->get("language");
         if (! language.empty())
-        	BOOST_LOG_TRIVIAL(info) << boost::format("language provided by OrcaSlicer.conf: %1%") % language;
+        	BOOST_LOG_TRIVIAL(info) << boost::format("language provided by MomentSlicer.conf: %1%") % language;
         else {
             // Get the system language.
             const wxLanguage lang_system = wxLanguage(wxLocale::GetSystemLanguage());
@@ -6380,7 +6380,7 @@ bool GUI_App::load_language(wxString language, bool initial)
 	}
 
 	if (language_info != nullptr && language_info->LayoutDirection == wxLayout_RightToLeft) {
-    	BOOST_LOG_TRIVIAL(trace) << boost::format("The following language code requires right to left layout, which is not supported by OrcaSlicer: %1%") % language_info->CanonicalName.ToUTF8().data();
+    	BOOST_LOG_TRIVIAL(trace) << boost::format("The following language code requires right to left layout, which is not supported by MomentSlicer: %1%") % language_info->CanonicalName.ToUTF8().data();
 		language_info = nullptr;
 	}
 
@@ -6485,14 +6485,14 @@ bool GUI_App::load_language(wxString language, bool initial)
 
     if (!wxLocale::IsAvailable(locale_language_info->Language)) {
     	// Loading the language dictionary failed.
-	    wxString message = "Switching Orca Slicer to language " + requested_language_code + " failed.";
+	    wxString message = "Switching Moment Slicer to language " + requested_language_code + " failed.";
 #if !defined(_WIN32) && !defined(__APPLE__)
         // likely some linux system
         message += "\nYou may need to reconfigure the missing locales, likely by running the \"locale-gen\" and \"dpkg-reconfigure locales\" commands.\n";
 #endif
         if (initial)
         	message + "\n\nApplication will close.";
-        wxMessageBox(message, "Orca Slicer - Switching language failed", wxOK | wxICON_ERROR);
+        wxMessageBox(message, "Moment Slicer - Switching language failed", wxOK | wxICON_ERROR);
         if (initial)
 			std::exit(EXIT_FAILURE);
 		else
@@ -6825,7 +6825,7 @@ void GUI_App::open_preferences(size_t open_on_tab, const std::string& highlight_
                     associate_files(L"step");
                     associate_files(L"stp");
                 }
-                associate_url(L"orcaslicer");
+                associate_url(L"momentslicer");
             }
             else {
                 if (app_config->get("associate_gcode") == "true")
@@ -7089,7 +7089,7 @@ void GUI_App::load_current_presets(bool active_preset_combox/*= false*/, bool ch
 
     auto& edited_printer_preset = preset_bundle->printers.get_edited_preset();
     PrinterTechnology printer_technology = edited_printer_preset.printer_technology();
-    // ORCA: Sync filament count with the printer's nozzle count before loading presets for multi-tool printers.
+    // MOMENT: Sync filament count with the printer's nozzle count before loading presets for multi-tool printers.
     // This ensures filament_presets vector is properly sized when combo boxes are created/updated.
     if (printer_technology == ptFFF && !edited_printer_preset.config.opt_bool("single_extruder_multi_material")) {
         auto* nozzle_diameter = edited_printer_preset.config.option<ConfigOptionFloats>("nozzle_diameter");
@@ -7180,7 +7180,7 @@ void GUI_App::OSXStoreOpenFiles(const wxArrayString &fileNames)
         if (is_gcode_file(into_u8(filename)))
             ++ num_gcodes;
     if (fileNames.size() == num_gcodes) {
-        // Opening PrusaSlicer by drag & dropping a G-Code onto OrcaSlicer icon in Finder,
+        // Opening PrusaSlicer by drag & dropping a G-Code onto MomentSlicer icon in Finder,
         // just G-codes were passed. Switch to G-code viewer mode.
         m_app_mode = EAppMode::GCodeViewer;
         unlock_lockfile(get_instance_hash_string() + ".lock", data_dir() + "/cache/");
@@ -7365,9 +7365,9 @@ void GUI_App::open_mall_page_dialog()
     }
 
     if (link_url.find("?") != std::string::npos) {
-        link_url += "&from=orcaslicer";
+        link_url += "&from=momentslicer";
     } else {
-        link_url += "?from=orcaslicer";
+        link_url += "?from=momentslicer";
     }
 
     wxLaunchDefaultBrowser(link_url);
@@ -7896,7 +7896,7 @@ void GUI_App::associate_files(std::wstring extend)
 
     std::wstring prog_path = L"\"" + std::wstring(app_path) + L"\"";
     std::wstring prog_id = L" Orca.Slicer.1";
-    std::wstring prog_desc = L"OrcaSlicer";
+    std::wstring prog_desc = L"MomentSlicer";
     std::wstring prog_command = prog_path + L" \"%1\"";
     std::wstring reg_base = L"Software\\Classes";
     std::wstring reg_extension = reg_base + L"\\." + extend;
@@ -7921,7 +7921,7 @@ void GUI_App::disassociate_files(std::wstring extend)
 
     std::wstring prog_path = L"\"" + std::wstring(app_path) + L"\"";
     std::wstring prog_id = L" Orca.Slicer.1";
-    std::wstring prog_desc = L"OrcaSlicer";
+    std::wstring prog_desc = L"MomentSlicer";
     std::wstring prog_command = prog_path + L" \"%1\"";
     std::wstring reg_base = L"Software\\Classes";
     std::wstring reg_extension = reg_base + L"\\." + extend;

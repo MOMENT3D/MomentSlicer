@@ -1207,7 +1207,7 @@ bool PrintObject::invalidate_state_by_config_options(
             || opt_key == "extra_solid_infills"
             || opt_key == "ensure_vertical_shell_thickness"
             || opt_key == "bridge_angle"
-            || opt_key == "internal_bridge_angle" // ORCA: Internal bridge angle override
+            || opt_key == "internal_bridge_angle" // MOMENT: Internal bridge angle override
             //BBS
             || opt_key == "bridge_density"
             || opt_key == "internal_bridge_density") {
@@ -1611,8 +1611,8 @@ void PrintObject::detect_surfaces_type()
         }
         
         // ==================================================================================================
-        // === ORCA: Create a SECOND bridge layer above the first bridge layer. =============================
-        // === ORCA: Surface is flagged as a new surface type called stInternalAfterExternalBridge ==================
+        // === MOMENT: Create a SECOND bridge layer above the first bridge layer. =============================
+        // === MOMENT: Surface is flagged as a new surface type called stInternalAfterExternalBridge ==================
         // === Algorithm only considers stInternal surfaces for re-classification, leaving stTop unaffected =
         // ==================================================================================================
         // Only iterate to the second-to-last layer, since we look at layer i+1.
@@ -1692,7 +1692,7 @@ void PrintObject::detect_surfaces_type()
             }
             );
             // ==============================================================================================================
-            // === ORCA: Interim workaround - for now the new stInternalAfterExternalBridge surfaace is re-classified  ==============
+            // === MOMENT: Interim workaround - for now the new stInternalAfterExternalBridge surfaace is re-classified  ==============
             // === back to a bottom bridge. As a starting point, this improves bridging reliability as it extrudes ==========
             // === two external bridge layers. However, TODO: Implement a new surface type throughout the codebase ==========
             // ==============================================================================================================
@@ -1711,7 +1711,7 @@ void PrintObject::detect_surfaces_type()
             }
         }
         // ==============================================================================================================
-        // === ORCA: End of second external bridge layer changes  =======================================================
+        // === MOMENT: End of second external bridge layer changes  =======================================================
         // ==============================================================================================================
         
         BOOST_LOG_TRIVIAL(debug) << "Detecting solid surfaces for region " << region_id << " - clipping in parallel - start";
@@ -3016,7 +3016,7 @@ void PrintObject::bridge_over_infill()
                         bridging_angle = determine_bridging_angle(area_to_be_bridge, to_lines(boundary_plines), InfillPattern::ipLine, 0);
                     }
                     
-                    // ORCA: Internal bridge angle override
+                    // MOMENT: Internal bridge angle override
                     if (candidate.region->region().config().internal_bridge_angle > 0)
                         bridging_angle = candidate.region->region().config().internal_bridge_angle.value * PI / 180.0; // Convert degrees to radians
 
@@ -3144,7 +3144,7 @@ void PrintObject::bridge_over_infill()
     });
     
     // ======================================================================================================================================
-    // === ORCA: Create a second internal bridge layer above the first bridge layer. ========================================================
+    // === MOMENT: Create a second internal bridge layer above the first bridge layer. ========================================================
     // ======================================================================================================================================
     if ( this->m_config.enable_extra_bridge_layer == eblApplyToAll || this->m_config.enable_extra_bridge_layer == eblInternalBridgeOnly) {
         // Process layers in parallel up to second-to-last
@@ -3262,7 +3262,7 @@ void PrintObject::bridge_over_infill()
         }); // end parallel_for
         
         // =================================================================================================================
-        // === ORCA: Interim workaround - for now the new stSecondInternalBridge surfaces are re-classified  ===============
+        // === MOMENT: Interim workaround - for now the new stSecondInternalBridge surfaces are re-classified  ===============
         // === back to an internal bridge. As a starting point, this improves bridging reliability as it extrudes ==========
         // === two external bridge layers. However, TODO: Implement a new surface type throughout the codebase =============
         // =================================================================================================================
@@ -3278,7 +3278,7 @@ void PrintObject::bridge_over_infill()
         }
     }
     // ===========================================================================================
-    // === ORCA: End of second bridging pass =====================================================
+    // === MOMENT: End of second bridging pass =====================================================
     // ===========================================================================================
 
     BOOST_LOG_TRIVIAL(info) << "Bridge over infill - End" << log_memory_info();

@@ -20,7 +20,7 @@ on:
 
 jobs:
   build_orca:
-    name: Build OrcaSlicer
+    name: Build MomentSlicer
     runs-on: ${{ inputs.os }}
     env:
       date:
@@ -28,7 +28,7 @@ jobs:
       ver_pure:
       ubuntu-ver: '2404'
       ubuntu-ver-str: '_Ubuntu2404'
-      ORCA_UPDATER_SIG_KEY: ${{ secrets.ORCA_UPDATER_SIG_KEY }}
+      MOMENT_UPDATER_SIG_KEY: ${{ secrets.MOMENT_UPDATER_SIG_KEY }}
 
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
       - name: Get the version and date on Ubuntu and macOS
         if: runner.os != 'Windows'
         run: |
-          ver_pure=$(grep 'set(SoftFever_VERSION' version.inc | cut -d '"' -f2)
+          ver_pure=$(grep 'set(MOMENT3D_VERSION' version.inc | cut -d '"' -f2)
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             ver="PR-${{ github.event.number }}"
             git_commit_hash="${{ github.event.pull_request.head.sha }}"
@@ -80,7 +80,7 @@ jobs:
               $git_commit_hash = "${{ github.event.pull_request.head.sha }}"
           } else {
               $versionContent = Get-Content version.inc -Raw
-              if ($versionContent -match 'set\(SoftFever_VERSION "(.*?)"\)') {
+              if ($versionContent -match 'set\(MOMENT3D_VERSION "(.*?)"\)') {
                   $ver = $matches[1]
               }
               $ver = "V$ver"
@@ -121,20 +121,20 @@ jobs:
         if: runner.os == 'macOS' && !inputs.macos-combine-only
         working-directory: ${{ github.workspace }}
         run: |
-          tar -czvf OrcaSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}.tar.gz -C build/${{ inputs.arch }} OrcaSlicer
+          tar -czvf MomentSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}.tar.gz -C build/${{ inputs.arch }} MomentSlicer
 
       - name: Upload macOS app bundle ${{ inputs.arch }}
         if: runner.os == 'macOS' && !inputs.macos-combine-only
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}
-          path: ${{ github.workspace }}/OrcaSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}.tar.gz
+          name: MomentSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}
+          path: ${{ github.workspace }}/MomentSlicer_Mac_bundle_${{ inputs.arch }}_${{ github.sha }}.tar.gz
 
       - name: Download macOS app bundles
         if: runner.os == 'macOS' && inputs.macos-combine-only
         uses: actions/download-artifact@v7
         with:
-          pattern: OrcaSlicer_Mac_bundle_*_${{ github.sha }}
+          pattern: MomentSlicer_Mac_bundle_*_${{ github.sha }}
           path: ${{ github.workspace }}/mac_bundles
 
       - name: Extract macOS app bundles
@@ -142,8 +142,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           mkdir -p build/arm64 build/x86_64
-          arm_bundle=$(find "${{ github.workspace }}/mac_bundles/OrcaSlicer_Mac_bundle_arm64_${{ github.sha }}" -name '*.tar.gz' -print -quit)
-          x86_bundle=$(find "${{ github.workspace }}/mac_bundles/OrcaSlicer_Mac_bundle_x86_64_${{ github.sha }}" -name '*.tar.gz' -print -quit)
+          arm_bundle=$(find "${{ github.workspace }}/mac_bundles/MomentSlicer_Mac_bundle_arm64_${{ github.sha }}" -name '*.tar.gz' -print -quit)
+          x86_bundle=$(find "${{ github.workspace }}/mac_bundles/MomentSlicer_Mac_bundle_x86_64_${{ github.sha }}" -name '*.tar.gz' -print -quit)
           tar -xzvf "$arm_bundle" -C "${{ github.workspace }}/build/arm64"
           tar -xzvf "$x86_bundle" -C "${{ github.workspace }}/build/x86_64"
 
@@ -158,12 +158,12 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           name: |
-            OrcaSlicer_Mac_bundle_arm64_${{ github.sha }}
-            OrcaSlicer_Mac_bundle_x86_64_${{ github.sha }}
+            MomentSlicer_Mac_bundle_arm64_${{ github.sha }}
+            MomentSlicer_Mac_bundle_x86_64_${{ github.sha }}
 
  # Thanks to RaySajuuk, it's working now
       - name: Sign app and notary
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) && runner.os == 'macOS' && inputs.macos-combine-only
+        if: github.repository == 'MomentSlicer/MomentSlicer' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) && runner.os == 'macOS' && inputs.macos-combine-only
         working-directory: ${{ github.workspace }}
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -182,93 +182,93 @@ jobs:
           security import $CERTIFICATE_PATH -P $P12_PASSWORD -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $P12_PASSWORD $KEYCHAIN_PATH
-          codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer.app
-          # Sign OrcaSlicer_profile_validator.app if it exists
-          if [ -f "${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app/Contents/MacOS/OrcaSlicer_profile_validator" ]; then
-            codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app
+          codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer.app
+          # Sign MomentSlicer_profile_validator.app if it exists
+          if [ -f "${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app/Contents/MacOS/MomentSlicer_profile_validator" ]; then
+            codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app
           fi
           
-          # Create main OrcaSlicer DMG without the profile validator helper
-          mkdir -p ${{ github.workspace }}/build/universal/OrcaSlicer_dmg
-          rm -rf ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/*
-          cp -R ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer.app ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/
-          ln -sfn /Applications ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/Applications
-          hdiutil create -volname "OrcaSlicer" -srcfolder ${{ github.workspace }}/build/universal/OrcaSlicer_dmg -ov -format UDZO OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
-          codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
+          # Create main MomentSlicer DMG without the profile validator helper
+          mkdir -p ${{ github.workspace }}/build/universal/MomentSlicer_dmg
+          rm -rf ${{ github.workspace }}/build/universal/MomentSlicer_dmg/*
+          cp -R ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer.app ${{ github.workspace }}/build/universal/MomentSlicer_dmg/
+          ln -sfn /Applications ${{ github.workspace }}/build/universal/MomentSlicer_dmg/Applications
+          hdiutil create -volname "MomentSlicer" -srcfolder ${{ github.workspace }}/build/universal/MomentSlicer_dmg -ov -format UDZO MomentSlicer_Mac_universal_${{ env.ver }}.dmg
+          codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" MomentSlicer_Mac_universal_${{ env.ver }}.dmg
           
-          # Create separate OrcaSlicer_profile_validator DMG if the app exists
-          if [ -f "${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app/Contents/MacOS/OrcaSlicer_profile_validator" ]; then
-            mkdir -p ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg
-            rm -rf ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/*
-            cp -R ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/
-            ln -sfn /Applications ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/Applications
-            hdiutil create -volname "OrcaSlicer Profile Validator" -srcfolder ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg -ov -format UDZO OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
-            codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+          # Create separate MomentSlicer_profile_validator DMG if the app exists
+          if [ -f "${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app/Contents/MacOS/MomentSlicer_profile_validator" ]; then
+            mkdir -p ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg
+            rm -rf ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/*
+            cp -R ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/
+            ln -sfn /Applications ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/Applications
+            hdiutil create -volname "MomentSlicer Profile Validator" -srcfolder ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg -ov -format UDZO MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+            codesign --deep --force --verbose --options runtime --timestamp --entitlements ${{ github.workspace }}/scripts/disable_validation.entitlements --sign "$CERTIFICATE_ID" MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
           fi
           
           # Notarize main DMG
-          xcrun notarytool submit "OrcaSlicer_Mac_universal_${{ env.ver }}.dmg" --apple-id "${{ secrets.APPLE_DEV_ACCOUNT }}" --team-id "${{ secrets.TEAM_ID }}" --password "${{ secrets.APP_PWD }}" --wait
-          xcrun stapler staple OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
+          xcrun notarytool submit "MomentSlicer_Mac_universal_${{ env.ver }}.dmg" --apple-id "${{ secrets.APPLE_DEV_ACCOUNT }}" --team-id "${{ secrets.TEAM_ID }}" --password "${{ secrets.APP_PWD }}" --wait
+          xcrun stapler staple MomentSlicer_Mac_universal_${{ env.ver }}.dmg
 
           # Notarize profile validator DMG if it exists
-          if [ -f "OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg" ]; then
-            xcrun notarytool submit "OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg" --apple-id "${{ secrets.APPLE_DEV_ACCOUNT }}" --team-id "${{ secrets.TEAM_ID }}" --password "${{ secrets.APP_PWD }}" --wait
-            xcrun stapler staple OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+          if [ -f "MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg" ]; then
+            xcrun notarytool submit "MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg" --apple-id "${{ secrets.APPLE_DEV_ACCOUNT }}" --team-id "${{ secrets.TEAM_ID }}" --password "${{ secrets.APP_PWD }}" --wait
+            xcrun stapler staple MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
           fi
 
       - name: Create DMG without notary
         if: github.ref != 'refs/heads/main' && runner.os == 'macOS' && inputs.macos-combine-only
         working-directory: ${{ github.workspace }}
         run: |
-          mkdir -p ${{ github.workspace }}/build/universal/OrcaSlicer_dmg
-          rm -rf ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/*
-          cp -R ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer.app ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/
-          ln -sfn /Applications ${{ github.workspace }}/build/universal/OrcaSlicer_dmg/Applications
-          hdiutil create -volname "OrcaSlicer" -srcfolder ${{ github.workspace }}/build/universal/OrcaSlicer_dmg -ov -format UDZO OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
+          mkdir -p ${{ github.workspace }}/build/universal/MomentSlicer_dmg
+          rm -rf ${{ github.workspace }}/build/universal/MomentSlicer_dmg/*
+          cp -R ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer.app ${{ github.workspace }}/build/universal/MomentSlicer_dmg/
+          ln -sfn /Applications ${{ github.workspace }}/build/universal/MomentSlicer_dmg/Applications
+          hdiutil create -volname "MomentSlicer" -srcfolder ${{ github.workspace }}/build/universal/MomentSlicer_dmg -ov -format UDZO MomentSlicer_Mac_universal_${{ env.ver }}.dmg
           
-          # Create separate OrcaSlicer_profile_validator DMG if the app exists
-          if [ -f "${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app/Contents/MacOS/OrcaSlicer_profile_validator" ]; then
-            mkdir -p ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg
-            rm -rf ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/*
-            cp -R ${{ github.workspace }}/build/universal/OrcaSlicer/OrcaSlicer_profile_validator.app ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/
-            ln -sfn /Applications ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg/Applications
-            hdiutil create -volname "OrcaSlicer Profile Validator" -srcfolder ${{ github.workspace }}/build/universal/OrcaSlicer_profile_validator_dmg -ov -format UDZO OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+          # Create separate MomentSlicer_profile_validator DMG if the app exists
+          if [ -f "${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app/Contents/MacOS/MomentSlicer_profile_validator" ]; then
+            mkdir -p ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg
+            rm -rf ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/*
+            cp -R ${{ github.workspace }}/build/universal/MomentSlicer/MomentSlicer_profile_validator.app ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/
+            ln -sfn /Applications ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg/Applications
+            hdiutil create -volname "MomentSlicer Profile Validator" -srcfolder ${{ github.workspace }}/build/universal/MomentSlicer_profile_validator_dmg -ov -format UDZO MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
           fi
 
       - name: Upload artifacts mac
         if: runner.os == 'macOS' && inputs.macos-combine-only
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_Mac_universal_${{ env.ver }}
-          path: ${{ github.workspace }}/OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
+          name: MomentSlicer_Mac_universal_${{ env.ver }}
+          path: ${{ github.workspace }}/MomentSlicer_Mac_universal_${{ env.ver }}.dmg
 
-      - name: Upload OrcaSlicer_profile_validator DMG mac
+      - name: Upload MomentSlicer_profile_validator DMG mac
         if: runner.os == 'macOS' && inputs.macos-combine-only && !vars.SELF_HOSTED
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_profile_validator_Mac_universal_DMG_${{ env.ver }}
-          path: ${{ github.workspace }}/OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+          name: MomentSlicer_profile_validator_Mac_universal_DMG_${{ env.ver }}
+          path: ${{ github.workspace }}/MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
           if-no-files-found: ignore
 
       - name: Deploy Mac release
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main' && runner.os == 'macOS' && inputs.macos-combine-only && !vars.SELF_HOSTED
+        if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main' && runner.os == 'macOS' && inputs.macos-combine-only && !vars.SELF_HOSTED
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ${{ github.workspace }}/OrcaSlicer_Mac_universal_${{ env.ver }}.dmg
-          asset_name: OrcaSlicer_Mac_universal_nightly.dmg
+          asset_path: ${{ github.workspace }}/MomentSlicer_Mac_universal_${{ env.ver }}.dmg
+          asset_name: MomentSlicer_Mac_universal_nightly.dmg
           asset_content_type: application/octet-stream
           max_releases: 1 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
 
-      - name: Deploy Mac OrcaSlicer_profile_validator DMG release
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main' && runner.os == 'macOS' && inputs.macos-combine-only && !vars.SELF_HOSTED
+      - name: Deploy Mac MomentSlicer_profile_validator DMG release
+        if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main' && runner.os == 'macOS' && inputs.macos-combine-only && !vars.SELF_HOSTED
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ${{ github.workspace }}/OrcaSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
-          asset_name: OrcaSlicer_profile_validator_Mac_universal_nightly.dmg
+          asset_path: ${{ github.workspace }}/MomentSlicer_profile_validator_Mac_universal_${{ env.ver }}.dmg
+          asset_name: MomentSlicer_profile_validator_Mac_universal_nightly.dmg
           asset_content_type: application/octet-stream
           max_releases: 1
 
@@ -301,7 +301,7 @@ jobs:
         if: runner.os == 'Windows'
         working-directory: ${{ github.workspace }}/build
         shell: cmd
-        run: '"C:/Program Files/7-Zip/7z.exe" a -tzip OrcaSlicer_Windows_${{ env.ver }}_portable.zip ${{ github.workspace }}/build/OrcaSlicer'
+        run: '"C:/Program Files/7-Zip/7z.exe" a -tzip MomentSlicer_Windows_${{ env.ver }}_portable.zip ${{ github.workspace }}/build/MomentSlicer'
 
       - name: Pack PDB
         if: runner.os == 'Windows' && !vars.SELF_HOSTED
@@ -313,15 +313,15 @@ jobs:
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_Windows_${{ env.ver }}_portable
-          path: ${{ github.workspace }}/build/OrcaSlicer
+          name: MomentSlicer_Windows_${{ env.ver }}_portable
+          path: ${{ github.workspace }}/build/MomentSlicer
 
       - name: Upload artifacts Win installer
         if: runner.os == 'Windows' && !vars.SELF_HOSTED
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_Windows_${{ env.ver }}
-          path: ${{ github.workspace }}/build/OrcaSlicer*.exe
+          name: MomentSlicer_Windows_${{ env.ver }}
+          path: ${{ github.workspace }}/build/MomentSlicer*.exe
 
       - name: Upload artifacts Win PDB
         if: runner.os == 'Windows' && !vars.SELF_HOSTED
@@ -330,43 +330,43 @@ jobs:
           name: PDB
           path: ${{ github.workspace }}/build/src/Release/Debug_PDB_${{ env.ver }}_for_developers_only.7z
 
-      - name: Upload OrcaSlicer_profile_validator Win
+      - name: Upload MomentSlicer_profile_validator Win
         if: runner.os == 'Windows' && !vars.SELF_HOSTED
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_profile_validator_Windows_${{ env.ver }}
-          path: ${{ github.workspace }}/build/src/Release/OrcaSlicer_profile_validator.exe
+          name: MomentSlicer_profile_validator_Windows_${{ env.ver }}
+          path: ${{ github.workspace }}/build/src/Release/MomentSlicer_profile_validator.exe
 
       - name: Deploy Windows release portable
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
+        if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ${{ github.workspace }}/build/OrcaSlicer_Windows_${{ env.ver }}_portable.zip
-          asset_name: OrcaSlicer_Windows_nightly_portable.zip
+          asset_path: ${{ github.workspace }}/build/MomentSlicer_Windows_${{ env.ver }}_portable.zip
+          asset_name: MomentSlicer_Windows_nightly_portable.zip
           asset_content_type: application/x-zip-compressed
           max_releases: 1
 
       - name: Deploy Windows release installer
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
+        if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ${{ github.workspace }}/build/OrcaSlicer_Windows_Installer_${{ env.ver }}.exe
-          asset_name: OrcaSlicer_Windows_Installer_nightly.exe
+          asset_path: ${{ github.workspace }}/build/MomentSlicer_Windows_Installer_${{ env.ver }}.exe
+          asset_name: MomentSlicer_Windows_Installer_nightly.exe
           asset_content_type: application/x-msdownload
           max_releases: 1
 
-      - name: Deploy Windows OrcaSlicer_profile_validator release
-        if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
+      - name: Deploy Windows MomentSlicer_profile_validator release
+        if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main' && runner.os == 'Windows' && !vars.SELF_HOSTED
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ${{ github.workspace }}/build/src/Release/OrcaSlicer_profile_validator.exe
-          asset_name: OrcaSlicer_profile_validator_Windows_nightly.exe
+          asset_path: ${{ github.workspace }}/build/src/Release/MomentSlicer_profile_validator.exe
+          asset_name: MomentSlicer_profile_validator_Windows_nightly.exe
           asset_content_type: application/x-msdownload
           max_releases: 1
 
@@ -382,8 +382,8 @@ jobs:
         shell: bash
         run: |
           ./build_linux.sh -istrlL
-          mv -n ./build/OrcaSlicer_Linux_V${{ env.ver_pure }}.AppImage ./build/OrcaSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
-          chmod +x ./build/OrcaSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
+          mv -n ./build/MomentSlicer_Linux_V${{ env.ver_pure }}.AppImage ./build/MomentSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
+          chmod +x ./build/MomentSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
           tar -cvpf build_tests.tar build/tests
 
         # Use tar because upload-artifacts won't always preserve directory structure
@@ -403,7 +403,7 @@ jobs:
         working-directory: ${{ github.workspace }}/build/src/Release
         shell: bash
         run: |
-          ./OrcaSlicer_profile_validator -p ${{ github.workspace }}/resources/profiles -g 1
+          ./MomentSlicer_profile_validator -p ${{ github.workspace }}/resources/profiles -g 1
           cd ${{ github.workspace }}/resources/profiles
           zip -r orca_custom_preset_tests.zip user/
 
@@ -411,28 +411,28 @@ jobs:
         if: ${{ ! env.ACT && runner.os == 'Linux' }}
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_Linux_ubuntu_${{ env.ubuntu-ver }}_${{ env.ver }}
-          path: './build/OrcaSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage'
+          name: MomentSlicer_Linux_ubuntu_${{ env.ubuntu-ver }}_${{ env.ver }}
+          path: './build/MomentSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage'
 
-      - name: Upload OrcaSlicer_profile_validator Ubuntu
+      - name: Upload MomentSlicer_profile_validator Ubuntu
         if: ${{ ! env.ACT && runner.os == 'Linux' && !vars.SELF_HOSTED }}
         uses: actions/upload-artifact@v6
         with:
-          name: OrcaSlicer_profile_validator_Linux_ubuntu_${{ env.ubuntu-ver }}_${{ env.ver }}
-          path: './build/src/Release/OrcaSlicer_profile_validator'
+          name: MomentSlicer_profile_validator_Linux_ubuntu_${{ env.ubuntu-ver }}_${{ env.ver }}
+          path: './build/src/Release/MomentSlicer_profile_validator'
 
       - name: Deploy Ubuntu release
-        if: ${{ github.repository == 'OrcaSlicer/OrcaSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
+        if: ${{ github.repository == 'MomentSlicer/MomentSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ./build/OrcaSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
-          asset_name: OrcaSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_nightly.AppImage
+          asset_path: ./build/MomentSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_${{ env.ver }}.AppImage
+          asset_name: MomentSlicer_Linux_AppImage${{ env.ubuntu-ver-str }}_nightly.AppImage
           asset_content_type: application/octet-stream
           max_releases: 1 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
       - name: Deploy Ubuntu release
-        if: ${{ github.repository == 'OrcaSlicer/OrcaSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
+        if: ${{ github.repository == 'MomentSlicer/MomentSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
         uses: rickstaa/action-create-tag@v1
         with:
           tag: "nightly-builds"
@@ -440,22 +440,22 @@ jobs:
           force_push_tag: true
           message: "nightly-builds"
 
-      - name: Deploy Ubuntu OrcaSlicer_profile_validator release
-        if: ${{ github.repository == 'OrcaSlicer/OrcaSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
+      - name: Deploy Ubuntu MomentSlicer_profile_validator release
+        if: ${{ github.repository == 'MomentSlicer/MomentSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
-          asset_path: ./build/src/Release/OrcaSlicer_profile_validator
-          asset_name: OrcaSlicer_profile_validator_Linux${{ env.ubuntu-ver-str }}_nightly
+          asset_path: ./build/src/Release/MomentSlicer_profile_validator
+          asset_name: MomentSlicer_profile_validator_Linux${{ env.ubuntu-ver-str }}_nightly
           asset_content_type: application/octet-stream
           max_releases: 1
 
       - name: Deploy orca_custom_preset_tests
-        if: ${{ github.repository == 'OrcaSlicer/OrcaSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
+        if: ${{ github.repository == 'MomentSlicer/MomentSlicer' && ! env.ACT && github.ref == 'refs/heads/main' && runner.os == 'Linux' && !vars.SELF_HOSTED }}
         uses: WebFreak001/deploy-nightly@v3.2.0
         with:
-          upload_url: https://uploads.github.com/repos/OrcaSlicer/OrcaSlicer/releases/137995723/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/MomentSlicer/MomentSlicer/releases/137995723/assets{?name,label}
           release_id: 137995723
           asset_path: ${{ github.workspace }}/resources/profiles/orca_custom_preset_tests.zip
           asset_name: orca_custom_preset_tests.zip

@@ -15,7 +15,7 @@
 wxDEFINE_EVENT(wxCUSTOMEVT_TABBOOK_SEL_CHANGED, wxCommandEvent);
 
 const static wxColour TAB_BUTTON_BG  = wxColour("#FEFFFF");
-const static wxColour TAB_BUTTON_SEL = wxColour("#BFE1DE"); // ORCA
+const static wxColour TAB_BUTTON_SEL = wxColour("#BFE1DE"); // MOMENT
 
 static const wxFont& TAB_BUTTON_FONT     = Label::Body_14;
 static const wxFont& TAB_BUTTON_FONT_SEL = Label::Head_14;
@@ -204,7 +204,7 @@ void TabButtonsListCtrl::SetFooterText(const wxString& text)
         m_footer_text->SetForegroundColour(wxColour(128, 128, 128));
         m_footer_text->SetFont(Label::Body_10);
         int em = em_unit(this);
-        m_sizer->Add(m_footer_text, 0, wxALL, FromDIP(18)); // ORCA reduce / match left margin buttons on sidebars
+        m_sizer->Add(m_footer_text, 0, wxALL, FromDIP(18)); // MOMENT reduce / match left margin buttons on sidebars
     } else {
         m_footer_text->SetLabel(text);
     }

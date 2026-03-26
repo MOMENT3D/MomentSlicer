@@ -12,7 +12,7 @@
 #include "Widgets/ComboBox.hpp"
 
 #include <wx/dialog.h>
-#include <wx/simplebook.h> // ORCA
+#include <wx/simplebook.h> // MOMENT
 
 namespace Slic3r {
 namespace GUI {

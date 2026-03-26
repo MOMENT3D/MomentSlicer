@@ -59,7 +59,7 @@ public:
 	std::vector<std::pair<float, float>> get_z_and_depth_pairs() const;
     float get_brim_width() const { return m_wipe_tower_brim_width_real; }
 	float get_wipe_tower_height() const { return m_wipe_tower_height; }
-    // ORCA: Match WipeTower API used by Print skirt/brim planning.
+    // MOMENT: Match WipeTower API used by Print skirt/brim planning.
     // Returned bounding box is in WIPE-TOWER-LOCAL coordinates (before placement on the bed).
     // Computed from the actual first-layer polygon (including brim), like WipeTower::get_bbx().
     BoundingBoxf get_bbx() const {

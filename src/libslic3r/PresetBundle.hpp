@@ -341,11 +341,11 @@ public:
     VendorProfile                                      get_custom_vendor_models() const;
 
     //orca: add 'custom' as default
-    static const char *ORCA_DEFAULT_BUNDLE;
-	static const char *ORCA_DEFAULT_PRINTER_MODEL;
-	static const char *ORCA_DEFAULT_PRINTER_VARIANT;
-	static const char *ORCA_DEFAULT_FILAMENT;
-    static const char *ORCA_FILAMENT_LIBRARY;
+    static const char *MOMENT_DEFAULT_BUNDLE;
+	static const char *MOMENT_DEFAULT_PRINTER_MODEL;
+	static const char *MOMENT_DEFAULT_PRINTER_VARIANT;
+	static const char *MOMENT_DEFAULT_FILAMENT;
+    static const char *MOMENT_FILAMENT_LIBRARY;
 
 
     static std::array<Preset::Type, 3>  types_list(PrinterTechnology pt) {

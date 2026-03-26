@@ -62,7 +62,7 @@ struct Settings
 				true, // SupportMaterialInterface
 				true, // WipeTower
 				true, // Custom
-		        // ORCA
+		        // MOMENT
 		        true, // BottomSurface
 		        true, // InternalBridgeInfill
 		        true, // Brim

@@ -179,7 +179,7 @@ private:
     int  m_max_value;
     int  m_lower_value;
     int  m_higher_value;
-    int  m_one_layer_value; // ORCA
+    int  m_one_layer_value; // MOMENT
     bool m_dirty = false;
 
     bool m_render_as_disabled{ false };

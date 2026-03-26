@@ -56,7 +56,7 @@ private:
 
     Label* m_status_text;
     wxStaticText* m_text_input_title;
-    HyperLink* m_link_show_ping_code_wiki; // ORCA
+    HyperLink* m_link_show_ping_code_wiki; // MOMENT
     TextInput* m_text_input_single_code[PING_CODE_LENGTH];
     Button* m_button_bind;
     Button* m_button_cancel;

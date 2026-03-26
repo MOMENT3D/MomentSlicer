@@ -68,7 +68,7 @@ function SortUI()
 	for(let n=0;n<nMode;n++)
 	{
 		let sModel=ModelList[n];	
-		/* ORCA use label tag to allow checkbox to toggle when user ckicked to text */
+		/* MOMENT use label tag to allow checkbox to toggle when user ckicked to text */
 		HtmlMode+='<label><input type="checkbox" mode="'+sModel['model']+'"  nozzle="'+sModel['nozzle_selected']+'"   onChange="MachineClick()" /><span>'+sModel['model']+'</span></label>';
 	}
 	
@@ -150,7 +150,7 @@ function SortUI()
 			let LowType=fType.toLowerCase();
 		    if(!TypeHtmlArray.hasOwnProperty(LowType))
 		    {
-				/* ORCA use label tag to allow checkbox to toggle when user ckicked to text */
+				/* MOMENT use label tag to allow checkbox to toggle when user ckicked to text */
 			    let HtmlType='<label><input type="checkbox" filatype="'+fType+'" onChange="FilaClick()"   /><span>'+fType+'</span></label>';
 			
 				TypeHtmlArray[LowType]=HtmlType;
@@ -160,7 +160,7 @@ function SortUI()
 			let lowVendor=fVendor.toLowerCase();
 			if(!VendorHtmlArray.hasOwnProperty(lowVendor))
 		    {
-				/* ORCA use label tag to allow checkbox to toggle when user ckicked to text */
+				/* MOMENT use label tag to allow checkbox to toggle when user ckicked to text */
 			    let HtmlVendor='<label><input type="checkbox" vendor="'+fVendor+'"  onChange="VendorClick()" /><span>'+fVendor+'</span></label>';
 				
 				VendorHtmlArray[lowVendor]=HtmlVendor;
@@ -170,7 +170,7 @@ function SortUI()
 			let pFila=$("#ItemBlockArea input[vendor='"+fVendor+"'][filatype='"+fType+"'][name='"+fShortName+"']");
 	        if(pFila.length==0)
 		    {
-				/* ORCA use label tag to allow checkbox to toggle when user ckicked to text */
+				/* MOMENT use label tag to allow checkbox to toggle when user ckicked to text */
 			    let HtmlFila='<label class="MItem"><input type="checkbox" onChange="UpdateStats()" vendor="'+fVendor+'"  filatype="'+fType+'" filalist="'+fWholeName+';'+'"  model="'+fModel+'" name="'+fShortName+'" /><span>'+fShortName+'</span></label>';
 			
 			    $("#ItemBlockArea").append(HtmlFila);
@@ -474,7 +474,7 @@ function ChooseDefaultFilament()
 
 function SelectAllFilament( nShow )
 {
-	// ORCA add ability to only select / unselect filted items
+	// MOMENT add ability to only select / unselect filted items
 	if (document.querySelector('.cbr-filter-bar').value) {
 		$('#ItemBlockArea .MItem:visible input')
 		.filter(function() {return $(this).closest('.MItem').css('position') !== 'absolute'})

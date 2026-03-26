@@ -108,7 +108,7 @@ function HandleModelList( pVal )
 		if( !ModelHtml.hasOwnProperty(strVendor))
 			ModelHtml[strVendor]='';
 			
-		ModelHtml[strVendor]+=CreatePrinterBlock(OneModel); // ORCA
+		ModelHtml[strVendor]+=CreatePrinterBlock(OneModel); // MOMENT
 	}
 	
 	//Update Nozzel Html Append
@@ -225,7 +225,7 @@ function FilterModelList(keyword) {
 		if (!ModelHtml.hasOwnProperty(strVendor))
 			ModelHtml[strVendor] = '';
 
-		ModelHtml[strVendor]+=CreatePrinterBlock(OneModel); // ORCA
+		ModelHtml[strVendor]+=CreatePrinterBlock(OneModel); // MOMENT
 	}
 
 	//Update Nozzel Html Append
@@ -264,7 +264,7 @@ function FilterModelList(keyword) {
 
 function CreatePrinterBlock(OneModel)
 {
-	// ORCA use single functuon to create blocks to simplify code
+	// MOMENT use single functuon to create blocks to simplify code
 	let vendor = OneModel['vendor']
 	vendorName = vendor=="BBL" ? "Bambu Lab" : vendor=="Custom" ? "Generic Printer" : vendor;
 

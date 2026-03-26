@@ -1,5 +1,5 @@
 // PchipInterpolatorHelper.cpp
-// OrcaSlicer
+// MomentSlicer
 //
 // Implementation file for the PchipInterpolatorHelper class
 

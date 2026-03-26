@@ -176,7 +176,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
             std::string selected_agent = m_config->opt_string("printer_agent");
             auto it = std::find_if(agents.begin(), agents.end(), [&selected_agent](const auto& a) { return a.id == selected_agent; });
             if (it == agents.end()) {
-                selected_agent = ORCA_PRINTER_AGENT_ID;
+                selected_agent = MOMENT_PRINTER_AGENT_ID;
                 it = std::find_if(agents.begin(), agents.end(), [&selected_agent](const auto& a) { return a.id == selected_agent; });
             }
 

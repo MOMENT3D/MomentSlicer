@@ -30,7 +30,7 @@ ImageDPIFrame::ImageDPIFrame()
     SetWindowStyleFlag(GetWindowStyleFlag() | wxSTAY_ON_TOP);
 #endif
 
-    // ORCA add border
+    // MOMENT add border
     Bind(wxEVT_PAINT, [this](wxPaintEvent& evt) {
         wxPaintDC dc(this);
         dc.SetPen(StateColor::darkModeColorFor(wxColour("#DBDBDB")));
@@ -52,7 +52,7 @@ ImageDPIFrame::ImageDPIFrame()
     m_sizer_main->Add(m_title, 0, wxALIGN_CENTER | wxTOP | wxLEFT | wxRIGHT, FromDIP(10));
     m_sizer_main->Add(image_sizer, FromDIP(0), wxALIGN_CENTER, FromDIP(0));
 
-    wxGetApp().UpdateDarkUI(this); // ORCA fix white bg on dark mode
+    wxGetApp().UpdateDarkUI(this); // MOMENT fix white bg on dark mode
 
     Bind(wxEVT_CLOSE_WINDOW, [this](auto &e) {
         on_hide();
@@ -107,7 +107,7 @@ void ImageDPIFrame::init_timer()
 void ImageDPIFrame::on_timer(wxTimerEvent &event)
 {
     if (!IsShown()) {//after 1s  to show Frame
-        if (m_timer_count >= 20) { // ORCA show frame faster to maatch time with tooltips
+        if (m_timer_count >= 20) { // MOMENT show frame faster to maatch time with tooltips
             Show();
             Raise();
         }

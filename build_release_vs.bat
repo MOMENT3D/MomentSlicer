@@ -1,4 +1,4 @@
-@REM OrcaSlicer build script for Windows with VS auto-detect
+@REM MomentSlicer build script for Windows with VS auto-detect
 @echo off
 set WP=%CD%
 set _START_TIME=%TIME%
@@ -71,9 +71,9 @@ if "%1"=="pack" (
     setlocal ENABLEDELAYEDEXPANSION 
     cd %WP%/deps/build
     for /f "tokens=2-4 delims=/ " %%a in ('date /t') do set build_date=%%c%%b%%a
-    echo packing deps: OrcaSlicer_dep_win64_!build_date!_vs!VS_VERSION!.zip
+    echo packing deps: MomentSlicer_dep_win64_!build_date!_vs!VS_VERSION!.zip
 
-    %WP%/tools/7z.exe a OrcaSlicer_dep_win64_!build_date!_vs!VS_VERSION!.zip OrcaSlicer_dep
+    %WP%/tools/7z.exe a MomentSlicer_dep_win64_!build_date!_vs!VS_VERSION!.zip MomentSlicer_dep
     goto :done
 )
 
@@ -102,7 +102,7 @@ cd deps
 mkdir %build_dir%
 cd %build_dir%
 set "SIG_FLAG="
-if defined ORCA_UPDATER_SIG_KEY set "SIG_FLAG=-DORCA_UPDATER_SIG_KEY=%ORCA_UPDATER_SIG_KEY%"
+if defined MOMENT_UPDATER_SIG_KEY set "SIG_FLAG=-DMOMENT_UPDATER_SIG_KEY=%MOMENT_UPDATER_SIG_KEY%"
 
 if "%1"=="slicer" (
     GOTO :slicer
@@ -124,7 +124,7 @@ if "%USE_NINJA%"=="1" (
 if "%1"=="deps" goto :done
 
 :slicer
-echo "building Orca Slicer..."
+echo "building Moment Slicer..."
 cd %WP%
 mkdir %build_dir%
 cd %build_dir%
@@ -132,10 +132,10 @@ cd %build_dir%
 echo on
 set CMAKE_POLICY_VERSION_MINIMUM=3.5
 if "%USE_NINJA%"=="1" (
-    cmake .. -G %CMAKE_GENERATOR% -DORCA_TOOLS=ON %SIG_FLAG% -DCMAKE_BUILD_TYPE=%build_type%
+    cmake .. -G %CMAKE_GENERATOR% -DMOMENT_TOOLS=ON %SIG_FLAG% -DCMAKE_BUILD_TYPE=%build_type%
     cmake --build . --config %build_type% --target ALL_BUILD
 ) else (
-    cmake .. -G %CMAKE_GENERATOR% -A x64 -DORCA_TOOLS=ON %SIG_FLAG% -DCMAKE_BUILD_TYPE=%build_type%
+    cmake .. -G %CMAKE_GENERATOR% -A x64 -DMOMENT_TOOLS=ON %SIG_FLAG% -DCMAKE_BUILD_TYPE=%build_type%
     cmake --build . --config %build_type% --target ALL_BUILD -- -m
 )
 @echo off

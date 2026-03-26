@@ -153,7 +153,7 @@ namespace ImGui
 //    const wchar_t CustomSupportsMarker     = 0x1D;
 //    const wchar_t CustomSeamMarker         = 0x1E;
 //    const wchar_t MmuSegmentationMarker    = 0x1F;
-    //const wchar_t HorizontalHide           = 0xB1; // ORCA use FoldButtonIcon / UnfoldButtonIcon
+    //const wchar_t HorizontalHide           = 0xB1; // MOMENT use FoldButtonIcon / UnfoldButtonIcon
     //const wchar_t HorizontalShow           = 0xB2;
 
     // Do not forget use following letters only in wstring
@@ -175,9 +175,9 @@ namespace ImGui
     const wchar_t SphereButtonIcon         = 0x0816;
     const wchar_t GapFillIcon              = 0x0817;
     const wchar_t ConfirmIcon              = 0x0818;
-    const wchar_t gCodeButtonIcon          = 0x0819; // ORCA
-    const wchar_t VisibleIcon              = 0x0820; // ORCA
-    const wchar_t HiddenIcon               = 0x0821; // ORCA
+    const wchar_t gCodeButtonIcon          = 0x0819; // MOMENT
+    const wchar_t VisibleIcon              = 0x0820; // MOMENT
+    const wchar_t HiddenIcon               = 0x0821; // MOMENT
 
     const wchar_t MinimalizeDarkButton           = 0x081C;
     const wchar_t MinimalizeHoverDarkButton      = 0x081D;

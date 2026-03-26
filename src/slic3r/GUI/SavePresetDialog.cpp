@@ -103,7 +103,7 @@ SavePresetDialog::Item::Item(Preset::Type type, const std::string &suffix, wxBox
 
     if (m_type == Preset::TYPE_PRINTER) m_parent->add_info_for_edit_ph_printer(sizer);
 
-    // ORCA RadioGroup
+    // MOMENT RadioGroup
     m_radio_group = new RadioGroup(m_parent, {
         _L("User Preset"),          // 0
         _L("Preset Inside Project") // 1
@@ -197,7 +197,7 @@ void SavePresetDialog::Item::update()
     }
 
     // BBS: add project embedded presets logic
-    if (existing) { // ORCA RadioGroup
+    if (existing) { // MOMENT RadioGroup
         if (existing->is_project_embedded) {
             m_radio_group->SetSelection(1);
             m_save_to_project = true;

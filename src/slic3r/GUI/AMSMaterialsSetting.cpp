@@ -145,7 +145,7 @@ void AMSMaterialsSetting::create_panel_normal(wxWindow* parent)
 
     // make the style the same with disable m_input_k_val, FIXME
     m_readonly_filament = new TextInput(parent, wxEmptyString, "", "", wxDefaultPosition, AMS_MATERIALS_SETTING_COMBOX_WIDTH, wxTE_CENTRE | wxTE_PROCESS_ENTER);
-    m_readonly_filament->SetBorderColor(StateColor(std::make_pair(0xDBDBDB, (int)StateColor::Focused), std::make_pair(0x009688, (int)StateColor::Hovered),
+    m_readonly_filament->SetBorderColor(StateColor(std::make_pair(0xDBDBDB, (int)StateColor::Focused), std::make_pair(0x960000, (int)StateColor::Hovered),
         std::make_pair(0xDBDBDB, (int)StateColor::Normal)));
     m_readonly_filament->SetFont(::Label::Body_14);
     m_readonly_filament->SetLabelColor(AMS_MATERIALS_SETTING_GREY800);
@@ -815,7 +815,7 @@ void AMSMaterialsSetting::update_widgets()
 bool AMSMaterialsSetting::Show(bool show)
 {
     if (show) {
-        m_button_confirm->Rescale(); // ORCA re applies size
+        m_button_confirm->Rescale(); // MOMENT re applies size
         m_input_nozzle_max->GetTextCtrl()->SetSize(wxSize(-1, FromDIP(20)));
         m_input_nozzle_min->GetTextCtrl()->SetSize(wxSize(-1, FromDIP(20)));
         //m_clr_picker->set_color(m_clr_picker->GetParent()->GetBackgroundColour());
@@ -1172,7 +1172,7 @@ void AMSMaterialsSetting::on_select_filament(wxCommandEvent &evt)
     if ( !this->obj || m_filament_selection < 0) {
         m_input_k_val->Enable(false);
         m_input_n_val->Enable(false);
-        m_button_confirm->Disable(); // ORCA No need to change style
+        m_button_confirm->Disable(); // MOMENT No need to change style
         m_comboBox_cali_result->Clear();
         m_comboBox_cali_result->SetValue(wxEmptyString);
         m_input_k_val->GetTextCtrl()->SetValue(wxEmptyString);
@@ -1181,7 +1181,7 @@ void AMSMaterialsSetting::on_select_filament(wxCommandEvent &evt)
         return;
     }
     else {
-        m_button_confirm->Enable(true);  // ORCA No need to change style
+        m_button_confirm->Enable(true);  // MOMENT No need to change style
     }
 
     //filament id
@@ -1331,9 +1331,9 @@ void AMSMaterialsSetting::on_dpi_changed(const wxRect &suggested_rect)
     degree->msw_rescale();
     bitmap_max_degree->SetBitmap(degree->bmp());
     bitmap_min_degree->SetBitmap(degree->bmp());
-    m_button_reset->Rescale(); // ORCA
-    m_button_confirm->Rescale(); // ORCA
-    m_button_close->Rescale(); // ORCA
+    m_button_reset->Rescale(); // MOMENT
+    m_button_confirm->Rescale(); // MOMENT
+    m_button_close->Rescale(); // MOMENT
     this->Refresh();
 }
 

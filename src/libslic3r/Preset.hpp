@@ -54,8 +54,8 @@
 #define BBL_JSON_KEY_USER_ID        "user_id"
 #define BBL_JSON_KEY_FILAMENT_ID    "filament_id"
 #define UNKNOWN_FILAMENT_ID         "__unknown__"
-#define ORCA_JSON_KEY_UPDATE_TIME    "updated_time"
-#define ORCA_JSON_KEY_CREATED_TIME    "created_time"
+#define MOMENT_JSON_KEY_UPDATE_TIME    "updated_time"
+#define MOMENT_JSON_KEY_CREATED_TIME    "created_time"
 #define BBL_JSON_KEY_INHERITS       "inherits"
 #define BBL_JSON_KEY_INSTANTIATION  "instantiation"
 #define BBL_JSON_KEY_NOZZLE_DIAMETER            "nozzle_diameter"
@@ -75,7 +75,7 @@
 #define BBL_JSON_KEY_MODEL_ID                   "model_id"
 
 // Orca extension
-#define ORCA_JSON_KEY_RENAMED_FROM              "renamed_from"
+#define MOMENT_JSON_KEY_RENAMED_FROM              "renamed_from"
 
 
 static constexpr const char* GENERIC_PREFIX = "Generic ";

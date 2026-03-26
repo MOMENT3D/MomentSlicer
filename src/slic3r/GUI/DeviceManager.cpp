@@ -47,7 +47,7 @@
 #define MINUTE_30 1800000    //ms
 #define TIME_OUT  5000       //ms
 
-#define ORCA_NETWORK_DEBUG
+#define MOMENT_NETWORK_DEBUG
 
 namespace pt = boost::property_tree;
 
@@ -2561,7 +2561,7 @@ static ENUM enum_index_of(char const *key, char const **enum_names, int enum_cou
 
 int MachineObject::parse_json(std::string tunnel, std::string payload, bool key_field_only)
 {
-#ifdef ORCA_NETWORK_DEBUG
+#ifdef MOMENT_NETWORK_DEBUG
     BOOST_LOG_TRIVIAL(info) << "parse_json: payload = " << payload;
     flush_logs();
 #endif
@@ -4343,7 +4343,7 @@ int MachineObject::parse_json(std::string tunnel, std::string payload, bool key_
 void MachineObject::set_ctt_dlg( wxString text){
     if (!m_set_ctt_dlg) {
         m_set_ctt_dlg = true;
-        auto print_error_dlg = new GUI::SecondaryCheckDialog(nullptr, wxID_ANY, _L("Warning"), GUI::SecondaryCheckDialog::VisibleButtons::ONLY_CONFIRM); // ORCA VisibleButtons instead ButtonStyle 
+        auto print_error_dlg = new GUI::SecondaryCheckDialog(nullptr, wxID_ANY, _L("Warning"), GUI::SecondaryCheckDialog::VisibleButtons::ONLY_CONFIRM); // MOMENT VisibleButtons instead ButtonStyle 
         print_error_dlg->update_text(text);
         print_error_dlg->Bind(wxEVT_SHOW, [this](auto& e) {
             if (!e.IsShown()) {

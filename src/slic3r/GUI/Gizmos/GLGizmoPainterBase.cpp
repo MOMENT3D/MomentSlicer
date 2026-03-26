@@ -392,7 +392,7 @@ void GLGizmoPainterBase::render_cursor_height_range(const Transform3d& trafo) co
 
             shader->set_uniform("view_model_matrix", view_model_matrix);
             shader->set_uniform("projection_matrix", camera.get_projection_matrix());
-            // ORCA: OpenGL Core Profile
+            // MOMENT: OpenGL Core Profile
 #if !SLIC3R_OPENGL_ES
             if (!OpenGLManager::get_gl_info().is_core_profile())
                 glsafe(::glLineWidth(2.0f));

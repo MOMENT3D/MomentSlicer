@@ -17,7 +17,7 @@
 #include "Tab.hpp"
 #include "MainFrame.hpp"
 #include "libslic3r_version.h"
-#include "Widgets/HyperLink.hpp" // ORCA
+#include "Widgets/HyperLink.hpp" // MOMENT
 
 #define NAME_OPTION_COMBOBOX_SIZE wxSize(FromDIP(200), FromDIP(24))
 #define FILAMENT_PRESET_COMBOBOX_SIZE wxSize(FromDIP(300), FromDIP(24))
@@ -26,14 +26,14 @@
 #define FILAMENT_LIST_SIZE wxSize(FromDIP(560), FromDIP(100))
 #define FILAMENT_OPTION_SIZE wxSize(FromDIP(-1), FromDIP(30))
 #define PRESET_TEMPLATE_SIZE wxSize(FromDIP(-1), FromDIP(100))
-#define PRINTER_SPACE_SIZE wxSize(FromDIP(100), FromDIP(24)) // ORCA Match size with other components
+#define PRINTER_SPACE_SIZE wxSize(FromDIP(100), FromDIP(24)) // MOMENT Match size with other components
 #define ORIGIN_TEXT_SIZE wxSize(FromDIP(10), FromDIP(24))
 #define PRINTER_PRESET_VENDOR_SIZE wxSize(FromDIP(150), FromDIP(24))
 #define PRINTER_PRESET_MODEL_SIZE wxSize(FromDIP(280), FromDIP(24))
 #define STATIC_TEXT_COLOUR wxColour("#363636")
 #define PRINTER_LIST_COLOUR wxColour("#EEEEEE")
 #define FILAMENT_OPTION_COLOUR wxColour("#D9D9D9")
-#define SELECT_ALL_OPTION_COLOUR wxColour("#009688")
+#define SELECT_ALL_OPTION_COLOUR wxColour("#960000")
 #define DEFAULT_PROMPT_TEXT_COLOUR wxColour("#ACACAC")
 
 namespace Slic3r {
@@ -1599,7 +1599,7 @@ CreatePrinterPresetDialog::CreatePrinterPresetDialog(wxWindow *parent)
 
     page_sizer->Add(m_page1, 1, wxEXPAND, 0);
     page_sizer->Add(m_page2, 1, wxEXPAND, 0);
-    m_main_sizer->Add(page_sizer, 0, wxEXPAND | wxRIGHT | wxLEFT, FromDIP(5)); // ORCA use equal border for both sides
+    m_main_sizer->Add(page_sizer, 0, wxEXPAND | wxRIGHT | wxLEFT, FromDIP(5)); // MOMENT use equal border for both sides
     select_curr_radiobox(m_create_type_btns, 0);
     select_curr_radiobox(m_create_presets_btns, 0);
 
@@ -1965,7 +1965,7 @@ wxBoxSizer *CreatePrinterPresetDialog::create_bed_size_item(wxWindow *parent)
     horizontal_sizer->Add(optionSizer, 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, FromDIP(10));
 
     wxBoxSizer *  length_sizer          = new wxBoxSizer(wxVERTICAL);
-     // ORCA use icon on input box to match style with other Point fields
+     // MOMENT use icon on input box to match style with other Point fields
     horizontal_sizer->Add(length_sizer, 0, wxEXPAND | wxLEFT | wxTOP | wxALIGN_CENTER_VERTICAL, FromDIP(10));
     wxBoxSizer *length_input_sizer      = new wxBoxSizer(wxVERTICAL);
     m_bed_size_x_input = new TextInput(parent, "200", _L("mm"), "inputbox_x", wxDefaultPosition, PRINTER_SPACE_SIZE, wxTE_PROCESS_ENTER);
@@ -1975,7 +1975,7 @@ wxBoxSizer *CreatePrinterPresetDialog::create_bed_size_item(wxWindow *parent)
     horizontal_sizer->Add(length_input_sizer, 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, FromDIP(5));
 
     wxBoxSizer *  width_sizer      = new wxBoxSizer(wxVERTICAL);
-    // ORCA use icon on input box to match style with other Point fields
+    // MOMENT use icon on input box to match style with other Point fields
     horizontal_sizer->Add(width_sizer, 0, wxEXPAND | wxLEFT | wxTOP | wxALIGN_CENTER_VERTICAL, FromDIP(10));
     wxBoxSizer *width_input_sizer      = new wxBoxSizer(wxVERTICAL);
     m_bed_size_y_input            = new TextInput(parent, "200", _L("mm"), "inputbox_y", wxDefaultPosition, PRINTER_SPACE_SIZE, wxTE_PROCESS_ENTER);
@@ -1998,7 +1998,7 @@ wxBoxSizer *CreatePrinterPresetDialog::create_origin_item(wxWindow *parent)
     horizontal_sizer->Add(optionSizer, 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, FromDIP(10));
 
     wxBoxSizer *  length_sizer       = new wxBoxSizer(wxVERTICAL);
-    // ORCA use icon on input box to match style with other Point fields
+    // MOMENT use icon on input box to match style with other Point fields
     horizontal_sizer->Add(length_sizer, 0, wxEXPAND | wxLEFT | wxTOP | wxALIGN_CENTER_VERTICAL, FromDIP(10));
     wxBoxSizer *length_input_sizer = new wxBoxSizer(wxVERTICAL);
     m_bed_origin_x_input           = new TextInput(parent, "0", _L("mm"), "inputbox_x", wxDefaultPosition, PRINTER_SPACE_SIZE, wxTE_PROCESS_ENTER);
@@ -2008,7 +2008,7 @@ wxBoxSizer *CreatePrinterPresetDialog::create_origin_item(wxWindow *parent)
     horizontal_sizer->Add(length_input_sizer, 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, FromDIP(5));
 
     wxBoxSizer *  width_sizer       = new wxBoxSizer(wxVERTICAL);
-    // ORCA use icon on input box to match style with other Point fields
+    // MOMENT use icon on input box to match style with other Point fields
     horizontal_sizer->Add(width_sizer, 0, wxEXPAND | wxLEFT | wxTOP | wxALIGN_CENTER_VERTICAL, FromDIP(10));
     wxBoxSizer *width_input_sizer = new wxBoxSizer(wxVERTICAL);
     m_bed_origin_y_input          = new TextInput(parent, "0", _L("mm"), "inputbox_y", wxDefaultPosition, PRINTER_SPACE_SIZE, wxTE_PROCESS_ENTER);
@@ -5028,7 +5028,7 @@ wxPanel *PresetTree::get_child_item(wxPanel *parent, std::shared_ptr<Preset> pre
     bool base_id_error = false;
     if (preset->inherits() == "" && preset->base_id != "") base_id_error = true;
     if (base_id_error) {
-        // ORCA standardized HyperLink
+        // MOMENT standardized HyperLink
         HyperLink *m_download_hyperlink = new HyperLink(panel, _L("[Delete Required]"), "https://wiki.bambulab.com/en/software/bambu-studio/custom-filament-issue");
         m_download_hyperlink->SetFont(Label::Body_10);
         sizer->Add(m_download_hyperlink, 0, wxEXPAND | wxALL, 5);

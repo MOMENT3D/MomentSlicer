@@ -158,7 +158,7 @@ void RecenterDialog::on_button_close(wxCommandEvent& event) {
 
 void RecenterDialog::on_dpi_changed(const wxRect& suggested_rect) {
     init_bitmap();
-    // ORCA no need to reapply button sizes
+    // MOMENT no need to reapply button sizes
     Layout();
 }
 

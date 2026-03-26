@@ -53,8 +53,8 @@ cat << EOF >@SLIC3R_APP_CMD@
 DIR=\$(readlink -f "\$0" | xargs dirname)
 export LD_LIBRARY_PATH="\$DIR/bin:\$LD_LIBRARY_PATH"
 
-# FIXME: OrcaSlicer segfault workarounds
-# 1) OrcaSlicer will segfault on systems where locale info is not as expected (i.e. Holo-ISO arch-based distro)
+# FIXME: MomentSlicer segfault workarounds
+# 1) MomentSlicer will segfault on systems where locale info is not as expected (i.e. Holo-ISO arch-based distro)
 export LC_ALL=C
 
 if [ "\$XDG_SESSION_TYPE" = "wayland" ] && [ "\$ZINK_DISABLE_OVERRIDE" != "1" ]; then
@@ -82,7 +82,7 @@ EOF
     chmod ug+x @SLIC3R_APP_CMD@
     cp -fl @SLIC3R_APP_CMD@ package/@SLIC3R_APP_CMD@
     # Nothing uses this tar? Remove if nobody has complained and it's been a while since this comment added.
-    # Original commit was https://github.com/OrcaSlicer/OrcaSlicer/commit/f5a4862da52fc68f77b5201ddf330a9800d83228
+    # Original commit was https://github.com/MomentSlicer/MomentSlicer/commit/f5a4862da52fc68f77b5201ddf330a9800d83228
     # and it doesn't appear to have been used there either.
     #pushd package > /dev/null
     #tar -cvf ../@SLIC3R_APP_KEY@.tar .  &>/dev/null
@@ -102,7 +102,7 @@ echo -n "Creating Appimage for distribution..."
     if ../build_appimage.sh; then
 	# Clean up on success.
 	popd > /dev/null
-	mv package_appimage/"@SLIC3R_APP_KEY@_Linux_V@SoftFever_VERSION@.AppImage" "@SLIC3R_APP_KEY@_Linux_V@SoftFever_VERSION@.AppImage"
+	mv package_appimage/"@SLIC3R_APP_KEY@_Linux_V@MOMENT3D_VERSION@.AppImage" "@SLIC3R_APP_KEY@_Linux_V@MOMENT3D_VERSION@.AppImage"
 	rm -fR package_appimage
     else
 	# Leave files on failure so you can debug.

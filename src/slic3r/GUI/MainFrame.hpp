@@ -359,7 +359,7 @@ public:
 
     //SoftFever
     void show_device(bool bBBLPrinter);
-    void fit_tab_labels(); // ORCA
+    void fit_tab_labels(); // MOMENT
 
     PA_Calibration_Dlg* m_pa_calib_dlg{ nullptr };
     Temp_Calibration_Dlg* m_temp_calib_dlg{ nullptr };

@@ -3034,7 +3034,7 @@ namespace IMGUIZMO_NAMESPACE
             ImU32 directionColor = ImGui::ColorConvertFloat4ToU32(directionColorV); // | IM_COL32(0x80, 0x80, 0x80, 0x00);
             drawList->AddLine(baseSSpace, worldDirSSpace, directionColor, gContext.mStyle.TranslationLineThickness);
             
-            /* ORCA Dont draw arrow heads
+            /* MOMENT Dont draw arrow heads
             // Arrow head begin
             ImVec2 dir(baseSSpace - worldDirSSpace);
             

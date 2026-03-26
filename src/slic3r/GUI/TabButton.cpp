@@ -14,13 +14,13 @@ EVT_PAINT(TabButton::paintEvent)
 
 END_EVENT_TABLE()
 
-static wxColour BORDER_HOVER_COL = wxColour(0, 150, 136);
+static wxColour BORDER_HOVER_COL = wxColour(150, 0, 0);
 
 const static wxColour TAB_BUTTON_BG    = wxColour("#FEFFFF");
-const static wxColour TAB_BUTTON_SEL   = wxColour("#BFE1DE"); // ORCA
+const static wxColour TAB_BUTTON_SEL   = wxColour("#BFE1DE"); // MOMENT
 
 TabButton::TabButton()
-    : paddingSize(18, 16) // ORCA reduce / match left margin buttons on sidebars
+    : paddingSize(18, 16) // MOMENT reduce / match left margin buttons on sidebars
     , text_color(*wxBLACK)
 {
     background_color = StateColor(
@@ -29,7 +29,7 @@ TabButton::TabButton()
         std::make_pair(wxColour("#FEFFFF"), (int) StateColor::Normal));
 
     border_color = StateColor(
-        std::make_pair(TAB_BUTTON_SEL, (int) StateColor::Checked), // ORCA use same color for border to prevent 1px blank border
+        std::make_pair(TAB_BUTTON_SEL, (int) StateColor::Checked), // MOMENT use same color for border to prevent 1px blank border
         std::make_pair(BORDER_HOVER_COL, (int) StateColor::Hovered),
         std::make_pair(wxColour("#FEFFFF"), (int)StateColor::Normal));
 }
@@ -163,7 +163,7 @@ void TabButton::render(wxDC &dc)
 
     auto text = GetLabel();
     if (!text.IsEmpty()) {
-        pt.x = FromDIP(paddingSize.x); // ORCA match padding on scaling
+        pt.x = FromDIP(paddingSize.x); // MOMENT match padding on scaling
         pt.y = rcContent.y + (rcContent.height - textSize.y) / 2;
         dc.SetFont(GetFont());
         dc.SetTextForeground(text_color.colorForStates(states));

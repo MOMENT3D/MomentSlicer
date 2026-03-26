@@ -74,7 +74,7 @@ body
 {
 	font-size:28px;
 	line-height: 28px;
-	color: #009688;
+	color: #960000;
 	padding: 0px 10mm;
 }
 
@@ -102,7 +102,7 @@ body
 
 #AcceptArea
 {
-	height:var(--dialog-button-sizer-height); /*----ORCA Use fixed size to prevent position change----*/
+	height:var(--dialog-button-sizer-height); /*----MOMENT Use fixed size to prevent position change----*/
 	max-height:var(--dialog-button-sizer-height);
 	min-height:var(--dialog-button-sizer-height);
 	padding: 0 var(--dialog-button-gap);
@@ -115,13 +115,13 @@ body
 /*---HyperLink---*/
 .HyperLink
 {
-	color: #009688;
+	color: #960000;
 	text-decoration: underline;
     font-weight: 700;
 	cursor: pointer;
 }
 
-/*---Checkboxes ORCA ---*/
+/*---Checkboxes MOMENT ---*/
 label:has(input[type="checkbox"]){
 	margin:0;
 	padding: 0;
@@ -159,8 +159,8 @@ input[type="checkbox"]::before {
 }
 
 input[type="checkbox"]:checked {
-	border-color:#009688;
-	background-color:#009688;
+	border-color:#960000;
+	background-color:#960000;
 }
 
 input[type="checkbox"]:checked::before {

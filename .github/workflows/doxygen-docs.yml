@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     # Only run on main branch of the main repository
-    if: github.repository == 'OrcaSlicer/OrcaSlicer' && github.ref == 'refs/heads/main'
+    if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
     steps:
@@ -70,7 +70,7 @@ jobs:
           secret_access_key ${{ secrets.R2_SECRET_ACCESS_KEY }} \
           endpoint ${{ secrets.R2_ENDPOINT }}
 
-          rclone sync internal_docs/ cloudflare:orcaslicer-internals \
+          rclone sync internal_docs/ cloudflare:momentslicer-internals \
           --progress \
           --transfers 512 \
           --checkers 512 

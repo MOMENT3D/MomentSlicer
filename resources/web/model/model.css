@@ -14,7 +14,7 @@ html
 
 body
 {
-	/* min-width: 1280px; ORCA fixes scrollbar appear on welcome screen */
+	/* min-width: 1280px; MOMENT fixes scrollbar appear on welcome screen */
 	height: 100%;
 	display:flex;
 	flex-direction: column;
@@ -28,7 +28,7 @@ body
 
 #EmptyArea
 {
-	/* min-width: 1280px; ORCA fixes scrollbar appear on welcome screen */
+	/* min-width: 1280px; MOMENT fixes scrollbar appear on welcome screen */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -39,7 +39,7 @@ body
 
 #WholeArea
 {
-	min-width: 1280px; /* ORCA fix scrollbar appears on welcome screen */
+	min-width: 1280px; /* MOMENT fix scrollbar appears on welcome screen */
 	height:  100%;
 	position: relative;
 	overflow-y: hidden;
@@ -144,7 +144,7 @@ body
 .swiper
 {
     --swiper-theme-color: #ff6600;/* 设置Swiper风格 */
-    --swiper-navigation-color: #009688;/* 单独设置按钮颜色 */
+    --swiper-navigation-color: #960000;/* 单独设置按钮颜色 */
     --swiper-navigation-size: 30px;/* 设置按钮大小 */
 }
 
@@ -185,12 +185,12 @@ body
 
 .ProcessBarSelected
 {
-	border-left-color:#009688;
+	border-left-color:#960000;
 }
 
 .ProcessBarSelected span
 {
-	color:#009688;
+	color:#960000;
 }
 
 #Info_ProcessBar.ProcessBarSelected img

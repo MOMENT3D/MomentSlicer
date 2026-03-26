@@ -141,7 +141,7 @@ private:
     void init_bitmaps();
     void create_wiki(wxWindow* parent);
 
-    HyperLink* m_wiki_text; // ORCA
+    HyperLink* m_wiki_text; // MOMENT
     wxString  m_wiki_url;
     ScalableBitmap m_prev_bmp_normal;
     ScalableBitmap m_prev_bmp_hover;

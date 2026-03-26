@@ -54,7 +54,7 @@ Slic3r::ColorRGBA convert(const Color& c)
 
 Color convert(const Slic3r::ColorRGBA& c)
 {
-    // ORCA: Fix dark color rendering. Ensure minimal brightness.
+    // MOMENT: Fix dark color rendering. Ensure minimal brightness.
     auto safe_val = [](float v) -> uint8_t {
         return std::max((uint8_t)(v * 255.0f), (uint8_t)48);
     };
@@ -86,7 +86,7 @@ Slic3r::ExtrusionRole convert(EGCodeExtrusionRole role)
     case EGCodeExtrusionRole::SupportMaterialInterface: { return Slic3r::ExtrusionRole::erSupportMaterialInterface; }
     case EGCodeExtrusionRole::WipeTower:                { return Slic3r::ExtrusionRole::erWipeTower; }
     case EGCodeExtrusionRole::Custom:                   { return Slic3r::ExtrusionRole::erCustom; }
-    // ORCA
+    // MOMENT
     case EGCodeExtrusionRole::BottomSurface:            { return Slic3r::ExtrusionRole::erBottomSurface; }
     case EGCodeExtrusionRole::InternalBridgeInfill:     { return Slic3r::ExtrusionRole::erInternalBridgeInfill; }
     case EGCodeExtrusionRole::Brim:                     { return Slic3r::ExtrusionRole::erBrim; }
@@ -115,7 +115,7 @@ EGCodeExtrusionRole convert(Slic3r::ExtrusionRole role)
     case Slic3r::ExtrusionRole::erSupportMaterialInterface:    { return EGCodeExtrusionRole::SupportMaterialInterface; }
     case Slic3r::ExtrusionRole::erWipeTower:                   { return EGCodeExtrusionRole::WipeTower; }
     case Slic3r::ExtrusionRole::erCustom:                      { return EGCodeExtrusionRole::Custom; }
-    // ORCA
+    // MOMENT
     case Slic3r::ExtrusionRole::erBottomSurface:               { return EGCodeExtrusionRole::BottomSurface; }
     case Slic3r::ExtrusionRole::erInternalBridgeInfill:        { return EGCodeExtrusionRole::InternalBridgeInfill; }
     case Slic3r::ExtrusionRole::erBrim:                        { return EGCodeExtrusionRole::Brim; }
@@ -215,7 +215,7 @@ GCodeInputData convert(const Slic3r::GCodeProcessorResult& result, const std::ve
         const EOptionType option_type = move_type_to_option(curr_type);
         if (option_type == EOptionType::COUNT || option_type == EOptionType::Travels || option_type == EOptionType::Wipes) {
             if (ret.vertices.empty() || prev.type != curr.type || prev.extrusion_role != curr.extrusion_role
-                // ORCA: Fix issue with flow rate changes being visualized incorrectly
+                // MOMENT: Fix issue with flow rate changes being visualized incorrectly
                 || prev.mm3_per_mm != curr.mm3_per_mm) {
                 // to allow libvgcode to properly detect the start/end of a path we need to add a 'phantom' vertex
                 // equal to the current one with the exception of the position, which should match the previous move position,
@@ -225,13 +225,13 @@ GCodeInputData convert(const Slic3r::GCodeProcessorResult& result, const std::ve
                     curr.mm3_per_mm, curr.fan_speed, curr.temperature, 0.0f, convert(curr.extrusion_role), curr_type,
                     static_cast<uint32_t>(curr.gcode_id), static_cast<uint32_t>(curr.layer_id),
                     static_cast<uint8_t>(curr.extruder_id), static_cast<uint8_t>(curr.cp_color_id), { 0.0f, 0.0f },
-                    /* ORCA: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
+                    /* MOMENT: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
 #else
               const libvgcode::PathVertex vertex = { convert(prev.position), curr.height, curr.width, curr.feedrate, prev.actual_feedrate,
                     curr.mm3_per_mm, curr.fan_speed, curr.temperature, convert(curr.extrusion_role), curr_type,
                     static_cast<uint32_t>(curr.gcode_id), static_cast<uint32_t>(curr.layer_id),
                     static_cast<uint8_t>(curr.extruder_id), static_cast<uint8_t>(curr.cp_color_id), { 0.0f, 0.0f },
-                    /* ORCA: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
+                    /* MOMENT: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
 #endif // VGCODE_ENABLE_COG_AND_TOOL_MARKERS
                 ret.vertices.emplace_back(vertex);
             }
@@ -243,13 +243,13 @@ GCodeInputData convert(const Slic3r::GCodeProcessorResult& result, const std::ve
             result.filament_densities[curr.extruder_id] * curr.mm3_per_mm * (curr.position - prev.position).norm(),
             convert(curr.extrusion_role), curr_type, static_cast<uint32_t>(curr.gcode_id), static_cast<uint32_t>(curr.layer_id),
             static_cast<uint8_t>(curr.extruder_id), static_cast<uint8_t>(curr.cp_color_id), curr.time,
-            /* ORCA: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
+            /* MOMENT: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
 #else
         const libvgcode::PathVertex vertex = { convert(curr.position), curr.height, curr.width, curr.feedrate, curr.actual_feedrate,
             curr.mm3_per_mm, curr.fan_speed, curr.temperature, convert(curr.extrusion_role), curr_type,
             static_cast<uint32_t>(curr.gcode_id), static_cast<uint32_t>(curr.layer_id),
             static_cast<uint8_t>(curr.extruder_id), static_cast<uint8_t>(curr.cp_color_id), curr.time,
-            /* ORCA: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
+            /* MOMENT: Add Pressure Advance visualization support */ 0.0f, curr.pressure_advance };
 #endif // VGCODE_ENABLE_COG_AND_TOOL_MARKERS
         ret.vertices.emplace_back(vertex);
     }
@@ -450,7 +450,7 @@ public:
             m_final.emplace_back(*wipe_tower_data.final_purge.get());
 
         m_angle = print.model().wipe_tower.rotation / 180.0f * PI;
-        // ORCA/BBS: plate index
+        // MOMENT/BBS: plate index
         m_position = print.model().wipe_tower.positions[print.get_plate_index()].cast<float>();
         m_layers_count = wipe_tower_data.tool_changes.size() + (m_priming.empty() ? 0 : 1);
     }

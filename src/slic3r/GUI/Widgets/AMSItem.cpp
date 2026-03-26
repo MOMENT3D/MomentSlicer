@@ -2731,7 +2731,7 @@ void AMSPreview::doRender(wxDC &dc)
     //single slot
     else if (m_amsinfo.cans.size() == 1) {
         auto iter = m_amsinfo.cans[0];
-        // ORCA dont add additional background. four tray already doesnt use one
+        // MOMENT dont add additional background. four tray already doesnt use one
         //dc.SetPen(wxPen(*wxTRANSPARENT_PEN));
         //dc.SetBrush(StateColor::darkModeColorFor(AMS_CONTROL_DEF_BLOCK_BK_COLOUR));
         //wxSize rec_size = wxSize(FromDIP(16), FromDIP(24));

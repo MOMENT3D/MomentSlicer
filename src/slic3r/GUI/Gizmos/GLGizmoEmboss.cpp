@@ -1535,7 +1535,7 @@ void GLGizmoEmboss::draw_text_input()
         float width = ImGui::GetContentRegionAvailWidth();
         const ImVec2& padding = style.FramePadding;
         ImVec2 icon_pos(width - m_gui_cfg->icon_width - scrollbar_width + padding.x, 
-                        cursor.y - 2 * m_gui_cfg->icon_width - scrollbar_height - 2*padding.y);  // ORCA fix vertical position
+                        cursor.y - 2 * m_gui_cfg->icon_width - scrollbar_height - 2*padding.y);  // MOMENT fix vertical position
         
         ImGui::SetCursorPos(icon_pos);
         draw(get_icon(m_icons, IconType::exclamation, IconState::hovered));
@@ -1604,9 +1604,9 @@ void GLGizmoEmboss::push_button_style(bool pressed)
 {
     if (m_is_dark_mode) {
         if (pressed) {
-            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(43 / 255.f, 64 / 255.f, 54 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(64 / 255, 43 / 255, 43 / 255, 1));
             ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 174 / 255.f, 66 / 255.f, 1.f));
         }
         else {
@@ -1618,9 +1618,9 @@ void GLGizmoEmboss::push_button_style(bool pressed)
     }
     else {
         if (pressed) {
-            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(219 / 255.f, 253 / 255.f, 231 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(253 / 255.f, 219 / 255.f, 219 / 255.f, 1.f));
             ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 174 / 255.f, 66 / 255.f, 1.f));
         }
         else {
@@ -1646,7 +1646,7 @@ void GLGizmoEmboss::draw_font_list_line()
     bool exist_change_in_font = m_style_manager.is_font_changed();
     const std::string& font_text = m_gui_cfg->translations.font;
     if (exist_change_in_font || !exist_stored_style)
-        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MODIFIED, font_text); // ORCA match color
+        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MODIFIED, font_text); // MOMENT match color
     else
         ImGuiWrapper::text(font_text);
 
@@ -1674,7 +1674,7 @@ void GLGizmoEmboss::draw_font_list_line()
     if (exist_change_in_font) {
         ImGui::SameLine(ImGui::GetStyle().WindowPadding.x);
         auto r_icon = get_icon(m_icons, IconType::undo, IconState::hovered);
-        if (Slic3r::GUI::button(r_icon, r_icon, r_icon)) { // ORCA draw bottom with same orange color
+        if (Slic3r::GUI::button(r_icon, r_icon, r_icon)) { // MOMENT draw bottom with same orange color
             const EmbossStyle *stored_style = m_style_manager.get_stored_style();
 
             style.path          = stored_style->path;
@@ -1849,7 +1849,7 @@ void GLGizmoEmboss::draw_model_type()
     ModelVolumeType type = m_volume->type();
 
     //TRN EmbossOperation
-    ImGuiWrapper::push_radio_style(m_parent.get_scale()); // ORCA
+    ImGuiWrapper::push_radio_style(m_parent.get_scale()); // MOMENT
     if (ImGui::RadioButton(_u8L("Join").c_str(), type == part))
         new_type = part;
     else if (ImGui::IsItemHovered())
@@ -2176,7 +2176,7 @@ void GLGizmoEmboss::draw_style_list() {
     if (m_style_manager.exist_stored_style())
         ImGui::Text("%s", title.c_str());
     else
-        ImGui::TextColored(ImGuiWrapper::COL_ORCA, "%s", title.c_str());
+        ImGui::TextColored(ImGuiWrapper::COL_MOMENT, "%s", title.c_str());
         
     ImGui::SetNextItemWidth(m_gui_cfg->input_width);
     auto add_text_modify = [&is_modified](const std::string& name) {
@@ -2406,7 +2406,7 @@ bool GLGizmoEmboss::revertible(const std::string &name,
     ImGui::AlignTextToFramePadding();
     bool changed = exist_change(value, default_value);
     if (changed || default_value == nullptr)
-        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MODIFIED, name); // ORCA Match color
+        ImGuiWrapper::text_colored(ImGuiWrapper::COL_MODIFIED, name); // MOMENT Match color
     else
         ImGuiWrapper::text(name);
 
@@ -2416,7 +2416,7 @@ bool GLGizmoEmboss::revertible(const std::string &name,
         float prev_x = window->DC.CursorPosPrevLine.x;
         ImGui::SameLine(undo_offset); // change cursor postion
         auto r_icon = get_icon(m_icons, IconType::undo, IconState::hovered);
-        if (Slic3r::GUI::button(r_icon, r_icon, r_icon)) { // ORCA draw bottom with same orange color
+        if (Slic3r::GUI::button(r_icon, r_icon, r_icon)) { // MOMENT draw bottom with same orange color
             value = *default_value;
 
             // !! Fix to detect change of value after revert of float-slider
@@ -2719,7 +2719,7 @@ void GLGizmoEmboss::draw_advanced()
         else if (draw_button(icons, IconType::align_horizontal_right)) { align.first=FontProp::HorizontalAlign::right; is_change = true; }
         else if (ImGui::IsItemHovered()) m_imgui->tooltip(_CTX_utf8(L_CONTEXT("Right", "Alignment"), "Alignment"), m_gui_cfg->max_tooltip_width);
 
-        ImGui::SameLine(0, ImGui::GetStyle().ItemSpacing.x * 2.f); // ORCA use wider spacing for separation between horizontal / vertical alignment
+        ImGui::SameLine(0, ImGui::GetStyle().ItemSpacing.x * 2.f); // MOMENT use wider spacing for separation between horizontal / vertical alignment
 
         if (align.second==FontProp::VerticalAlign::top) draw(get_icon(icons, IconType::align_vertical_top, IconState::hovered));
         else if (draw_button(icons, IconType::align_vertical_top)) { align.second=FontProp::VerticalAlign::top; is_change = true; }
@@ -3162,7 +3162,7 @@ void GLGizmoEmboss::init_icons()
         "make_unbold.svg",   
         "search.svg",
         "open.svg", 
-        "obj_warning.svg",  // ORCA: use obj_warning instead exclamation. exclamation is not compatible with low res
+        "obj_warning.svg",  // MOMENT: use obj_warning instead exclamation. exclamation is not compatible with low res
         "lock_closed.svg",  // lock,
         "lock_closed_f.svg",// lock_bold,
         "lock_open.svg",    // unlock,

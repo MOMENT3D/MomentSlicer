@@ -233,9 +233,9 @@ void GLCanvas3D::LayersEditing::show_tooltip_information(const GLCanvas3D& canva
         int dpi = get_dpi_for_window(wxGetApp().GetTopWindow());
         scale *= (float) dpi / (float) DPI_DEFAULT;
     #endif // WIN32
-    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // ORCA: Use exact resolution will prevent blur on icon
+    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // MOMENT: Use exact resolution will prevent blur on icon
     ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0f);
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // ORCA: Dont add padding
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // MOMENT: Dont add padding
     ImGui::ImageButton3(normal_id, hover_id, button_size);
 
     if (ImGui::IsItemHovered()) {
@@ -326,7 +326,7 @@ void GLCanvas3D::LayersEditing::render_variable_layer_height_dialog(const GLCanv
     ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(238 / 255.0f, 238 / 255.0f, 238 / 255.0f, 0.00f));
     ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(238 / 255.0f, 238 / 255.0f, 238 / 255.0f, 0.00f));
     ImGui::PushStyleColor(ImGuiCol_SliderGrab, ImVec4(0.81f, 0.81f, 0.81f, 1.0f));
-    ImGui::PushStyleColor(ImGuiCol_SliderGrabActive, ImVec4(0.00f, 0.59f, 0.53f, 1.00f));
+    ImGui::PushStyleColor(ImGuiCol_SliderGrabActive, ImVec4(0.59f, 0.00f, 0.00f, 1.00f));
     if(ImGui::BBLSliderScalar("##radius_slider", ImGuiDataType_S32, &radius, &v_min, &v_max)){
         radius = std::clamp(radius, 1, 10);
         m_smooth_params.radius = (unsigned int)radius;
@@ -337,9 +337,9 @@ void GLCanvas3D::LayersEditing::render_variable_layer_height_dialog(const GLCanv
     input_align = std::max(input_align, ImGui::GetCursorPosX());
     ImGui::SetCursorPosX(input_align);
     ImGui::PushItemWidth(input_box_width);
-    ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.00f, 0.59f, 0.53f, 1.00f));
-    ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.00f, 0.59f, 0.53f, 0.00f));
-    ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0.00f, 0.59f, 0.53f, 0.00f));
+    ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.59f, 0.00f, 0.00f, 1.00f));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.59f, 0.00f, 0.00f, 0.00f));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0.59f, 0.00f, 0.00f, 0.00f));
     ImGui::BBLDragScalar("##radius_input", ImGuiDataType_S32, &radius, 1, &v_min, &v_max);
     ImGui::PopStyleColor(3);
 
@@ -2171,7 +2171,7 @@ void GLCanvas3D::render(bool only_init)
     if (m_canvas_type != ECanvasType::CanvasAssembleView) {
         float right_margin = SLIDER_DEFAULT_RIGHT_MARGIN;
         float bottom_margin = SLIDER_DEFAULT_BOTTOM_MARGIN;
-        if (m_canvas_type == ECanvasType::CanvasPreview && m_gcode_viewer.has_data()) { // ORCA only shift position of notifiations when sliders / gcode_viewer exist
+        if (m_canvas_type == ECanvasType::CanvasPreview && m_gcode_viewer.has_data()) { // MOMENT only shift position of notifiations when sliders / gcode_viewer exist
             float scale_factor = get_scale();
 #ifdef WIN32
             int dpi = get_dpi_for_window(wxGetApp().GetTopWindow());
@@ -4638,7 +4638,7 @@ void GLCanvas3D::on_mouse(wxMouseEvent& evt)
                 render();
             }
 
-            //ORCA allow right click on empty space while an object selected
+            //MOMENT allow right click on empty space while an object selected
             if (m_hover_plate_idxs.empty() && m_hover_volume_idxs.empty() && (m_canvas_type == CanvasView3D) && !m_mouse.dragging) {
                 deselect_all();
                 render();
@@ -5901,9 +5901,9 @@ void GLCanvas3D::_render_3d_navigator()
     style.Colors[ImGuizmo::COLOR::DIRECTION_Z] = ImGuiWrapper::to_ImVec4(ColorRGBA::X());
     style.Colors[ImGuizmo::COLOR::TEXT] = m_is_dark ? ImVec4(224 / 255.f, 224 / 255.f, 224 / 255.f, 1.f) : ImVec4(.2f, .2f, .2f, 1.0f);
     style.Colors[ImGuizmo::COLOR::FACE]        = m_is_dark ? ImVec4(0.23f, 0.23f, 0.23f, 1.f) : ImVec4(0.77f, 0.77f, 0.77f, 1);
-    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_X], "Y"); // ORCA use uppercase to match text on tranform widgets
-    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_Y], "Z"); // ORCA use uppercase to match text on tranform widgets
-    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_Z], "X"); // ORCA use uppercase to match text on tranform widgets
+    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_X], "Y"); // MOMENT use uppercase to match text on tranform widgets
+    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_Y], "Z"); // MOMENT use uppercase to match text on tranform widgets
+    strcpy(style.AxisLabels[ImGuizmo::Axis::Axis_Z], "X"); // MOMENT use uppercase to match text on tranform widgets
     strcpy(style.FaceLabels[ImGuizmo::FACES::FACE_FRONT], _utf8("Front").c_str());
     strcpy(style.FaceLabels[ImGuizmo::FACES::FACE_BACK], _utf8("Back").c_str());
     strcpy(style.FaceLabels[ImGuizmo::FACES::FACE_TOP], _utf8("Top").c_str());
@@ -6730,7 +6730,7 @@ bool GLCanvas3D::_init_main_toolbar()
     item.icon_filename = m_is_dark ? "toolbar_variable_layer_height_dark.svg" : "toolbar_variable_layer_height.svg";
     item.tooltip = _utf8(L("Variable layer height"));
     item.sprite_id++;
-    item.left.toggable = true; // ORCA Closes popup if other toolbar icon clicked and it allows closing popup when clicked its button
+    item.left.toggable = true; // MOMENT Closes popup if other toolbar icon clicked and it allows closing popup when clicked its button
     item.left.action_callback = [this]() { if (m_canvas != nullptr) wxPostEvent(m_canvas, SimpleEvent(EVT_GLTOOLBAR_LAYERSEDITING)); };
     item.visibility_callback = [this]()->bool {
         bool res = current_printer_technology() == ptFFF;
@@ -6752,7 +6752,7 @@ bool GLCanvas3D::_init_select_plate_toolbar()
 {
     std::string path = resources_dir() + "/images/";
     IMToolbarItem* item = new IMToolbarItem();
-    // ORCA add dark mode support and load images with 2x resolution to prevent blurry image on hi-dpi screens
+    // MOMENT add dark mode support and load images with 2x resolution to prevent blurry image on hi-dpi screens
     std::string    ext  = m_is_dark ? "_dark.svg" : ".svg";
     bool result      = item->image_stats.load_from_svg_file(   path + "im_all_plates_stats"   + ext, false, false, false, 200);
     result = result && item->image_idle.load_from_svg_file(    path + "im_all_plates_idle"    + ext, false, false, false, 200);
@@ -8036,7 +8036,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
     IMToolbarItem* all_plates_stats_item = m_sel_plate_toolbar.m_all_plates_stats_item;
 
     PartPlateList& plate_list = wxGetApp().plater()->get_partplate_list();
-    size_t         sliced_plates_cnt = 0; // ORCA make it accesable for other conditions
+    size_t         sliced_plates_cnt = 0; // MOMENT make it accesable for other conditions
 
     for (int i = 0; i < plate_list.get_plate_count(); i++) {
         if (i < m_sel_plate_toolbar.m_items.size()) {
@@ -8135,7 +8135,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
         window_height_max -= (128 * f_scale + 5);
     }
 
-    // ORCA simplify and correct window size and margin calculations and get values from style
+    // MOMENT simplify and correct window size and margin calculations and get values from style
     ImGuiWrapper& imgui = *wxGetApp().imgui();
 
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8.0f, 8.0f) * f_scale);
@@ -8149,7 +8149,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
     float window_width       = button_width + (margin_size + button_margin + ImGui::GetStyle().WindowPadding.x) * 2 + (show_scroll ? scrollbar_size : 0);
 
     ImVec4 window_bg     = m_is_dark ? ImVec4(.13f, .13f, .15f, .5f) : ImVec4(1.f, 1.f, 1.f, .7f);
-    ImVec4 button_active = ImGuiWrapper::COL_ORCA; // ORCA: Use orca color for selected sliced plate border
+    ImVec4 button_active = ImGuiWrapper::COL_MOMENT; // MOMENT: Use orca color for selected sliced plate border
     ImVec4 button_hover  = ImVec4(0.67f, 0.67f, 0.67, m_is_dark ? .6f : 1.0f);
     ImVec4 scroll_col    = ImVec4(0.77f, 0.77f, 0.77f, m_is_dark ? .6f : 1.0f);
     ImU32  plate_bg      = m_is_dark ? IM_COL32(255, 255, 255, 10) : IM_COL32(0, 0, 0, 10);
@@ -8157,9 +8157,9 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
     float  button_radius = 1.0f * f_scale;
     //ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 0.f, 0.f, 1.0f));
     //use white text as the background switch to black
-    ImGui::PushStyleColor(ImGuiCol_Text, m_is_dark ? ImVec4(.9f, .9f, .9f, 1) : ImVec4(.3f, .3f, .3f, 1)); // ORCA Plate number text > Add support for dark mode
+    ImGui::PushStyleColor(ImGuiCol_Text, m_is_dark ? ImVec4(.9f, .9f, .9f, 1) : ImVec4(.3f, .3f, .3f, 1)); // MOMENT Plate number text > Add support for dark mode
     ImGui::PushStyleColor(ImGuiCol_WindowBg, window_bg);
-    ImGui::PushStyleColor(ImGuiCol_ScrollbarBg, ImVec4(0.f, 0.f, 0.f, 0.f)); // ORCA using background color with opacity creates a second color. This prevents secondary color
+    ImGui::PushStyleColor(ImGuiCol_ScrollbarBg, ImVec4(0.f, 0.f, 0.f, 0.f)); // MOMENT using background color with opacity creates a second color. This prevents secondary color
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrabActive, scroll_col);
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrabHovered, scroll_col);
     ImGui::PushStyleColor(ImGuiCol_ScrollbarGrab, scroll_col);
@@ -8171,7 +8171,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, show_scroll ? (4.0f * f_scale) : (button_radius + margin_size + frame_padding + ImGui::GetStyle().WindowPadding.x));
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, button_radius + margin_size);
 
-    imgui.set_next_window_pos(canvas_w * 0 + 5.0f * f_scale, canvas_h * 0 + y_offset, ImGuiCond_Always, 0, 0); // ORCA Add slight gap on left edge so toolbar looks like floating and it creates separation with sidebar
+    imgui.set_next_window_pos(canvas_w * 0 + 5.0f * f_scale, canvas_h * 0 + y_offset, ImGuiCond_Always, 0, 0); // MOMENT Add slight gap on left edge so toolbar looks like floating and it creates separation with sidebar
     imgui.set_next_window_size(window_width, window_height, ImGuiCond_Always);
 
     if (show_scroll)
@@ -8237,7 +8237,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
 
         ImVec2 start_pos = ImVec2(button_start_pos.x + frame_padding + margin.x, button_start_pos.y + frame_padding + margin.y);
 
-        // ORCA add more useful information about slicing process and use progress bar on stats button
+        // MOMENT add more useful information about slicing process and use progress bar on stats button
         std::string text_top;
         std::string text_bottom;
         ImVec2 bar_size         = ImVec2(size.x - margin.x * 2, 5.0f * f_scale);
@@ -8264,7 +8264,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
             text_bottom = std::to_string(sliced_plates_cnt) + " / " + std::to_string(total_plates_cnt);
             ImVec2 bar_fg_end = ImVec2(bar_bg_bgn.x + bar_total_perc_pos + bar_current_perc_pos, bar_bg_end.y);
             ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_bg_end, IM_COL32(128, 128, 128, 255), bar_size.y); // BAR BACKGROUND
-            ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_fg_end, IM_COL32(0, 150, 136, 255),   bar_size.y); // BAR PROGRESS
+            ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_fg_end, IM_COL32(150, 0, 0, 255),   bar_size.y); // BAR PROGRESS
         }
         else if (all_plates_stats_item->slice_state == IMToolbarItem::SliceState::SLICE_FAILED) {
             text_top    = _u8L("Failed");
@@ -8367,10 +8367,10 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
         }
 
         // draw text
-        GImGui->FontSize = 18.0f * f_scale; // ORCA fix font scaling
-        ImVec2 text_start_pos = ImVec2(start_pos.x + 4.0f * f_scale, start_pos.y + 2.0f * f_scale); // ORCA move close to corner to prevent overlapping with preview
+        GImGui->FontSize = 18.0f * f_scale; // MOMENT fix font scaling
+        ImVec2 text_start_pos = ImVec2(start_pos.x + 4.0f * f_scale, start_pos.y + 2.0f * f_scale); // MOMENT move close to corner to prevent overlapping with preview
         ImGui::RenderText(text_start_pos, std::to_string(i + 1).c_str());
-        ImGui::SetWindowFontScale(1.2f); // ORCA fix font scaling
+        ImGui::SetWindowFontScale(1.2f); // MOMENT fix font scaling
 
         ImGui::PopID();
     }
@@ -8413,7 +8413,7 @@ void GLCanvas3D::_render_return_toolbar() const
 
     float font_size = ImGui::GetFontSize();
     ImVec2 real_size = ImVec2(font_size * 4, font_size * 1.7);
-    ImVec2 button_icon_size = ImVec2(font_size * .55, font_size * 1.1); // ORCA
+    ImVec2 button_icon_size = ImVec2(font_size * .55, font_size * 1.1); // MOMENT
 
     ImGuiWrapper& imgui = *wxGetApp().imgui();
     Size cnv_size = get_canvas_size();
@@ -8434,7 +8434,7 @@ void GLCanvas3D::_render_return_toolbar() const
     ImVec4 bg_color_hover = bg_color +  (m_is_dark ? ImVec4(.03f, .03f, .03f, 0) : ImVec4(-.02f, -.02f, -.02f, 0));
 
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 18.0f);
-    ImGui::PushStyleColor(ImGuiCol_Button,        bg_color); // ORCA Toolbar color
+    ImGui::PushStyleColor(ImGuiCol_Button,        bg_color); // MOMENT Toolbar color
     ImGui::PushStyleColor(ImGuiCol_ButtonHovered, bg_color_hover);
     ImGui::PushStyleColor(ImGuiCol_ButtonActive,  bg_color);
     ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.0f));
@@ -8538,7 +8538,7 @@ void GLCanvas3D::_render_canvas_toolbar()
     ImGui::PushStyleColor(ImGuiCol_Text              , m_is_dark ? ImVec4(1, 1, 1, .88f) : ImVec4(50 / 255.f, 58 / 255.f, 61 / 255.f, 1.f));
     ImGui::PushStyleColor(ImGuiCol_TextDisabled      , m_is_dark ? ImVec4(1, 1, 1, .44f) : ImVec4(50 / 255.f, 58 / 255.f, 61 / 255.f, .5f));
     ImGui::PushStyleColor(ImGuiCol_HeaderHovered     , ImVec4(0, 0, 0, 0.f)); // bg color for menu item
-    ImGui::PushStyleColor(ImGuiCol_BorderActive      , ImGuiWrapper::COL_ORCA);
+    ImGui::PushStyleColor(ImGuiCol_BorderActive      , ImGuiWrapper::COL_MOMENT);
     ImGui::PushStyleVar(ImGuiStyleVar_PopupBorderSize, 0.f     );
     ImGui::PushStyleVar(ImGuiStyleVar_PopupRounding  , 8.f * sc);
     ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.f * sc);
@@ -8736,7 +8736,7 @@ void GLCanvas3D::_render_paint_toolbar() const
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(spacing, spacing));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0);
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(spacing, 0));
-    ImGui::PushStyleColor(ImGuiCol_WindowBg, m_is_dark ? ImGuiWrapper::COL_TOOLBAR_BG_DARK : ImGuiWrapper::COL_TOOLBAR_BG); // ORCA Toolbar color
+    ImGui::PushStyleColor(ImGuiCol_WindowBg, m_is_dark ? ImGuiWrapper::COL_TOOLBAR_BG_DARK : ImGuiWrapper::COL_TOOLBAR_BG); // MOMENT Toolbar color
 
     imgui.set_next_window_pos(0.5f * canvas_w, 0, ImGuiCond_Always, 0.5f, 0.0f);
     float constraint_window_width = canvas_w - 2 * return_button_margin;
@@ -8846,7 +8846,7 @@ float GLCanvas3D::_show_assembly_tooltip_information(float caption_max, float x,
         int dpi = get_dpi_for_window(wxGetApp().GetTopWindow());
         scale *= (float) dpi / (float) DPI_DEFAULT;
     #endif // WIN32
-    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // ORCA: Use exact resolution will prevent blur on icon
+    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // MOMENT: Use exact resolution will prevent blur on icon
 
     ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, ImGui::GetStyle().FramePadding.y});
@@ -9037,7 +9037,7 @@ void GLCanvas3D::_render_assemble_info() const
     ImGui::PopFont();
     float margin = 10.0f * get_scale();
     imgui->set_next_window_pos(canvas_w - margin, canvas_h - margin, ImGuiCond_Always, 1.0f, 1.0f);
-    ImGuiWrapper::push_common_window_style(get_scale()); // ORCA use window style for popups with title
+    ImGuiWrapper::push_common_window_style(get_scale()); // MOMENT use window style for popups with title
     imgui->begin(_L("Assembly Info"), ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
     font->Scale = origScale;
     ImGui::PushFont(font);

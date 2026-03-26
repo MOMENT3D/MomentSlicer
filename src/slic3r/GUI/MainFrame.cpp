@@ -212,10 +212,10 @@ private:
 #endif // __WXGTK__
 
 #ifdef __APPLE__
-class OrcaSlicerTaskBarIcon : public wxTaskBarIcon
+class MomentSlicerTaskBarIcon : public wxTaskBarIcon
 {
 public:
-    OrcaSlicerTaskBarIcon(wxTaskBarIconType iconType = wxTBI_DEFAULT_TYPE) : wxTaskBarIcon(iconType) {}
+    MomentSlicerTaskBarIcon(wxTaskBarIconType iconType = wxTBI_DEFAULT_TYPE) : wxTaskBarIcon(iconType) {}
     wxMenu *CreatePopupMenu() override {
         wxMenu *menu = new wxMenu;
         if (wxGetApp().app_config->get("single_instance") == "false") {
@@ -266,7 +266,7 @@ static wxIcon main_frame_icon(GUI_App::EAppMode app_mode)
     }
     return wxIcon(path, wxBITMAP_TYPE_ICO);
 #else // _WIN32
-    return wxIcon(Slic3r::var("OrcaSlicer_128px.png"), wxBITMAP_TYPE_PNG);
+    return wxIcon(Slic3r::var("MomentSlicer_128px.png"), wxBITMAP_TYPE_PNG);
 #endif // _WIN32
 }
 
@@ -381,8 +381,8 @@ DPIFrame(NULL, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, BORDERLESS_FRAME_
     switch (wxGetApp().get_app_mode()) {
     default:
     case GUI_App::EAppMode::Editor:
-        m_taskbar_icon = std::make_unique<OrcaSlicerTaskBarIcon>(wxTBI_DOCK);
-        m_taskbar_icon->SetIcon(wxIcon(Slic3r::var("OrcaSlicer-mac_256px.ico"), wxBITMAP_TYPE_ICO), "OrcaSlicer");
+        m_taskbar_icon = std::make_unique<MomentSlicerTaskBarIcon>(wxTBI_DOCK);
+        m_taskbar_icon->SetIcon(wxIcon(Slic3r::var("MomentSlicer-mac_256px.ico"), wxBITMAP_TYPE_ICO), "MomentSlicer");
         break;
     case GUI_App::EAppMode::GCodeViewer:
         break;
@@ -476,7 +476,7 @@ DPIFrame(NULL, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, BORDERLESS_FRAME_
 #endif
         wxQueueEvent(wxGetApp().plater(), new SimpleEvent(EVT_NOTICE_CHILDE_SIZE_CHANGED));
 
-        fit_tab_labels(); // ORCA on resize
+        fit_tab_labels(); // MOMENT on resize
     });
 
     //BBS
@@ -1244,7 +1244,7 @@ void MainFrame::init_tabpanel() {
                 wxPostEvent(m_plater, SimpleEvent(EVT_GLVIEWTOOLBAR_PREVIEW));
                 m_param_panel->OnActivate();
             }
-            fit_tab_labels(); // ORCA on switching prepare / preview
+            fit_tab_labels(); // MOMENT on switching prepare / preview
         }
         //else if (panel == m_param_panel)
         //    m_param_panel->OnActivate();
@@ -1349,7 +1349,7 @@ void MainFrame::show_device(bool bBBLPrinter) {
     auto idx = -1;
     if (bBBLPrinter) {
         if (m_tabpanel->FindPage(m_monitor) != wxNOT_FOUND) {
-            fit_tab_labels(); // ORCA on printer change - same button layout
+            fit_tab_labels(); // MOMENT on printer change - same button layout
             return;
         }
         // Remove printer view
@@ -1392,7 +1392,7 @@ void MainFrame::show_device(bool bBBLPrinter) {
 
     } else {
         if (m_tabpanel->FindPage(m_printer_view) != wxNOT_FOUND) {
-            fit_tab_labels(); // ORCA on printer change - same button layout
+            fit_tab_labels(); // MOMENT on printer change - same button layout
             return;
         }
         if ((idx = m_tabpanel->FindPage(m_calibration)) != wxNOT_FOUND) {
@@ -1420,7 +1420,7 @@ void MainFrame::show_device(bool bBBLPrinter) {
         m_tabpanel->InsertPage(tpMonitor, m_printer_view, _L("Device"), std::string("tab_monitor_active"),
                                std::string("tab_monitor_active"));
     }
-    fit_tab_labels(); // ORCA on printer change
+    fit_tab_labels(); // MOMENT on printer change
 }
 
 void MainFrame::fit_tab_labels()
@@ -1948,7 +1948,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                 m_slice_enable = get_enable_slice_status();
                 m_slice_btn->Enable(m_slice_enable);
                 this->Layout();
-                fit_tab_labels(); // ORCA on label change
+                fit_tab_labels(); // MOMENT on label change
                 if(m_slice_option_pop_up)
                     m_slice_option_pop_up->Dismiss();
                 });
@@ -1959,7 +1959,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                 m_slice_enable = get_enable_slice_status();
                 m_slice_btn->Enable(m_slice_enable);
                 this->Layout();
-                fit_tab_labels(); // ORCA on label change
+                fit_tab_labels(); // MOMENT on label change
                 if(m_slice_option_pop_up)
                     m_slice_option_pop_up->Dismiss();
                 });
@@ -1984,7 +1984,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -1997,7 +1997,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2005,7 +2005,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                 p->append_button(export_gcode_btn);
             }
             else {
-                //Orca Slicer Buttons
+                //Moment Slicer Buttons
                 SideButton* print_plate_btn = new SideButton(p, _L("Print plate"), "");
                 print_plate_btn->SetCornerRadius(0);
 
@@ -2024,7 +2024,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2036,7 +2036,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2046,7 +2046,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2058,7 +2058,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2068,7 +2068,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2078,7 +2078,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                     });
 
@@ -2117,7 +2117,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                         m_print_enable = get_enable_print_status();
                         m_print_btn->Enable(m_print_enable);
                         this->Layout();
-                        fit_tab_labels(); // ORCA on label change
+                        fit_tab_labels(); // MOMENT on label change
                         p->Dismiss();
                     });
                     p->append_button(print_multi_machine_btn);
@@ -2132,7 +2132,7 @@ wxBoxSizer* MainFrame::create_side_tools()
                     m_print_enable = get_enable_print_status();
                     m_print_btn->Enable(m_print_enable);
                     this->Layout();
-                    fit_tab_labels(); // ORCA on label change
+                    fit_tab_labels(); // MOMENT on label change
                     p->Dismiss();
                 });
                 p->append_button(export_gcode_btn);
@@ -2303,9 +2303,9 @@ void MainFrame::update_side_button_style()
     m_slice_btn->SetExtraSize(wxSize(FromDIP(38), FromDIP(10)));
     m_slice_btn->SetBottomColour(wxColour(0x3B4446));*/
     StateColor m_btn_bg_enable = StateColor(
-        std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(103, 0, 0), StateColor::Pressed),
         std::pair<wxColour, int>(wxColour(48, 221, 112), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal)
     );
 
     // m_publish_btn->SetMinSize(wxSize(FromDIP(125), FromDIP(24)));
@@ -2446,7 +2446,7 @@ void MainFrame::on_dpi_changed(const wxRect& suggested_rect)
 
     this->Maximize(is_maximized);
 
-    fit_tab_labels(); // ORCA
+    fit_tab_labels(); // MOMENT
 }
 
 void MainFrame::on_sys_color_changed()
@@ -2498,7 +2498,7 @@ void MainFrame::on_sys_color_changed()
 }
 
 // On macOS, we use system menu bar, which handles the key accelerators automatically and breaks key handling in normal typing
-// See https://github.com/OrcaSlicer/OrcaSlicer/issues/8152
+// See https://github.com/MomentSlicer/MomentSlicer/issues/8152
 // So we disable some of the accelerators on macOS, by replacing the accelerator seperator to a hyphen.
 #ifdef __APPLE__
 static const wxString sep = " - ";
@@ -2527,7 +2527,7 @@ static wxMenu* generate_help_menu()
         });
 
     // Report a bug
-    //append_menu_item(helpMenu, wxID_ANY, _L("Report Bug(TODO)"), _L("Report a bug of OrcaSlicer"),
+    //append_menu_item(helpMenu, wxID_ANY, _L("Report Bug(TODO)"), _L("Report a bug of MomentSlicer"),
     //    [](wxCommandEvent&) {
     //        //TODO
     //    });
@@ -3087,7 +3087,7 @@ void MainFrame::init_menubar_as_editor()
 #ifdef __APPLE__
     wxWindowID bambu_studio_id_base = wxWindow::NewControlId(int(2));
     wxMenu* parent_menu = m_menubar->OSXGetAppleMenu();
-    //auto preference_item = new wxMenuItem(parent_menu, OrcaSlicerMenuPreferences + bambu_studio_id_base, _L("Preferences") + "\t" + ctrl + ",", "");
+    //auto preference_item = new wxMenuItem(parent_menu, MomentSlicerMenuPreferences + bambu_studio_id_base, _L("Preferences") + "\t" + ctrl + ",", "");
 #else
     wxMenu* parent_menu = m_topbar->GetTopMenu();
     auto preference_item = new wxMenuItem(parent_menu, ConfigMenuPreferences + config_id_base, _L("Preferences") + "\t" + ctrl + "P", "");
@@ -3162,13 +3162,13 @@ void MainFrame::init_menubar_as_editor()
 
 #ifdef __APPLE__
     wxString about_title = wxString::Format(_L("&About %s"), SLIC3R_APP_FULL_NAME);
-    //auto about_item = new wxMenuItem(parent_menu, OrcaSlicerMenuAbout + bambu_studio_id_base, about_title, "");
+    //auto about_item = new wxMenuItem(parent_menu, MomentSlicerMenuAbout + bambu_studio_id_base, about_title, "");
         //parent_menu->Bind(wxEVT_MENU, [this, bambu_studio_id_base](wxEvent& event) {
         //    switch (event.GetId() - bambu_studio_id_base) {
-        //        case OrcaSlicerMenuAbout:
+        //        case MomentSlicerMenuAbout:
         //            Slic3r::GUI::about();
         //            break;
-        //        case OrcaSlicerMenuPreferences:
+        //        case MomentSlicerMenuPreferences:
         //            CallAfter([this] {
         //                PreferencesDialog dlg(this);
         //                dlg.ShowModal();
@@ -4284,7 +4284,7 @@ SettingsDialog::SettingsDialog(MainFrame* mainframe)
         SetIcon(wxIcon(szExeFileName, wxBITMAP_TYPE_ICO));
     }
 #else
-    SetIcon(wxIcon(var("OrcaSlicer_128px.png"), wxBITMAP_TYPE_PNG));
+    SetIcon(wxIcon(var("MomentSlicer_128px.png"), wxBITMAP_TYPE_PNG));
 #endif // _WIN32
 
     //just hide the Frame on closing

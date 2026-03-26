@@ -61,13 +61,13 @@ body
 /*-----Right Top MenuBtn-----*/
 .MenuItem:hover
 {
-	border-color: #00675b;
+	border-color: #670000;
 	background-color: #223C3C;
 }
 
 .FileImg
 {
-	background-color: #36363C; /*ORCA use darker color for dark theme for thumbnails*/
+	background-color: #36363C; /*MOMENT use darker color for dark theme for thumbnails*/
 }
 
 #recnet_context_menu
@@ -80,7 +80,7 @@ body
 
 .CT_Item:hover
 {
-	background-color:#00675b; /*ORCA color*/
+	background-color:#670000; /*MOMENT color*/
 }
 
 /*----User Manual------*/

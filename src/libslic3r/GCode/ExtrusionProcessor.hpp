@@ -70,7 +70,7 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
     };
 
     using P = typename POINTS::value_type;
-    // ORCA:
+    // MOMENT:
     // minimum spacing threshold for any newly generated points
     // Setting the minimum spacing to be 25% of the flow width ensures the points are spaced far enough apart
     // to avoid micro stutters while the movement of the print head is still fine-grained enough to maintain
@@ -109,7 +109,7 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
                 ExtendedPoint p{};
                 p.position = intersection.first.template cast<double>();
                 p.distance = boundary_offset;
-                // ORCA: Filter out points that are introduced at intersections if their distance from the previous or next point is not meaningful
+                // MOMENT: Filter out points that are introduced at intersections if their distance from the previous or next point is not meaningful
                 if ((p.position - prev_point.position).norm() > min_spacing &&
                     (next_point.position - p.position).norm() > min_spacing) {
                     points.push_back(p);
@@ -132,7 +132,7 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
                 (next.distance > -boundary_offset && next.distance < boundary_offset + 2.0f)) {
                 double line_len = (next.position - curr.position).norm();
                 
-                // ORCA: Segment path to smaller lines by adding additional points only if the path has an overhang that
+                // MOMENT: Segment path to smaller lines by adding additional points only if the path has an overhang that
                 // will trigger a slowdown and the path is also reasonably large, i.e. 2mm in length or more
                 // If there is no overhang in the start/end point, dont segment it.
                 // Ignore this check if the control of segmentation for overhangs is disabled (min_distance=-1)
@@ -150,10 +150,10 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
                         ExtendedPoint new_p{};
                         new_p.position = p0;
                         new_p.distance = float(p0_dist + boundary_offset);
-                        // ORCA: only create a new point in the path if the new point overhang distance will be used to generate a speed change
+                        // MOMENT: only create a new point in the path if the new point overhang distance will be used to generate a speed change
                         // or if this option is disabled (min_distance<=0)
                         if( (std::abs(p0_dist) > min_distance) || (min_distance<=0)){
-                            // ORCA: also filter out points that are introduced to the start of the path when their distance from the start point is
+                            // MOMENT: also filter out points that are introduced to the start of the path when their distance from the start point is
                             // not meaningful
                             if ((p0 - curr.position).norm() > min_spacing && (next.position - p0).norm() > min_spacing) {
                                 new_points.push_back(new_p);
@@ -167,10 +167,10 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
                         ExtendedPoint new_p{};
                         new_p.position = p1;
                         new_p.distance = float(p1_dist + boundary_offset);
-                        // ORCA: only create a new point in the path if the new point overhang distance will be used to generate a speed change
+                        // MOMENT: only create a new point in the path if the new point overhang distance will be used to generate a speed change
                         // or if this option is disabled (min_distance<=0)
                         if( (std::abs(p1_dist) > min_distance) || (min_distance<=0)){
-                            // ORCA: filter out points that are introduced to the end of the path when their distance from the end point is
+                            // MOMENT: filter out points that are introduced to the end of the path when their distance from the end point is
                             // not meaningful
                             if ((p1 - curr.position).norm() > min_spacing && (next.position - p1).norm() > min_spacing) {
                                 new_points.push_back(new_p);
@@ -204,7 +204,7 @@ std::vector<ExtendedPoint> estimate_points_properties(const POINTS              
                     new_p.position = pos;
                     new_p.distance = float(p_dist + boundary_offset);
                     
-                    // ORCA: Filter out points that are introduced if their distance from the previous or next point is not meaningful
+                    // MOMENT: Filter out points that are introduced if their distance from the previous or next point is not meaningful
                     if ((pos - curr.position).norm() > min_spacing && (next.position - pos).norm() > min_spacing) {
                         new_points.push_back(new_p);
                     }
@@ -442,7 +442,7 @@ public:
             };
             
             float extrusion_speed = std::min(calculate_speed(curr.distance), calculate_speed(next.distance));
-            // ORCA: Clamp resulting speed to lowest of calculated speed based on the overhang values and the current speed
+            // MOMENT: Clamp resulting speed to lowest of calculated speed based on the overhang values and the current speed
             // Fixes bug where resulting overhang speed is higher than the current speed due to (for example) volumetric flow limits.
             extrusion_speed = std::min(extrusion_speed, original_speed);
             

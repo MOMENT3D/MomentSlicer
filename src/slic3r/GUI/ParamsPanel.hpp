@@ -84,7 +84,7 @@ class ParamsPanel : public wxPanel
         SwitchButton* m_mode_region { nullptr };
         ScalableButton *m_tips_arrow{nullptr};
         bool m_tips_arror_blink{false};
-        ScalableButton* m_mode_icon { nullptr }; // ORCA
+        ScalableButton* m_mode_icon { nullptr }; // MOMENT
         SwitchButton* m_mode_view { nullptr };
         //wxBitmapButton* m_search_button { nullptr };
         wxStaticLine* m_staticline_print { nullptr };

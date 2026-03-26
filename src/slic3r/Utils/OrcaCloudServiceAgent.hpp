@@ -1,5 +1,5 @@
-#ifndef __ORCA_CLOUD_SERVICE_AGENT_HPP__
-#define __ORCA_CLOUD_SERVICE_AGENT_HPP__
+#ifndef __MOMENT_CLOUD_SERVICE_AGENT_HPP__
+#define __MOMENT_CLOUD_SERVICE_AGENT_HPP__
 
 #include "ICloudServiceAgent.hpp"
 #include <string>
@@ -32,8 +32,8 @@ namespace auth_constants {
 // ============================================================================
 // Note: These may also be defined in OrcaNetwork.hpp - guards prevent redefinition
 
-#ifndef ORCA_SYNC_STRUCTS_DEFINED
-#define ORCA_SYNC_STRUCTS_DEFINED
+#ifndef MOMENT_SYNC_STRUCTS_DEFINED
+#define MOMENT_SYNC_STRUCTS_DEFINED
 
 struct ProfileUpsert {
     std::string id;
@@ -62,7 +62,7 @@ struct SyncState {
     std::string last_sync_timestamp;
 };
 
-#endif // ORCA_SYNC_STRUCTS_DEFINED
+#endif // MOMENT_SYNC_STRUCTS_DEFINED
 
 /**
  * OrcaCloudServiceAgent - Native cloud service and authentication implementation for Orca Cloud.
@@ -356,4 +356,4 @@ private:
 
 } // namespace Slic3r
 
-#endif // __ORCA_CLOUD_SERVICE_AGENT_HPP__
+#endif // __MOMENT_CLOUD_SERVICE_AGENT_HPP__

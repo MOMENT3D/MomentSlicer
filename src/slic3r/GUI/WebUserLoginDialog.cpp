@@ -25,7 +25,7 @@
 
 #include <sstream>
 #include <slic3r/GUI/Widgets/WebView.hpp>
-#include <slic3r/GUI/Widgets/HyperLink.hpp> // ORCA
+#include <slic3r/GUI/Widgets/HyperLink.hpp> // MOMENT
 using namespace std;
 
 using namespace nlohmann;
@@ -40,7 +40,7 @@ END_EVENT_TABLE()
 
 int ZUserLogin::web_sequence_id = 20000;
 
-ZUserLogin::ZUserLogin() : wxDialog((wxWindow *) (wxGetApp().mainframe), wxID_ANY, "OrcaSlicer")
+ZUserLogin::ZUserLogin() : wxDialog((wxWindow *) (wxGetApp().mainframe), wxID_ANY, "MomentSlicer")
 {
     SetBackgroundColour(*wxWHITE);
     const auto bblnetwork_enabled =wxGetApp().app_config->get_bool("installed_networking");
@@ -59,7 +59,7 @@ ZUserLogin::ZUserLogin() : wxDialog((wxWindow *) (wxGetApp().mainframe), wxID_AN
         m_message->SetForegroundColour(*wxBLACK);
         m_message->Wrap(FromDIP(360));
 
-        // ORCA standardized HyperLink
+        // MOMENT standardized HyperLink
         auto m_download_hyperlink = new HyperLink(this, _L("Click here to download it."));
         m_download_hyperlink->Bind(wxEVT_LEFT_DOWN, [this](wxMouseEvent& event) {
             this->Close();

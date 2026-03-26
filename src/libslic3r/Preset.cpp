@@ -702,7 +702,7 @@ bool is_compatible_with_printer(const PresetWithVendorProfile &preset, const Pre
     // Orca: check excluded printers
     if (preset.vendor != nullptr && preset.preset.type == Preset::TYPE_FILAMENT) {
         const auto& excluded_printers = preset.preset.m_excluded_from;
-        const auto  excluded         = preset.vendor->name == PresetBundle::ORCA_FILAMENT_LIBRARY &&
+        const auto  excluded         = preset.vendor->name == PresetBundle::MOMENT_FILAMENT_LIBRARY &&
                               excluded_printers.find(active_printer.preset.name) != excluded_printers.end();
         if (excluded)
             return false;
@@ -1506,7 +1506,7 @@ int PresetCollection::get_differed_values_to_update(Preset& preset, std::map<std
     }
     BOOST_LOG_TRIVIAL(info) << __FUNCTION__ << " uploading user preset name is: " << preset.name << "and create filament_id is: " << preset.filament_id
                             << " and base_id is: " << preset.base_id;
-    key_values[ORCA_JSON_KEY_UPDATE_TIME] = std::to_string(preset.updated_time);
+    key_values[MOMENT_JSON_KEY_UPDATE_TIME] = std::to_string(preset.updated_time);
     key_values[BBL_JSON_KEY_TYPE] = Preset::get_iot_type_string(preset.type);
     return 0;
 }
@@ -1806,8 +1806,8 @@ bool PresetCollection::load_user_preset(std::string name, std::map<std::string, 
 
     //update_time
     long long cloud_update_time = 0;
-    if (preset_values.find(ORCA_JSON_KEY_UPDATE_TIME) != preset_values.end()) {
-        cloud_update_time = std::atoll(preset_values[ORCA_JSON_KEY_UPDATE_TIME].c_str());
+    if (preset_values.find(MOMENT_JSON_KEY_UPDATE_TIME) != preset_values.end()) {
+        cloud_update_time = std::atoll(preset_values[MOMENT_JSON_KEY_UPDATE_TIME].c_str());
     }
 
     //user_id
@@ -2768,7 +2768,7 @@ size_t PresetCollection::first_visible_idx() const
     size_t first_visible = -1;
     size_t idx = m_default_suppressed ? m_num_default_presets : 0;
     for (; idx < m_presets.size(); ++ idx)
-        if (m_presets[idx].is_visible && m_presets[idx].get_printer_id() == PresetBundle::ORCA_FILAMENT_LIBRARY) {
+        if (m_presets[idx].is_visible && m_presets[idx].get_printer_id() == PresetBundle::MOMENT_FILAMENT_LIBRARY) {
             if (first_visible == -1)
                 first_visible = idx;
             if (m_type != Preset::TYPE_FILAMENT)
@@ -3217,7 +3217,7 @@ void PresetCollection::update_library_profile_excluded_from()
     // Orca: Collect all filament presets that has empty compatible_printers and belongs to the Orca Filament Library.
     std::map<std::string, std::set<std::string>*> excluded_froms;
     for (Preset& preset : m_presets) {
-        if (preset.vendor != nullptr && preset.vendor->name == PresetBundle::ORCA_FILAMENT_LIBRARY) {
+        if (preset.vendor != nullptr && preset.vendor->name == PresetBundle::MOMENT_FILAMENT_LIBRARY) {
             // check if the preset has empty compatible_printers
             const auto* compatible_printers = dynamic_cast<const ConfigOptionStrings*>(preset.config.option("compatible_printers"));
             if (compatible_printers == nullptr || compatible_printers->values.empty())
@@ -3227,7 +3227,7 @@ void PresetCollection::update_library_profile_excluded_from()
 
     // Check all presets that has the same alias as the filament presets with empty compatible_printers in Orca Filament Library.
     for (const Preset& preset : m_presets) {
-        if (preset.vendor == nullptr || preset.vendor->name == PresetBundle::ORCA_FILAMENT_LIBRARY)
+        if (preset.vendor == nullptr || preset.vendor->name == PresetBundle::MOMENT_FILAMENT_LIBRARY)
             continue;
 
         const auto* compatible_printers = dynamic_cast<const ConfigOptionStrings*>(preset.config.option("compatible_printers"));

@@ -10,7 +10,7 @@ namespace Slic3r { namespace GUI {
 static const wxColour LabelEnableColor = wxColour("#262E30");
 static const wxColour LabelDisableColor = wxColour("#ACACAC");
 static const wxColour GreyColor = wxColour("#6B6B6B");
-static const wxColour GreenColor = wxColour("#009688");
+static const wxColour GreenColor = wxColour("#960000");
 static const wxColour BackGroundColor = wxColour("#FFFFFF");
 
 
@@ -49,7 +49,7 @@ static void set_prefered_map_mode(FilamentMapMode mode)
 
 void FilamentGroupPopup::CreateBmps()
 {
-    checked_bmp = create_scaled_bitmap("radio_on", nullptr, 16);; // ORCA match icons
+    checked_bmp = create_scaled_bitmap("radio_on", nullptr, 16);; // MOMENT match icons
     unchecked_bmp = create_scaled_bitmap("radio_off", nullptr, 16);
     disabled_bmp = create_scaled_bitmap("radio_disabled", nullptr, 16);
     checked_hover_bmp = create_scaled_bitmap("radio_on_hover", nullptr, 16);
@@ -150,7 +150,7 @@ FilamentGroupPopup::FilamentGroupPopup(wxWindow *parent) : PopupWindow(parent, w
         const std::string wiki_path = Slic3r::resources_dir() + "/wiki/filament_group_wiki_zh.html"; // NEEDFIX this link is broken
 
         auto* wiki_sizer = new wxBoxSizer(wxHORIZONTAL);
-        wiki_link = new HyperLink(this, _L("Wiki Guide"), wxString(wiki_path.c_str())); // ORCA
+        wiki_link = new HyperLink(this, _L("Wiki Guide"), wxString(wiki_path.c_str())); // MOMENT
         wiki_sizer->Add(wiki_link, 0, wxALIGN_CENTER | wxALL, FromDIP(3));
 
         button_sizer->Add(wiki_sizer, 0, wxLEFT, horizontal_margin);

@@ -40,7 +40,7 @@ std::vector<Polylines> Bed_2D::generate_grid(const ExPolygon& poly, const Boundi
     Polylines lines_thin, lines_bold;
     int   count = 0;
 
-    // ORCA draw grid lines relative to origin
+    // MOMENT draw grid lines relative to origin
     for (coord_t x = origin.x(); x >= bb.min(0); x -= step) { // Negative X axis
         (count % 5 ? lines_thin : lines_bold).push_back(Polyline(
             Point(x, bb.min(1)),
@@ -135,7 +135,7 @@ void Bed_2D::repaint(const std::vector<Vec2d>& shape)
 	m_scale_factor = sfactor;
     m_shift = Vec2d(shift(0) + cbb.min(0), shift(1) - (cbb.max(1) - ch));
 
-    // ORCA match colors
+    // MOMENT match colors
     ColorRGBA   bed_rgba   = is_dark ? Bed3D::DEFAULT_MODEL_COLOR_DARK    : Bed3D::DEFAULT_MODEL_COLOR;
     std::string bed_color  = encode_color(ColorRGBA(bed_rgba[0] * 0.8f, bed_rgba[1] * 0.8f,bed_rgba[2] * 0.8f, bed_rgba[3]));
     ColorRGBA   grid_color = is_dark ? PartPlate::LINE_TOP_SEL_DARK_COLOR : PartPlate::LINE_TOP_SEL_COLOR;
@@ -189,39 +189,39 @@ void Bed_2D::repaint(const std::vector<Vec2d>& shape)
 	auto axes_len = 5 * wxGetApp().em_unit(); // scale axis
 	auto arrow_len = 6;
 	auto arrow_angle = Geometry::deg2rad(45.0);
-    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::X())), 2, wxPENSTYLE_SOLID));  // red // ORCA match axis colors
+    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::X())), 2, wxPENSTYLE_SOLID));  // red // MOMENT match axis colors
 	auto x_end = Vec2d(origin_px(0) + axes_len, origin_px(1));
 	dc.DrawLine(wxPoint(origin_px(0), origin_px(1)), wxPoint(x_end(0), x_end(1)));
-	//for (auto angle : { -arrow_angle, arrow_angle }) {  // ORCA dont draw arrows
+	//for (auto angle : { -arrow_angle, arrow_angle }) {  // MOMENT dont draw arrows
 	//	Vec2d end = Eigen::Translation2d(x_end) * Eigen::Rotation2Dd(angle) * Eigen::Translation2d(- x_end) * Eigen::Vector2d(x_end(0) - arrow_len, x_end(1));
 	//	dc.DrawLine(wxPoint(x_end(0), x_end(1)), wxPoint(end(0), end(1)));
 	//}
 
-    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::Y())), 2, wxPENSTYLE_SOLID));  // green // ORCA match axis colors
+    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::Y())), 2, wxPENSTYLE_SOLID));  // green // MOMENT match axis colors
 	auto y_end = Vec2d(origin_px(0), origin_px(1) - axes_len);
 	dc.DrawLine(wxPoint(origin_px(0), origin_px(1)), wxPoint(y_end(0), y_end(1)));
-	//for (auto angle : { -arrow_angle, arrow_angle }) {  // ORCA dont draw arrows
+	//for (auto angle : { -arrow_angle, arrow_angle }) {  // MOMENT dont draw arrows
 	//	Vec2d end = Eigen::Translation2d(y_end) * Eigen::Rotation2Dd(angle) * Eigen::Translation2d(- y_end) * Eigen::Vector2d(y_end(0), y_end(1) + arrow_len);
 	//	dc.DrawLine(wxPoint(y_end(0), y_end(1)), wxPoint(end(0), end(1)));
 	//}
 
 	// draw origin
-    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::Z())), 1, wxPENSTYLE_SOLID));    // ORCA match axis colors
-    dc.SetBrush(wxBrush(wxColour(encode_color(ColorRGB::Z())), wxBRUSHSTYLE_SOLID)); // ORCA match axis colors
+    dc.SetPen(wxPen(wxColour(encode_color(ColorRGB::Z())), 1, wxPENSTYLE_SOLID));    // MOMENT match axis colors
+    dc.SetBrush(wxBrush(wxColour(encode_color(ColorRGB::Z())), wxBRUSHSTYLE_SOLID)); // MOMENT match axis colors
 	dc.DrawCircle(origin_px(0), origin_px(1), 3);
 
 	static const auto origin_label = wxString("(0,0)");
 	dc.SetTextForeground(wxColour("#FFFFFF"));
     dc.SetFont(wxFont(10, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	auto extent = dc.GetTextExtent(origin_label);
-	const auto origin_label_x = origin_px(0) + 2;                       // ORCA always draw (0,0) text in axes bounding box
+	const auto origin_label_x = origin_px(0) + 2;                       // MOMENT always draw (0,0) text in axes bounding box
 	const auto origin_label_y = origin_px(1) - extent.GetHeight() - 2;
     dc.SetPen(  wxPen(  wxColour(wxColour(bed_color)), 1, wxPENSTYLE_SOLID));
     dc.SetBrush(wxBrush(wxColour(wxColour(bed_color)), wxBRUSHSTYLE_SOLID));
-    dc.DrawRectangle(wxPoint(origin_label_x, origin_label_y), extent);  // ORCA draw a background to origin position text to improve readability when overlaps with grid
+    dc.DrawRectangle(wxPoint(origin_label_x, origin_label_y), extent);  // MOMENT draw a background to origin position text to improve readability when overlaps with grid
 	dc.DrawText(origin_label, origin_label_x, origin_label_y);
 
-    // ORCA add grid size value as information for large scale beds
+    // MOMENT add grid size value as information for large scale beds
     auto grid_label = wxString::Format(_L("1x1 Grid: %d mm"), step);
     Point draw_bb = to_pixels(Vec2d(
         std::min(m_pos(0),bb.min(0)),

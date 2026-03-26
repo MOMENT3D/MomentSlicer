@@ -188,7 +188,7 @@ void GLGizmoMove3D::on_render()
                 m_grabber_connections[id].model.init_from(std::move(init_data));
             //}
 
-            // ORCA: OpenGL Core Profile
+            // MOMENT: OpenGL Core Profile
 #if !SLIC3R_OPENGL_ES
             if (!OpenGLManager::get_gl_info().is_core_profile()) {
                 glLineStipple(1, 0x0FFF);

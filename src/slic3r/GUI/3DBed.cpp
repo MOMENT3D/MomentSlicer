@@ -181,7 +181,7 @@ const float Bed3D::Axes::DefaultStemLength = 25.0f;
 const float Bed3D::Axes::DefaultTipRadius = 2.5f * Bed3D::Axes::DefaultStemRadius;
 const float Bed3D::Axes::DefaultTipLength = 5.0f;
 
-// ORCA make bed colors accessable for 2D bed
+// MOMENT make bed colors accessable for 2D bed
 ColorRGBA Bed3D::DEFAULT_MODEL_COLOR             = { 0.3255f, 0.337f, 0.337f, 1.0f };
 ColorRGBA Bed3D::DEFAULT_MODEL_COLOR_DARK        = { 0.255f, 0.255f, 0.283f, 1.0f };
 ColorRGBA Bed3D::DEFAULT_SOLID_GRID_COLOR        = { 0.9f, 0.9f, 0.9f, 1.0f };
@@ -219,9 +219,9 @@ void Bed3D::Axes::render()
 
     if (!m_arrow.is_initialized())
         //m_arrow.init_from(stilized_arrow(16, DefaultTipRadius, DefaultTipLength, DefaultStemRadius, m_stem_length));
-        m_arrow.init_from(smooth_cylinder(16, /*Radius*/ m_stem_length / 75.f, m_stem_length)); // ORCA use simple cylinder and scale thickness depends on length
+        m_arrow.init_from(smooth_cylinder(16, /*Radius*/ m_stem_length / 75.f, m_stem_length)); // MOMENT use simple cylinder and scale thickness depends on length
 
-    GLShaderProgram* shader = wxGetApp().get_shader("flat"); // ORCA dont use shading to get closer color tone
+    GLShaderProgram* shader = wxGetApp().get_shader("flat"); // MOMENT dont use shading to get closer color tone
     if (shader == nullptr)
         return;
 
@@ -751,8 +751,8 @@ void Bed3D::render_default(bool bottom, const Transform3d& view_matrix, const Tr
         if (m_model.get_filename().empty() && !bottom) {
             // draw background
             glsafe(::glDepthMask(GL_FALSE));
-            ColorRGBA color = m_is_dark ? DEFAULT_MODEL_COLOR_DARK : DEFAULT_MODEL_COLOR;   // ORCA add dark mode support
-            color = ColorRGBA(color[0] * 0.8f, color[1] * 0.8f,color[2] * 0.8f, color[3]);  // ORCA shift color a darker tone to fix difference between flat / gouraud_light shader
+            ColorRGBA color = m_is_dark ? DEFAULT_MODEL_COLOR_DARK : DEFAULT_MODEL_COLOR;   // MOMENT add dark mode support
+            color = ColorRGBA(color[0] * 0.8f, color[1] * 0.8f,color[2] * 0.8f, color[3]);  // MOMENT shift color a darker tone to fix difference between flat / gouraud_light shader
             m_triangles.set_color(color);
             m_triangles.render();
             glsafe(::glDepthMask(GL_TRUE));

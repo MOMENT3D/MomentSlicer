@@ -116,7 +116,7 @@ protected:
     // Filament remap feature
     bool                              m_show_remap_panel = false;
     std::vector<size_t>               m_extruder_remap;      // index → target extruder index
-    // ORCA: Cache used filaments to filter UI
+    // MOMENT: Cache used filaments to filter UI
     std::set<size_t>                  m_used_filaments;      // Set of used filament indices (cached)
 
     static const constexpr float      CursorRadiusMin = 0.1f; // cannot be zero
@@ -143,7 +143,7 @@ private:
     // Filament remapping methods
     void remap_filament_assignments();
     void render_filament_remap_ui(float window_width, float max_tooltip_width);
-    // ORCA: Helper to update the cache of used filaments
+    // MOMENT: Helper to update the cache of used filaments
     void update_used_filaments();
 
     // This map holds all translated description texts, so they can be easily referenced during layout calculations

@@ -664,7 +664,7 @@ void PresetUpdater::priv::sync_config()
     }
     AppConfig *app_config = GUI::wxGetApp().app_config;
 
-    auto profile_update_url = app_config->profile_update_url() + "/" + SoftFever_VERSION;
+    auto profile_update_url = app_config->profile_update_url() + "/" + MOMENT3D_VERSION;
     // parse the assets section and get the latest asset by comparing the name
 
     Http::get(profile_update_url)
@@ -706,7 +706,7 @@ void PresetUpdater::priv::sync_config()
                         for (auto asset : assets) {
                             std::string name          = asset["name"].get<std::string>();
                             int         versionNumber = -1;
-                            std::regex  regexPattern("orcaslicer-profiles_ota_.*\\.([0-9]+)\\.zip$");
+                            std::regex  regexPattern("momentslicer-profiles_ota_.*\\.([0-9]+)\\.zip$");
                             std::smatch matches;
                             if (std::regex_search(name, matches, regexPattern) && matches.size() > 1) {
                                 versionNumber = std::stoi(matches[1].str());
@@ -1101,7 +1101,7 @@ void PresetUpdater::priv::check_installed_vendor_profiles() const
 
     std::set<std::string> bundles;
     // Orca: always install filament library
-    bundles.insert(PresetBundle::ORCA_FILAMENT_LIBRARY);
+    bundles.insert(PresetBundle::MOMENT_FILAMENT_LIBRARY);
     for (auto &dir_entry : boost::filesystem::directory_iterator(rsrc_path)) {
         const auto &path = dir_entry.path();
         std::string file_path = path.string();
@@ -1112,7 +1112,7 @@ void PresetUpdater::priv::check_installed_vendor_profiles() const
             vendor_name.erase(vendor_name.size() - 5);
             if (bundles.find(vendor_name) != bundles.end())continue;
 
-            const auto is_vendor_enabled = (vendor_name == PresetBundle::ORCA_DEFAULT_BUNDLE) // always update configs from resource to vendor for ORCA_DEFAULT_BUNDLE
+            const auto is_vendor_enabled = (vendor_name == PresetBundle::MOMENT_DEFAULT_BUNDLE) // always update configs from resource to vendor for MOMENT_DEFAULT_BUNDLE
                                            || (enabled_vendors.find(vendor_name) != enabled_vendors.end());
             if (enabled_config_update) {
                 if ( fs::exists(path_in_vendor)) {

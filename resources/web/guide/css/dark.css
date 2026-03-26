@@ -6,7 +6,7 @@
 
 body
 {
-	background-color:#2D2D31; /* ORCA match background color */
+	background-color:#2D2D31; /* MOMENT match background color */
 	color: #efeff0;
 }
 
@@ -20,21 +20,21 @@ body
 
 #Title div
 {
-	color: #009688;
+	color: #960000;
 }
 
 .search>input[type=text]{
 	background-color:#2D2D31;
 }
 
-/*---Checkboxes ORCA---*/
+/*---Checkboxes MOMENT---*/
 input[type=checkbox]{
 	background-color:#2D2D31;
 	border-color:#4A4A51;
 }
 
 input[type=checkbox]:checked{
-	background-color:#009688;
+	background-color:#960000;
 }
 
 /*-------Text------*/
@@ -64,7 +64,7 @@ input[type=checkbox]:checked{
 
 .RegionSelected:hover
 {
-	background-color:#009688;
+	background-color:#960000;
 	color: #fff;	
 }
 

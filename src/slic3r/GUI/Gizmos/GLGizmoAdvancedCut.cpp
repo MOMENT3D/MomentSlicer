@@ -989,7 +989,7 @@ void GLGizmoAdvancedCut::render_cut_plane_and_grabbers()
         }
 
         glsafe(::glDisable(GL_DEPTH_TEST));
-        // ORCA: OpenGL Core Profile
+        // MOMENT: OpenGL Core Profile
 #if !SLIC3R_OPENGL_ES
         if (!OpenGLManager::get_gl_info().is_core_profile()) {
             glsafe(::glLineWidth(m_hover_id != -1 ? 2.0f : 1.5f));
@@ -1155,7 +1155,7 @@ void GLGizmoAdvancedCut::render_cut_line()
         shader->set_uniform("view_model_matrix", camera.get_view_matrix());
         shader->set_uniform("projection_matrix", camera.get_projection_matrix());
 
-        // ORCA: OpenGL Core Profile
+        // MOMENT: OpenGL Core Profile
 #if !SLIC3R_OPENGL_ES
         if (!OpenGLManager::get_gl_info().is_core_profile()) {
             glEnable(GL_LINE_STIPPLE);

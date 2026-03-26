@@ -224,8 +224,8 @@ GLGizmoCut3D::GLGizmoCut3D(GLCanvas3D& parent, const std::string& icon_filename,
         {"Width"        , _u8L("Width")},
         {"Flap Angle"   , _u8L("Flap Angle")},
         {"Groove Angle" , _u8L("Groove Angle")},
-        {"Cut position" , _u8L("Cut position")}, // ORCA
-        {"Build Volume" , _u8L("Build Volume")}, // ORCA
+        {"Cut position" , _u8L("Cut position")}, // MOMENT
+        {"Build Volume" , _u8L("Build Volume")}, // MOMENT
     };
 
 //    update_connector_shape();
@@ -662,11 +662,11 @@ bool GLGizmoCut3D::render_reset_button(const std::string& label_id, const std::s
     const ImGuiStyle &style = ImGui::GetStyle();
 
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, {1, style.ItemSpacing.y});
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0);       // ORCA match button style
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0);       // MOMENT match button style
 
     ImGui::PushStyleColor(ImGuiCol_Button, {0.25f, 0.25f, 0.25f, 0.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, {0, 0, 0, 0}); // ORCA match button style
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive,  {0, 0, 0, 0}); // ORCA match button style
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, {0, 0, 0, 0}); // MOMENT match button style
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive,  {0, 0, 0, 0}); // MOMENT match button style
 
     const bool revert = m_imgui->button(wxString(ImGui::RevertBtn) + "##" + wxString::FromUTF8(label_id));
 
@@ -675,7 +675,7 @@ bool GLGizmoCut3D::render_reset_button(const std::string& label_id, const std::s
     if (ImGui::IsItemHovered())
         m_imgui->tooltip(tooltip.c_str(), ImGui::GetFontSize() * 20.0f);
 
-    ImGui::PopStyleVar(2); // ORCA
+    ImGui::PopStyleVar(2); // MOMENT
 
     return revert;
 }
@@ -1049,8 +1049,8 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
 
         // render sphere grabber
         size = m_dragging ? get_dragging_half_size(mean_size) : get_half_size(mean_size);
-        color = m_hover_id == Y ? ColorRGBA::Y() : // ORCA match axis colors
-                m_hover_id == X ? ColorRGBA::X() : // ORCA match axis colors
+        color = m_hover_id == Y ? ColorRGBA::Y() : // MOMENT match axis colors
+                m_hover_id == X ? ColorRGBA::X() : // MOMENT match axis colors
                 m_hover_id == Z ? GRABBER_COLOR                     :   ColorRGBA::GRAY();
         render_model(m_sphere.model, color, view_matrix * translation_transform(m_grabber_connection_len * Vec3d::UnitZ()) * scale_transform(size));
     }
@@ -1064,7 +1064,7 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
         size = m_dragging && m_hover_id == X ? get_dragging_half_size(mean_size) : get_half_size(mean_size);
         const Vec3d cone_scale = Vec3d(0.75 * size, 0.75 * size, 1.8 * size);
         //color = m_hover_id == X ? complementary(ColorRGBA::X()) : ColorRGBA::X();
-        color = ColorRGBA::X(); // ORCA match axis colors
+        color = ColorRGBA::X(); // MOMENT match axis colors
 
         if (m_hover_id == X) {
             render_grabber_connection(color, view_matrix);
@@ -1084,7 +1084,7 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
         size = m_dragging && m_hover_id == Y ? get_dragging_half_size(mean_size) : get_half_size(mean_size);
         const Vec3d cone_scale = Vec3d(0.75 * size, 0.75 * size, 1.8 * size);
         //color = m_hover_id == Y ? complementary(ColorRGBA::Y()) : ColorRGBA::Y();
-        color = ColorRGBA::Y(); // ORCA match axis colors
+        color = ColorRGBA::Y(); // MOMENT match axis colors
 
         if (m_hover_id == Y) {
             render_grabber_connection(color, view_matrix);
@@ -1104,7 +1104,7 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
         if (no_xy_grabber_hovered || m_hover_id == CutPlaneZRotation)
         {
             size = 0.75 * (m_dragging ? get_dragging_half_size(mean_size) : get_half_size(mean_size));
-            color = ColorRGBA::Z(); // ORCA match axis colors
+            color = ColorRGBA::Z(); // MOMENT match axis colors
             const ColorRGBA cp_color = m_hover_id == CutPlaneZRotation ? color : m_plane.model.get_color();
 
             const double grabber_shift = -1.75 * m_grabber_connection_len;
@@ -1131,7 +1131,7 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
         if (no_xy_grabber_hovered || m_hover_id == CutPlaneXMove)
         {
             size = (m_dragging ? get_dragging_half_size(mean_size) : get_half_size(mean_size));
-            color = m_hover_id == CutPlaneXMove ? ColorRGBA::X() : m_plane.model.get_color(); // ORCA match axis colors
+            color = m_hover_id == CutPlaneXMove ? ColorRGBA::X() : m_plane.model.get_color(); // MOMENT match axis colors
 
             render_grabber_connection(GRABBER_COLOR, view_matrix * rotation_transform(0.5 * PI * Vec3d::UnitY()), 0.75);
 
@@ -1149,7 +1149,7 @@ void GLGizmoCut3D::render_cut_plane_grabbers()
         if (m_groove.angle > 0.0f && (no_xy_grabber_hovered || m_hover_id == CutPlaneYMove))
         {
             size = (m_dragging ? get_dragging_half_size(mean_size) : get_half_size(mean_size));
-            color = m_hover_id == CutPlaneYMove ? ColorRGBA::Y() : m_plane.model.get_color(); // ORCA match axis colors
+            color = m_hover_id == CutPlaneYMove ? ColorRGBA::Y() : m_plane.model.get_color(); // MOMENT match axis colors
 
             render_grabber_connection(GRABBER_COLOR, view_matrix * rotation_transform(-0.5 * PI * Vec3d::UnitX()), 0.75);
 
@@ -2257,7 +2257,7 @@ void GLGizmoCut3D::render_connectors_input_window(CutConnectors &connectors, flo
     render_flip_plane_button(m_connectors_editing && connectors.empty());
 
     m_imgui->text(m_labels_map["Type"]);
-    ImGuiWrapper::push_radio_style(m_parent.get_scale()); // ORCA
+    ImGuiWrapper::push_radio_style(m_parent.get_scale()); // MOMENT
     bool type_changed = render_connect_type_radio_button(CutConnectorType::Plug);
     type_changed     |= render_connect_type_radio_button(CutConnectorType::Dowel);
     type_changed     |= render_connect_type_radio_button(CutConnectorType::Snap);
@@ -2339,12 +2339,12 @@ void GLGizmoCut3D::render_build_size()
 {
     double   koef     = m_imperial_units ? GizmoObjectManipulation::mm_to_in : 1.0;
     wxString unit_str = m_imperial_units ? _L("in") : _L("mm");
-    Vec3d    tbb_sz   = m_transformed_bounding_box.size() * koef; // ORCA 
+    Vec3d    tbb_sz   = m_transformed_bounding_box.size() * koef; // MOMENT 
 
     ImGui::AlignTextToFramePadding();
     m_imgui->text(_L("Build Volume"));
     ImGui::SameLine(m_label_width);
-    ImGui::Text("%.2f x %.2f x %.2f %s", tbb_sz.x(), tbb_sz.y(), tbb_sz.z(), unit_str.ToUTF8().data()); // ORCA use regular text color and simplify format
+    ImGui::Text("%.2f x %.2f x %.2f %s", tbb_sz.x(), tbb_sz.y(), tbb_sz.z(), unit_str.ToUTF8().data()); // MOMENT use regular text color and simplify format
 }
 
 void GLGizmoCut3D::reset_cut_plane()
@@ -2936,9 +2936,9 @@ void GLGizmoCut3D::show_tooltip_information(float x, float y)
         int dpi = get_dpi_for_window(wxGetApp().GetTopWindow());
         scale *= (float) dpi / (float) DPI_DEFAULT;
     #endif // WIN32
-    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // ORCA: Use exact resolution will prevent blur on icon
+    ImVec2 button_size = ImVec2(25 * scale, 25 * scale); // MOMENT: Use exact resolution will prevent blur on icon
     ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0f);
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // ORCA: Dont add padding
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, {0, 0}); // MOMENT: Dont add padding
     ImGui::ImageButton3(normal_id, hover_id, button_size);
 
     if (ImGui::IsItemHovered()) {

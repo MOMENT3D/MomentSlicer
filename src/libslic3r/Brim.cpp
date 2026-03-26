@@ -52,7 +52,7 @@ static void append_and_translate(Polygons &dst, const Polygons &src, const Print
         dst[dst_idx].translate(instance_shift);
 }
 
-//ORCA: Brim can follow the post-EFC outline when enabled.
+//MOMENT: Brim can follow the post-EFC outline when enabled.
 static bool use_brim_efc_outline(const PrintObject &object)
 {
     return object.config().brim_use_efc_outline.value
@@ -61,7 +61,7 @@ static bool use_brim_efc_outline(const PrintObject &object)
         && object.config().raft_layers.value == 0;
 }
 
-//ORCA: Helper for snapping painted ears to the EFC outline.
+//MOMENT: Helper for snapping painted ears to the EFC outline.
 static bool closest_point_on_expolygons(const ExPolygons &polygons, const Point &from, Point &closest_out)
 {
     double min_dist2 = std::numeric_limits<double>::max();
@@ -85,7 +85,7 @@ static bool closest_point_on_expolygons(const ExPolygons &polygons, const Point 
     return found;
 }
 
-//ORCA: Helper for matching painted ears to their original island before EFC snapping.
+//MOMENT: Helper for matching painted ears to their original island before EFC snapping.
 static int find_containing_expolygon_index(const ExPolygons &polygons, const Point &from)
 {
     for (size_t idx = 0; idx < polygons.size(); ++idx) {
@@ -95,7 +95,7 @@ static int find_containing_expolygon_index(const ExPolygons &polygons, const Poi
     return -1;
 }
 
-//ORCA: Keep painted ear snapping on the matching island when using EFC outline.
+//MOMENT: Keep painted ear snapping on the matching island when using EFC outline.
 static bool closest_point_on_matching_island(const ExPolygons &raw_outline, const ExPolygons &efc_outline, const Point &from, Point &closest_out)
 {
     const int island_idx = find_containing_expolygon_index(raw_outline, from);
@@ -106,7 +106,7 @@ static bool closest_point_on_matching_island(const ExPolygons &raw_outline, cons
     }
     return closest_point_on_expolygons(efc_outline, from, closest_out);
 }
-//ORCA: Use post-processed first-layer slices (including EFC) for brim outline.
+//MOMENT: Use post-processed first-layer slices (including EFC) for brim outline.
 // Returns ExPolygons of the bottom layer after all first-layer modifiers
 // (including elephant foot compensation, if enabled) have been applied.
 static ExPolygons get_print_object_bottom_layer_expolygons(const PrintObject &print_object)
@@ -358,10 +358,10 @@ static ExPolygons make_brim_ears(const PrintObject* object, const double& flowWi
     if (brim_ear_points.size() <= 0) {
         return mouse_ears_ex;
     }
-    //ORCA: Painted ears can snap to the EFC-adjusted outline when enabled.
+    //MOMENT: Painted ears can snap to the EFC-adjusted outline when enabled.
     const bool use_efc_outline = use_brim_efc_outline(*object);
     const ExPolygons &raw_outline = object->layers().front()->lslices;
-    //ORCA: Lazily computed EFC-adjusted bottom outline.
+    //MOMENT: Lazily computed EFC-adjusted bottom outline.
     //Stored separately so we can avoid recomputation unless EFC snapping is used.
     ExPolygons efc_outline_storage;
     const ExPolygons* efc_outline = nullptr;
@@ -390,17 +390,17 @@ static ExPolygons make_brim_ears(const PrintObject* object, const double& flowWi
         int32_t pt_x = scale_(pos.x());
         int32_t pt_y = scale_(pos.y());
 
-        //ORCA: Snap painted ears to the EFC-adjusted outline when enabled.
+        //MOMENT: Snap painted ears to the EFC-adjusted outline when enabled.
         if (use_efc_outline) {
             if (efc_outline == nullptr) {
-                //ORCA: Compute EFC-adjusted outline lazily for painted ear snapping.
+                //MOMENT: Compute EFC-adjusted outline lazily for painted ear snapping.
                 efc_outline_storage = get_print_object_bottom_layer_expolygons(*object);
                 efc_outline = &efc_outline_storage;
             }
 
             if (!efc_outline->empty()) {
                 Point closest_point;
-                //ORCA: Snap within the matching island to avoid drifting to another island.
+                //MOMENT: Snap within the matching island to avoid drifting to another island.
                 if (closest_point_on_matching_island(
                         raw_outline,
                         *efc_outline,
@@ -458,11 +458,11 @@ static ExPolygons outer_inner_brim_area(const Print& print,
             const bool         has_outer_brim = brim_type == btOuterOnly || brim_type == btOuterAndInner || brim_type == btAutoBrim || use_auto_brim_ears || use_brim_ears;
             coord_t            ear_detection_length = scale_(object->config().brim_ears_detection_length.value);
             coordf_t           brim_ears_max_angle = object->config().brim_ears_max_angle.value;
-            //ORCA: Select brim base slices from EFC-compensated outline when enabled.
+            //MOMENT: Select brim base slices from EFC-compensated outline when enabled.
             const bool         use_efc_outline = use_brim_efc_outline(*object);
             ExPolygons         brim_slices_storage;
             const ExPolygons*  brim_slices = nullptr;
-            //ORCA: Select EFC-adjusted bottom outline when enabled.
+            //MOMENT: Select EFC-adjusted bottom outline when enabled.
             if (use_efc_outline)
                 brim_slices_storage = get_print_object_bottom_layer_expolygons(*object);
             brim_slices = use_efc_outline ? &brim_slices_storage : &object->layers().front()->lslices;
@@ -504,7 +504,7 @@ static ExPolygons outer_inner_brim_area(const Print& print,
                     ExPolygons volume_group_slices_efc;
                     const ExPolygons* volume_group_slices = &volumeGroup.slices;
                     if (use_efc_outline) {
-                        //ORCA: When using EFC outline, restrict per-volume-group slices to the
+                        //MOMENT: When using EFC outline, restrict per-volume-group slices to the
                         // EFC-adjusted bottom footprint to keep brim width heuristics consistent.
                         volume_group_slices_efc = intersection_ex(*brim_slices, volumeGroup.slices);
                         volume_group_slices = &volume_group_slices_efc;
@@ -893,7 +893,7 @@ void make_brim(const Print& print, PrintTryCancel try_cancel, Polygons& islands_
     for (const ObjectID printObjID : print.print_object_ids()) {
         BoundingBox bbx;
         PrintObject* object = const_cast<PrintObject*>(print.get_object(printObjID));
-        //ORCA: Use EFC-compensated outline for brim bounding box when enabled.
+        //MOMENT: Use EFC-compensated outline for brim bounding box when enabled.
         const ExPolygons brim_slices = use_brim_efc_outline(*object) ?
             get_print_object_bottom_layer_expolygons(*object) : object->layers().front()->lslices;
         for (const ExPolygon& ex_poly : brim_slices)

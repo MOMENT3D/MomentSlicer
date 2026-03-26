@@ -603,7 +603,7 @@ void split_solid_surface(size_t layer_id, const SurfaceFill &fill, ExPolygons &n
         fill.params.pattern == ipRectilinear || fill.params.pattern == ipMonotonic ||
         fill.params.pattern == ipMonotonicLine || fill.params.pattern == ipAlignedRectilinear;
 
-    // ORCA: For non-line patterns, split by a geometric "core" so only thin areas get rerouted.
+    // MOMENT: For non-line patterns, split by a geometric "core" so only thin areas get rerouted.
     if (!line_based_pattern) {
         const coord_t scaled_spacing = scaled<coord_t>(fill.params.spacing);
 

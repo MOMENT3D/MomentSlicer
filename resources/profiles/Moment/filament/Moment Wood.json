@@ -1,0 +1,75 @@
+{
+    "type": "filament",
+    "filament_id": "GFL94",
+    "setting_id": "GFSA04",
+    "name": "Moment Wood",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_filament_pla",
+    "filament_type": [
+        "PLA_Wood"
+    ],
+    "filament_cost": [
+        "110000"
+    ],
+    "filament_max_volumetric_speed": [
+        "8"
+    ],
+    "hot_plate_temp": [
+      "60"
+    ],
+    "filament_retraction_length": [
+        "5"
+    ],
+	"enable_pressure_advance": [
+        "1"
+    ],
+    "filament_density": [
+        "0.8"
+    ],
+    "filament_flow_ratio": [
+        "1.045"
+    ],
+	"nozzle_temperature": [
+        "215"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "215"
+    ],
+    "nozzle_temperature_range_high": [
+        "230"
+    ],
+    "nozzle_temperature_range_low": [
+        "200"
+    ],
+    "overhang_fan_threshold": [
+        "50%"
+    ],
+    "pressure_advance": [
+        "0.088"
+    ],
+    "slow_down_layer_time": [
+        "5"
+    ],
+    "slow_down_min_speed": [
+        "5"
+    ],
+    "temperature_vitrification": [
+        "59"
+    ],
+    "activate_air_filtration": [
+        "1"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "20"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "75"
+    ],
+	"compatible_printers": [
+      "Moment M200 0.4 nozzle",
+      "Moment M300 0.4 nozzle",
+      "Moment M400 0.4 nozzle"
+    ],
+    "version": "1.6.0.0"
+}

@@ -24,7 +24,7 @@
 
 #include "GCode/PressureEqualizer.hpp"
 #include "GCode/SmallAreaInfillFlowCompensator.hpp"
-// ORCA: post processor below used for Dynamic Pressure advance
+// MOMENT: post processor below used for Dynamic Pressure advance
 #include "GCode/AdaptivePAProcessor.hpp"
 
 #include "GCode/TimelapsePosPicker.hpp"
@@ -545,7 +545,7 @@ private:
     bool m_enable_exclude_object;
     std::vector<size_t> m_label_objects_ids;
     std::string _encode_label_ids_to_base64(std::vector<size_t> ids);
-    // ORCA: Add support for role based fan speed control
+    // MOMENT: Add support for role based fan speed control
     std::array<bool, ExtrusionRole::erCount> m_is_role_based_fan_on;
     // Markers for the Pressure Equalizer to recognize the extrusion type.
     // The Pressure Equalizer removes the markers from the final G-code.
@@ -575,10 +575,10 @@ private:
 
     // Always check gcode placeholders when building in debug mode.
 #if !defined(NDEBUG)
-#define ORCA_CHECK_GCODE_PLACEHOLDERS 1
+#define MOMENT_CHECK_GCODE_PLACEHOLDERS 1
 #endif
     
-#if ORCA_CHECK_GCODE_PLACEHOLDERS
+#if MOMENT_CHECK_GCODE_PLACEHOLDERS
     std::map<std::string, std::vector<std::string>> m_placeholder_error_messages;
 #endif
 

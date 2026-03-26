@@ -369,7 +369,7 @@ SendToPrinterDialog::SendToPrinterDialog(Plater *plater)
 
     m_statictext_finish = new wxStaticText(m_panel_finish, wxID_ANY, L("Send complete"), wxDefaultPosition, wxDefaultSize, 0);
     m_statictext_finish->Wrap(-1);
-    m_statictext_finish->SetForegroundColour(wxColour(0, 150, 136));
+    m_statictext_finish->SetForegroundColour(wxColour(150, 0, 0));
     m_sizer_finish_h->Add(m_statictext_finish, 0, wxALIGN_CENTER | wxALL, FromDIP(5));
 
     m_sizer_finish_v->Add(m_sizer_finish_h, 1, wxALIGN_CENTER, 0);
@@ -446,7 +446,7 @@ SendToPrinterDialog::SendToPrinterDialog(Plater *plater)
     sizer_extra_info->Add(st_title_extra_info_doc, 0, wxALL, 0);
     sizer_extra_info->Add(m_st_txt_extra_info, 0, wxALL, 0);
 
-    // ORCA standardized HyperLink
+    // MOMENT standardized HyperLink
     m_link_network_state = new HyperLink(m_sw_print_failed_info, _L("Check the status of current system services"), wxGetApp().link_to_network_check());
     m_link_network_state->SetFont(::Label::Body_12);
 
@@ -489,7 +489,7 @@ SendToPrinterDialog::SendToPrinterDialog(Plater *plater)
     m_rename_text->SetForegroundColour(*wxBLACK);
     m_rename_text->SetFont(::Label::Body_13);
     m_rename_text->SetMaxSize(wxSize(FromDIP(390), -1));
-    m_rename_button = new Button(m_rename_normal_panel, "", "rename_edit", wxBORDER_NONE, FromDIP(13)); // ORCA Match edit icon and its size
+    m_rename_button = new Button(m_rename_normal_panel, "", "rename_edit", wxBORDER_NONE, FromDIP(13)); // MOMENT Match edit icon and its size
     m_rename_button->SetBackgroundColor(*wxWHITE);
     m_rename_button->SetBackgroundColour(*wxWHITE);
 
@@ -1349,11 +1349,11 @@ void SendToPrinterDialog::Enable_Refresh_Button(bool en)
 {
     if (!en) {
         if (m_button_refresh->IsEnabled()) {
-            m_button_refresh->Disable(); // ORCA no need to set colors again
+            m_button_refresh->Disable(); // MOMENT no need to set colors again
         }
     } else {
         if (!m_button_refresh->IsEnabled()) {
-            m_button_refresh->Enable(); // ORCA no need to set colors again
+            m_button_refresh->Enable(); // MOMENT no need to set colors again
         }
     }
 }
@@ -1475,7 +1475,7 @@ void SendToPrinterDialog::show_status(PrintDialogStatus status, std::vector<wxSt
 		Enable_Refresh_Button(true);
     }
     else if (status == PrintDialogStatus::PrintStatusNotOnTheSameLAN) {
-        wxString msg_text = _L("The printer is required to be in the same LAN as Orca Slicer.");
+        wxString msg_text = _L("The printer is required to be in the same LAN as Moment Slicer.");
         update_print_status_msg(msg_text, true, true);
         Enable_Send_Button(false);
         Enable_Refresh_Button(true);
@@ -1517,8 +1517,8 @@ void SendToPrinterDialog::Enable_Send_Button(bool en)
 
 void SendToPrinterDialog::on_dpi_changed(const wxRect &suggested_rect)
 {
-    m_button_refresh->Rescale(); // ORCA
-    m_button_ensure->Rescale(); // ORCA
+    m_button_refresh->Rescale(); // MOMENT
+    m_button_ensure->Rescale(); // MOMENT
     m_status_bar->msw_rescale();
     Fit();
     Refresh();
@@ -1625,9 +1625,9 @@ void SendToPrinterDialog::set_default()
 
     char weight[64];
     if (wxGetApp().app_config->get("use_inches") == "1") {
-        ::sprintf(weight, "%.2f oz", aprint_stats.total_weight*0.035274); // ORCA remove spacing before text
+        ::sprintf(weight, "%.2f oz", aprint_stats.total_weight*0.035274); // MOMENT remove spacing before text
     }else{
-        ::sprintf(weight, "%.2f g", aprint_stats.total_weight); // ORCA remove spacing before text
+        ::sprintf(weight, "%.2f g", aprint_stats.total_weight); // MOMENT remove spacing before text
     }
 
     m_stext_time->SetLabel(time);

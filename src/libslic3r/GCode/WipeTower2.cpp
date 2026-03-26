@@ -577,7 +577,7 @@ public:
         m_gcode_flavor(flavor), m_filpar(filament_parameters)
         //m_enable_arc_fitting(enable_arc_fitting)
     {
-            // ORCA: This class is only used by non BBL printers, so set the parameter appropriately.
+            // MOMENT: This class is only used by non BBL printers, so set the parameter appropriately.
             // This fixes an issue where the wipe tower was using BBL tags resulting in statistics for purging in the purge tower not being displayed.
             GCodeProcessor::s_IsBBLPrinter = false;
             // adds tag for analyzer:
@@ -1236,7 +1236,7 @@ WipeTower::ToolChangeResult WipeTower2::construct_tcr(WipeTowerWriter2& writer,
     result.wipe_path    = std::move(writer.wipe_path());
     result.is_finish_first = is_finish;
     result.is_contact = is_contact;
-    // ORCA: Always initialize the tool_change_start_pos with a valid position
+    // MOMENT: Always initialize the tool_change_start_pos with a valid position
     // to avoid undefined variable travel on X in Gcode.cpp function std::string WipeTowerIntegration::post_process_wipe_tower_moves
     result.tool_change_start_pos = result.start_pos;  // always valid fallback
 
@@ -2234,13 +2234,13 @@ void WipeTower2::plan_toolchange(float z_par, float layer_height_par, unsigned i
 
     float first_wipe_volume = length_to_volume(first_wipe_line, m_perimeter_width * m_extra_flow, layer_height_par);
 
-    // ORCA: Keep wipe-depth planning consistent with toolchange_Wipe().
-    // ORCA: On the first layer, toolchange_Wipe() advances purge rows using
-    // ORCA: m_extra_flow * m_perimeter_width, while later layers use
-    // ORCA: m_extra_spacing_wipe * m_perimeter_width.
-    // ORCA: float dy = (is_first_layer() ? m_extra_flow : m_extra_spacing_wipe) * m_perimeter_width;
-    // ORCA: Use the same spacing here so reserved depth matches consumed depth
-    // ORCA: and first-layer purge segments do not leave visible gaps.
+    // MOMENT: Keep wipe-depth planning consistent with toolchange_Wipe().
+    // MOMENT: On the first layer, toolchange_Wipe() advances purge rows using
+    // MOMENT: m_extra_flow * m_perimeter_width, while later layers use
+    // MOMENT: m_extra_spacing_wipe * m_perimeter_width.
+    // MOMENT: float dy = (is_first_layer() ? m_extra_flow : m_extra_spacing_wipe) * m_perimeter_width;
+    // MOMENT: Use the same spacing here so reserved depth matches consumed depth
+    // MOMENT: and first-layer purge segments do not leave visible gaps.
     const bool first_layer_plan = (m_plan.size() - 1) == m_first_layer_idx;
     const float planning_spacing = first_layer_plan ? m_extra_flow : m_extra_spacing_wipe;
 
@@ -2302,13 +2302,13 @@ void WipeTower2::save_on_last_wipe()
                 float volume_left_to_wipe = std::max(m_filpar[toolchange.new_tool].filament_minimal_purge_on_wipe_tower, toolchange.wipe_volume_total - volume_to_save);
                 float volume_we_need_depth_for = std::max(0.f, volume_left_to_wipe - length_to_volume(toolchange.first_wipe_line, m_perimeter_width*m_extra_flow, m_layer_info->height));
                 
-                // ORCA: Keep wipe-depth planning consistent with toolchange_Wipe().
-                // ORCA: On the first layer, toolchange_Wipe() advances purge rows using
-                // ORCA: m_extra_flow * m_perimeter_width, while later layers use
-                // ORCA: m_extra_spacing_wipe * m_perimeter_width.
-                // ORCA: float dy = (is_first_layer() ? m_extra_flow : m_extra_spacing_wipe) * m_perimeter_width;
-                // ORCA: Use the same spacing here so reserved depth matches consumed depth
-                // ORCA: and first-layer purge segments do not leave visible gaps.
+                // MOMENT: Keep wipe-depth planning consistent with toolchange_Wipe().
+                // MOMENT: On the first layer, toolchange_Wipe() advances purge rows using
+                // MOMENT: m_extra_flow * m_perimeter_width, while later layers use
+                // MOMENT: m_extra_spacing_wipe * m_perimeter_width.
+                // MOMENT: float dy = (is_first_layer() ? m_extra_flow : m_extra_spacing_wipe) * m_perimeter_width;
+                // MOMENT: Use the same spacing here so reserved depth matches consumed depth
+                // MOMENT: and first-layer purge segments do not leave visible gaps.
                 const bool first_layer_plan = size_t(m_layer_info - m_plan.begin()) == m_first_layer_idx;
                 const float planning_spacing = first_layer_plan ? m_extra_flow : m_extra_spacing_wipe;
                 

@@ -29,7 +29,7 @@ if(APPLE AND CMAKE_VERSION VERSION_GREATER_EQUAL "4.0")
     )
 endif()
 
-orcaslicer_add_cmake_project(
+momentslicer_add_cmake_project(
     wxWidgets
     GIT_REPOSITORY "https://github.com/SoftFever/Orca-deps-wxWidgets"
     GIT_SHALLOW ON

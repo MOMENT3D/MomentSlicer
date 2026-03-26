@@ -7,9 +7,9 @@ flatpak install flathub org.gnome.Platform//48 org.gnome.Sdk//48
 
 
 ##
-# in OrcaSlicer folder, run following command to build Orca
+# in MomentSlicer folder, run following command to build Orca
 # # First time build
-# flatpak-builder --state-dir=.flatpak-builder --keep-build-dirs --user --force-clean build-dir scripts/flatpak/com.orcaslicer.OrcaSlicer.yml
+# flatpak-builder --state-dir=.flatpak-builder --keep-build-dirs --user --force-clean build-dir scripts/flatpak/com.momentslicer.MomentSlicer.yml
 
-# # Subsequent builds (only rebuilding OrcaSlicer)
-# flatpak-builder --state-dir=.flatpak-builder --keep-build-dirs --user build-dir scripts/flatpak/com.orcaslicer.OrcaSlicer.yml --build-only=OrcaSlicer
+# # Subsequent builds (only rebuilding MomentSlicer)
+# flatpak-builder --state-dir=.flatpak-builder --keep-build-dirs --user build-dir scripts/flatpak/com.momentslicer.MomentSlicer.yml --build-only=MomentSlicer

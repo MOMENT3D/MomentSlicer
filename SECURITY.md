@@ -1,6 +1,6 @@
 # Security Policy
 
-At OrcaSlicer, we are committed to maintaining the security of our ecosystem. Our policy is to ensure that we do not introduce vulnerabilities and that any security issues are addressed promptly and responsibly. We appreciate your help in improving the security of OrcaSlicer and thank you for your responsible disclosure.
+At MomentSlicer, we are committed to maintaining the security of our ecosystem. Our policy is to ensure that we do not introduce vulnerabilities and that any security issues are addressed promptly and responsibly. We appreciate your help in improving the security of MomentSlicer and thank you for your responsible disclosure.
 Reporting Security Bugs
 
 ## To report a security bug, please follow these guidelines:
@@ -18,7 +18,7 @@ Reporting Security Bugs
         We may request additional information or guidance as we work on addressing the issue.
 
   * Handling the Report:
-        OrcaSlicer will confirm the problem and determine the affected versions.
+        MomentSlicer will confirm the problem and determine the affected versions.
         We will audit the code to find any similar issues and prepare fixes for all releases still under maintenance.
         Fixes will be released as quickly as possible.
 
@@ -39,9 +39,9 @@ When disclosing a vulnerability, please follow these steps to ensure your report
 
 ## Security Recommendations
 
-To enhance security when using OrcaSlicer, we recommend following these steps:
+To enhance security when using MomentSlicer, we recommend following these steps:
 
   * SEE SOMETHING: If you notice anything suspicious or have concerns, please report it.
   * SAY SOMETHING: If you have any doubts or need assistance, do not hesitate to contact us.
 
-### Thank you for your commitment to the security of OrcaSlicer. Your efforts help us maintain a safe and reliable ecosystem.
+### Thank you for your commitment to the security of MomentSlicer. Your efforts help us maintain a safe and reliable ecosystem.

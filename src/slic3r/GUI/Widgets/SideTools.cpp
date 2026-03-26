@@ -23,7 +23,7 @@ namespace Slic3r { namespace GUI {
     m_printing_img = ScalableBitmap(this, "printer", 16);
     m_arrow_img    = ScalableBitmap(this, "monitor_arrow", 14);
 
-    m_none_printing_img = ScalableBitmap(this, "tab_monitor_active", 20); // ORCA match icon size with exact resolution to fix blurry icon
+    m_none_printing_img = ScalableBitmap(this, "tab_monitor_active", 20); // MOMENT match icon size with exact resolution to fix blurry icon
     m_none_arrow_img    = ScalableBitmap(this, "monitor_none_arrow", 14);
     m_none_add_img      = ScalableBitmap(this, "monitor_none_add", 14);
 
@@ -148,8 +148,8 @@ void SideToolsPanel::doRender(wxDC &dc)
     //}
 
     if (m_none_printer) {
-        dc.SetPen(StateColor::darkModeColorFor(SIDE_TOOLS_BRAND));   // ORCA: Sidebar header background color - Fix for dark mode compability
-        dc.SetBrush(StateColor::darkModeColorFor(SIDE_TOOLS_BRAND)); // ORCA: Sidebar header background color - Fix for dark mode compability
+        dc.SetPen(StateColor::darkModeColorFor(SIDE_TOOLS_BRAND));   // MOMENT: Sidebar header background color - Fix for dark mode compability
+        dc.SetBrush(StateColor::darkModeColorFor(SIDE_TOOLS_BRAND)); // MOMENT: Sidebar header background color - Fix for dark mode compability
         dc.DrawRectangle(0, 0, size.x, size.y);
 
         dc.DrawBitmap(m_none_printing_img.bmp(), left, (size.y - m_none_printing_img.GetBmpSize().y) / 2);
@@ -274,7 +274,7 @@ SideTools::SideTools(wxWindow *parent, wxWindowID id, const wxPoint &pos, const 
     wxBoxSizer* connection_sizer_V = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* connection_sizer_H = new wxBoxSizer(wxHORIZONTAL);
 
-    // ORCA standardized HyperLink
+    // MOMENT standardized HyperLink
     m_hyperlink = new HyperLink(m_connection_info, _L("Failed to connect to the server"), wxT("https://wiki.bambulab.com/en/software/bambu-studio/failed-to-connect-printer"));
 
     m_more_err_open = ScalableBitmap(this, "monitir_err_open", 16);
@@ -328,7 +328,7 @@ SideTools::SideTools(wxWindow *parent, wxWindowID id, const wxPoint &pos, const 
     wxBoxSizer* sizer_error_desc = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_extra_info = new wxBoxSizer(wxHORIZONTAL);
 
-    // ORCA standardized HyperLink
+    // MOMENT standardized HyperLink
     m_link_network_state = new HyperLink(m_side_error_panel, _L("Check the status of current system services"), wxGetApp().link_to_network_check(), wxST_ELLIPSIZE_END);
     m_link_network_state->SetMaxSize(wxSize(FromDIP(220), -1));
     m_link_network_state->SetFont(::Label::Body_12);
@@ -525,8 +525,8 @@ void SideTools::show_status(int status)
     else if ((status & (int)MonitorStatus::MONITOR_CONNECTING) != 0) {
         m_hyperlink->Hide();
         m_connection_info->SetLabel(_L("Connecting..."));
-        m_connection_info->SetBackgroundColor(0x009688);
-        m_connection_info->SetBorderColor(0x009688);
+        m_connection_info->SetBackgroundColor(0x960000);
+        m_connection_info->SetBorderColor(0x960000);
         m_connection_info->Show();
         m_more_button->Hide();
         m_side_error_panel->Hide();

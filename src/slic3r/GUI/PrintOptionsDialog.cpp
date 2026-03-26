@@ -16,9 +16,9 @@ static const wxColour STATIC_TEXT_EXPLAIN_COL = wxColour(100, 100, 100);
 namespace Slic3r { namespace GUI {
 
 static StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
-                               std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-                               std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                               std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                               std::pair<wxColour, int>(wxColour(103, 0, 0), StateColor::Pressed),
+                               std::pair<wxColour, int>(wxColour(182, 76, 76), StateColor::Hovered),
+                               std::pair<wxColour, int>(wxColour(150, 0, 0), StateColor::Normal));
 
 PrintOptionsDialog::PrintOptionsDialog(wxWindow* parent)
     : DPIDialog(parent, wxID_ANY, _L("Print Options"), wxDefaultPosition, wxDefaultSize, wxCAPTION | wxCLOSE_BOX)
@@ -1153,7 +1153,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     change_nozzle_tips->SetFont(Label::Body_13);
     change_nozzle_tips->SetForegroundColour(STATIC_TEXT_CAPTION_COL);
 
-    m_wiki_link = new HyperLink(single_panel, _L("Wiki Guide")); // ORCA
+    m_wiki_link = new HyperLink(single_panel, _L("Wiki Guide")); // MOMENT
     m_wiki_link->SetFont(Label::Body_13);
     m_wiki_link->Bind(wxEVT_LEFT_DOWN, &PrinterPartsDialog::OnWikiClicked, this);
 
@@ -1264,7 +1264,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     multiple_change_nozzle_tips->SetFont(Label::Body_13);
     multiple_change_nozzle_tips->SetForegroundColour(STATIC_TEXT_CAPTION_COL);
 
-    multiple_wiki_link = new HyperLink(multiple_panel, _L("Wiki Guide")); // ORCA
+    multiple_wiki_link = new HyperLink(multiple_panel, _L("Wiki Guide")); // MOMENT
     multiple_wiki_link->SetFont(Label::Body_13);
     multiple_wiki_link->Bind(wxEVT_LEFT_DOWN, &PrinterPartsDialog::OnWikiClicked, this);
 

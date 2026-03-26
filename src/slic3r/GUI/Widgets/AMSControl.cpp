@@ -464,9 +464,9 @@ void AMSControl::msw_rescale()
 
     m_extruder->msw_rescale();
 
-    if (m_button_extruder_feed) m_button_extruder_feed->Rescale(); // ORCA
-    if (m_button_extruder_back) m_button_extruder_back->Rescale(); // ORCA
-    if (m_button_auto_refill) m_button_auto_refill->Rescale();     // ORCA
+    if (m_button_extruder_feed) m_button_extruder_feed->Rescale(); // MOMENT
+    if (m_button_extruder_back) m_button_extruder_back->Rescale(); // MOMENT
+    if (m_button_auto_refill) m_button_auto_refill->Rescale();     // MOMENT
     if (m_button_ams_setting) m_button_ams_setting->SetMinSize(wxSize(FromDIP(25), FromDIP(24)));
 
 

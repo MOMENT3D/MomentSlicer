@@ -699,7 +699,7 @@ void ConfigManipulation::toggle_print_fff_options(DynamicPrintConfig *config, co
 
     bool have_skirt = config->opt_int("skirt_loops") > 0;
     toggle_field("skirt_height", have_skirt && config->opt_enum<DraftShield>("draft_shield") != dsEnabled);
-    toggle_line("single_loop_draft_shield", have_skirt); // ORCA: Display one wall if skirt enabled
+    toggle_line("single_loop_draft_shield", have_skirt); // MOMENT: Display one wall if skirt enabled
     for (auto el : {"skirt_type", "min_skirt_length", "skirt_distance", "skirt_start_angle", "skirt_speed", "draft_shield"})
         toggle_field(el, have_skirt);
 

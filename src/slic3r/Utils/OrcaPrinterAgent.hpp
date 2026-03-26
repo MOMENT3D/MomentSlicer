@@ -1,5 +1,5 @@
-#ifndef __ORCA_PRINTER_AGENT_HPP__
-#define __ORCA_PRINTER_AGENT_HPP__
+#ifndef __MOMENT_PRINTER_AGENT_HPP__
+#define __MOMENT_PRINTER_AGENT_HPP__
 
 #include "IPrinterAgent.hpp"
 #include "ICloudServiceAgent.hpp"
@@ -97,4 +97,4 @@ private:
 
 } // namespace Slic3r
 
-#endif // __ORCA_PRINTER_AGENT_HPP__
+#endif // __MOMENT_PRINTER_AGENT_HPP__

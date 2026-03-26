@@ -390,7 +390,7 @@ void GLGizmoScale3D::render_grabbers_connection(unsigned int id_1, unsigned int 
     }
 
     m_grabber_connections[id].model.set_color(color);
-    // ORCA: OpenGL Core Profile
+    // MOMENT: OpenGL Core Profile
 #if !SLIC3R_OPENGL_ES
     if (!OpenGLManager::get_gl_info().is_core_profile()) {
         glLineStipple(1, 0x0FFF);

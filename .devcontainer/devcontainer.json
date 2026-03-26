@@ -1,5 +1,5 @@
 {
-	"name": "OrcaSlicer",
+	"name": "MomentSlicer",
 	"build": {
 		"dockerfile": "Dockerfile",
 			"args": {

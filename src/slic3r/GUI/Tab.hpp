@@ -40,7 +40,7 @@
 #include "ParamsPanel.hpp"
 #include "Widgets/RoundedRectangle.hpp"
 #include "Widgets/TextInput.hpp"
-#include "Widgets/CheckBox.hpp" // ORCA
+#include "Widgets/CheckBox.hpp" // MOMENT
 
 class TabCtrl;
 
@@ -141,7 +141,7 @@ protected:
 
 	//BBS: GUI refactor
 	wxPanel*			m_top_panel;
-	ScalableButton* m_mode_icon; // ORCA m_static_title replacement
+	ScalableButton* m_mode_icon; // MOMENT m_static_title replacement
 	wxBoxSizer* m_main_sizer;
 	wxBoxSizer* m_top_sizer;
 	wxBoxSizer* m_top_left_sizer;

@@ -47,20 +47,20 @@ namespace pt = boost::property_tree;
 namespace Slic3r {
 
 namespace {
-constexpr const char* ORCA_DEFAULT_API_URL = "https://xxx.orcaslicer.com";
-constexpr const char* ORCA_DEFAULT_AUTH_URL = "https://xxx.orcaslicer.com";
-constexpr const char* ORCA_DEFAULT_PUB_KEY = "xxxxxxxxxxxxx";
-constexpr const char* ORCA_HEALTH_PATH = "/api/v1/health";
-constexpr const char* ORCA_SYNC_PULL_PATH = "/api/v1/sync/pull";
-constexpr const char* ORCA_SYNC_PUSH_PATH = "/api/v1/sync/push";
-constexpr const char* ORCA_PROFILES_PATH = "/api/v1/profiles";
-constexpr const char* ORCA_SYNC_STATE_FILE = "sync_state";
+constexpr const char* MOMENT_DEFAULT_API_URL = "https://xxx.momentslicer.com";
+constexpr const char* MOMENT_DEFAULT_AUTH_URL = "https://xxx.momentslicer.com";
+constexpr const char* MOMENT_DEFAULT_PUB_KEY = "xxxxxxxxxxxxx";
+constexpr const char* MOMENT_HEALTH_PATH = "/api/v1/health";
+constexpr const char* MOMENT_SYNC_PULL_PATH = "/api/v1/sync/pull";
+constexpr const char* MOMENT_SYNC_PUSH_PATH = "/api/v1/sync/push";
+constexpr const char* MOMENT_PROFILES_PATH = "/api/v1/profiles";
+constexpr const char* MOMENT_SYNC_STATE_FILE = "sync_state";
 
-constexpr const char* CONFIG_ORCA_API_URL = "orca_api_url";
-constexpr const char* CONFIG_ORCA_AUTH_URL = "orca_auth_url";
-constexpr const char* CONFIG_ORCA_PUB_KEY = "orca_pub_key";
+constexpr const char* CONFIG_MOMENT_API_URL = "orca_api_url";
+constexpr const char* CONFIG_MOMENT_AUTH_URL = "orca_auth_url";
+constexpr const char* CONFIG_MOMENT_PUB_KEY = "orca_pub_key";
 
-constexpr const char* SECRET_STORE_SERVICE = "OrcaSlicer/Auth";
+constexpr const char* SECRET_STORE_SERVICE = "MomentSlicer/Auth";
 constexpr const char* SECRET_STORE_USER    = "orca_refresh_token";
 constexpr std::chrono::seconds TOKEN_REFRESH_SKEW{900}; // 15 minutes
 
@@ -70,7 +70,7 @@ std::string generate_uuid(const std::string& name = "")
         return "";
     }
 
-    // Use a fixed namespace UUID for OrcaSlicer profiles
+    // Use a fixed namespace UUID for MomentSlicer profiles
     // This ensures the same name always generates the same UUID
     static const boost::uuids::uuid orca_namespace =
         boost::uuids::string_generator()("f47ac10b-58cc-4372-a567-0e02b2c3d479");
@@ -223,14 +223,14 @@ int choose_loopback_port()
 {
     int base_port = auth_constants::LOOPBACK_PORT;
 
-    if (const char* env_port = std::getenv("ORCA_LOOPBACK_PORT")) {
+    if (const char* env_port = std::getenv("MOMENT_LOOPBACK_PORT")) {
         try {
             int parsed = std::stoi(env_port);
             if (parsed > 0 && parsed <= 65535) {
                 base_port = parsed;
             }
         } catch (...) {
-            BOOST_LOG_TRIVIAL(warning) << "OrcaCloudServiceAgent: invalid ORCA_LOOPBACK_PORT value, falling back to default";
+            BOOST_LOG_TRIVIAL(warning) << "OrcaCloudServiceAgent: invalid MOMENT_LOOPBACK_PORT value, falling back to default";
         }
     }
 
@@ -324,10 +324,10 @@ bool aes256gcm_decrypt(const std::string& b64_payload, const std::vector<unsigne
 
 OrcaCloudServiceAgent::OrcaCloudServiceAgent(std::string log_dir)
     : log_dir(std::move(log_dir))
-    , api_base_url(ORCA_DEFAULT_API_URL)
-    , auth_base_url(ORCA_DEFAULT_AUTH_URL)
+    , api_base_url(MOMENT_DEFAULT_API_URL)
+    , auth_base_url(MOMENT_DEFAULT_AUTH_URL)
 {
-    auth_headers["apikey"] = ORCA_DEFAULT_PUB_KEY;
+    auth_headers["apikey"] = MOMENT_DEFAULT_PUB_KEY;
     pkce_bundle.loopback_port = choose_loopback_port();
     update_redirect_uri();
     regenerate_pkce();
@@ -348,17 +348,17 @@ void OrcaCloudServiceAgent::configure_urls(AppConfig* app_config)
     // Read token storage preference
     m_use_encrypted_token_file = app_config->get_bool(SETTING_USE_ENCRYPTED_TOKEN_FILE);
 
-    std::string api_url = app_config->get(CONFIG_ORCA_API_URL);
+    std::string api_url = app_config->get(CONFIG_MOMENT_API_URL);
     if (!api_url.empty()) {
         api_base_url = api_url;
     }
 
-    std::string auth_url = app_config->get(CONFIG_ORCA_AUTH_URL);
+    std::string auth_url = app_config->get(CONFIG_MOMENT_AUTH_URL);
     if (!auth_url.empty()) {
         auth_base_url = auth_url;
     }
 
-    std::string pub_key = app_config->get(CONFIG_ORCA_PUB_KEY);
+    std::string pub_key = app_config->get(CONFIG_MOMENT_PUB_KEY);
     if (!pub_key.empty()) {
         auth_headers["apikey"] = pub_key;
     }
@@ -845,7 +845,7 @@ int OrcaCloudServiceAgent::connect_server()
 {
     std::string response;
     unsigned int http_code = 0;
-    int result = http_get(ORCA_HEALTH_PATH, &response, &http_code);
+    int result = http_get(MOMENT_HEALTH_PATH, &response, &http_code);
 
     bool connected = (result == BAMBU_NETWORK_SUCCESS && http_code >= 200 && http_code < 300);
     {
@@ -1145,7 +1145,7 @@ int OrcaCloudServiceAgent::get_setting_list2(std::string bundle_version, CheckFn
 
 int OrcaCloudServiceAgent::delete_setting(std::string setting_id)
 {
-    std::string path = std::string(ORCA_PROFILES_PATH) + "/" + setting_id;
+    std::string path = std::string(MOMENT_PROFILES_PATH) + "/" + setting_id;
     std::string response;
     unsigned int http_code = 0;
 
@@ -1165,7 +1165,7 @@ int OrcaCloudServiceAgent::sync_pull(
     std::function<void(const SyncPullResponse&)> on_success,
     std::function<void(int http_code, const std::string& error)> on_error)
 {
-    std::string path = ORCA_SYNC_PULL_PATH;
+    std::string path = MOMENT_SYNC_PULL_PATH;
     if (!sync_state.last_sync_timestamp.empty()) {
         path += "?cursor=" + sync_state.last_sync_timestamp;
     }
@@ -1179,7 +1179,7 @@ int OrcaCloudServiceAgent::sync_pull(
         BOOST_LOG_TRIVIAL(warning) << "OrcaCloudServiceAgent: sync_pull returned 410 Gone - cursor too old, triggering full resync";
         clear_sync_state();
         // Retry without cursor
-        path = ORCA_SYNC_PULL_PATH;
+        path = MOMENT_SYNC_PULL_PATH;
         result = http_get(path, &response, &http_code);
     }
 
@@ -1207,8 +1207,8 @@ int OrcaCloudServiceAgent::sync_pull(
                 ProfileUpsert upsert;
                 upsert.id = item.value("id", "");
                 upsert.name = item.value("name", "");
-                upsert.updated_at = item.value(ORCA_JSON_KEY_UPDATE_TIME, "");
-                upsert.created_at = item.value(ORCA_JSON_KEY_CREATED_TIME, "");
+                upsert.updated_at = item.value(MOMENT_JSON_KEY_UPDATE_TIME, "");
+                upsert.created_at = item.value(MOMENT_JSON_KEY_CREATED_TIME, "");
                 if (item.contains("content")) {
                     upsert.content = item["content"];
                 }
@@ -1253,7 +1253,7 @@ SyncPushResult OrcaCloudServiceAgent::sync_push(
 
     std::string response;
     unsigned int http_code = 0;
-    int http_result = http_post(ORCA_SYNC_PUSH_PATH, body.dump(), &response, &http_code);
+    int http_result = http_post(MOMENT_SYNC_PUSH_PATH, body.dump(), &response, &http_code);
 
     result.http_code = http_code;
 
@@ -1271,7 +1271,7 @@ SyncPushResult OrcaCloudServiceAgent::sync_push(
             } else {
                 result.server_version.id = json.value("id", "");
                 result.server_version.name = json.value("name", "");
-                result.server_version.updated_at = json.value(ORCA_JSON_KEY_UPDATE_TIME, "");
+                result.server_version.updated_at = json.value(MOMENT_JSON_KEY_UPDATE_TIME, "");
             }
         } catch (...) {}
         result.error_message = response;
@@ -1286,7 +1286,7 @@ SyncPushResult OrcaCloudServiceAgent::sync_push(
     // Success
     try {
         auto json = nlohmann::json::parse(response);
-        result.new_updated_at = json.value(ORCA_JSON_KEY_UPDATE_TIME, "");
+        result.new_updated_at = json.value(MOMENT_JSON_KEY_UPDATE_TIME, "");
         if (!result.new_updated_at.empty()) {
             result.success = true;
         } else {
@@ -1740,7 +1740,7 @@ bool OrcaCloudServiceAgent::set_user_session(const std::string& token,
         if (!boost::filesystem::exists(user_dir)) {
             boost::filesystem::create_directories(user_dir);
         }
-        sync_state_path = (user_dir / ORCA_SYNC_STATE_FILE).string();
+        sync_state_path = (user_dir / MOMENT_SYNC_STATE_FILE).string();
         load_sync_state();
     }
 

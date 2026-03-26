@@ -128,9 +128,9 @@ enum ConfigMenuIDs {
     ConfigMenuCnt,
 };
 
-enum OrcaSlicerMenuIDs {
-  OrcaSlicerMenuAbout,
-  OrcaSlicerMenuPreferences,
+enum MomentSlicerMenuIDs {
+  MomentSlicerMenuAbout,
+  MomentSlicerMenuPreferences,
 };
 
 enum CameraMenuIDs {
@@ -351,7 +351,7 @@ public:
     bool is_editor() const { return m_app_mode == EAppMode::Editor; }
     bool is_gcode_viewer() const { return m_app_mode == EAppMode::GCodeViewer; }
     bool is_recreating_gui() const { return m_is_recreating_gui; }
-    std::string logo_name() const { return is_editor() ? "OrcaSlicer" : "OrcaSlicer-gcodeviewer"; }
+    std::string logo_name() const { return is_editor() ? "MomentSlicer" : "MomentSlicer-gcodeviewer"; }
 
     bool is_closing() const { return m_is_closing.load(std::memory_order_acquire); }
     void set_closing(bool closing) { m_is_closing.store(closing, std::memory_order_release); }
@@ -417,8 +417,8 @@ public:
     //update side popup status
     bool            get_side_menu_popup_status();
     void            set_side_menu_popup_status(bool status);
-    std::string     link_to_network_check(); // ORCA
-    std::string     link_to_lan_only_wiki(); // ORCA
+    std::string     link_to_network_check(); // MOMENT
+    std::string     link_to_lan_only_wiki(); // MOMENT
 
     const wxColour& get_label_clr_modified() { return m_color_label_modified; }
     const wxColour& get_label_clr_sys()     { return m_color_label_sys; }

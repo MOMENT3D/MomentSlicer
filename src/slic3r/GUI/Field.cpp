@@ -1855,7 +1855,7 @@ void Choice::msw_rescale()
 
 void ColourPicker::BUILD()
 {
-    auto size = wxSize(def_width_wider() * m_em_unit, -1); // ORCA match color picker width
+    auto size = wxSize(def_width_wider() * m_em_unit, -1); // MOMENT match color picker width
     if (m_opt.height >= 0) size.SetHeight(m_opt.height*m_em_unit);
     if (m_opt.width >= 0) size.SetWidth(m_opt.width*m_em_unit);
 
@@ -1885,7 +1885,7 @@ void ColourPicker::BUILD()
         on_change_field();
     }), temp->GetId());
 
-    // ORCA reset value to default on right click. previously no way to switch back on windows
+    // MOMENT reset value to default on right click. previously no way to switch back on windows
     temp->GetPickerCtrl()->Bind(wxEVT_RIGHT_DOWN, [this, temp](wxMouseEvent e){
         #ifdef __WXMSW__
             temp->SetColour(wxTransparentColour);
@@ -1927,13 +1927,13 @@ void ColourPicker::set_undef_value(wxColourPickerCtrl* field)
     btn->SetBitmapLabel(bmp);
 }
 
-// ORCA match style with button on windows
+// MOMENT match style with button on windows
 void ColourPicker::draw_bmp_btn(wxColourPickerCtrl* field, wxColour color)
 {
     wxButton* btn = dynamic_cast<wxButton*>(field->GetPickerCtrl());
 
     if (!btn->GetBitmap().IsOk()) return;
-    btn->SetWindowStyle(wxBORDER_NONE); // ORCA just in case to prevent any overflow
+    btn->SetWindowStyle(wxBORDER_NONE); // MOMENT just in case to prevent any overflow
     btn->SetBackgroundColour(*wxWHITE);
     wxGetApp().UpdateDarkUI(btn);
 
@@ -1947,7 +1947,7 @@ void ColourPicker::draw_bmp_btn(wxColourPickerCtrl* field, wxColour color)
         if (!dc.IsOk()) return bmp;
         wxGCDC dc2(dc); // just use wxGCDC since bitmap button only used for windows
 
-        dc2.SetPen(focus ? wxPen(wxColour(StateColor::darkModeColorFor(wxColour("#009688"))), 1) : *wxTRANSPARENT_PEN);
+        dc2.SetPen(focus ? wxPen(wxColour(StateColor::darkModeColorFor(wxColour("#960000"))), 1) : *wxTRANSPARENT_PEN);
         dc2.SetBrush(wxBrush(StateColor::darkModeColorFor(bg_color)));
         dc2.DrawRoundedRectangle(btn->GetRect(), btn->FromDIP(4));
 
@@ -2011,7 +2011,7 @@ void ColourPicker::msw_rescale()
     Field::msw_rescale();
 
 	wxColourPickerCtrl* field = dynamic_cast<wxColourPickerCtrl*>(window);
-    auto size = wxSize(def_width_wider() * m_em_unit, -1); // ORCA match color picker width with parameters
+    auto size = wxSize(def_width_wider() * m_em_unit, -1); // MOMENT match color picker width with parameters
     if (m_opt.height >= 0)
         size.SetHeight(m_opt.height * m_em_unit);
     else if (parent_is_custom_ctrl && opt_height > 0)
@@ -2086,7 +2086,7 @@ void PointCtrl::BUILD()
 	m_combine_side_text = true; // Prefer using side text in input box
 
     //const wxSize field_size(4 * m_em_unit, -1);
-    const wxSize  field_size((m_opt.width >= 0 ? m_opt.width : def_width_wider()) * m_em_unit, -1); // ORCA match width with other components
+    const wxSize  field_size((m_opt.width >= 0 ? m_opt.width : def_width_wider()) * m_em_unit, -1); // MOMENT match width with other components
     Slic3r::Vec2d default_pt;
     if(m_opt.type == coPoints)
 	    default_pt = m_opt.get_default_value<ConfigOptionPoints>()->values.at(0);
@@ -2101,7 +2101,7 @@ void PointCtrl::BUILD()
 //#ifdef _WIN32
 //	style |= wxBORDER_SIMPLE;
 //#endif
-    // ORCA add icons to point control boxes instead of using text for X / Y
+    // MOMENT add icons to point control boxes instead of using text for X / Y
     x_input = new ::TextInput(m_parent, X, m_opt.sidetext, "inputbox_x", wxDefaultPosition, field_size, style);
     y_input = new ::TextInput(m_parent, Y, m_opt.sidetext, "inputbox_y", wxDefaultPosition, field_size, style);
     x_textctrl = x_input->GetTextCtrl();
@@ -2150,7 +2150,7 @@ void PointCtrl::msw_rescale()
     Field::msw_rescale();
 
     //wxSize field_size(4 * m_em_unit, -1);
-    wxSize  field_size((m_opt.width >= 0 ? m_opt.width : def_width_wider()) * m_em_unit, -1); // ORCA match width with other components
+    wxSize  field_size((m_opt.width >= 0 ? m_opt.width : def_width_wider()) * m_em_unit, -1); // MOMENT match width with other components
 
     if (parent_is_custom_ctrl) {
         field_size.SetHeight(lround(opt_height * m_em_unit));
