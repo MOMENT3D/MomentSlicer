@@ -2065,8 +2065,8 @@ msgstr "Tarcza"
 msgid "Torus"
 msgstr "Torus"
 
-msgid "Orca Cube"
-msgstr "Sześcian Orca"
+msgid "Moment Cube"
+msgstr "Sześcian Moment"
 
 msgid "Orca Tolerance Test"
 msgstr "Test tolerancji Orca"

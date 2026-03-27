@@ -2138,8 +2138,8 @@ msgstr "Диск"
 msgid "Torus"
 msgstr "Тороид"
 
-msgid "Orca Cube"
-msgstr "Куб Orca"
+msgid "Moment Cube"
+msgstr "Куб Moment"
 
 msgid "Orca Tolerance Test"
 msgstr "Тест точности Orca"

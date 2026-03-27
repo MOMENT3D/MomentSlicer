@@ -533,16 +533,16 @@ wxMenu* MenuFactory::append_submenu_add_generic(wxMenu* menu, ModelVolumeType ty
 wxMenu* MenuFactory::append_submenu_add_handy_model(wxMenu* menu, ModelVolumeType type) {
     auto sub_menu = new wxMenu;
 
-    for (auto &item : {L("Orca Cube"), L("Orca Tolerance Test"), L("3DBenchy"), L("Cali Cat"), L("Autodesk FDM Test"),
-                       L("Voron Cube"), L("Stanford Bunny"), L("Orca String Hell") }) {
+    for (auto &item : {L("Moment Cube"), L("Orca Tolerance Test"), L("3DBenchy"), L("Cali Cat"), L("Autodesk FDM Test"), L("Voron Cube"),
+                       L("Stanford Bunny"), L("Orca String Hell"), L("Table Stand"), L("Stack Box")}) {
         append_menu_item(
             sub_menu, wxID_ANY, _(item), "",
             [type, item](wxCommandEvent&) {
                 std::vector<boost::filesystem::path> input_files;
                 bool                                 is_stringhell = false;
                 std::string                          file_name     = item;
-                if (file_name == L("Orca Cube"))
-                    file_name = "OrcaCube_v2.3mf";
+                if (file_name == L("Moment Cube"))
+                    file_name = "Moment_Cube_stl";
                 else if (file_name == L("Orca Tolerance Test"))
                     file_name = "OrcaToleranceTest.drc";
                 else if (file_name == L("3DBenchy"))
@@ -555,6 +555,10 @@ wxMenu* MenuFactory::append_submenu_add_handy_model(wxMenu* menu, ModelVolumeTyp
                     file_name = "Voron_Design_Cube_v7.drc";
                 else if (file_name == L("Stanford Bunny"))
                     file_name = "Stanford_Bunny.drc";
+                else if (file_name == L("Table Stand"))
+                    file_name = "Table_stand.stl";
+                else if (file_name == L("Stack Box"))
+                    file_name = "Stack_Box.3mf";
                 else if (file_name == L("Orca String Hell")) {
                     file_name     = "Orca_stringhell.drc";
                     is_stringhell = true;

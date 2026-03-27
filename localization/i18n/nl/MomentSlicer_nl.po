@@ -2079,8 +2079,8 @@ msgstr "Schijf"
 msgid "Torus"
 msgstr "Torus"
 
-msgid "Orca Cube"
-msgstr "Orca-kubus"
+msgid "Moment Cube"
+msgstr "Moment-kubus"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca Tolerance Test"

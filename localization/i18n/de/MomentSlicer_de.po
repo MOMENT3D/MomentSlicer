@@ -2111,8 +2111,8 @@ msgstr "Scheibe"
 msgid "Torus"
 msgstr "Torus"
 
-msgid "Orca Cube"
-msgstr "Orca Würfel"
+msgid "Moment Cube"
+msgstr "Moment Würfel"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca Toleranz Test"

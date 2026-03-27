@@ -2089,8 +2089,8 @@ msgstr "Lemez"
 msgid "Torus"
 msgstr "Tórusz"
 
-msgid "Orca Cube"
-msgstr "Orca kocka"
+msgid "Moment Cube"
+msgstr "Moment kocka"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca tolerancia teszt"

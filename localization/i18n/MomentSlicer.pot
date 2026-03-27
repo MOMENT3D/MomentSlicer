@@ -1991,7 +1991,7 @@ msgstr ""
 msgid "Torus"
 msgstr ""
 
-msgid "Orca Cube"
+msgid "Moment Cube"
 msgstr ""
 
 msgid "Orca Tolerance Test"

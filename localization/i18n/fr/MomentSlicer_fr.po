@@ -2129,8 +2129,8 @@ msgstr "Disque"
 msgid "Torus"
 msgstr "Tore"
 
-msgid "Orca Cube"
-msgstr "Cube Orca"
+msgid "Moment Cube"
+msgstr "Cube Moment"
 
 msgid "Orca Tolerance Test"
 msgstr "Test de tolérance Orca"

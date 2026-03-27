@@ -2117,8 +2117,8 @@ msgstr "Disco"
 msgid "Torus"
 msgstr "Toroide"
 
-msgid "Orca Cube"
-msgstr "Cubo di Orca"
+msgid "Moment Cube"
+msgstr "Cubo di Moment"
 
 msgid "Orca Tolerance Test"
 msgstr "Test di tolleranza di MomentSlicer"

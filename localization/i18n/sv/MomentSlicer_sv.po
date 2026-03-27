@@ -2066,8 +2066,8 @@ msgstr "Skiva"
 msgid "Torus"
 msgstr "Torus"
 
-msgid "Orca Cube"
-msgstr "Orca Cube"
+msgid "Moment Cube"
+msgstr "Moment Cube"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca Tolerance Test"

@@ -2028,8 +2028,8 @@ msgstr "圆盘"
 msgid "Torus"
 msgstr "环面"
 
-msgid "Orca Cube"
-msgstr "Orca方块"
+msgid "Moment Cube"
+msgstr "Moment方块"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca误差测试"

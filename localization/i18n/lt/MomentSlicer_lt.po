@@ -2090,8 +2090,8 @@ msgstr "Diskas"
 msgid "Torus"
 msgstr "Toras"
 
-msgid "Orca Cube"
-msgstr "Orca kubas"
+msgid "Moment Cube"
+msgstr "Moment kubas"
 
 msgid "Orca Tolerance Test"
 msgstr "Orca tolerancijos testas"
