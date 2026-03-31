@@ -401,6 +401,7 @@
             "name": "Moment TPU95A-HF.",
             "sub_path": "filament/Moment TPU95A-HF..json"
         },
+
                 {
                     "name": "Moment PLA Tough-HVMS",
                     "sub_path": "filament/Moment PLA Tough-HVMS.json"
@@ -432,6 +433,14 @@
                 {
                     "name": "Moment ABS-GF-HVMS",
                     "sub_path": "filament/Moment ABS-GF-HVMS.json"
+                },
+                {
+                    "name": "Moment PC-HVMS",
+                    "sub_path": "filament/Moment PC-HVMS.json"
+                },
+                {
+                    "name": "Moment PA6-CF-HVMS",
+                    "sub_path": "filament/Moment PA6-CF-HVMS.json"
                 }
     ],
     "machine_list": [
