@@ -542,7 +542,7 @@ wxMenu* MenuFactory::append_submenu_add_handy_model(wxMenu* menu, ModelVolumeTyp
                 bool                                 is_stringhell = false;
                 std::string                          file_name     = item;
                 if (file_name == L("Moment Cube"))
-                    file_name = "Moment_Cube_stl";
+                    file_name = "Moment_Cube.stl";
                 else if (file_name == L("Orca Tolerance Test"))
                     file_name = "OrcaToleranceTest.drc";
                 else if (file_name == L("3DBenchy"))
