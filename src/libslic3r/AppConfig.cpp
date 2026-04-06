@@ -40,7 +40,7 @@ using namespace nlohmann;
 namespace Slic3r {
 
 static const std::string VERSION_CHECK_URL = "https://api.github.com/repos/moment3d/MomentSlicer/releases";
-static const std::string PROFILE_UPDATE_URL = "https://api.github.com/repos/moment3d/MomentSlicer/MomentSlicer-profiles/releases/tags";
+static const std::string PROFILE_UPDATE_URL = "https://api.github.com/repos/moment3d/MOMENT3D/MomentSlicer-profiles/releases/tags";
 static const std::string MODELS_STR = "models";
 
 const std::string AppConfig::SECTION_FILAMENTS = "filaments";
