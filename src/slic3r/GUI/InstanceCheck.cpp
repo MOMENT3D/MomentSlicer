@@ -238,7 +238,7 @@ namespace instance_check_internal
 			const char* sigval = message_text.c_str();
 			std::string		interface_name = "com.momentslicer.MomentSlicer.InstanceCheck.Object" + version;
 			std::string   	method_name = "AnotherInstance";
-			std::string		object_name = "/com/momentslicer/MomentSlicer/InstanceCheck/Object" + version;
+			std::string		object_name = "/com/MOMENT3D/MomentSlicer/InstanceCheck/Object" + version;
 
 
 			// initialise the error value

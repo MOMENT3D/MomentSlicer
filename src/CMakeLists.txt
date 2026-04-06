@@ -92,7 +92,7 @@ if(MOMENT_TOOLS)
             MACOSX_BUNDLE_BUNDLE_VERSION "${SLIC3R_VERSION}"
             MACOSX_BUNDLE_SHORT_VERSION_STRING "${SLIC3R_VERSION}"
             MACOSX_BUNDLE_IDENTIFIER "com.momentslicer.MomentSlicer.profile-validator"
-            MACOSX_BUNDLE_COPYRIGHT "© 2026 MomentSlicer Pte Ltd All Rights Reserved"
+            MACOSX_BUNDLE_COPYRIGHT "© 2026 MomentSlicer Co Ltd All Rights Reserved"
             MACOSX_BUNDLE_GUI_IDENTIFIER "com.momentslicer.MomentSlicer.profile-validator"
         )
     else()

@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     # Only run on main branch of the main repository
-    if: github.repository == 'MomentSlicer/MomentSlicer' && github.ref == 'refs/heads/main'
+    if: github.repository == 'MOMENT3D/MomentSlicer' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
     steps:

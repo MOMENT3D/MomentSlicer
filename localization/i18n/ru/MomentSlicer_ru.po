@@ -6195,7 +6195,7 @@ msgid "Flow ratio test - Pass 2"
 msgstr "Тест коэффициента потока - 2-ой проход"
 
 # YOLO – калибровка "с первого раза", "Одним махом", You Only Look Once
-# (https://github.com/MomentSlicer/MomentSlicer/pull/6479)
+# (https://github.com/OrcaSlicer/OrcaSlicer/pull/6479)
 msgid "YOLO (Recommended)"
 msgstr "Экспресс-калибровка потока (YOLO, шаг 0.01, рекомендуется)"
 
@@ -14075,7 +14075,7 @@ msgstr ""
 "внешней поверхности. Кроме того, это может приводить к тому, что заполнение "
 "будет просвечиваться через внешнюю поверхность детали.."
 
-# См. https://github.com/MomentSlicer/MomentSlicer/pull/12669
+# См. https://github.com/OrcaSlicer/OrcaSlicer/pull/12669
 msgid "Wall loop direction"
 msgstr "Направление печати периметров"
 

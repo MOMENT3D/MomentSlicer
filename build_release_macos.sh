@@ -291,11 +291,11 @@ function build_universal() {
     echo "Building universal binary..."
 
     PROJECT_BUILD_DIR="$PROJECT_DIR/build/$ARCH"
-    ARM64_APP="$PROJECT_DIR/build/arm64/MomentSlicer/MomentSlicer.app"
-    X86_64_APP="$PROJECT_DIR/build/x86_64/MomentSlicer/MomentSlicer.app"
+    ARM64_APP="$PROJECT_DIR/build/arm64/MOMENT3D/MomentSlicer.app"
+    X86_64_APP="$PROJECT_DIR/build/x86_64/MOMENT3D/MomentSlicer.app"
 
     mkdir -p "$PROJECT_BUILD_DIR/MomentSlicer"
-    UNIVERSAL_APP="$PROJECT_BUILD_DIR/MomentSlicer/MomentSlicer.app"
+    UNIVERSAL_APP="$PROJECT_BUILD_DIR/MOMENT3D/MomentSlicer.app"
     rm -rf "$UNIVERSAL_APP"
     cp -R "$ARM64_APP" "$UNIVERSAL_APP"
 
@@ -304,11 +304,11 @@ function build_universal() {
     echo "Universal MomentSlicer.app created at $UNIVERSAL_APP"
 
     # Create universal binary for profile validator if it exists
-    ARM64_VALIDATOR="$PROJECT_DIR/build/arm64/MomentSlicer/MomentSlicer_profile_validator.app"
-    X86_64_VALIDATOR="$PROJECT_DIR/build/x86_64/MomentSlicer/MomentSlicer_profile_validator.app"
+    ARM64_VALIDATOR="$PROJECT_DIR/build/arm64/MOMENT3D/MomentSlicer_profile_validator.app"
+    X86_64_VALIDATOR="$PROJECT_DIR/build/x86_64/MOMENT3D/MomentSlicer_profile_validator.app"
     if [ -d "$ARM64_VALIDATOR" ] && [ -d "$X86_64_VALIDATOR" ]; then
         echo "Creating universal binaries for MomentSlicer_profile_validator.app..."
-        UNIVERSAL_VALIDATOR_APP="$PROJECT_BUILD_DIR/MomentSlicer/MomentSlicer_profile_validator.app"
+        UNIVERSAL_VALIDATOR_APP="$PROJECT_BUILD_DIR/MOMENT3D/MomentSlicer_profile_validator.app"
         rm -rf "$UNIVERSAL_VALIDATOR_APP"
         cp -R "$ARM64_VALIDATOR" "$UNIVERSAL_VALIDATOR_APP"
         lipo_dir "$UNIVERSAL_VALIDATOR_APP" "$X86_64_VALIDATOR"

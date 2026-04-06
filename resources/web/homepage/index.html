@@ -5,43 +5,19 @@
 	<meta http-equiv="Cache-Control" content="max-age=7200" />
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 	<title>homepage</title>
-	<link rel="stylesheet" type="text/css" href="css/home.css" />
-	<link rel="stylesheet" type="text/css" href="css/dark.css" />
-	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="../data/text.js"></script>
-	<script type="text/javascript" src="js/json2.js"></script>
-	<script type="text/javascript" src="js/globalapi.js"></script>
+    <link rel="stylesheet" type="text/css" href="../include/global.css" />	<!-- ORCA One for all-->
+	<link rel="stylesheet" type="text/css" href="./css/home.css" />
+	<link rel="stylesheet" type="text/css" href="./css/dark.css" />
+
+    <script type="text/javascript" src="../include/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../include/json2.js"></script>	
+    <script type="text/javascript" src="../include/globalapi.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../include/swiper/swiper-bundle.min.css" />
+    <script type="text/javascript" src="../include/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../data/text.js"></script>		
+
 	<script type="text/javascript" src="js/home.js"></script>
-	<script type="text/javascript">
-		//HandleStudio(TestData);
-		document.onkeydown = function (event) {
-		var e = event || window.event || arguments.callee.caller.arguments[0];
-
-		if (e.ctrlKey && e.metaKey)
-		OutputKey(e.keyCode, true, false, true);
-		else if (e.ctrlKey)
-		OutputKey(e.keyCode, true, false, false);
-		else if (e.metaKey)
-		OutputKey(e.keyCode, false, false, true);
-
-		if (e.shiftKey && e.ctrlKey)
-		OutputKey(e.keyCode, true, true, false);
-
-		if (e.shiftKey && e.metaKey)
-		OutputKey(e.keyCode, false, true, true);
-
-		if (window.event) {
-		try { e.keyCode = 0; } catch (e) { }
-		e.returnValue = false;
-		}
-		};
-
-		window.addEventListener('mousewheel', function (event) {
-		if (event.ctrlKey === true || event.metaKey) {
-		event.preventDefault();
-		}
-		}, { passive: false });
-	</script>
 </head>
 <body class="ZScrol" onLoad="OnInit()">
 <div id="LeftBoard" style="background-color:#000000">
@@ -238,6 +214,37 @@
 	
 </div>	
 </body>
+	<script type="text/javascript">
+		//HandleStudio(TestData);
+		document.onkeydown = function (event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+
+		if (e.ctrlKey && e.metaKey)
+		OutputKey(e.keyCode, true, false, true);
+		else if (e.ctrlKey)
+		OutputKey(e.keyCode, true, false, false);
+		else if (e.metaKey)
+		OutputKey(e.keyCode, false, false, true);
+
+		if (e.shiftKey && e.ctrlKey)
+		OutputKey(e.keyCode, true, true, false);
+
+		if (e.shiftKey && e.metaKey)
+		OutputKey(e.keyCode, false, true, true);
+
+		if (window.event) {
+		try { e.keyCode = 0; } catch (e) { }
+		e.returnValue = false;
+		}
+		};
+
+		window.addEventListener('mousewheel', function (event) {
+		if (event.ctrlKey === true || event.metaKey) {
+		event.preventDefault();
+		}
+		}, { passive: false });
+		
+	</script>
 </html>
 
 

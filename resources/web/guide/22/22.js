@@ -577,7 +577,7 @@ function GotoNetPluginPage()
 	let bRet=ResponseFilamentResult();
 	
 	if(bRet)
-		window.location.href="../4orca/index.html";
+		window.location.href="../5/index.html";
 }
 
 function FinishGuide()
