@@ -1,93 +1,90 @@
 {
     "type": "filament",
-    "filament_id": "GFG92",
+    "filament_id": "GFN93",
     "setting_id": "GFSA04",
-    "name": "Moment PETG-HVMS",
+    "name": "Moment PA(S)",
     "from": "system",
     "instantiation": "true",
-    "inherits": "fdm_filament_pet",
+    "inherits": "fdm_filament_pa",
     "filament_cost": [
-        "88000"
+        "198000"
     ],
     "filament_max_volumetric_speed": [
         "12"
     ],
-    "slow_down_for_layer_cooling": [
+    "nozzle_temperature": [
+        "260"
+    ],
+	"enable_overhang_bridge_fan": [
+        "1"
+    ],
+    "enable_pressure_advance": [
         "1"
     ],
     "fan_cooling_layer_time": [
-        "30"
-    ],
-    "overhang_fan_threshold": [
-        "25%"
-    ],
-	"enable_pressure_advance": [
-        "1"
+        "10"
     ],
     "fan_max_speed": [
-        "60"
+        "100"
     ],
     "fan_min_speed": [
-        "20"
+        "100"
     ],
     "filament_density": [
-        "1.25"
+        "1.12"
     ],
     "filament_flow_ratio": [
-        "0.92"
+        "0.95"
     ],
 	"hot_plate_temp": [
-        "75"
+        "55"
     ],
     "hot_plate_temp_initial_layer": [
-        "75"
-    ],
-	"nozzle_temperature": [
-        "260"
-    ],
-    "nozzle_temperature_initial_layer": [
-        "260"
-    ],
+        "55"
+	],	
     "nozzle_temperature_range_high": [
-        "300"
+        "290"
     ],
     "nozzle_temperature_range_low": [
         "250"
     ],
+    "nozzle_temperature_initial_layer": [
+        "260"
+    ],
     "overhang_fan_speed": [
-        "90"
+        "100"
+    ],
+    "overhang_fan_threshold": [
+        "50%"
     ],
     "pressure_advance": [
-        "0.062"
+        "0.046"
     ],
     "reduce_fan_stop_start_freq": [
-        "0"
+        "1"
+    ],
+    "slow_down_for_layer_cooling": [
+        "1"
     ],
     "slow_down_layer_time": [
-        "10"
-    ],
-    "slow_down_min_speed": [
         "5"
     ],
+    "slow_down_min_speed": [
+    "20"
+    ],
     "temperature_vitrification": [
-        "81"
+        "65"
     ],
     "activate_air_filtration": [
         "1"
     ],
-    "close_fan_the_first_x_layers": [
-        "1"
-    ],
     "complete_print_exhaust_fan_speed": [
-        "20"
+       "20"
     ],
     "during_print_exhaust_fan_speed": [
-        "40"
-    ],
-        "compatible_printers": [
-            "Moment M200(HVMS) 0.4 nozzle",
-            "Moment M300(HVMS) 0.4 nozzle",
-            "Moment M400(HVMS) 0.4 nozzle"
-    ],
+       "40"
+    ],  
+	"compatible_printers": [
+	],
     "version": "1.6.0.0"
 }

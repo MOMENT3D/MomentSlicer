@@ -2,13 +2,21 @@
     "type": "filament",
     "filament_id": "GFB92",
     "setting_id": "GFSA04",
-    "name": "Moment ABS-HVMS",
+    "name": "Moment ABS(SCH)",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_abs",
     "filament_cost": [
         "38500"
     ],
+
+    "activate_chamber_temp_control": [
+        "1"
+    ],
+    "chamber_temperature": [
+        "60"
+    ],
+    
     "filament_max_volumetric_speed": [
         "17"
     ],
@@ -55,7 +63,7 @@
         "5"
     ],
     "slow_down_min_speed": [
-        "5"
+        "20"
     ],
     "temperature_vitrification": [
         "101"
@@ -76,9 +84,9 @@
         "40"
     ],
     "compatible_printers": [
-        "Moment M200(HVMS) 0.4 nozzle",
-        "Moment M300(HVMS) 0.4 nozzle",
-        "Moment M400(HVMS) 0.4 nozzle"
+        "Moment M200(SCH) 0.4 nozzle",
+        "Moment M300(SCH) 0.4 nozzle",
+        "Moment M400(SCH) 0.4 nozzle"
   ],
 	"version": "1.6.0.0"
 }

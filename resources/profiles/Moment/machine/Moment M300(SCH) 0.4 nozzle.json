@@ -1,14 +1,14 @@
 {
   "type": "machine",
   "setting_id": "GM001",
-  "name": "Moment M300(HVMS) 0.4 nozzle",
+  "name": "Moment M300(SCH) 0.4 nozzle",
   "from": "system",
   "instantiation": "true",
   "inherits": "fdm_moment_common",
-  "printer_model": "Moment M300(HVMS)",
-  "default_print_profile": "0.20mm Standard @Moment M",
+  "printer_model": "Moment M300(SCH)",
+  "default_print_profile": "0.20mm Standard @Moment(S)",
   "default_filament_profile": [
-    "Moment PLA Tough-HVMS"
+    "Moment PLA Tough(S)"
   ],
   "extruder_colour": [
     "#ff0000"

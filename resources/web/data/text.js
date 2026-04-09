@@ -116,7 +116,7 @@ var LangText = {
     mmt3: "●  Change language",
     mmt4: "●  Associate files to MomentSlicer",
     mmt5: "●  Use dark mode",
-    mmt6: "Additional settings can be made in OrcaSlicer's preferences (ctrl+p)",
+    mmt6: "Additional settings can be made in OrcaSlicer's preferences (Ctrl+P)",
   },
   ca_ES: {
     t1: "Benvingut a Moment Slicer",
@@ -1223,7 +1223,7 @@ var LangText = {
     mmt3: "●  언어 변경",
     mmt4: "●  MomentSlicer에 파일 연결",
     mmt5: "●  다크 모드 사용",
-    mmt6: "추가 설정은 MomentSlicer 환경설정에서 할 수 있습니다.",
+    mmt6: "추가 설정은 MomentSlicer 환경설정에서 할 수 있습니다. (Ctrl+P)",
   },
   tr_TR: {
     t1: "Moment Slicer'a hoş geldiniz",

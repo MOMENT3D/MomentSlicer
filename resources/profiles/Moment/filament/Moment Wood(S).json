@@ -2,7 +2,7 @@
     "type": "filament",
     "filament_id": "GFL84",
     "setting_id": "GFSA04",
-    "name": "Moment Wood-HVMS",
+    "name": "Moment Wood(S)",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_pla",
@@ -52,7 +52,7 @@
         "5"
     ],
     "slow_down_min_speed": [
-        "5"
+        "20"
     ],
     "temperature_vitrification": [
         "59"

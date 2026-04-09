@@ -2,7 +2,7 @@
   "type": "filament",
   "filament_id": "GFB93",
   "setting_id": "GFSA04",
-  "name": "Moment ABS-GF-HVMS",
+  "name": "Moment ABS-GF(S)",
   "from": "system",
   "instantiation": "true",
   "inherits": "fdm_filament_abs",
@@ -58,7 +58,7 @@
     "10"
   ],
   "slow_down_min_speed": [
-    "5"
+    "20"
   ],
   "temperature_vitrification": [
     "101"
@@ -79,9 +79,9 @@
     "40"
   ],
   "compatible_printers": [
-    "Moment M200(HVMS) 0.4 nozzle",
-    "Moment M300(HVMS) 0.4 nozzle",
-    "Moment M400(HVMS) 0.4 nozzle"
+    "Moment M200(S) 0.4 nozzle",
+    "Moment M300(S) 0.4 nozzle",
+    "Moment M400(S) 0.4 nozzle"
   ],
   "version": "1.6.0.0"
 }

@@ -1,0 +1,12 @@
+{
+  "type": "machine_model",
+  "name": "Moment M400(S)",
+  "model_id": "Moment-M400(S)",
+  "nozzle_diameter": "0.4",
+  "machine_tech": "FFF",
+  "family": "Moment",
+  "bed_model": "M400_bed.stl",
+  "bed_texture": "M400_bed.png",
+  "hotend_model": "Moment_hotend.stl",
+  "default_materials": "Moment PLA Sonic(S);Moment PLA Tough(S);Moment ABS(S);Moment PA(S);Moment PA6-CF(S);Moment PC(S);Moment PETG(S);Moment PC(S);Moment TPU95A(S);Moment TPU95A-HF(S);Moment Wood(S);Moment PETG(S);Moment PA6-GF(S);Moment PET-CF(S);Moment ABS-GF(S);Moment PETG-ESD(S)"
+}

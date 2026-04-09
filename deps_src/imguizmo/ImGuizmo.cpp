@@ -666,7 +666,7 @@ namespace IMGUIZMO_NAMESPACE
       Colors[HATCHED_AXIS_LINES]    = ImVec4(0.000f, 0.000f, 0.000f, 0.500f);
       Colors[TEXT]                  = ImVec4(1.000f, 1.000f, 1.000f, 1.000f);
       Colors[TEXT_SHADOW]           = ImVec4(0.000f, 0.000f, 0.000f, 1.000f);
-      Colors[FACE]                  = ImVec4(0.776f, 0.804f, 0.839f, 1.000f);
+      Colors[FACE]                  = ImVec4(0.980f, 0.930f, 0.930f, 1.000f);
 
       strcpy(AxisLabels[Axis_X], "x");
       strcpy(AxisLabels[Axis_Y], "y");

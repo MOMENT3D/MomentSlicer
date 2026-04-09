@@ -1,22 +1,22 @@
 {
     "type": "filament",
-  "filament_id": "GFL94",
+    "filament_id": "GFL86",
     "setting_id": "GFSA04",
-  "name": "Moment PLA Sonic-HVMS",
+  "name": "Moment PLA Tough(S)",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_pla",
     "filament_type": [
-        "PLA-Sonic"
+        "PLA-Tough"
     ],
     "filament_cost": [
-        "44000"
+        "38500"
     ],
     "filament_flow_ratio": [
       "0.93"
     ],
     "filament_density": [
-      "1.23"
+      "1.26"
     ],
     "hot_plate_temp": [
       "60"
@@ -25,13 +25,13 @@
       "60"
     ],
     "nozzle_temperature": [
-      "215"
+      "235"
     ],
     "nozzle_temperature_initial_layer": [
-      "215"
+      "235"
     ],
     "nozzle_temperature_range_high": [
-      "240"
+      "250"
     ],
     "nozzle_temperature_range_low": [
       "190"
@@ -43,16 +43,16 @@
       "1"
     ],
     "pressure_advance": [
-      "0.034"
+      "0.04"
     ],
     "slow_down_layer_time": [
       "5"
     ],
     "slow_down_min_speed": [
-      "5"
+      "20"
     ],
     "filament_max_volumetric_speed": [
-      "25"
+      "15"
     ],
     "activate_air_filtration": [
       "1"
@@ -70,9 +70,12 @@
         "100"
     ],
     "compatible_printers": [
-      "Moment M200(HVMS) 0.4 nozzle",
-      "Moment M300(HVMS) 0.4 nozzle",
-      "Moment M400(HVMS) 0.4 nozzle"
+      "Moment M200(S) 0.4 nozzle",
+      "Moment M300(S) 0.4 nozzle",
+      "Moment M400(S) 0.4 nozzle",
+      "Moment M200(SCH) 0.4 nozzle",
+      "Moment M300(SCH) 0.4 nozzle",
+      "Moment M400(SCH) 0.4 nozzle"      
     ],
     "version": "1.6.0.0"
 }

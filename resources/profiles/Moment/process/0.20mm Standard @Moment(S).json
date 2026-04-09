@@ -1,0 +1,16 @@
+{
+    "type": "process",
+    "setting_id": "GP004",
+    "name": "0.20mm Standard @Moment(S)",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_process_moment(S)_common",
+	"compatible_printers": [
+        "Moment M200(S) 0.4 nozzle",
+        "Moment M300(S) 0.4 nozzle",
+        "Moment M400(S) 0.4 nozzle",
+        "Moment M200(SCH) 0.4 nozzle",
+        "Moment M300(SCH) 0.4 nozzle",
+        "Moment M400(SCH) 0.4 nozzle"         
+	]
+}

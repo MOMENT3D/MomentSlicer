@@ -1,14 +1,14 @@
 {
   "type": "machine",
   "setting_id": "GM001",
-  "name": "Moment M200(HVMS) 0.4 nozzle",
+  "name": "Moment M400(S) 0.4 nozzle",
   "from": "system",
   "instantiation": "true",
   "inherits": "fdm_moment_common",
-  "printer_model": "Moment M200(HVMS)",
-  "default_print_profile": "0.20mm Standard @Moment M",
+  "printer_model": "Moment M400(S)",
+  "default_print_profile": "0.20mm Standard @Moment(S)",
   "default_filament_profile": [
-    "Moment PLA Tough-HVMS"
+    "Moment PLA Tough(S)"
   ],
   "extruder_colour": [
     "#ff0000"
@@ -24,11 +24,11 @@
   "extruder_offset": [
     "0x0"
   ],
-  "printable_height": "200.08",
+  "printable_height": "400.08",
   "printable_area": [
     "0x0",
-    "203.68x0",
-    "203.68x203.68",
-    "0x203.68"
+    "403.68x0",
+    "403.68x403.68",
+    "0x403.68"
   ]
 }

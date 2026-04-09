@@ -36,7 +36,7 @@ msgid ""
 "presets.\n"
 "Are you sure you want to continue?"
 msgstr ""
-"AMS 필라멘트를 동기화하면 수정되었지만 저장되지 않은 필라멘트 프리셋 설정이 "
+"AMS 필라멘트를 동기화하면 수정되었지만 저장되지 않은 필라멘트 사전 설정 설정이 "
 "무시됩니다.\n"
 "계속하시겠습니까?"
 
@@ -126,7 +126,7 @@ msgid ""
 "replaced with the mapped filament types and colors. This action cannot be "
 "undone."
 msgstr ""
-"동기화 후 프로젝트의 필라멘트 프리셋과 색상이 매핑된 필라멘트 유형 및 색상으"
+"동기화 후 프로젝트의 필라멘트 사전 설정과 색상이 매핑된 필라멘트 유형 및 색상으"
 "로 교체됩니다. 이 작업은 취소할 수 없습니다."
 
 msgid "Are you sure to synchronize the filaments?"
@@ -151,7 +151,7 @@ msgstr "외부 스풀"
 msgid ""
 "Please check whether the nozzle type of the device is the same as the preset "
 "nozzle type."
-msgstr "장치의 노즐 유형이 프리셋 노즐 유형과 일치하는지 확인하십시오."
+msgstr "장치의 노즐 유형이 사전 설정 노즐 유형과 일치하는지 확인하십시오."
 
 msgid "Storage is not available or is in read-only mode."
 msgstr "저장장치를 사용할 수 없거나 읽기 전용 모드입니다."
@@ -223,7 +223,7 @@ msgid "Any arrow"
 msgstr "모든 화살표"
 
 msgid "Gizmo FDM paint-on fuzzy skin"
-msgstr "기즈모 FDM 페인트-온 퍼지 스킨"
+msgstr "변형도구 FDM 퍼지 스킨 칠하기"
 
 msgid "1. Please confirm Moment Slicer and your printer are in the same LAN."
 msgstr ""
@@ -1363,7 +1363,7 @@ msgstr ""
 
 #, c-format, boost-format
 msgid "nozzle size in preset: %d"
-msgstr "프리셋의 노즐 크기: %d"
+msgstr "사전 설정의 노즐 크기: %d"
 
 #, c-format, boost-format
 msgid "nozzle size memorized: %d"
@@ -1371,7 +1371,7 @@ msgstr "저장된 노즐 크기: %d"
 
 #, c-format, boost-format
 msgid "nozzle[%d] in preset: %.1f"
-msgstr "프리셋의 노즐[%d]: %.1f"
+msgstr "사전 설정의 노즐[%d]: %.1f"
 
 #, c-format, boost-format
 msgid "nozzle[%d] memorized: %.1f"
@@ -1462,8 +1462,8 @@ msgid ""
 "range of filaments. For higher printing quality and speeds, please use Bambu "
 "filaments with Bambu presets."
 msgstr ""
-"제네릭(Generic) 프리셋은 다양한 필라멘트와의 호환성을 위해 보수적으로 설정되"
-"어 있습니다. 더 높은 품질과 속도를 원하시면 Bambu 필라멘트와 전용 프리셋을 사"
+"제네릭(Generic) 사전 설정은 다양한 필라멘트와의 호환성을 위해 보수적으로 설정되"
+"어 있습니다. 더 높은 품질과 속도를 원하시면 Bambu 필라멘트와 전용 사전 설정을 사"
 "용하세요."
 
 msgid "High quality profile for 0.2mm nozzle, prioritizing print quality."
@@ -1657,11 +1657,11 @@ msgid "Clear my choice on..."
 msgstr "다음 항목에 대한 내 선택 해제..."
 
 msgid "Synchronizing printer preset"
-msgstr "프린터 프리셋 동기화"
+msgstr "프린터 사전 설정 동기화"
 
 msgid ""
 "Clear my choice for synchronizing printer preset after loading the file."
-msgstr "파일을 불러온 후 프린터 프리셋 동기화에 대한 내 선택을 초기화합니다."
+msgstr "파일을 불러온 후 프린터 사전 설정 동기화에 대한 내 선택을 초기화합니다."
 
 msgid ""
 "Store authentication tokens in an encrypted file instead of the system "
@@ -1678,7 +1678,7 @@ msgstr "필라멘트 동기화 모드"
 msgid ""
 "Choose whether sync updates both filament preset and color, or only color."
 msgstr ""
-"동기화 시 필라멘트 프리셋과 색상을 모두 업데이트할지, 색상만 업데이트할지 선"
+"동기화 시 필라멘트 사전 설정과 색상을 모두 업데이트할지, 색상만 업데이트할지 선"
 "택합니다."
 
 msgid "Filament & Color"
@@ -1827,7 +1827,7 @@ msgid ""
 "in printer, then set the corresponding printer preset when slicing."
 msgstr ""
 "현재 프린터의 %s 직경(%.1fmm)이 슬라이싱 파일(%.1fmm)과 일치하지 않습니다. 장"
-"착된 노즐이 프린터 설정과 일치하는지 확인하고, 슬라이싱 시 해당 프리셋을 선택"
+"착된 노즐이 프린터 설정과 일치하는지 확인하고, 슬라이싱 시 해당 사전 설정을 선택"
 "하세요."
 
 #, c-format, boost-format
@@ -1837,7 +1837,7 @@ msgid ""
 "printer, then set the corresponding printer preset when slicing."
 msgstr ""
 "현재 노즐 직경(%.1fmm)이 슬라이싱 파일(%.1fmm)과 일치하지 않습니다. 장착된 노"
-"즐이 프린터 설정과 일치하는지 확인하고, 슬라이싱 시 해당 프리셋을 선택하세요."
+"즐이 프린터 설정과 일치하는지 확인하고, 슬라이싱 시 해당 사전 설정을 선택하세요."
 
 #, c-format, boost-format
 msgid ""
@@ -2033,10 +2033,10 @@ msgid "Right: %s"
 msgstr "오른쪽: %s"
 
 msgid "Left Preset Value"
-msgstr "왼쪽 프리셋 값"
+msgstr "왼쪽 사전 설정 값"
 
 msgid "Right Preset Value"
-msgstr "오른쪽 프리셋 값"
+msgstr "오른쪽 사전 설정 값"
 
 msgid "Some faces don't have color defined."
 msgstr "일부 면에 색상이 정의되지 않았습니다."
@@ -2401,7 +2401,7 @@ msgstr ""
 "경고: 퍼지 스킨이 비활성화되어 있습니다. 칠한 퍼지 스킨이 적용되지 않습니다!"
 
 msgid "Enable painted fuzzy skin for this object"
-msgstr "이 개체의 칠한 퍼지 스킨 활성화"
+msgstr "이 개체에 칠한 퍼지 스킨 활성화"
 
 msgid "Move"
 msgstr "이동"
@@ -2912,34 +2912,34 @@ msgid "Set Mirror"
 msgstr "반전 설정"
 
 msgid "Embossed text"
-msgstr "텍스트 양각"
+msgstr "텍스트 각인"
 
 msgid "Enter emboss gizmo"
-msgstr "변형도구 - 양각 입력"
+msgstr "변형도구 - 각인 입력"
 
 msgid "Leave emboss gizmo"
-msgstr "변형도구 - 양각 나가기"
+msgstr "변형도구 - 각인 나가기"
 
 msgid "Embossing actions"
-msgstr "양각 작업"
+msgstr "각인 작업"
 
 msgid "Emboss"
-msgstr "양각"
+msgstr "각인"
 
 msgid "NORMAL"
-msgstr "NORMAL"
+msgstr "일반"
 
 msgid "SMALL"
-msgstr "SMALL"
+msgstr "작은"
 
 msgid "ITALIC"
-msgstr "ITALIC"
+msgstr "이탈릭"
 
 msgid "SWISS"
-msgstr "SWISS"
+msgstr "스위스"
 
 msgid "MODERN"
-msgstr "MODERN"
+msgstr "모던"
 
 msgid "First font"
 msgstr "첫 번째 글꼴"
@@ -2956,7 +2956,7 @@ msgid ""
 msgstr "선택한 글꼴로는 텍스트를 쓸 수 없습니다. 다른 글꼴을 선택해 보세요."
 
 msgid "Embossed text cannot contain only white spaces."
-msgstr "양각 텍스트에는 공백만 포함될 수 없습니다."
+msgstr "각인 텍스트에는 공백만 포함될 수 없습니다."
 
 msgid "Text contains character glyph (represented by '?') unknown by font."
 msgstr ""
@@ -2993,20 +2993,20 @@ msgstr "작업"
 #. TRN EmbossOperation
 #. MOMENT
 msgid "Join"
-msgstr "접합부"
+msgstr "양각"
 
 msgid "Click to change text into object part."
-msgstr "텍스트를 개체 부분으로 변경하려면 클릭하세요."
+msgstr "텍스트를 개체의 부품 중 하나로 양각하려면 클릭하세요."
 
 msgid "You can't change a type of the last solid part of the object."
 msgstr "개체의 마지막 꽉찬 부분 유형은 변경할 수 없습니다."
 
 msgctxt "EmbossOperation"
 msgid "Cut"
-msgstr "자르기"
+msgstr "음각"
 
 msgid "Click to change part type into negative volume."
-msgstr "부품 유형을 음수 볼륨으로 변경하려면 클릭하세요."
+msgstr "부품을 음각으로 각인하려면 클릭하세요."
 
 msgid "Modifier"
 msgstr "수정자"
@@ -3019,7 +3019,7 @@ msgstr "텍스트 유형 변경"
 
 #, boost-format
 msgid "Rename style (%1%) for embossing text"
-msgstr "양각 텍스트의 스타일 이름 바꾸기(%1%)"
+msgstr "각인 텍스트의 스타일 이름 바꾸기(%1%)"
 
 msgid "Name can't be empty."
 msgstr "이름은 비워둘 수 없습니다."
@@ -3127,7 +3127,7 @@ msgid "Revert text size."
 msgstr "텍스트 크기를 되돌립니다."
 
 msgid "Revert embossed depth."
-msgstr "양각 깊이를 되돌립니다."
+msgstr "각인 깊이를 되돌립니다."
 
 msgid ""
 "Advanced options cannot be changed for the selected font.\n"
@@ -3426,7 +3426,7 @@ msgid "Save as SVG file."
 msgstr "SVG 파일로 저장"
 
 msgid "Size in emboss direction."
-msgstr "양각 방향의 크기입니다."
+msgstr "각인 방향의 크기입니다."
 
 #. TRN: The placeholder contains a number.
 #, boost-format
@@ -3472,7 +3472,7 @@ msgid "Mirror"
 msgstr "반전"
 
 msgid "Choose SVG file for emboss:"
-msgstr "양각을 위한 SVG 파일 선택:"
+msgstr "각인을 위한 SVG 파일 선택:"
 
 #, boost-format
 msgid "File does NOT exist (%1%)."
@@ -3488,7 +3488,7 @@ msgstr "나노 SVG 파서는 파일(%1%)에서 로드할 수 없습니다."
 
 #, boost-format
 msgid "SVG file does NOT contain a single path to be embossed (%1%)."
-msgstr "SVG 파일에는 양각할 단일 경로(%1%)가 포함되어 있지 않습니다."
+msgstr "SVG 파일에는 각인할 단일 경로(%1%)가 포함되어 있지 않습니다."
 
 msgid "No feature"
 msgstr "기능 없음"
@@ -4435,28 +4435,28 @@ msgid "Remove the selected plate"
 msgstr "선택된 플레이트 삭제"
 
 msgid "Add instance"
-msgstr "인스턴스 추가"
+msgstr "연결복제 추가"
 
 msgid "Add one more instance of the selected object"
-msgstr "선택한 개체의 인스턴스를 하나 더 추가"
+msgstr "선택한 개체의 연결복제를 하나 더 추가"
 
 msgid "Remove instance"
-msgstr "인스턴스 제거"
+msgstr "연결복제 제거"
 
 msgid "Remove one instance of the selected object"
-msgstr "선택한 개체의 인스턴스 하나를 제거"
+msgstr "선택한 개체의 연결복제 하나를 제거"
 
 msgid "Set number of instances"
-msgstr "인스턴스 수 설정"
+msgstr "연결복제 수 설정"
 
 msgid "Change the number of instances of the selected object"
-msgstr "선택한 개체의 인스턴스 수 변경"
+msgstr "선택한 개체의 연결복제 수 변경"
 
 msgid "Fill bed with instances"
-msgstr "베드를 인스턴스로 채우기"
+msgstr "베드를 연결복제로 채우기"
 
 msgid "Fill the remaining area of bed with instances of the selected object"
-msgstr "선택한 개체의 인스턴스로 베드의 남은 영역 채우기"
+msgstr "선택한 개체의 연결복제로 베드의 남은 영역 채우기"
 
 msgid "Clone"
 msgstr "복제"
@@ -4540,7 +4540,7 @@ msgid "Right button click the icon to drop the object printable property"
 msgstr "아이콘을 마우스 우클릭하여 개체 출력 가능 속성을 드롭합니다"
 
 msgid "Click the icon to toggle printable property of the object"
-msgstr "아이콘을 쿨릭하여 개체의 출력 가능한 속성을 전환합니다"
+msgstr "아이콘을 클릭하여 개체의 출력 가능한 속성을 전환합니다"
 
 msgid "Click the icon to edit support painting of the object"
 msgstr "아이콘을 클릭하여 개체의 지지대 칠하기를 편집합니다"
@@ -4640,7 +4640,7 @@ msgid "Part manipulation"
 msgstr "부품 조작"
 
 msgid "Instance manipulation"
-msgstr "인스턴스 조작"
+msgstr "연결복제 조작"
 
 msgid "Height ranges"
 msgstr "높이 범위"
@@ -7818,7 +7818,7 @@ msgid "Export toolpaths as OBJ"
 msgstr "툴 경로를 OBJ로 내보내기"
 
 msgid "Export Preset Bundle"
-msgstr "프리셋 번들 내보내기"
+msgstr "사전 설정 번들 내보내기"
 
 msgid "Export current configuration to files"
 msgstr "현재 설정을 파일로 내보내기"
@@ -9580,7 +9580,7 @@ msgstr ""
 "요!"
 
 msgid "Customized Preset"
-msgstr "사용자 정의 프리셋"
+msgstr "사용자 정의 사전 설정"
 
 msgid "Name of components inside STEP file is not UTF8 format!"
 msgstr "단계 파일 내의 구성 요소 이름이 UTF8 형식이 아닙니다!"
@@ -11386,12 +11386,12 @@ msgid ""
 "A copy of the current system preset will be created, which will be detached "
 "from the system preset."
 msgstr ""
-"현재 시스템 프리셋의 복사본이 생성되며, 이 복사본은 시스템 프리셋에서 분리됩"
+"현재 시스템 사전 설정의 복사본이 생성되며, 이 복사본은 시스템 사전 설정에서 분리됩"
 "니다."
 
 msgid ""
 "The current custom preset will be detached from the parent system preset."
-msgstr "현재 사용자 지정 프리셋이 상위 시스템 프리셋에서 분리됩니다."
+msgstr "현재 사용자 지정 사전 설정이 상위 시스템 사전 설정에서 분리됩니다."
 
 msgid "Modifications to the current profile will be saved."
 msgstr "현재 프로필에 대한 수정 사항이 저장됩니다."
@@ -11404,29 +11404,29 @@ msgstr ""
 "계속 진행하시겠습니까?"
 
 msgid "Detach preset"
-msgstr "프리셋 분리"
+msgstr "사전 설정 분리"
 
 msgid "This is a default preset."
-msgstr "기본 프리셋 입니다."
+msgstr "기본 사전 설정 입니다."
 
 msgid "This is a system preset."
-msgstr "시스템 프리셋 입니다."
+msgstr "시스템 사전 설정 입니다."
 
 msgid "Current preset is inherited from the default preset."
-msgstr "현재 프리셋은 기본 프리셋에서 상속됩니다."
+msgstr "현재 사전 설정은 기본 사전 설정에서 상속됩니다."
 
 msgid "Current preset is inherited from"
-msgstr "현재 프리셋은 다음에서 상속됩니다"
+msgstr "현재 사전 설정은 다음에서 상속됩니다"
 
 msgid "It can't be deleted or modified."
 msgstr "삭제하거나 수정할 수 없습니다."
 
 msgid ""
 "Any modifications should be saved as a new preset inherited from this one."
-msgstr "모든 수정 사항은 이 프리셋에서 상속된 새 프리셋으로 저장해야 합니다."
+msgstr "모든 수정 사항은 이 사전 설정에서 상속된 새 사전 설정으로 저장해야 합니다."
 
 msgid "To do that please specify a new name for the preset."
-msgstr "이렇게 하려면 프리셋의 새 이름을 지정하세요."
+msgstr "이렇게 하려면 사전 설정의 새 이름을 지정하세요."
 
 msgid "Additional information:"
 msgstr "추가 정보:"
@@ -11836,7 +11836,7 @@ msgstr ""
 "있습니다.프린터를 삭제하면 사전 설정도 삭제됩니다."
 
 msgid "Presets inherited by other presets cannot be deleted!"
-msgstr "다른 프리셋에 상속된 프리셋은 삭제할 수 없습니다!"
+msgstr "다른 사전 설정에 상속된 사전 설정은 삭제할 수 없습니다!"
 
 msgid "The following presets inherit this preset."
 msgid_plural "The following preset inherits this preset."
@@ -11857,7 +11857,7 @@ msgid ""
 "please reset the filament information for that slot."
 msgstr ""
 "선택한 사전 설정을 삭제하시겠습니까?\n"
-"프리셋이 현재 프린터에서 사용 중인 필라멘트와 일치하는 경우,해당 슬롯의 필라"
+"사전 설정이 현재 프린터에서 사용 중인 필라멘트와 일치하는 경우,해당 슬롯의 필라"
 "멘트 정보를 재설정해 주세요."
 
 #, boost-format
@@ -12005,8 +12005,8 @@ msgid ""
 "Note: New modified presets will be selected in settings tabs after close "
 "this dialog."
 msgstr ""
-"선택한 옵션을 왼쪽 프리셋에서 오른쪽으로 옮깁니다.\n"
-"참고: 이 대화 상자를 닫은 후 설정 탭에서 새로 수정된 프리셋이 선택됩니다."
+"선택한 옵션을 왼쪽 사전 설정에서 오른쪽으로 옮깁니다.\n"
+"참고: 이 대화 상자를 닫은 후 설정 탭에서 새로 수정된 사전 설정이 선택됩니다."
 
 msgid "Transfer values from left to right"
 msgstr "왼쪽에서 오른쪽으로 값 전송"
@@ -18951,10 +18951,10 @@ msgid "Total number of objects in the print."
 msgstr "출력물의 총 개체 수입니다."
 
 msgid "Number of instances"
-msgstr "인스턴스 수"
+msgstr "연결복제 수"
 
 msgid "Total number of object instances in the print, summed over all objects."
-msgstr "모든 개체에 대해 합산된 출력물의 총 개체 인스턴스 수입니다."
+msgstr "모든 개체에 대해 합산된 출력물의 총 개체 연결복제 수입니다."
 
 msgid "Scale per object"
 msgstr "개체당 크기 조정"
@@ -20498,7 +20498,7 @@ msgid "[Delete Required]"
 msgstr "[삭제 필수]"
 
 msgid "Edit Preset"
-msgstr "프리셋 편집"
+msgstr "사전 설정 편집"
 
 msgid "For more information, please check out Wiki"
 msgstr "더 자세한 내용은 위키를 확인해주세요"

@@ -1,0 +1,12 @@
+{
+  "type": "machine_model",
+  "name": "Moment M200(SCH)",
+  "model_id": "Moment-M200(SCH)",
+  "nozzle_diameter": "0.4",
+  "machine_tech": "FFF",
+  "family": "Moment",
+  "bed_model": "M200_bed.stl",
+  "bed_texture": "M200_bed.png",
+  "hotend_model": "Moment_hotend.stl",
+  "default_materials": "Moment PLA Sonic(S);Moment PLA Tough(S);Moment ABS(SCH);Moment PA(S);Moment PA6-CF(S);Moment PETG(S);Moment PC(SCH);Moment TPU95A(S);Moment TPU95A-HF(S);Moment Wood(S);Moment PETG(S);Moment PA6-GF(S);Moment PET-CF(S);Moment ABS-GF(SCH);Moment PETG-ESD(S)"
+}

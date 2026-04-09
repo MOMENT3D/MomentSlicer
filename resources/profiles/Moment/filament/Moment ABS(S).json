@@ -1,8 +1,8 @@
 {
     "type": "filament",
-    "filament_id": "GFB93",
+    "filament_id": "GFB92",
     "setting_id": "GFSA04",
-    "name": "Moment ABS.",
+    "name": "Moment ABS(S)",
     "from": "system",
     "instantiation": "true",
     "inherits": "fdm_filament_abs",
@@ -10,7 +10,7 @@
         "38500"
     ],
     "filament_max_volumetric_speed": [
-        "15"
+        "17"
     ],
     "close_fan_the_first_x_layers": [
         "3"
@@ -19,13 +19,13 @@
         "1"
     ],
     "pressure_advance": [
-        "0.028"
+        "0.038"
     ],
 	"filament_density": [
         "1.12"
     ],
     "filament_flow_ratio": [
-        "0.93"
+        "0.9"
     ],
     "fan_max_speed": [
         "30"
@@ -34,16 +34,16 @@
         "0"
     ],
 	"overhang_fan_speed": [
-        "30"
+        "10"
     ],
     "overhang_fan_threshold": [
         "25%"
     ],
     "nozzle_temperature": [
-        "270"
+        "260"
     ],
 	"nozzle_temperature_initial_layer": [
-        "270"
+        "260"
     ],
     "nozzle_temperature_range_high": [
         "290"
@@ -75,10 +75,10 @@
     "during_print_exhaust_fan_speed": [
         "40"
     ],
-	"compatible_printers": [
-      "Moment M200(Mtd) 0.4 nozzle",
-      "Moment M300(Mtd) 0.4 nozzle",
-      "Moment M400(Mtd) 0.4 nozzle"
-	],
+    "compatible_printers": [
+        "Moment M200(S) 0.4 nozzle",
+        "Moment M300(S) 0.4 nozzle",
+        "Moment M400(S) 0.4 nozzle"
+  ],
 	"version": "1.6.0.0"
 }

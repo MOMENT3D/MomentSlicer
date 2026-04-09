@@ -56,18 +56,31 @@
           "name": "Moment 2",
           "sub_path": "machine/Moment 2.json"
         },
-                {
-                    "name": "Moment M200(HVMS)",
-                    "sub_path": "machine/Moment M200(HVMS).json"
-                },
-                {
-                    "name": "Moment M300(HVMS)",
-                    "sub_path": "machine/Moment M300(HVMS).json"
-                },
-                {
-                    "name": "Moment M400(HVMS)",
-                    "sub_path": "machine/Moment M400(HVMS).json"
-                }
+        {
+          "name": "Moment M200(S)",
+          "sub_path": "machine/Moment M200(S).json"
+        },
+        {
+          "name": "Moment M300(S)",
+          "sub_path": "machine/Moment M300(S).json"
+        },
+        {
+          "name": "Moment M400(S)",
+          "sub_path": "machine/Moment M400(S).json"
+        },
+
+        {
+          "name": "Moment M200(SCH)",
+          "sub_path": "machine/Moment M200(SCH).json"
+        },
+        {
+          "name": "Moment M300(SCH)",
+          "sub_path": "machine/Moment M300(SCH).json"
+        },
+        {
+          "name": "Moment M400(SCH)",
+          "sub_path": "machine/Moment M400(SCH).json"
+        }
 
     ],
     "process_list": [
@@ -154,6 +167,26 @@
         {
             "name": "0.28mm Draft @Moment M",
             "sub_path": "process/0.28mm Draft @Moment M.json"
+        },
+        {
+            "name": "fdm_process_moment(S)_common",
+            "sub_path": "process/fdm_process_moment(S)_common.json"
+        },
+        {
+            "name": "0.10mm Ultra @Moment(S)",
+            "sub_path": "process/0.10mm Ultra @Moment(S).json"
+        },
+        {
+            "name": "0.16mm High @Moment(S)",
+            "sub_path": "process/0.16mm High @Moment(S).json"
+        },
+        {
+            "name": "0.20mm Standard @Moment(S)",
+            "sub_path": "process/0.20mm Standard @Moment(S).json"
+        },
+        {
+            "name": "0.28mm Draft @Moment(S)",
+            "sub_path": "process/0.28mm Draft @Moment(S).json"
         },
         {
             "name": "0.10mm High @Moment S",
@@ -403,45 +436,59 @@
         },
 
                 {
-                    "name": "Moment PLA Tough-HVMS",
-                    "sub_path": "filament/Moment PLA Tough-HVMS.json"
+                    "name": "Moment PLA Tough(S)",
+                    "sub_path": "filament/Moment PLA Tough(S).json"
                 },
                 {
-                    "name": "Moment ABS-HVMS",
-                    "sub_path": "filament/Moment ABS-HVMS.json"
+                    "name": "Moment ABS(S)",
+                    "sub_path": "filament/Moment ABS(S).json"
                 },
                 {
-                    "name": "Moment PET-CF-HVMS",
-                    "sub_path": "filament/Moment PET-CF-HVMS.json"
+                    "name": "Moment PET-CF(S)",
+                    "sub_path": "filament/Moment PET-CF(S).json"
                 },
                 {
-                    "name": "Moment PETG-ESD-HVMS",
-                    "sub_path": "filament/Moment PETG-ESD-HVMS.json"
+                    "name": "Moment PETG-ESD(S)",
+                    "sub_path": "filament/Moment PETG-ESD(S).json"
                 },
                 {
-                    "name": "Moment PETG-HVMS",
-                    "sub_path": "filament/Moment PETG-HVMS.json"
+                    "name": "Moment PETG(S)",
+                    "sub_path": "filament/Moment PETG(S).json"
                 },
                 {
-                    "name": "Moment PLA Sonic-HVMS",
-                    "sub_path": "filament/Moment PLA Sonic-HVMS.json"
+                    "name": "Moment PLA Sonic(S)",
+                    "sub_path": "filament/Moment PLA Sonic(S).json"
                 },
                 {
-                    "name": "Moment TPU95A-HF-HVMS",
-                    "sub_path": "filament/Moment TPU95A-HF-HVMS.json"
+                    "name": "Moment TPU95A-HF(S)",
+                    "sub_path": "filament/Moment TPU95A-HF(S).json"
                 },
                 {
-                    "name": "Moment ABS-GF-HVMS",
-                    "sub_path": "filament/Moment ABS-GF-HVMS.json"
+                    "name": "Moment ABS-GF(S)",
+                    "sub_path": "filament/Moment ABS-GF(S).json"
                 },
                 {
-                    "name": "Moment PC-HVMS",
-                    "sub_path": "filament/Moment PC-HVMS.json"
+                    "name": "Moment PC(S)",
+                    "sub_path": "filament/Moment PC(S).json"
                 },
                 {
-                    "name": "Moment PA6-CF-HVMS",
-                    "sub_path": "filament/Moment PA6-CF-HVMS.json"
+                    "name": "Moment PA6-CF(S)",
+                    "sub_path": "filament/Moment PA6-CF(S).json"
+                },
+                
+                {
+                    "name": "Moment ABS(SCH)",
+                    "sub_path": "filament/Moment ABS(SCH).json"
+                },
+                {
+                    "name": "Moment ABS-GF(SCH)",
+                    "sub_path": "filament/Moment ABS-GF(SCH).json"
+                },
+                {
+                    "name": "Moment PC(SCH)",
+                    "sub_path": "filament/Moment PC(SCH).json"
                 }
+                
     ],
     "machine_list": [
         {
@@ -505,17 +552,30 @@
             "sub_path": "machine/Moment 2 0.4 nozzle.json"
         },
                 {
-                    "name": "Moment M200(HVMS) 0.4 nozzle",
-                    "sub_path": "machine/Moment M200(HVMS) 0.4 nozzle.json"
+                    "name": "Moment M200(S) 0.4 nozzle",
+                    "sub_path": "machine/Moment M200(S) 0.4 nozzle.json"
                 },
                 {
-                    "name": "Moment M300(HVMS) 0.4 nozzle",
-                    "sub_path": "machine/Moment M300(HVMS) 0.4 nozzle.json"
+                    "name": "Moment M300(S) 0.4 nozzle",
+                    "sub_path": "machine/Moment M300(S) 0.4 nozzle.json"
                 },
                 {
-                    "name": "Moment M400(HVMS) 0.4 nozzle",
-                    "sub_path": "machine/Moment M400(HVMS) 0.4 nozzle.json"
-                }
+                    "name": "Moment M400(S) 0.4 nozzle",
+                    "sub_path": "machine/Moment M400(S) 0.4 nozzle.json"
+                },
+
+                {
+                    "name": "Moment M200(SCH) 0.4 nozzle",
+                    "sub_path": "machine/Moment M200(SCH) 0.4 nozzle.json"
+                },
+                {
+                    "name": "Moment M300(SCH) 0.4 nozzle",
+                    "sub_path": "machine/Moment M300(SCH) 0.4 nozzle.json"
+                },
+                {
+                    "name": "Moment M400(SCH) 0.4 nozzle",
+                    "sub_path": "machine/Moment M400(SCH) 0.4 nozzle.json"
+                }                
 
 
     ]

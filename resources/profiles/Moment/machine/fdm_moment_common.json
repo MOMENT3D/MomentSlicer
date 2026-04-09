@@ -4,6 +4,7 @@
   "from": "system",
   "instantiation": "false",
   "inherits": "fdm_machine_common",
+  "printer_agent": "moonraker",
   "printer_settings_id": "",
   "printer_technology": "FFF",
   "bed_exclude_area": [
