@@ -17,7 +17,7 @@ END_EVENT_TABLE()
 static wxColour BORDER_HOVER_COL = wxColour(150, 0, 0);
 
 const static wxColour TAB_BUTTON_BG    = wxColour("#FEFFFF");
-const static wxColour TAB_BUTTON_SEL   = wxColour("#BFE1DE"); // MOMENT
+const static wxColour TAB_BUTTON_SEL   = wxColour("#F8D7DA"); // MOMENT
 
 TabButton::TabButton()
     : paddingSize(18, 16) // MOMENT reduce / match left margin buttons on sidebars

@@ -6,7 +6,7 @@
 namespace Slic3r { namespace GUI {
 
 static const wxColour BgNormalColor  = wxColour("#FFFFFF");
-static const wxColour BgSelectColor  = wxColour("#E5F0EE"); // MOMENT
+static const wxColour BgSelectColor  = wxColour("#FFF5F5"); // MOMENT
 static const wxColour BgDisableColor = wxColour("#CECECE");
 
 static const wxColour BorderNormalColor   = wxColour("#CECECE");

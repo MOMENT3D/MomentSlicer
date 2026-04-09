@@ -52,7 +52,7 @@
 #define AUFILE_GREY300 wxColour(238, 238, 238)
 #define AUFILE_GREY200 wxColour(248, 248, 248)
 #define AUFILE_BRAND wxColour(150, 0, 0)
-#define AUFILE_BRAND_TRANSPARENT wxColour("#E5F0EE") // MOMENT color with %10 opacity
+#define AUFILE_BRAND_TRANSPARENT wxColour("#FFF5F5") // MOMENT color with %10 opacity
 //#define AUFILE_PICTURES_SIZE wxSize(FromDIP(300), FromDIP(300))
 //#define AUFILE_PICTURES_PANEL_SIZE wxSize(FromDIP(300), FromDIP(340))
 #define AUFILE_PICTURES_SIZE wxSize(FromDIP(168), FromDIP(168))

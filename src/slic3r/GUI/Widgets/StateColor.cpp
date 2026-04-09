@@ -46,8 +46,8 @@ static std::map<wxColour, wxColour> gDarkColors{
     {"#EBF9F0", "#293F34"},
     //{"#F0F0F0", "#4C4C54"},
     // MOMENT
-    {"#BFE1DE", "#223C3C"}, // rgb(191, 225, 222)  Dropdown checked item background color > MOMENT color with %25 opacity
-    {"#E5F0EE", "#322727"}, // rgb(229, 240, 238)  Combo / Dropdown focused background color > MOMENT color with %10 opacity
+    {"#F8D7DA", "#4A1B1B"}, // rgb(191, 225, 222)  Dropdown checked item background color > MOMENT color with %25 opacity
+    {"#FFF5F5", "#322727"}, // rgb(229, 240, 238)  Combo / Dropdown focused background color > MOMENT color with %10 opacity
 };
 
 std::tuple<double, double, double> StateColor::GetLAB(const wxColour& color) {

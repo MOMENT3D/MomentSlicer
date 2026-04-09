@@ -21,8 +21,8 @@
 	--fg-color-text			: #262E30;
 	--fg-color-label		: #363636;
 	--fg-color-disabled		: #ACACAC;
-	--focus-bg-item			: #BFE1DE;
-	--focus-bg-box			: #E5F0EE;
+	--focus-bg-item			: #F8D7DA;
+	--focus-bg-box			: #FFF5F5;
 	--border-color			: #DBDBDB;
 	--icon-color			: #7C8282;
 	--button-fg-light		: #FEFEFE;
@@ -45,7 +45,7 @@
 	--fg-color-text			: #EFEFF0;
 	--fg-color-label		: #B2B3B5;
 	--fg-color-disabled		: #65656A;
-	--focus-bg-item			: #223C3C;
+	--focus-bg-item			: #4A1B1B;
 	--focus-bg-box			: #322727;
 	--border-color			: #4A4A51;
 	--icon-color			: #949494;
