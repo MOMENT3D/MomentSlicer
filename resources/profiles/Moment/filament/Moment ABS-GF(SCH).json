@@ -39,13 +39,13 @@
     "0.9"
   ],
   "fan_max_speed": [
-    "30"
+    "70"
   ],
   "fan_min_speed": [
-    "0"
+    "10"
   ],
   "overhang_fan_speed": [
-    "30"
+    "80"
   ],
   "overhang_fan_threshold": [
     "25%"
@@ -63,7 +63,7 @@
     "0"
   ],
   "slow_down_layer_time": [
-    "10"
+    "5"
   ],
   "slow_down_min_speed": [
     "20"

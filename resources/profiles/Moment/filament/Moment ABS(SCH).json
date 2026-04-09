@@ -36,19 +36,19 @@
         "0.9"
     ],
     "fan_max_speed": [
-        "30"
+        "70"
     ],
     "fan_min_speed": [
-        "0"
+        "10"
     ],
 	"overhang_fan_speed": [
-        "10"
+        "80"
     ],
     "overhang_fan_threshold": [
         "25%"
     ],
     "nozzle_temperature": [
-        "260"
+        "265"
     ],
 	"nozzle_temperature_initial_layer": [
         "260"
