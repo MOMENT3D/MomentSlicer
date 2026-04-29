@@ -1196,8 +1196,8 @@ TriangleSelector::ClippingPlane GLGizmoPainterBase::get_clipping_plane_in_volume
     return TriangleSelector::ClippingPlane({float(normal_transformed.x()), float(normal_transformed.y()), float(normal_transformed.z()), offset_transformed});
 }
 
-ColorRGBA TriangleSelectorGUI::enforcers_color = {0.5f, 1.f, 0.5f, 1.f};
-ColorRGBA TriangleSelectorGUI::blockers_color  = {1.f, 0.5f, 0.5f, 1.f};
+ColorRGBA TriangleSelectorGUI::enforcers_color = {1.0f, 1.0f, 0.0f, 1.0f};
+ColorRGBA TriangleSelectorGUI::blockers_color  = {0.0f, 1.0f, 1.0f, 1.0f};
 
 ColorRGBA TriangleSelectorGUI::get_seed_fill_color(const ColorRGBA& base_color)
 {
