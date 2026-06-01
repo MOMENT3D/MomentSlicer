@@ -12,8 +12,8 @@
     "bottom_shell_thickness": "0",
     "bridge_flow": "1",
     "fuzzy_skin_point_distance": "0.4",
-    "brim_width": "5",
-    "brim_object_gap": "0.1",
+    "brim_width": "3",
+    "brim_object_gap": "0.2",
     "compatible_printers_condition": "",
     "print_sequence": "by layer",
 	

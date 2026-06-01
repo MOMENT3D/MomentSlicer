@@ -177,12 +177,20 @@
             "sub_path": "process/0.10mm Ultra @Moment(S).json"
         },
         {
+            "name": "0.12mm Fine @Moment(S)",
+            "sub_path": "process/0.12mm Fine @Moment(S).json"
+        },
+        {
             "name": "0.16mm High @Moment(S)",
             "sub_path": "process/0.16mm High @Moment(S).json"
         },
         {
             "name": "0.20mm Standard @Moment(S)",
             "sub_path": "process/0.20mm Standard @Moment(S).json"
+        },
+        {
+            "name": "0.24mm Standard @Moment(S)",
+            "sub_path": "process/0.24mm Standard @Moment(S).json"
         },
         {
             "name": "0.28mm Draft @Moment(S)",

@@ -17818,7 +17818,7 @@ msgid "Distance from tree branch to the outermost brim line."
 msgstr "나무 지지대 가지에서 가장 바깥쪽 챙까지의 거리"
 
 msgid "Tip Diameter"
-msgstr "노즐 끝단 직경"
+msgstr "나무 끝단 직경"
 
 #. TRN PrintSettings: "Organic supports" > "Tip Diameter"
 msgid "Branch tip diameter for organic supports."

@@ -30,18 +30,32 @@
   "filament_flow_ratio": [
     "0.9"
   ],
-  "fan_max_speed": [
-    "60"
-  ],
+  "reduce_fan_stop_start_freq": [
+    "1"
+  ],  
+
   "fan_min_speed": [
-    "10"
+   "10"
   ],
-  "overhang_fan_speed": [
-    "70"
+  "fan_cooling_layer_time": [
+    "15"
+  ],
+  "fan_max_speed": [
+    "30"
+  ],
+  "slow_down_layer_time": [
+    "5"
   ],
   "overhang_fan_threshold": [
     "25%"
   ],
+  "overhang_fan_speed": [
+    "30"
+  ],
+  "support_material_interface_fan_speed": [
+    "100"
+  ],  
+
   "nozzle_temperature": [
     "270"
   ],
@@ -50,12 +64,6 @@
   ],
   "nozzle_temperature_range_high": [
     "290"
-  ],
-  "reduce_fan_stop_start_freq": [
-    "0"
-  ],
-  "slow_down_layer_time": [
-    "10"
   ],
   "slow_down_min_speed": [
     "20"

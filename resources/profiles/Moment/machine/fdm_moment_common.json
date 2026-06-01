@@ -1,4 +1,5 @@
 {
+  "file_start_gcode": "CHECK_PRINTER PRINTER_MODEL=\"[printer_model]\"",
   "type": "machine",
   "name": "fdm_moment_common",
   "from": "system",
@@ -66,19 +67,19 @@
     "20000"
   ],
   "machine_max_jerk_x": [
-    "0",
+    "9",
     "7"
   ],
   "machine_max_jerk_y": [
-    "0",
+    "9",
     "7"
   ],
   "machine_max_jerk_z": [
-    "0",
+    "0.2",
     "0.4"
   ],
   "machine_max_jerk_e": [
-    "0",
+    "2.5",
     "5"
   ],
   "machine_min_extruding_rate": [
@@ -140,22 +141,5 @@
 
   "resonance_avoidance": "0",
   "max_resonance_avoidance_speed": "50",
-  "min_resonance_avoidance_speed": "20",
-
-  "machine_max_jerk_e": [
-      "10",
-      "5"
-  ],
-  "machine_max_jerk_x": [
-      "300",
-      "7"
-  ],
-  "machine_max_jerk_y": [
-      "300",
-      "7"
-  ],
-  "machine_max_jerk_z": [
-      "30",
-      "0.4"
-  ]
+  "min_resonance_avoidance_speed": "20"
 }

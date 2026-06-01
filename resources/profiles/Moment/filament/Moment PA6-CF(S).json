@@ -21,15 +21,29 @@
   "enable_pressure_advance": [
     "1"
   ],
-  "fan_cooling_layer_time": [
-    "15"
-  ],
-  "fan_max_speed": [
-    "20"
-  ],
+
   "fan_min_speed": [
     "10"
   ],
+  "fan_cooling_layer_time": [
+    "5"
+  ],
+  "fan_max_speed": [
+    "30"
+  ],
+  "slow_down_layer_time": [
+    "5"
+  ],
+  "overhang_fan_threshold": [
+    "25%"
+  ],
+  "overhang_fan_speed": [
+    "40"
+  ],  
+  "support_material_interface_fan_speed": [
+    "80"
+  ],  
+
   "filament_density": [
     "1.17"
   ],
@@ -57,12 +71,6 @@
   "nozzle_temperature_range_low": [
     "280"
   ],
-  "overhang_fan_speed": [
-    "20"
-  ],
-  "overhang_fan_threshold": [
-    "25%"
-  ],
   "pressure_advance": [
     "0.028"
   ],
@@ -71,9 +79,6 @@
   ],
   "slow_down_for_layer_cooling": [
     "1"
-  ],
-  "slow_down_layer_time": [
-    "5"
   ],
   "slow_down_min_speed": [
     "20"

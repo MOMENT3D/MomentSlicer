@@ -13,7 +13,7 @@
         "38500"
     ],
     "filament_flow_ratio": [
-      "0.93"
+      "0.92"
     ],
     "filament_density": [
       "1.26"
@@ -69,6 +69,11 @@
     "fan_min_speed": [
         "100"
     ],
+    
+    "support_material_interface_fan_speed": [
+        "10"
+    ],
+
     "compatible_printers": [
       "Moment M200(S) 0.4 nozzle",
       "Moment M300(S) 0.4 nozzle",
